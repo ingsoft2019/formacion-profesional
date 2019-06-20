@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS `Genero` (
 
 CREATE TABLE IF NOT EXISTS `Estudiante` (
   `idUsuario` INT NOT NULL,
-  `idEstuadiante` INT NOT NULL,
   `no.cuenta` VARCHAR(11) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUsuario`));
