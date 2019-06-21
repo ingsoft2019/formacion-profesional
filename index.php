@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -30,7 +30,7 @@
 </head>
 
 <body class="loaded">
-    <div class="mn-content fixed-sidebar">
+    <div class="mn-content">
 
         <div id="div-menu"></div>
         

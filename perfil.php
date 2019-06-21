@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -30,7 +30,7 @@
 </head>
 
 <body class="loaded">
-    <div class="mn-content fixed-sidebar">
+    <div class="mn-content">
 
         <div id="div-menu"></div>
 
@@ -40,7 +40,7 @@
                 <div class="col s12 m12 l6">
                     <div class="sidebar-profile">
                         <div class="profile-photo">
-                            <img src="assets/images/profile-image.png" class="circle" alt="">
+                            <img src="assets/images/profile-image.png" class="circle responsive-img" alt="">
                         </div>
                     </div>
                     <div class="sidebar-profile-info">
@@ -147,8 +147,8 @@
 
                     <div class="card">
                         <div class="card-content" align="right">
-                            <a class="waves-effect waves-light btn red m-b-xs">Cancelar</a>
-                            <a class="waves-effect waves-light btn green m-b-xs">Guardar</a>
+                            <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Cancelar</a>
+                            <a class="waves-effect waves-light btn blue m-b-xs">Guardar</a>
                         </div>
                     </div>
 
