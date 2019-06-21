@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title -->
-    <title>Alpha | Responsive Admin Dashboard Template</title>
+    <title>VOAE | Orientación Profesional</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
 <body class="loaded">
     <div class="mn-content fixed-sidebar">
 
-        <div id="div-plantillaEstatica"></div>
+        <div id="div-menu"></div>
 
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
@@ -42,10 +42,11 @@
                         <div class="profile-photo">
                             <img src="assets/images/profile-image.png" class="circle" alt="">
                         </div>
-                        <div class="sidebar-profile-info" align="center">
-                            <h3>David Doe</h3>
-                            <h6>Estudiante</h6>
-                        </div>
+                    </div>
+                    <div class="sidebar-profile-info">
+          
+                            <h5 align="center">David Doe</h5>
+                       
                     </div>
                     <div class="card">
                         <div class="card-content">
@@ -103,8 +104,6 @@
 
                 </div>
                 <div class="col s12 m12 l6">
-
-
                     <div class="card">
                         <div class="card-content">
                             <span class="card-title">Información Académica</span><br>
@@ -173,7 +172,7 @@
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/menuPiePagina.js"></script>
 
 </body>
 

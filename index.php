@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title -->
-    <title>Alpha | Responsive Admin Dashboard Template</title>
+    <title>VOAE | Orientación Profesional</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
 <body class="loaded">
     <div class="mn-content fixed-sidebar">
 
-        <div id="div-plantillaEstatica"></div>
+        <div id="div-menu"></div>
         
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
@@ -56,7 +56,7 @@
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/menuPiePagina.js"></script>
 
 </body>
 
