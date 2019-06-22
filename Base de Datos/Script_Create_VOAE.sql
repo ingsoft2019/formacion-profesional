@@ -242,12 +242,12 @@ CREATE TABLE IF NOT EXISTS `tbl_horarios_x_empleado` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_estado_citas` (
   `idEstado` INT NOT NULL,
-  `Descripcion` VARCHAR(45) NOT NULL,
+  `Descripcion` VARCHAR(45) NOT NULL COMMENT 'Por ejemplo:\nPendiente\ncumplida\nsuspendida\ncancelada',
   PRIMARY KEY (`idEstado`));
 
 
 -- -----------------------------------------------------
--- Creando tabal de citas
+-- Creando tabla de citas
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_citas` (
   `idCita` INT NOT NULL,
