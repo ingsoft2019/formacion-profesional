@@ -1,0 +1,23 @@
+.picker__date-display {
+    background-color:#286DBD;
+  }
+  .picker__weekday-display {
+    background-color:#1A477A;
+  }
+  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color:#FCCF2C;
+  }
+
+#btn_editar_foto{
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+
+
+
+
+
+
+
+
