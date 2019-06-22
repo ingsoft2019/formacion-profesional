@@ -29,10 +29,55 @@ $(document).ready(function () {
 
 
 
-    
+
+
+    crearCropper();
+    $('#fl_foto_perfil').on('change', function (evt) {
+        var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                destroyCropper();
+                $('#img_cropper_foto').attr('src', fr.result);
+                crearCropper();
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    });
+
+
+
+
+
+
+
 
 
 });
+
+
+
+
+var image = $('#img_cropper_foto');
+function crearCropper() {    
+    image.cropper({
+        aspectRatio: 1/1,
+        preview: '#div_result_cropImage',
+    
+    });
+}
+function destroyCropper(){
+    image.cropper('destroy');
+}
 
 
 

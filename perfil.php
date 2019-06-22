@@ -206,25 +206,57 @@
         </main>
         <!--FIN APARTADO-->
 
-        <div id="mdl_editar_foto" class="modal">
+        <div id="mdl_editar_foto" class="modal modal-fixed-footer">
             <div class="modal-content">
 
-                
-            
+
+
+
+                <div class="row">
+                    <div class="col s12 m6 l6">
+                        <h5>Actualizar Foto de Perfil</h5>
+                        <form action="#" class="p-v-xs">
+                            <div class="file-field input-field">
+                                <div class="btn blue" style="padding-left: 15px;padding-right: 15px;">
+                                    <span><i class="material-icons">file_upload</i></span>
+                                    <input type="file" id="fl_foto_perfil" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Selecciones una imagen">
+                                </div>
+                            </div>
+                        </form>
+                        <img src="assets/images/profile-image.png" class="responsive-img" alt="" id="img_cropper_foto">
+                        
+                    </div>
+                    <div class="col s12 m6 l6" align="center">
+                        <div id="div_result_cropImage""></div>
+
+
+
+                    </div>
+                </div>
 
 
 
 
-            
 
 
-            
+
+
+
+
+
+
+
+
+
 
 
 
             </div>
             <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-blue btn-flat">Actualizar</a>
             </div>
         </div>
 
@@ -241,9 +273,9 @@
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
-    <script src="assets/js/menuPiePagina.js"></script>
-    <script src="assets/js/perfil.js"></script>
+    <script src="assets/js/menuPiePagina.js"></script>    
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/plugins/image-cropper/cropper.min.js"></script>
+    <script src="assets/js/perfil.js"></script>
 
 </body>

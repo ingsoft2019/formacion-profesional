@@ -14,10 +14,17 @@
 }
 
 
+#div_result_cropImage > img{
+    max-width: 100%;
+}
 
 
-
-
+#div_result_cropImage{    
+    height: 15em;
+    width: 15em;
+    overflow: hidden;
+    margin-top: 20px;
+}
 
 
 
