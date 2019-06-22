@@ -13,11 +13,15 @@
     <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css" />
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
 
 
     <!-- Theme Styles -->
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/perfil.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/image-cropper/cropper.min.css" rel="stylesheet">
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,6 +34,7 @@
 </head>
 
 <body class="loaded">
+
     <div class="mn-content">
 
         <div id="div-menu"></div>
@@ -37,80 +42,84 @@
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
             <div class="row">
-                <div class="col s12 m12 l6">
+                <div class="col s12 m6 l4">
                     <div class="sidebar-profile">
                         <div class="profile-photo">
-                            <img src="assets/images/profile-image.png" class="circle responsive-img" alt="">
+                            <img src="assets/images/profile-image.png" class="circle responsive-img" alt=""
+                                id="img_editar_perfil">
+                            <a class="btn-floating btn-large waves-effect waves-light grey darken-3"
+                                id="btn_editar_foto"><i class="material-icons modal-trigger"
+                                    href="#mdl_editar_foto">photo_camera</i></a>
                         </div>
                     </div>
                     <div class="sidebar-profile-info">
-          
-                            <h5 align="center">David Doe</h5>
-                       
+
+                        <h5 align="center">David Doe</h5>
+
                     </div>
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">Información Personal</span><br>
                             <div class="row">
                                 <form class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="last_name" type="text" class="validate">
-                                            <label for="last_name">Nombres</label>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="txt_identidad" type="text" class="validate">
+                                                <label for="txt_identidad">No. Identidad</label>
+                                            </div>
                                         </div>
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="last_name" type="text" class="validate">
-                                            <label for="last_name">Apellidos</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="last_name" type="text" class="validate">
-                                            <label for="last_name">No. Identidad</label>
-                                        </div>
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="last_name" type="text" class="validate">
-                                            <label for="last_name">Celular</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="input-field col s12">
-                                            <label for="birthdate">Birthdate</label>
-                                            <input id="birthdate" type="text" class="datepicker">
+                                            <input id="txt_nombres" type="text" class="validate">
+                                            <label for="txt_nombres">Nombres</label>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="email" type="email" class="validate">
-                                            <label for="email">Correo</label>
+                                            <input id="txt_apellidos" type="text" class="validate">
+                                            <label for="txt_apellidos">Apellidos</label>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="password" type="password" class="validate" disabled>
-                                            <label for="password">Contraseña</label>
-                                        </div>
-                                        <div class="input-field col s12 m6 l6" align="right">
-                                            <a class="waves-effect waves-light btn blue m-b-xs">Cambiar</a>
-                                        </div>
-                                    </div>
-
-
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-                <div class="col s12 m12 l6">
+
+
+
+
+                <div class="col s12 m6 l4">
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">Información Académica</span><br>
+                            <div class="row">
+                                <form class="col s12">
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="txt_fechaNac">Fecha de Nacimiento</label>
+                                            <input id="txt_fechaNac" type="text" class="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="txt_celular" type="text" class="validate">
+                                            <label for="txt_celular">Celular</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="txt_correo" type="email" class="validate">
+                                            <label for="txt_correo">Correo</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="last_name" type="text" class="validate">
-                                    <label for="last_name">No. Cuenta</label>
+                                    <input id="txt_cuenta" type="text" class="validate">
+                                    <label for="txt_cuenta">No. Cuenta</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <select>
@@ -121,9 +130,45 @@
                                     </select>
                                     <label>Carrera Universitaria</label>
                                 </div>
-
                             </div>
+                        </div>
+                    </div>
+                </div>
 
+
+
+                <div class="col s12 m6 l4 ">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <form class="col s12">
+
+                                    <div class="row">
+                                        <div class="input-field col s12 m6 l6">
+                                            <input id="txt_contrasena" type="password" class="validate" disabled>
+                                            <label for="txt_contrasena">Contraseña</label>
+                                        </div>
+                                        <div class="input-field col s12 m6 l6" align="right">
+                                            <a id="btn_cambiar_contrasena"
+                                                class="waves-effect waves-light btn blue m-b-xs closeOnEsc">Cambiar</a>
+                                        </div>
+                                    </div>
+                                    <div id="div-cambiar-contrasena" hidden>
+                                        <div class="input-field col s12">
+                                            <input id="txt_contrasena_actual" type="password" class="validate">
+                                            <label for="txt_contrasena_actual">Contraseña Actual</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="txt_contrasena_nueva" type="password" class="validate">
+                                            <label for="txt_contrasena_nueva">Nueva Contraseña</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="txt_confirmar_nueva" type="password" class="validate">
+                                            <label for="txt_confirmar_nueva">Confirmar Contraseña</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
@@ -147,8 +192,9 @@
 
                     <div class="card">
                         <div class="card-content" align="right">
-                            <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Cancelar</a>
-                            <a class="waves-effect waves-light btn blue m-b-xs">Guardar</a>
+                            <a class="waves-effect waves-light btn yellow darken-2 m-b-xs"
+                                id="btn_cancelar">Cancelar</a>
+                            <a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
                         </div>
                     </div>
 
@@ -159,6 +205,29 @@
 
         </main>
         <!--FIN APARTADO-->
+
+        <div id="mdl_editar_foto" class="modal">
+            <div class="modal-content">
+
+                
+            
+
+
+
+
+            
+
+
+            
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
 
         <div id="div-piePagina"></div>
 
@@ -173,8 +242,8 @@
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
     <script src="assets/js/menuPiePagina.js"></script>
+    <script src="assets/js/perfil.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="assets/plugins/image-cropper/cropper.min.js"></script>
 
 </body>
-
-
-</html>
