@@ -1584,7 +1584,7 @@ li.active .nav-drop-icon {
 }
 
 .sidebar-profile {
-    padding: 25px 24px;
+    /*padding: 25px 24px;*/
     background: url('../images/profile_bg.png');
     background-size: cover;
 }

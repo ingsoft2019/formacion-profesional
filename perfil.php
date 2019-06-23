@@ -41,168 +41,112 @@
 
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
-            <div class="row">
-                <div class="col s12 m6 l4">
-                    <div class="sidebar-profile">
-                        <div class="profile-photo">
-                            <img src="assets/images/profile-image.png" class="circle responsive-img" alt=""
-                                id="img_editar_perfil">
-                            <a class="btn-floating btn-large waves-effect waves-light grey darken-3"
-                                id="btn_editar_foto"><i class="material-icons modal-trigger"
-                                    href="#mdl_editar_foto">photo_camera</i></a>
-                        </div>
-                    </div>
-                    <div class="sidebar-profile-info">
-
-                        <h5 align="center">David Doe</h5>
-
-                    </div>
-                    <div class="card">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col s12 m12">
+						<div class="card">
                         <div class="card-content">
                             <div class="row">
                                 <form class="col s12">
                                     <div class="row">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input id="txt_identidad" type="text" class="validate">
-                                                <label for="txt_identidad">No. Identidad</label>
-                                            </div>
-                                        </div>
-                                        <div class="input-field col s12">
+                                        <div class="col s12 m4">
+											<div class="sidebar-profile">
+			                       				<div class="profile-photo">
+			                            			<img src="assets/images/profile-image.png" class="circle responsive-img" alt="" id="img_editar_perfil">
+			                            			<a class="btn-floating btn-large waves-effect waves-light grey darken-3" id="btn_editar_foto"><i class="material-icons modal-trigger"
+			                                    href="#mdl_editar_foto">photo_camera</i></a>
+			                         			</div>
+		                   		 			</div>
+										</div>
+										 <div class="input-field col s12 m4">
                                             <input id="txt_nombres" type="text" class="validate">
                                             <label for="txt_nombres">Nombres</label>
                                         </div>
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 m4">
                                             <input id="txt_apellidos" type="text" class="validate">
                                             <label for="txt_apellidos">Apellidos</label>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col s12 m6 l4">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="row">
-                                <form class="col s12">
-
-                                    <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 m4">
+                                            <input id="txt_identidad" type="text" class="validate">
+                                            <label for="txt_identidad">No. Identidad</label>
+                                        </div>
+                                        <div class="row">
+                                        <div class="input-field col s12 m4">
                                             <label for="txt_fechaNac">Fecha de Nacimiento</label>
                                             <input id="txt_fechaNac" type="text" class="datepicker">
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+                                   	    </div>
+                                        <div class="input-field col s12 m6">
                                             <input id="txt_celular" type="text" class="validate">
                                             <label for="txt_celular">Celular</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+                                        	</div>
+                                       	 <div class="input-field col s12 m6">
                                             <input id="txt_correo" type="email" class="validate">
                                             <label for="txt_correo">Correo</label>
                                         </div>
+                                        <div class="input-field col s12 m6">
+                                    		<input id="txt_cuenta" type="text" class="validate">
+                                    		<label for="txt_cuenta">No. Cuenta</label>
+                                		</div>
+                                		<div class="input-field col s12 m6">
+		                                    <select>
+		                                        <option value="" disabled selected>Seleccione una opción</option>
+		                                        <option value="1">Option 1</option>
+		                                        <option value="2">Option 2</option>
+		                                        <option value="3">Option 3</option>
+		                                    </select>
+                                    	<label>Carrera Universitaria</label>
+                                		</div>
+                                		<div class="col s12 m6">
+                                			<div class="input-field col s12 m9">
+                                            	<input id="txt_contrasena" type="password" class="validate" disabled>
+                                            	<label for="txt_contrasena">Contraseña</label>
+                                        	</div>
+	                                        <form class="col s3 m3"> 
+	                                       	   	 <div class="input-field col s12 m3" align="right">
+	                                            	<a id="btn_cambiar_contrasena"
+	                                                class="waves-effect waves-light btn blue m-b-xs closeOnEsc">Cambiar</a>
+	                                        	 </div>
+	                                  			<div id="div-cambiar-contrasena" hidden>
+	                                        		<div class="input-field col s12">
+	                                            		<input id="txt_contrasena_actual" type="password" class="validate">
+	                                            		<label for="txt_contrasena_actual">Contraseña Actual</label>
+	                                        		</div>
+	                                        		<div class="input-field col s12">
+	                                            		<input id="txt_contrasena_nueva" type="password" class="validate">
+	                                            		<label for="txt_contrasena_nueva">Nueva Contraseña</label>
+	                                        		</div>
+	                                        		<div class="input-field col s12">
+	                                            		<input id="txt_confirmar_nueva" type="password" class="validate">
+	                                            		<label for="txt_confirmar_nueva">Confirmar Contraseña</label>
+	                                        		</div>
+	                                    		</div>
+	                                		</form>
+                                		</div>
+                                		<div class="col s12 m12">
+                                			<div class="col m6 s12">
+                                				<span class="card-title">Recibir notificaciones por correo</span><br>
+	             								<!-- Switch -->
+			                                	<div class="switch m-b-md" align="center">
+			                                 		<label>No<input type="checkbox">
+			                                 		<span class="lever"></span>
+			                                 		Sí</label>
+	                            				</div>
+                                			</div>
+                                			<div class="col m6 s12">
+	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
+                                			</div>
+                                		</div>
+                        				</div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="txt_cuenta" type="text" class="validate">
-                                    <label for="txt_cuenta">No. Cuenta</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <select>
-                                        <option value="" disabled selected>Seleccione una opción</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                    <label>Carrera Universitaria</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col s12 m6 l4 ">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="row">
-                                <form class="col s12">
-
-                                    <div class="row">
-                                        <div class="input-field col s12 m6 l6">
-                                            <input id="txt_contrasena" type="password" class="validate" disabled>
-                                            <label for="txt_contrasena">Contraseña</label>
-                                        </div>
-                                        <div class="input-field col s12 m6 l6" align="right">
-                                            <a id="btn_cambiar_contrasena"
-                                                class="waves-effect waves-light btn blue m-b-xs closeOnEsc">Cambiar</a>
-                                        </div>
-                                    </div>
-                                    <div id="div-cambiar-contrasena" hidden>
-                                        <div class="input-field col s12">
-                                            <input id="txt_contrasena_actual" type="password" class="validate">
-                                            <label for="txt_contrasena_actual">Contraseña Actual</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="txt_contrasena_nueva" type="password" class="validate">
-                                            <label for="txt_contrasena_nueva">Nueva Contraseña</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="txt_confirmar_nueva" type="password" class="validate">
-                                            <label for="txt_confirmar_nueva">Confirmar Contraseña</label>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Recibir notificaciones por correo</span><br>
-                            <div class="row">
-                                <div class="col s12">
-                                    <!-- Switch -->
-                                    <div class="switch m-b-md">
-                                        <label>
-                                            No
-                                            <input type="checkbox">
-                                            <span class="lever"></span>
-                                            Sí
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-content" align="right">
-                            <a class="waves-effect waves-light btn yellow darken-2 m-b-xs"
-                                id="btn_cancelar">Cancelar</a>
-                            <a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
+					</div>
+				</div>
+			</div>
         </main>
         <!--FIN APARTADO-->
 
@@ -230,7 +174,7 @@
                         
                     </div>
                     <div class="col s12 m6 l6" align="center">
-                        <div id="div_result_cropImage""></div>
+                        <div id="div_result_cropImage"></div>
 
 
 
@@ -239,28 +183,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-blue btn-flat">Actualizar</a>
             </div>
         </div>
-
-
+<br><br><br><br><br>
         <div id="div-piePagina"></div>
 
 
