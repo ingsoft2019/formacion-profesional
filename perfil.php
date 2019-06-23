@@ -123,9 +123,10 @@
 	                                    		</div>
 	                                		</form>
                                 		</div>
+                                		
                                 		<div class="col s12 m12">
                                 			<div class="col m6 s12">
-                                				<span class="card-title">Recibir notificaciones por correo</span><br>
+                                				<span>Recibir notificaciones por correo</span><br>
 	             								<!-- Switch -->
 			                                	<div class="switch m-b-md" align="center">
 			                                 		<label>No<input type="checkbox">
@@ -133,7 +134,7 @@
 			                                 		Sí</label>
 	                            				</div>
                                 			</div>
-                                			<div class="col m6 s12">
+                                			<div class="col m4 s12 offset-m2 ">
 	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
                                 			</div>
