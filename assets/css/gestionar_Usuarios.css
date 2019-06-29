@@ -1,0 +1,13 @@
+
+.card-image{
+    padding: 1.5em;
+}
+.card-title{
+    color: grey;
+    text-align: center;
+    width: 100%;
+}
+
+.info_list{
+    margin-bottom: 10px;
+}
