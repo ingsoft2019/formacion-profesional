@@ -19,6 +19,8 @@
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/gestionar_Usuarios.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,11 +37,31 @@
     <div class="mn-content">
 
         <div id="div-menu"></div>
-
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
 
-           
+
+            <form class="row">
+                <div class="col l6 m6 s12">
+                    <div class="row valign-wrapper barra_buscar">
+                        <div class="col l1">
+                            <i class="material-icons">search</i>
+                        </div>
+                        <div class="col l10">
+                            <input id="txt_buscar" type="search" required>
+                        </div>
+                        <div class="col l1">
+                            <i class="material-icons">close</i>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+
 
 
 
@@ -78,22 +100,104 @@
                                 <span class="col s10 m10 l10">Estudiante</span>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a class="red-text">Eliminar</a>
+                        <div class="card-action right-align">
+                            <a class="btn-flat red-text" id="btn_eliminarUsuario">Eliminar</a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
 
 
 
 
+            <!-- Modal Structure -->
+            <div id="mdl_nuevoUsuario" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Crear nuevo Usuario</h4>
+
+
+
+
+
+
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="txt_identidad" placeholder="0801-1990-89432" type="text"
+                                    class="validate masked" data-inputmask="'mask': '9999-9999-99999'">
+                                <label for="txt_identidad" class="active">No. Identidad</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <label for="txt_fechaNac">Fecha de Nacimiento</label>
+                                <input id="txt_fechaNac" placeholder="13/03/1990" type="text" class="masked"
+                                    data-inputmask="'alias': 'date'">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="last_name" placeholder="Pedro Jose" type="text" class="validate masked"
+                                    data-inputmask="'mask': 'a{+}'">
+                                <label for="last_name">Nombres</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <input id="last_name" placeholder="Castellanos Andino" type="text"
+                                    class="validate masked" data-inputmask="'mask': 'a{+}'">
+                                <label for="last_name">Apellidos</label>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="last_name" placeholder="3240-9878" type="text" class="validate masked"
+                                    data-inputmask="'mask': '(504)9{4}-9{4}'">
+                                <label for="last_name">Celular</label>
+                            </div>
+                            <div class="input-field col s7 m3 l3">
+                                <input id="email" type="text" placeholder="casteljose" class="validate masked"
+                                    data-inputmask="'mask': '/{+}'">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s5 m3 l3">
+                                <label>@unah.edu.hn</label>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="input-field col s12">
+                                <select multiple>
+                                    <option value="" disabled selected>Seleccionar cargo</option>
+                                    <option value="1">Entrevistador</option>
+                                    <option value="2">Psicólogo</option>
+                                </select>
+                                <label>Funciones</label>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
+                    <a class="modal-action modal-close waves-effect waves-red btn-flat"
+                        id="btn_cancelarNuevo">Cancelar</a>
+                </div>
+            </div>
+
 
 
         </main>
         <!--FIN APARTADO-->
+
+
+
+        <!-- Modal Trigger -->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red pulse modal-trigger" id="btn_nuevoUsuario" href="#mdl_nuevoUsuario">
+                <i class="large material-icons">person_add</i>
+            </a>
+        </div>
+
 
         <div id="div-piePagina"></div>
 
@@ -106,8 +210,13 @@
     <script src="assets/plugins/materialize/js/materialize.min.js"></script>
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+    <script src="assets/js/pages/form_elements.js"></script>
     <script src="assets\plugins\prettify\prettify.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/js/ContenidoFijo.js"></script>
+    <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="assets/js/pages/form-input-mask.js"></script>
+    <script src="assets/js/gestionar_Usuarios.js"></script>
 
 </body>
 
