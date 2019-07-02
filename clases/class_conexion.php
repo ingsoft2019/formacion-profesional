@@ -3,7 +3,7 @@
 		private $usuario = "root";
 		private $contraseña = "";
 		private $host = "localhost";
-		private $baseDatos = "db_bibliotec";
+		private $baseDatos = "voae";
 		private $puerto = "3306";
 		private $link;
 		public function __construct(){
