@@ -36,18 +36,26 @@
 
     <div class="mn-content">
 
-        <div id="div-menu"></div>
+        <header class="mn-header navbar-fixed">
+            <nav class="blue darken-3">
+                <div class="header-title col s3">
+                    <span class="">VOAE</span>
+                </div>
+            </nav>
+        </header>
 
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
             <div class="row valign-wrapper portada_landing">
                 <div class="col s12 m6 l5">
                     <h2 class="cyan-text text-accent-4 scale-transition">Orientación Profesional</h2>
-                    <h5 class="cyan-text text-accent-4 scale-transition">Universidad Autónoma de Honduras</h5>
+                    <h5 class="cyan-text text-accent-4 scale-transition">Universidad Nacional Autónoma de Honduras</h5>
                     <p>Esta plataforma ha sido creada como complemento al Proceso de Orientación Profesional que
                         desarrolla el Área de Orientación y Asesoría Académica de la VOAE-UNAH. </p>
-                    <a
-                        class="waves-effect waves-light btn yellow darken-2 m-b-xs">Inscribirse</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Registrarse
+                    </a><br>
+                    <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Iniciar Sesión
+                    </a>
 
                 </div>
                 <div class="col s12 m6 l6 hide-on-small-only">
@@ -56,10 +64,10 @@
                 </div>
             </div>
 
-      
+
             <div class="row">
                 <div class="col s12">
-                <h4 class="cyan-text text-accent-4 scale-transition">Descripción del Proceso</h4>
+                    <h4 class="cyan-text text-accent-4 scale-transition">Descripción del Proceso</h4>
                 </div>
                 <div class="col s12">
 
@@ -113,7 +121,7 @@
                                     <i class="material-icons cyan-text text-darken-3 col s2 m1 l1">check</i>
                                     <h6 class="col s10 m11 l11 left-align">Recomendaciones de aspectos pedagógicos.</h6>
                                 </div>
-                                <span class="cd-date">Tercera Etapa</span>
+                                <span class="cd-date">Tercer Etapa</span>
                             </div> <!-- cd-timeline-content -->
                         </div> <!-- cd-timeline-block -->
 
@@ -179,6 +187,7 @@
     <script src="assets/plugins/vertical-timeline/js/modernizr.js"></script>
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/alpha.js"></script>
 
 </body>
 

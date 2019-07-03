@@ -148,7 +148,7 @@
                         <div class="row ">
                             <div class="input-field col s12 m6 l6">
                                 <input id="last_name" placeholder="3240-9878" type="text" class="validate masked"
-                                    data-inputmask="'mask': '(504)9{4}-9{4}'">
+                                    data-inputmask="'mask': '(+504)9{4}-9{4}'">
                                 <label for="last_name">Celular</label>
                             </div>
                             <div class="input-field col s7 m3 l3">
@@ -162,13 +162,21 @@
                         </div>
 
                         <div class="row ">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m6 l6">
                                 <select multiple>
                                     <option value="" disabled selected>Seleccionar cargo</option>
                                     <option value="1">Entrevistador</option>
                                     <option value="2">Psicólogo</option>
                                 </select>
                                 <label>Funciones</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <select>
+                                    <option value="" disabled selected>Seleccionar género</option>
+                                    <option value="1">Femenino</option>
+                                    <option value="2">Masculino</option>
+                                </select>
+                                <label>Género</label>
                             </div>
                         </div>
 
