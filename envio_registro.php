@@ -48,13 +48,13 @@
                                                 }
                                                 $nombre=$_POST['nombres'];
                                                 $apellidos=$_POST['apellidos'];
-                                                $idp=$_POST['id'];
+                                                $idp=$_POST['identidad'];
                                                 $cuenta=$_POST['cuenta'];
-                                                $numero=$_POST['numero'];
+                                                $numero=$_POST['telefono'];
                                                 $email=$_POST['email'];
                                                 $pass=$_POST['password2'];
                                                 
-                                                if (empty($_POST['nombres']) || empty($_POST['apellidos']) || empty($_POST['id']) || empty($_POST['cuenta']) || empty($_POST['numero'])|| empty($_POST['carrera']) || empty($_POST['email']) || empty($_POST['password'])|| empty($_POST['password2'])){
+                                                if (empty($_POST['nombres']) || empty($_POST['apellidos']) || empty($_POST['identidad']) || empty($_POST['cuenta']) || empty($_POST['telefono'])|| empty($_POST['carrera']) || empty($_POST['email']) || empty($_POST['password'])|| empty($_POST['password2'])){
                                                     echo "<h5>No pueden haber campos vacios</h5>"."<br>";
                                                     echo"<img src= 'assets/images/nega-check.png'>"."<br>";
                                                     echo "<a href='registro.php'class='waves-effect waves-light btn teal'>Volver a Registro</a>"."<br>";
@@ -74,6 +74,10 @@
                                                         $uid=mysqli_fetch_array($query1);
                                                         $id=(string)((int)$uid['idpersona']+1);
                                                         $idcc=(string)$idc['idcarrera'];
+                                                        $idp = str_replace("-", "", $idp);
+                                                        $numero = str_replace("-", "", $numero);
+                                                        $numero = str_replace(" ", "", $numero);
+                                                        $numero = substr($numero, 5);
                                                         $mysql->ejecutarInstruccion("INSERT INTO tbl_personas(idPersona,idGenero,nombres,apellidos,correo,contrasena,celular,no_identidad ) VALUES ('$id','$genero','$nombre','$apellidos','$email','$pass','$numero','$idp')");
                                                         $mysql->ejecutarInstruccion("INSERT INTO tbl_estudiantes(idEstudiante,no_cuenta,idCarrera)VALUES('$id','$cuenta','$idcc')");
                                                         echo "<h1>Registro con exito</h1>"."<br>";
