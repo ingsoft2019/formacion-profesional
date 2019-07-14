@@ -12,9 +12,9 @@
 		public function establecerConexion(){
 			$this->link = mysqli_connect($this->host,$this->usuario,$this->contraseña,$this->baseDatos,$this->puerto);
 			$this->link->set_charset("utf8");	
-			echo "conexion exitosa";	/*Para caracteres especiales del español*/
+				// echo "conexion exitosa";	/*Para caracteres especiales del español*/
 			if(!$this->link){
-				echo "No se pudo conectar con MySQL";
+				// echo "No se pudo conectar con MySQL";
 				exit;
 			}
 		}
