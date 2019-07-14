@@ -36,3 +36,14 @@
     background: url('../images/profile_bg_2.png');
     background-size: cover;
 }
+
+.sidebar-profile{
+    background: url('../images/profile_background.svg');
+    background-size: cover;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.mn-inner{
+    min-height: 84vh;
+}

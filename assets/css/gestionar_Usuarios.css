@@ -1,0 +1,49 @@
+
+.card-image{
+    padding: 2em 0em 1em 0em;
+    width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-title{
+    color: grey;
+    text-align: center;
+    width: 100%;
+}
+
+.info_list{
+    margin-bottom: 10px;
+}
+
+#mdl_nuevoUsuario{
+    max-height: 90%;
+    height: 80%;
+}
+
+
+
+#txt_buscar, #txt_buscar:hover{
+    border: none;
+    box-shadow: none;
+    margin: 0px;
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+
+.barra_buscar{
+    background-color: white;
+    border: 1px solid rgb(228, 226, 226);
+    border-radius: 4px;
+    padding: 8px;
+    
+}
+
+.barra_buscar:hover{
+    border: 1px solid #BCBCBC;
+}
+
+.modal .modal-content p{
+    margin: 0px;
+}
+

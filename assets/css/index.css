@@ -1,0 +1,16 @@
+.mn-inner{
+background-image: url('../images/landing_Background.svg');
+background-repeat: no-repeat;
+background-size: 120em;
+min-height: 85vh;
+}
+
+.info_icon{
+    padding: 20px;
+}
+
+
+.portada_landing{
+    min-height: 85vh;
+    
+}

@@ -34,8 +34,8 @@
 
 </head>
 
-<body class="loaded">
-
+<body>
+<div id="div_loader"></div>
     <div class="mn-content">
 
         <div id="div-menu"></div>
@@ -204,7 +204,7 @@
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
-    <script src="assets/js/menuPiePagina.js"></script>    
+    <script src="assets/js/ContenidoFijo.js"></script>    
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/plugins/image-cropper/cropper.min.js"></script>
     <script src="assets/js/perfil.js"></script>

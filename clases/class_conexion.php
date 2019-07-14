@@ -3,7 +3,8 @@
 		private $usuario = "root";
 		private $contraseña = "oracle123";
 		private $host = "localhost";
-		private $baseDatos = "db_formacion";
+
+		private $baseDatos = "voae";
 		private $puerto = "3306";
 		private $link;
 		public function __construct(){

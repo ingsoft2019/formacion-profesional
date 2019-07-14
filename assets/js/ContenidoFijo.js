@@ -25,4 +25,17 @@ $.ajax({
     }
 });
 
+$.ajax({
+    type: "POST",
+    url: "loader.html",
+    //data: "{empid: " + empid + "}",
+    //contentType: "application/json; charset=utf-8",
+    contentType: "application/text/html; charset=utf-8",
+    //dataType: "json",
+    dataType: "html",
+    success: function (result) {
+        $("#div_loader").html(result);
+    }
+});
+
 

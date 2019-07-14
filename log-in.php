@@ -3,7 +3,7 @@
     <head>
         
         <!-- Title -->
-        <title>Alpha | Responsive Admin Dashboard Template</title>
+        <title>VOAE | Iniciar sesión</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta charset="UTF-8">
@@ -15,9 +15,10 @@
 
         	
         <!-- Theme Styles -->
-        <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <!----link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
+        <link href="assets/css/registro.css" rel="stylesheet">
         
+
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,28 +28,28 @@
         <![endif]-->
         
     </head>
-    <body class="signin-page loaded">
+    <body>
+        <div id="div_loader"></div>
         <div class="mn-content valign-wrapper">
             <main class="mn-inner container">
                 <div class="valign">
                       <div class="row">
-                          <div class="col s12 m6 l4 offset-l4 offset-m3">
+                          <div class="col s12 m8 l6 offset-l3 offset m9">
                               <div class="card white darken-1">
                                   <div class="card-content ">
-                                      <span class="card-title">Sign In</span>
+                                      <span class="card-title">Iniciar sesión</span>
                                        <div class="row">
                                            <form class="col s12">
                                                <div class="input-field col s12">
                                                    <input id="email" type="email" class="validate">
-                                                   <label for="email">Email</label>
+                                                   <label for="email">Correo Institucional</label>
                                                </div>
                                                <div class="input-field col s12">
                                                    <input id="password" type="password" class="validate">
-                                                   <label for="password">Password</label>
+                                                   <label for="password">Contraseña</label>
                                                </div>
                                                <div class="col s12 right-align m-t-sm">
-                                                   <a href="sign-up.html" class="waves-effect waves-grey btn-flat">sign up</a>
-                                                   <a href="index.html" class="waves-effect waves-light btn teal">sign in</a>
+                                                   <a href="index.html" class="waves-effect waves-light btn teal">Entrar</a>
                                                </div>
                                            </form>
                                       </div>
