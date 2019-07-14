@@ -24,6 +24,7 @@
         <!--link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/registro.css" rel="stylesheet">
+        
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,14 +34,17 @@
         <![endif]-->
         
     </head>
-    <body class="signup-page loaded">
+    <body>
+    <div id="div_loader"></div>
         <div class="mn-content valign-wrapper">
-            <main class="mn-inner container ">
+            <main class="mn-inner">
                 <div class="valign">
                       <div class="row">
                           <div class="col s12 m10 l10 offset-l1 offset-m1">
                               <div class="card white darken-1">
                                   <div class="card-content ">
+
+                                    
                                       <span class="card-title">Registro</span>
                                        <div class="row">
                                            <form class="col s12" method="POST" action="envio_registro.php" id="form">

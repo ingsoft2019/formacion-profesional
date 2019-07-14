@@ -52,9 +52,9 @@
                     <h5 class="cyan-text text-accent-4 scale-transition">Universidad Nacional Autónoma de Honduras</h5>
                     <p>Esta plataforma ha sido creada como complemento al Proceso de Orientación Profesional que
                         desarrolla el Área de Orientación y Asesoría Académica de la VOAE-UNAH. </p>
-                    <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Registrarse
+                    <a href="registro.php" class="waves-effect waves-light btn yellow darken-2 m-b-xs">Registrarse
                     </a><br>
-                    <a class="waves-effect waves-light btn yellow darken-2 m-b-xs">Iniciar Sesión
+                    <a href="log-in.php" class="waves-effect waves-light btn yellow darken-2 m-b-xs">Iniciar Sesión
                     </a>
 
                 </div>

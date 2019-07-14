@@ -17,7 +17,7 @@
         <!-- Theme Styles -->
         <!--link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="styles.css" rel="stylesheet">
+        <link href="assets/css/registro.css" rel="stylesheet">
         
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
