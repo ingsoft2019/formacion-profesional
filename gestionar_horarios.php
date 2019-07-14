@@ -18,9 +18,13 @@
     <!-- Theme Styles -->
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/gestionar_horarios.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
+    <link href="assets\plugins\air_datepicker\css\datepicker.css" rel="stylesheet">
+    <link href="assets\plugins\timepicker\css\timepicker.css" rel="stylesheet">
+    <link href="assets\plugins\flatpickr\css\flatpickr.css" rel="stylesheet">
+
+    <link href="assets/css/gestionar_horarios.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,19 +45,33 @@
         <main class="mn-inner">
 
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m6 l4">
                     <div class="card">
                         <div class="card-content">
-                            <form action="javascript:void(0);">
-
-
-                                <div class="">
-                                    <div class="todo-item">
-                                       
-                                        <a href="javascript:void(0);" class="pull-right remove-todo-item"><i
-                                                class="material-icons">delete</i></a>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">date_range</i>
+                                            <input id="txt_fecha" type="text" class="div_datepicker"
+                                                placeholder="Seleccione el día(s)">
+                                            <label for="txt_fecha">Fecha(s)</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <i class="material-icons prefix">access_time</i>
+                                            <input id="txt_hinicial" type="text" class="div_timepicker"
+                                                placeholder="Hora inicial">
+                                            <label for="txt_hinicial">Desde</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <i class="material-icons prefix">access_time</i>
+                                            <input id="txt_hfinal" type="text" class="div_timepicker"
+                                                placeholder="Hora final">
+                                            <label for="txt_hfinal">Hasta</label>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +83,11 @@
         </main>
         <!--FIN APARTADO-->
 
-
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red pulse" id="btn_nuevoFecha">
+                <i class="large material-icons">add_to_photos</i>
+            </a>
+        </div>
 
 
         <div id="div-piePagina"></div>
@@ -76,13 +98,20 @@
 
     <!-- Javascripts -->
     <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
-    <script src="assets/plugins/materialize/js/materialize.min.js"></script>
+    <script src="assets/plugins/materialize/js/materialize.js"></script>
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
     <script src="assets\plugins\prettify\prettify.js"></script>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/js/ContenidoFijo.js"></script>
+    <script src="assets\plugins\air_datepicker\js\datepicker.js"></script>
+    <script src="assets\plugins\air_datepicker\js\i18n\datepicker.es.js"></script>
+    <script src="assets\plugins\timepicker\js\timepicker.min.js"></script>
+    <script src="assets\plugins\flatpickr\js\flatpickr.js"></script>
+
+
+
     <script src="assets/js/gestionar_horarios.js"></script>
 
 </body>
