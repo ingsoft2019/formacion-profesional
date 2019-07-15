@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -192,7 +198,7 @@
             </div>
         </div>
 <br><br><br><br><br>
-        <div id="div-piePagina"></div>
+      <!--  <div id="div-piePagina"></div> -->
 
 
     </div>

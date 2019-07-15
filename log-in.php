@@ -11,11 +11,10 @@
         <!-- Styles -->
         <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">        
 
         	
         <!-- Theme Styles -->
-        <!----link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
+        <!--link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
         <link href="assets/css/registro.css" rel="stylesheet">
         
 
@@ -35,22 +34,24 @@
                 <div class="valign">
                       <div class="row">
                           <div class="col s12 m8 l6 offset-l3 offset m9">
+                            <br><br><br><br><br>
                               <div class="card white darken-1">
                                   <div class="card-content ">
                                       <span class="card-title">Iniciar sesión</span>
                                        <div class="row">
                                            <form class="col s12">
                                                <div class="input-field col s12">
-                                                   <input id="email" type="email" class="validate">
+                                                   <input id="inputEmail" type="email" class="validate">
                                                    <label for="email">Correo Institucional</label>
                                                </div>
                                                <div class="input-field col s12">
-                                                   <input id="password" type="password" class="validate">
+                                                   <input id="inputPassword" type="password" class="validate">
                                                    <label for="password">Contraseña</label>
                                                </div>
                                                <div class="col s12 right-align m-t-sm">
-                                                   <a href="index.html" class="waves-effect waves-light btn teal">Entrar</a>
+                                                   <button id="btn-login" class="waves-effect waves-light btn teal" role=button>Entrar</button>
                                                </div>
+                                               <div class=" col s12" id="resultado"></div>
                                            </form>
                                       </div>
                                   </div>
@@ -64,8 +65,8 @@
         <!-- Javascripts -->
         <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
         <script src="assets/plugins/materialize/js/materialize.min.js"></script>
-        <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
-        <script src="assets/js/alpha.min.js"></script>
+        <script src="assets/js/controlador-login.js"></script>
+        <!--<script src="assets/js/alpha.min.js"></script -->
         
     </body>
 </html>
