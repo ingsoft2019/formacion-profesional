@@ -13,6 +13,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta charset="UTF-8">
+        <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
         
         <!-- Styles -->
         <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css"/>
@@ -43,33 +44,31 @@
                           <div class="col s12 m10 l10 offset-l1 offset-m1">
                               <div class="card white darken-1">
                                   <div class="card-content ">
-
-                                    
                                       <span class="card-title">Registro</span>
                                        <div class="row">
-                                           <form class="col s12" method="POST" action="envio_registro.php" id="form">
+                                           <form class="col s12" method="POST" id="form">
                                                <div class="input-field col s12 m6 l6">
-                                                   <input name="nombres" type="text" class="masked" placeholder="Pedro José" data-inputmask="'mask': 'a{+}'" class="" id="nombres">
+                                                   <input id="nombres" name="nombres" type="text" class="masked" placeholder="Pedro José" data-inputmask="'mask': 'a{+}'" class="" id="nombres">
                                                    <label for="nombres">Nombres</label>
                                                </div>
                                                <div class="input-field col s12 m6 l6">
-                                                    <input name="apellidos" type="text" class="masked" placeholder="Castellanos Andino" data-inputmask="'mask': 'a{+}'" id="apellidos">
+                                                    <input id="apellidos" name="apellidos" type="text" class="masked" placeholder="Castellanos Andino" data-inputmask="'mask': 'a{+}'" id="apellidos">
                                                     <label for="apellidos">Apellidos</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">
-                                                        <input name="identidad" type="text" class="masked" id="numero-identidad" placeholder="0801-1990-89432" data-inputmask="'mask': '9999-9999-99999'">
+                                                        <input id="identidad" name="identidad" type="text" class="masked" id="numero-identidad" placeholder="0801-1990-89432" data-inputmask="'mask': '9999-9999-99999'">
                                                         <label for="identidad">No. Identidad</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">
-                                                        <input name="cuenta" type="text" class="masked" id="numero-cuenta" placeholder="20101009874" data-inputmask="'mask': '99999999999'">
+                                                        <input id="cuenta" name="cuenta" type="text" class="masked" id="numero-cuenta" placeholder="20101009874" data-inputmask="'mask': '99999999999'">
                                                         <label for="cuenta">No. Cuenta</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">
-                                                        <input name="telefono" type="text" class="masked" id="telefono" placeholder="9494-9494" data-inputmask="'mask': '(504) 9{4}-9{4}'">
+                                                        <input id="telefono" name="telefono" type="text" class="masked" id="telefono" placeholder="9494-9494" data-inputmask="'mask': '(504) 9{4}-9{4}'">
                                                         <label for="telefono">Teléfono</label>
                                                 </div>
                                                 <div class="input-field col s7 m3 l3">
-                                                    <input name="email" id="email" type="text" placeholder="casteljose" class="masked"
+                                                    <input  id="email" name="email" type="text" placeholder="casteljose" class="masked"
                                                         data-inputmask="'mask': '/{+}'">
                                                     <label for="email">Email</label>
                                                 </div>
@@ -77,7 +76,7 @@
                                                     <label>@unah.edu.hn</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">
-                                                    <select name="genero">
+                                                    <select id="genero" name="genero">
                                                         <option value="0" selected>Seleccione una opción</option>
                                                         <option value="1">Femenino</option>
                                                         <option value="2">Masculino</option>
@@ -86,7 +85,7 @@
                                                 </div>
                                                 <div class="col s12 m6 l6">
                                                     <label>Carrera Universitaria</label>
-                                                    <select name="carrera" class="">
+                                                    <select id="carrera" name="carrera" class="">
                                                         <option value="0" selected>Seleccione una opcion</option>
                                                         <?php 
                                                             while($datos = mysqli_fetch_array($query))
@@ -99,20 +98,35 @@
                                                     </select>
                                                 </div>
                                                <div class="input-field col s12 m6 l6">
-                                                   <input name="password" id="password" type="password" class="">
+                                                   <input id="password" name="password" type="password" class="">
                                                    <label for="password">Contraseña</label>
                                                </div>
                                                <div class="input-field col s12 m6 l6">
-                                                   <input name="password2" id="password2" type="password" class="">
+                                                   <input id="password2" name="password2" type="password" class="">
                                                    <label for="password2">Confirmar Contraseña</label>
                                                </div>
-                                               <!-- <div class="col s6 m6 l6 center-align m-t-sm">
-                                                   <a href="index.php"  class="waves-effect waves-light btn-flat">Inicio</a>
-                                               </div> -->
                                                <div class="col s12 m12 l12 center-align m-t-sm">
-                                                   <button id="submit" class="waves-effect waves-light btn blue">Registrar</button>
+                                                   <button  id="btn-regis" class="waves-effect waves-light btn blue">Registrar</button>
                                                </div>
+                                               <script type="text/javascript">
+                                                    $("#btn-regis").click(function(){
+                                                        var parametros='nombres='+$("#nombres").val()+"&"+'apellidos='+$("#apellidos").val()+"&"+
+                                                        'identidad='+$("#identidad").val()+"&"+'cuenta='+$("#cuenta").val()+"&"+'telefono='+$("#telefono").val()+"&"+
+                                                        'email='+$("#email").val()+"&"+'genero='+$("#genero").val()+"&"+'carrera='+$("#carrera").val()+"&"+
+                                                        'password='+$("#password").val()+"&"+'password2='+$("#password2").val();
+                                                        
+                                                        $.ajax({//el ajax es un json especial por lo que al abrirlo se hace con ({})
+                                                            url:'envio_registro.php',//pagina donde sera enviados para almacenar, actualizar, y eliminar los datos, o bien traer mas datos apartir de estos, para utilizarlos como parametros en una consulta por ejemplo. 
+                                                            method:'POST', //metodo que se utilizara para consultar los 
+                                                            data: parametros, //URLEncoded datos que se enviaran a la pagina que procesa
+                                                            success: function(data){
+                                                                alert(data);      
+                                                            }     
+                                                        });	
+                                                    });
+                                                </script>
                                            </form>
+                                           <div id="resp"></div>
                                       </div>
                                   </div>
                               </div>
