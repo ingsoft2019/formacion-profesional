@@ -1,0 +1,7 @@
+.datepicker--time-row >span{
+    display: none;
+}
+
+.flatpickr-current-month > select{
+    display: inline;
+}

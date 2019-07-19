@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,6 +14,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css" />
@@ -89,11 +96,9 @@
                                     		<label for="txt_cuenta">No. Cuenta</label>
                                 		</div>
                                 		<div class="input-field col s12 m6">
-		                                    <select>
+		                                    <select id="slc-carrera">
 		                                        <option value="" disabled selected>Seleccione una opción</option>
-		                                        <option value="1">Option 1</option>
-		                                        <option value="2">Option 2</option>
-		                                        <option value="3">Option 3</option>
+		                                        
 		                                    </select>
                                     	<label>Carrera Universitaria</label>
                                 		</div>
@@ -123,7 +128,7 @@
 	                                    		</div>
 	                                		</form>
                                 		</div>
-                                		
+
                                 		<div class="col s12 m12">
                                 			<div class="col m6 s12">
                                 				<span>Recibir notificaciones por correo</span><br>
@@ -137,6 +142,9 @@
                                 			<div class="col m4 s12 offset-m2 ">
 	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
+                                			</div>
+                                			<div id="pruebas">
+                                				
                                 			</div>
                                 		</div>
                         				</div>
@@ -190,7 +198,7 @@
             </div>
         </div>
 <br><br><br><br><br>
-        <div id="div-piePagina"></div>
+      <!--  <div id="div-piePagina"></div> -->
 
 
     </div>
