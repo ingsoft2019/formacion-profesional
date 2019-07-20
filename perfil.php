@@ -41,7 +41,7 @@
 </head>
 
 <body>
-<div id="div_loader"></div>
+
     <div class="mn-content">
 
         <div id="div-menu"></div>
@@ -66,15 +66,17 @@
 		                   		 			</div>
 										</div>
 										 <div class="input-field col s12 m4">
-                                            <input id="txt_nombres" type="text" class="validate">
+                                            <input id="txt_nombres" type="text" class="masked"
+data-inputmask="'mask': 'a{+}  a{+}'">
                                             <label for="txt_nombres">Nombres</label>
                                         </div>
                                         <div class="input-field col s12 m4">
-                                            <input id="txt_apellidos" type="text" class="validate">
+                                            <input id="txt_apellidos" type="text" class="masked"
+data-inputmask="'mask': 'a{+}  a{+}' ">
                                             <label for="txt_apellidos">Apellidos</label>
                                         </div>
                                         <div class="input-field col s12 m4">
-                                            <input id="txt_identidad" type="text" class="validate">
+                                            <input id="txt_identidad" type="text" class="masked"  data-inputmask="'mask': '9999-9999-99999'">
                                             <label for="txt_identidad">No. Identidad</label>
                                         </div>
                                         <div class="row">
@@ -84,15 +86,18 @@
                                         </div>
                                    	    </div>
                                         <div class="input-field col s12 m6">
-                                            <input id="txt_celular" type="text" class="validate">
+                                            <input id="txt_celular" type="text" class="masked"
+data-inputmask="'mask': '(504) 9{4}-9{4}'">
                                             <label for="txt_celular">Celular</label>
                                         	</div>
                                        	 <div class="input-field col s12 m6">
-                                            <input id="txt_correo" type="email" class="validate">
+                                            <input id="txt_correo" type="text" class="masked"
+data-inputmask="'mask': '/{+}'">
                                             <label for="txt_correo">Correo</label>
                                         </div>
                                         <div class="input-field col s12 m6">
-                                    		<input id="txt_cuenta" type="text" class="validate">
+                                    		<input id="txt_cuenta" type="text" class="masked"
+data-inputmask="'mask': '99999999999'">
                                     		<label for="txt_cuenta">No. Cuenta</label>
                                 		</div>
                                 		<div class="input-field col s12 m6">
@@ -130,18 +135,10 @@
                                 		</div>
 
                                 		<div class="col s12 m12">
-                                			<div class="col m6 s12">
-                                				<span>Recibir notificaciones por correo</span><br>
-	             								<!-- Switch -->
-			                                	<div class="switch m-b-md" align="center">
-			                                 		<label>No<input type="checkbox">
-			                                 		<span class="lever"></span>
-			                                 		Sí</label>
-	                            				</div>
-                                			</div>
-                                			<div class="col m4 s12 offset-m2 ">
+                                		
+                                			<div class="col m4 s12 offset-m9 ">
 	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
+	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios" >Guardar</a>
                                 			</div>
                                 			<div id="pruebas">
                                 				
@@ -213,6 +210,9 @@
     <script src="assets/js/ContenidoFijo.js"></script>    
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/plugins/image-cropper/cropper.min.js"></script>
-    <script src="assets/js/perfil.js"></script>
+    <script src="assets/js/controlador-perfil.js"></script>
+    <script src="assets\plugins\prettify\prettify.js"></script>
+    <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="assets/js/pages/form-input-mask.js"></script>
 
 </body>
