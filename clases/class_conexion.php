@@ -4,7 +4,7 @@
 		private $contraseña = "";
 		private $host = "localhost";
 
-		private $baseDatos = "voae";
+		private $baseDatos = "db_formacion";
 		private $puerto = "3306";
 		private $link;
 		public function __construct(){
