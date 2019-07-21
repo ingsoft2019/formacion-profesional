@@ -1,7 +1,7 @@
 <?php
 	class Conexion{
 		private $usuario = "root";
-		private $contraseña = "oracle123";
+		private $contraseña = "";
 		private $host = "localhost";
 
 		private $baseDatos = "voae";
