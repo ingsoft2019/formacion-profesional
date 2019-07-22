@@ -132,7 +132,7 @@
         <script src="assets/js/pages/form-input-mask.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
 
-        <script src="assets/js/registro.js"></script>
+        <script src="assets/js/controlador-registro.js"></script>
         
     </body>
 </html>

@@ -174,7 +174,7 @@ $(document).ready(function() {
             event.preventDefault();
                 
                 $.ajax({
-                    url:'envio_registro.php',
+                    url:'./assets/ajax/envio_registro.php',
                     method:'POST',
                     data: form_data,
                     success: function(data){
