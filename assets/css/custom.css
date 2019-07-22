@@ -47,3 +47,8 @@
 .mn-inner{
     min-height: 84vh;
 }
+
+.icon-button:hover{
+    cursor: pointer;
+    user-select: none;
+}

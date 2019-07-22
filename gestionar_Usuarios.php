@@ -66,7 +66,7 @@
 
 
             <div class="row">
-                <div class="col s12 m3">
+                <div class="col s12 m6 l3">
                     <div class="card">
                         <div class="card-image">
                             <img src="assets/images/profile-image.png" class="responsive-img" alt="">

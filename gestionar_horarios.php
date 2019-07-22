@@ -44,37 +44,8 @@
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
 
-            <div class="row">
-                <div class="col s12 m6 l4">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">date_range</i>
-                                            <input id="txt_fecha" type="text" class="div_datepicker"
-                                                placeholder="Seleccione el día(s)">
-                                            <label for="txt_fecha">Fecha(s)</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">access_time</i>
-                                            <input id="txt_hinicial" type="text" class="div_timepicker"
-                                                placeholder="Hora inicial">
-                                            <label for="txt_hinicial">Desde</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">access_time</i>
-                                            <input id="txt_hfinal" type="text" class="div_timepicker"
-                                                placeholder="Hora final">
-                                            <label for="txt_hfinal">Hasta</label>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="contenedor_tarjetas">
+                
             </div>
 
 
@@ -83,7 +54,7 @@
         </main>
         <!--FIN APARTADO-->
 
-        <div class="fixed-action-btn">
+        <div class="fixed-action-btn" id="btn_nueva_tarjeta">
             <a class="btn-floating btn-large red pulse" id="btn_nuevoFecha">
                 <i class="large material-icons">add_to_photos</i>
             </a>
