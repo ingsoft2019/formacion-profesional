@@ -16,7 +16,7 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["idPersona"] = $fila["idPersona"];
 					$_SESSION["correo"] = $fila["correo"];
 					$_SESSION["nombre"] = $fila["nombres"];
-					$_SESSION["apellido"] = $fila["apellidos"];
+					$_SESSION["contrasena"] = $fila["contrasena"];
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
 					$respuesta["mensaje"]="Si tiene acceso" ;
 				}else{
