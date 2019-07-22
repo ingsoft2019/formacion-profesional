@@ -1,4 +1,26 @@
 $(document).ready(function () {
+
+//funcionalidad guardar cambios
+//OJO VERIFICACION DE IGUALDAD DE CONTRASEÑAS PENDIENTE
+
+
+//---------------------agregar carreras a slc-----------------------
+$('select').material_select();
+var $selectDropdown = $("#slc-carrera").empty().html(' ');
+$.ajax({
+        url:"assets/ajax/perfil-peticiones.php",
+        method:'GET',
+        data:"CODIGO_FUNCION=2",
+        dataType:'json',//data para saber que funcion en php usara.
+        success:function(respuesta){
+               
+           for (var i=0; i<respuesta.length ; i++){
+             $selectDropdown.append($("<option></option>").attr("value",respuesta[i].idCarrera).text(respuesta[i].nombreCarrera));
+                 }
+            $selectDropdown.trigger('contentChanged');
+         }
+        });
+
 //------------------------------------validaciones------------------------------------------
      $('#txt_identidad').on('input', function() {
         var input=$(this);
@@ -44,7 +66,7 @@ $(document).ready(function () {
         if(is_name){input.removeClass("invalid").addClass("valid");}
         else{input.removeClass("valid").addClass("invalid");}
     });
-    
+
 /*
     $('#password').on('input', function() {
         var input=$(this);
@@ -60,7 +82,12 @@ $(document).ready(function () {
         else{input.removeClass("valid").addClass("invalid");}
     });
 */
-
+//actualizacion de slc carreras dinamico
+ $('select').on('contentChanged', function() {
+    // re-initialize (update)
+    $(this).material_select();
+    
+  });
 //-------------------------------------------------------------------------------------------
 
     $('#btn_cambiar_contrasena').click(function () {
@@ -89,20 +116,47 @@ $(document).ready(function () {
             // them on the server until the user's session ends.
         }
     });
+    
 cargarDatos();
+var idNuevacarrera = " ";
+});//AQUI TERMINA EN DOCUMENT READY
 
+$("#slc-carrera").change(function (){
+    console.log($("#slc-carrera").val()+"este el valor");
+    idNuevacarrera=$("#slc-carrera").val();
 });
 
+function guardar_cambios(){
+    console.log("entro a la function cambios");
+    var parametros="nombres="+$('#txt_nombres').val()+"&"+
+                    "apellidos="+ $('#txt_apellidos').val()+"&"+
+                    "cuenta="+$('#txt_cuenta').val()+"&"+ 
+                    "celular="+$('#txt_celular').val()+"&"+ 
+                    "correo="+$('#txt_correo').val()+"&"+
+                    "contrasena="+$('#txt_confirmar_nueva').val()+"&"+
+                    "no_identidad="+$("#txt_identidad").val()+"&"+
+                    "idcarrera="+idNuevacarrera+"&"+
+                    "CODIGO_FUNCION=3";
+                    console.log(parametros);
+    $.ajax({
+        url:"assets/ajax/perfil-peticiones.php",
+        method:'GET',
+        data: parametros,
+        dataType:'html',//data para saber que funcion en php usara.
+        success:function(respuesta){
+               console.log("su informacion a sido actualizada");
+               console.log(respuesta);
+            }
+        });
+}
 
 
 //peticion ajax para cargar datos en el perfil
 function cargarDatos(){
-
-   
     $.ajax({
         url:"assets/ajax/perfil-peticiones.php",
         method:'GET',
-        data:"codigo_estudiante",
+        data:"CODIGO_FUNCION=1",
         dataType:'json',//data para saber que funcion en php usara.
         success:function(respuesta){
             console.log(respuesta);
@@ -118,13 +172,16 @@ function cargarDatos(){
             //$("#txt_fechaNac").val(respuesta[0].nombres);
             $("#txt_celular").val(respuesta[0].celular);
             $("#txt_cuenta").val(respuesta[0].no_cuenta);
-            //$("#slc-carrera").val(respuesta[0].idCarrera);
+            $("#slc-carrera").material_select();
+                $("#slc-carrera").val(respuesta[0].idCarrera);
+                $("#slc-carrera").material_select();
             $("#txt_contrasena").val(respuesta[0].contrasena);
             $("#txt_correo").val(respuesta[0].correo);
             }
         });
 
 }
+
 var image = $('#img_cropper_foto');
 function crearCropper() {    
     image.cropper({

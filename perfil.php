@@ -4,6 +4,7 @@
         header("Location: index.php");
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -102,7 +103,7 @@ data-inputmask="'mask': '99999999999'">
                                 		</div>
                                 		<div class="input-field col s12 m6">
 		                                    <select id="slc-carrera">
-		                                        <option value="" disabled selected>Seleccione una opción</option>
+		                                        <option value="0" >Seleccione una opción</option>
 		                                        
 		                                    </select>
                                     	<label>Carrera Universitaria</label>
