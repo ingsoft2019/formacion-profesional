@@ -1331,7 +1331,7 @@
                     definitionSymbol: "*"
                 },
                 a: {
-                    validator: "[A-Za-z\u0410-\u044f\u0401\u0451\xc0-\xff\xb5]",
+                    validator: "[A-Za-z\u0410-\u044f\u0401\u0451\xc0-\xff\xb5 ]",
                     cardinality: 1,
                     definitionSymbol: "*"
                 },
