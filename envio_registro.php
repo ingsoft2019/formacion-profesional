@@ -1,5 +1,5 @@
 <?php
-    require('clases/class_conexion.php');
+    require('./assets/clases/class_conexion.php');
     $mysql = new Conexion();
     $carr=$_POST['carrera'];
     $genero=$_POST['genero'];
@@ -44,7 +44,7 @@
         $mysql->ejecutarInstruccion("INSERT INTO tbl_personas(idPersona,idGenero,nombres,apellidos,correo,contrasena,celular,no_identidad ) VALUES ('$id','$genero','$nombre','$apellidos','$email',MD5('$pass'),'$numero','$idp')");
         $mysql->ejecutarInstruccion("INSERT INTO tbl_estudiantes(idEstudiante,no_cuenta,idCarrera)VALUES('$id','$cuenta','$carr')");
         
-        echo "SU REGISTRO A SIDO EXITOSO!!!";
+        echo "¡Su registro ha sido exitoso!";
         
     }
 

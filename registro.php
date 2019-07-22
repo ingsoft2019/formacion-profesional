@@ -1,6 +1,6 @@
 <?php
 
-    require('clases/class_conexion.php');
+    require('./assets/clases/class_conexion.php');
     $mysql = new Conexion();
     $query=$mysql->ejecutarInstruccion("SELECT idCarrera,nombreCarrera FROM tbl_carreras ORDER BY nombreCarrera ASC");
 ?>
@@ -19,6 +19,7 @@
         <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css"/>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">        
+        <link rel="stylesheet" href="assets/plugins/sweetalert/sweetalert.css">
 
         	
         <!-- Theme Styles -->
@@ -107,25 +108,8 @@
                                                    <label for="password2">Confirmar Contraseña</label>
                                                </div>
                                                <div class="col s12 m12 l12 center-align m-t-sm">
-                                                   <button  id="btn-regis" class="waves-effect waves-light btn blue">Registrar</button>
+                                                   <button  id="submit" class="waves-effect waves-light btn blue">Registrar</button>
                                                </div>
-                                               <script type="text/javascript">
-                                                    $("#btn-regis").click(function(){
-                                                        var parametros='nombres='+$("#nombres").val()+"&"+'apellidos='+$("#apellidos").val()+"&"+
-                                                        'identidad='+$("#identidad").val()+"&"+'cuenta='+$("#cuenta").val()+"&"+'telefono='+$("#telefono").val()+"&"+
-                                                        'email='+$("#email").val()+"&"+'genero='+$("#genero").val()+"&"+'carrera='+$("#carrera").val()+"&"+
-                                                        'password='+$("#password").val()+"&"+'password2='+$("#password2").val();
-                                                        
-                                                        $.ajax({//el ajax es un json especial por lo que al abrirlo se hace con ({})
-                                                            url:'envio_registro.php',//pagina donde sera enviados para almacenar, actualizar, y eliminar los datos, o bien traer mas datos apartir de estos, para utilizarlos como parametros en una consulta por ejemplo. 
-                                                            method:'POST', //metodo que se utilizara para consultar los 
-                                                            data: parametros, //URLEncoded datos que se enviaran a la pagina que procesa
-                                                            success: function(data){
-                                                                alert(data);      
-                                                            }     
-                                                        });	
-                                                    });
-                                                </script>
                                            </form>
                                            <div id="resp"></div>
                                       </div>
@@ -146,6 +130,7 @@
         <script src="assets\plugins\prettify\prettify.js"></script>
         <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
         <script src="assets/js/pages/form-input-mask.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
 
         <script src="assets/js/registro.js"></script>
         
