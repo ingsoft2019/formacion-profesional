@@ -8,7 +8,7 @@
     $idp=$_POST['identidad'];
     $cuenta=$_POST['cuenta'];
     $numero=$_POST['telefono'];
-    $email=$_POST['email']."@unah.edu.hn";
+    $email=$_POST['email']."@unah.hn";
     $pass=$_POST['password2'];
 
     if(!evaluarPass($pass)){

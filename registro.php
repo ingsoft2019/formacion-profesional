@@ -75,7 +75,7 @@
                                                     <label for="email">Email</label>
                                                 </div>
                                                 <div class="input-field col s5 m3 l3">
-                                                    <label>@unah.edu.hn</label>
+                                                    <label>@unah.hn</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">
                                                     <select id="genero" name="genero">
