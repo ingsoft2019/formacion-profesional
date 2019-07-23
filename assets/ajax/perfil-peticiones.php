@@ -39,7 +39,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
 							"nombres = '%s', ".
 					        "apellidos = '%s', ".
 					        "correo = '%s', ".
-					        "contrasena= '%s', ".
+					        "contrasena= sha1('%s'), ".
 					        "celular = %s, ".
 					        "no_identidad = '%s' ".
 					        "WHERE idPersona = %s ",
@@ -48,8 +48,16 @@ switch ($_GET["CODIGO_FUNCION"]) {
 					    	$nuevoCelular,$nuevaIdentidad,
 					    	$_SESSION["idPersona"]
 					    );
-			$sql2 = sprintf("UPDATE tbl_estudiantes SET no_cuenta = %s, idCarrera = %s  WHERE idEstudiante = %s",
-							$_GET["cuenta"],$_GET["idCarrera"],$_SESSION["idPersona"]);
+
+			$pruebaIdCarrera = $_GET["idcarrera"];
+			$sql2="";
+			if ( ! empty($pruebaIdCarrera)) {
+                $sql2 = sprintf("UPDATE tbl_estudiantes SET no_cuenta = %s, idCarrera = %s  WHERE idEstudiante = %s",
+							$_GET["cuenta"],$_GET["idCarrera"],$_SESSION["idPersona"]);            }
+            else{
+                $sql2 = sprintf("UPDATE tbl_estudiantes SET no_cuenta = %s WHERE idEstudiante = %s",
+							$_GET["cuenta"],$_SESSION["idPersona"]);
+            }
 		    $conexion->ejecutarInstruccion($sql1);
 		    $conexion->ejecutarInstruccion($sql2);            
         	echo "se actualizo exitosamente ".$sql1.$sql2;

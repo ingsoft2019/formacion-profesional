@@ -118,9 +118,10 @@ $.ajax({
     });
     
 cargarDatos();
-var idNuevacarrera = " ";
-});//AQUI TERMINA EN DOCUMENT READY
 
+
+});//AQUI TERMINA EN DOCUMENT READY
+var idNuevacarrera= 0;
 $("#slc-carrera").change(function (){
     console.log($("#slc-carrera").val()+"este el valor");
     idNuevacarrera=$("#slc-carrera").val();
@@ -215,6 +216,7 @@ $('#btn_cancelar').click(function () {
                 guardar_cambios();
             } else {
                 swal("Cancelado", "Su información no fue actualizada", "error");
+                cargarDatos();
             }
         });
     });

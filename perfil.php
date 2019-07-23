@@ -80,12 +80,12 @@ data-inputmask="'mask': 'a{+}  a{+}' ">
                                             <input id="txt_identidad" type="text" class="masked"  data-inputmask="'mask': '9999-9999-99999'">
                                             <label for="txt_identidad">No. Identidad</label>
                                         </div>
-                                        <div class="row">
+                                      <!--  <div class="row">
                                         <div class="input-field col s12 m4">
                                             <label for="txt_fechaNac">Fecha de Nacimiento</label>
                                             <input id="txt_fechaNac" type="text" class="datepicker">
                                         </div>
-                                   	    </div>
+                                   	    </div>-->
                                         <div class="input-field col s12 m6">
                                             <input id="txt_celular" type="text" class="masked"
 data-inputmask="'mask': '(504) 9{4}-9{4}'">
@@ -102,11 +102,12 @@ data-inputmask="'mask': '99999999999'">
                                     		<label for="txt_cuenta">No. Cuenta</label>
                                 		</div>
                                 		<div class="input-field col s12 m6">
+                                            <label for="slc-carrera">Carrera Universitaria</label>
 		                                    <select id="slc-carrera">
 		                                        <option value="0" >Seleccione una opción</option>
 		                                        
 		                                    </select>
-                                    	<label>Carrera Universitaria</label>
+                                    	
                                 		</div>
                                 		<div class="col s12 m6">
                                 			<div class="input-field col s12 m9">
@@ -137,8 +138,8 @@ data-inputmask="'mask': '99999999999'">
 
                                 		<div class="col s12 m12">
                                 		
-                                			<div class="col m4 s12 offset-m9 ">
-	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                			<div class="col m4 s12  ">
+	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>
 	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios" >Guardar</a>
                                 			</div>
                                 			<div id="pruebas">
