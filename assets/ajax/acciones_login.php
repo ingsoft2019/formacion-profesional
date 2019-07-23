@@ -5,7 +5,7 @@
 			include_once("../clases/class_conexion.php");
 			include_once("verificar_usuario.php");
 			$conexion = new Conexion();
-			verificarUsuario($conexion,$_GET["inputEmail"],MD5($_GET["inputPassword"]));
+			verificarUsuario($conexion,$_GET["inputEmail"],$_GET["inputPassword"]);
 			break;
 	default:
 			
