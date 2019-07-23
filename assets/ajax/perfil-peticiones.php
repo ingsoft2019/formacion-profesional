@@ -2,6 +2,10 @@
 session_start();
 include ('../clases/class_conexion.php');
 $conexion = new Conexion();
+$respuesta = array();
+$resultado["codigo_resultado"]=1;
+$resultado["mensaje"]="Información Actualiza.";
+
 switch ($_GET["CODIGO_FUNCION"]) {
 	case 1:
 			$sql = sprintf("select * from tbl_personas inner join ".
@@ -27,19 +31,84 @@ switch ($_GET["CODIGO_FUNCION"]) {
 			$nuevoCelular1 =str_replace("-", "", $_GET["celular"]);	
 			$nuevoCelular =str_replace("(504) ", "",$nuevoCelular1 );  
 		    $nuevaIdentidad =str_replace("-", "", $_GET["no_identidad"]);
-		    $prueba = $_GET["contrasena"];
-		    $nueva_contrasena="";
-		    if ( ! empty($prueba)) {
-                $nueva_contrasena=$_GET["contrasena"];
-            }
-            else{
-                $nueva_contrasena=$_SESSION["contrasena"];
-            }
+			$nueva_contrasena = $_GET["contrasena"];
+			$contrasena_actual = $_GET["contrasena_actual"];
+			$cuenta = $_GET["cuenta"];
+			$correo = $_GET["correo"];
+
+
+			
+			if(!empty($nueva_contrasena) && MD5($contrasena_actual) != $_SESSION["contrasena"]){
+				$resultado["codigo_resultado"]=0;
+				$resultado["mensaje"]="La contraseña actual es incorrecta.";
+				echo json_encode($resultado);
+				break;
+			}
+
+			if(empty($nueva_contrasena)){
+				$nueva_contrasena = $_SESSION["contrasena"];
+			}else{
+				$nueva_contrasena = Md5($nueva_contrasena);
+			}
+
+			
+			
+			$sql = sprintf(
+				"SELECT * FROM tbl_personas
+				WHERE  no_identidad = '%s' AND idPersona <> %s",
+				$nuevaIdentidad,
+				$_SESSION["idPersona"]
+			);			
+			$resultadoQuery = $conexion->ejecutarInstruccion($sql);
+			$cantidadRegistros = $conexion->cantidadRegistros($resultadoQuery);
+			if ($cantidadRegistros==1){
+				$resultado["codigo_resultado"]=0;
+				$resultado["mensaje"]="Ocurrió un error. El no. de identidad ingresado ya está siendo utilizado por otro usuario. Debe visitar las oficinas de VOAE.";
+				echo json_encode($resultado);
+				break;
+			}
+
+
+			$sql = sprintf(
+				"SELECT * FROM tbl_personas
+				WHERE  correo = '%s' AND idPersona <> %s",
+				$correo,
+				$_SESSION["idPersona"]
+			);			
+			$resultadoQuery = $conexion->ejecutarInstruccion($sql);
+			$cantidadRegistros = $conexion->cantidadRegistros($resultadoQuery);
+			if ($cantidadRegistros==1){
+				$resultado["codigo_resultado"]=0;
+				$resultado["mensaje"]="Ocurrió un error. El correo ingresado ya está siendo utilizado por otro usuario. Debe visitar las oficinas de VOAE.";
+				echo json_encode($resultado);
+				break;
+			}
+
+
+
+			$sql = sprintf(
+				"SELECT * FROM tbl_estudiantes
+				WHERE  no_cuenta = '%s' AND idEstudiante <> %s",
+				$cuenta,
+				$_SESSION["idPersona"]
+			);			
+			$resultadoQuery = $conexion->ejecutarInstruccion($sql);
+			$cantidadRegistros = $conexion->cantidadRegistros($resultadoQuery);
+			if ($cantidadRegistros==1){
+				$resultado["codigo_resultado"]=0;
+				$resultado["mensaje"]="Ocurrió un error. El no. de cuenta ingresado ya está siendo utilizado por otro usuario. Debe visitar las oficinas de VOAE.";
+				echo json_encode($resultado);
+				break;
+			}
+
+
+			
+		    
 			$sql1 = sprintf("UPDATE tbl_personas SET ". 
 							"nombres = '%s', ".
 					        "apellidos = '%s', ".
 					        "correo = '%s', ".
-					        "contrasena= MD5('%s'), ".
+					        "contrasena= '%s', ".
 					        "celular = %s, ".
 					        "no_identidad = '%s' ".
 					        "WHERE idPersona = %s ",
@@ -47,7 +116,9 @@ switch ($_GET["CODIGO_FUNCION"]) {
 					    	$_GET["correo"],$nueva_contrasena,
 					    	$nuevoCelular,$nuevaIdentidad,
 					    	$_SESSION["idPersona"]
-					    );
+						);
+						
+			$_SESSION["contrasena"] = $nueva_contrasena;
 
 			$pruebaIdCarrera = $_GET["idcarrera"];
 			$sql2="";
@@ -60,7 +131,8 @@ switch ($_GET["CODIGO_FUNCION"]) {
             }
 		    $conexion->ejecutarInstruccion($sql1);
 		    $conexion->ejecutarInstruccion($sql2);            
-        	echo "se actualizo exitosamente ".$sql1.$sql2;
+			//echo "se actualizo exitosamente ".$sql1.$sql2;
+			echo json_encode($resultado);
 		break;		
 
 	

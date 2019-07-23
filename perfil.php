@@ -80,20 +80,20 @@
 						<div class="card">
                         <div class="card-content">
                             <div class="row">
-                                <form class="col s12">
+                                <form class="col s12" id="frm_perfil">
                                     <div class="row">
 										 <div class="input-field col s12 m6">
-                                            <input id="txt_nombres" type="text" class="masked"
+                                            <input id="txt_nombres" name="txt_nombres" type="text" class="masked"
 data-inputmask="'mask': 'a{+}'">
                                             <label for="txt_nombres">Nombres</label>
                                         </div>
                                         <div class="input-field col s12 m6">
-                                            <input id="txt_apellidos" type="text" class="masked"
+                                            <input id="txt_apellidos" name="txt_apellidos" type="text" class="masked"
 data-inputmask="'mask': 'a{+}' ">
                                             <label for="txt_apellidos">Apellidos</label>
                                         </div>
                                         <div class="input-field col s12 m6">
-                                            <input id="txt_identidad" type="text" class="masked"  data-inputmask="'mask': '9999-9999-99999'">
+                                            <input id="txt_identidad" name="txt_identidad" type="text" class="masked"  data-inputmask="'mask': '9999-9999-99999'">
                                             <label for="txt_identidad">No. Identidad</label>
                                         </div>
                                       <!--  <div class="row">
@@ -103,23 +103,23 @@ data-inputmask="'mask': 'a{+}' ">
                                         </div>
                                    	    </div>-->
                                         <div class="input-field col s12 m6">
-                                            <input id="txt_celular" type="text" class="masked"
+                                            <input id="txt_celular" name="txt_celular" ype="text" class="masked"
 data-inputmask="'mask': '(504) 9{4}-9{4}'">
                                             <label for="txt_celular">Celular</label>
                                         	</div>
                                        	 <div class="input-field col s12 m6">
-                                            <input id="txt_correo" type="text" class="masked"
+                                            <input id="txt_correo" name="txt_correo" type="text" class="masked"
 data-inputmask="'mask': '/{+}@a{+}.a{+}'">
                                             <label for="txt_correo">Correo</label>
                                         </div>
                                         <div class="input-field col s12 m6">
-                                    		<input id="txt_cuenta" type="text" class="masked"
+                                    		<input id="txt_cuenta" name="txt_cuenta" type="text" class="masked"
 data-inputmask="'mask': '99999999999'">
                                     		<label for="txt_cuenta">No. Cuenta</label>
                                 		</div>
                                 		<div class="input-field col s12 m6">
                                             <label for="slc-carrera">Carrera Universitaria</label>
-		                                    <select id="slc-carrera">
+		                                    <select id="slc-carrera" name="slc-carrera">
 		                                        <option value="0" >Seleccione una opción</option>
 		                                        
 		                                    </select>
@@ -130,33 +130,33 @@ data-inputmask="'mask': '99999999999'">
                                             	<input id="txt_contrasena" type="password" class="validate" disabled>
                                             	<label for="txt_contrasena">Contraseña</label>
                                         	</div>
-	                                        <form class="col s3 m3"> 
+	                                       
 	                                       	   	 <div class="input-field col s12 m3" align="right">
 	                                            	<a id="btn_cambiar_contrasena"
 	                                                class="waves-effect waves-light btn blue m-b-xs closeOnEsc">Cambiar</a>
 	                                        	 </div>
 	                                  			<div id="div-cambiar-contrasena" hidden>
 	                                        		<div class="input-field col s12">
-	                                            		<input id="txt_contrasena_actual" type="password" class="validate">
+	                                            		<input id="txt_contrasena_actual" name="txt_contrasena_actual" type="password" class="validate">
 	                                            		<label for="txt_contrasena_actual">Contraseña Actual</label>
 	                                        		</div>
 	                                        		<div class="input-field col s12">
-	                                            		<input id="txt_contrasena_nueva" type="password" class="validate">
+	                                            		<input id="txt_contrasena_nueva" name="txt_contrasena_nueva" type="password" class="validate">
 	                                            		<label for="txt_contrasena_nueva">Nueva Contraseña</label>
 	                                        		</div>
 	                                        		<div class="input-field col s12">
-	                                            		<input id="txt_confirmar_nueva" type="password" class="validate">
+	                                            		<input id="txt_confirmar_nueva" type="password" name="txt_confirmar_nueva" class="validate">
 	                                            		<label for="txt_confirmar_nueva">Confirmar Contraseña</label>
 	                                        		</div>
 	                                    		</div>
-	                                		</form>
+	                                		
                                 		</div>
 
                                 		<div class="col s12 m12">
                                 		
-                                			<div class="col m4 s12  ">
+                                			<div class="col m4 s12" hidden="true" id="div_btn_guardar_cancelar">
 	                                			<a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>
-	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios" >Guardar</a>
+	                            				<a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
                                 			</div>
                                 			<div id="pruebas">
                                 				
