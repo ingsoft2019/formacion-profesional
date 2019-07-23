@@ -1,4 +1,6 @@
-
+<?php 
+    session_start();
+?>
 <header class="mn-header navbar-fixed">
     <nav class="blue darken-3">
         <div class="nav-wrapper row">
@@ -129,7 +131,7 @@
         </div>
         <div class="sidebar-profile-info">
           
-                <h6 align="center">David Doe</h6>
+                <h6 align="center"><?php echo $_SESSION["nombre"]; ?></h6>
            
         </div>
         <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
@@ -158,7 +160,7 @@
                 </a>
             </li>
             <li class="no-padding">
-                <a class="waves-effect waves-grey" href="" id="btn-perfil">
+                <a class="waves-effect waves-grey" href="cerrar_sesion.php" id="btn-perfil">
                     <i class="material-icons">exit_to_app
                     </i>
                     Cerrar Sesión

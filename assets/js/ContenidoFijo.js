@@ -1,6 +1,6 @@
 $.ajax({
     type: "POST",
-    url: "menu.html",
+    url: "menu.php",
     //data: "{empid: " + empid + "}",
     //contentType: "application/json; charset=utf-8",
     contentType: "application/text/html; charset=utf-8",
