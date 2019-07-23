@@ -10,6 +10,13 @@
     $numero=$_POST['telefono'];
     $email=$_POST['email']."@unah.hn";
     $pass=$_POST['password2'];
+    $foto="";
+
+    if($genero == 1){
+        $foto="assets/images/profile-image-1.png";
+    }elseif($genero == 2){
+        $foto="assets/images/profile-image-2.png";
+    }
 
     if(!evaluarPass($pass)){
         echo "La contraseña que ingreso no es valida."."\n";
@@ -41,7 +48,7 @@
         $numero = str_replace("-", "", $numero);
         $numero = str_replace(" ", "", $numero);
         $numero = substr($numero, 5);
-        $mysql->ejecutarInstruccion("INSERT INTO tbl_personas(idPersona,idGenero,nombres,apellidos,correo,contrasena,celular,no_identidad ) VALUES ('$id','$genero','$nombre','$apellidos','$email',MD5('$pass'),'$numero','$idp')");
+        $mysql->ejecutarInstruccion("INSERT INTO tbl_personas(idPersona,idGenero,nombres,apellidos,correo,contrasena,celular,no_identidad,fotoPerfil ) VALUES ('$id','$genero','$nombre','$apellidos','$email',MD5('$pass'),'$numero','$idp','$foto')");
         $mysql->ejecutarInstruccion("INSERT INTO tbl_estudiantes(idEstudiante,no_cuenta,idCarrera)VALUES('$id','$cuenta','$carr')");
         
         echo "¡Su registro ha sido exitoso!";

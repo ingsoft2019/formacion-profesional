@@ -125,7 +125,7 @@
     <div class="side-nav-wrapper">
         <div class="sidebar-profile">
             <div class="sidebar-profile-image">
-                <img src="assets/images/profile-image.png" class="circle" alt="">
+                <img src="<?php echo $_SESSION["fotoPerfil"]; ?>" class="circle" alt="">
             </div>
 
         </div>
