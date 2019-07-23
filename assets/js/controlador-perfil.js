@@ -100,7 +100,7 @@ $(document).ready(function () {
     //-------------------------------------------------------------------------------------------
 
     $('#btn_cambiar_contrasena').click(function () {
-        $('#div-cambiar-contrasena').show(1000);
+        $('#div-cambiar-contrasena').toggle(1000);
     });
 
     crearCropper();
