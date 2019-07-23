@@ -50,11 +50,11 @@
                                            <form class="col s12" method="POST" id="form">
                                                <div class="input-field col s12 m6 l6">
                                                    <input id="nombres" name="nombres" type="text" class="masked" placeholder="Pedro José" 
-                                                   data-inputmask="'mask': ''" class="" id="nombres">
+                                                   data-inputmask="'mask': 'a{+}'" class="" id="nombres">
                                                    <label for="nombres">Nombres</label>
                                                </div>
                                                <div class="input-field col s12 m6 l6">
-                                                    <input id="apellidos" name="apellidos" type="text" class="masked" placeholder="Castellanos Andino" data-inputmask="'mask': ''" id="apellidos">
+                                                    <input id="apellidos" name="apellidos" type="text" class="masked" placeholder="Castellanos Andino" data-inputmask="'mask': 'a{+}'" id="apellidos">
                                                     <label for="apellidos">Apellidos</label>
                                                 </div>
                                                 <div class="input-field col s12 m6 l6">

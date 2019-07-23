@@ -68,12 +68,12 @@
 										</div>
 										 <div class="input-field col s12 m4">
                                             <input id="txt_nombres" type="text" class="masked"
-data-inputmask="'mask': 'a{+}  a{+}'">
+data-inputmask="'mask': 'a{+}'">
                                             <label for="txt_nombres">Nombres</label>
                                         </div>
                                         <div class="input-field col s12 m4">
                                             <input id="txt_apellidos" type="text" class="masked"
-data-inputmask="'mask': 'a{+}  a{+}' ">
+data-inputmask="'mask': 'a{+}' ">
                                             <label for="txt_apellidos">Apellidos</label>
                                         </div>
                                         <div class="input-field col s12 m4">
