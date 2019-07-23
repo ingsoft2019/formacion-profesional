@@ -27,4 +27,6 @@
 }
 
 
-
+.profile-photo > img{
+  max-height: 30vh;
+}

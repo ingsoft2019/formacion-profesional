@@ -50,6 +50,31 @@
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
 			<div class="container-fluid">
+
+            <div class="col s12 m12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="sidebar-profile">
+                                                <div class="profile-photo">
+                                                    <img src="assets/images/profile-image.png"
+                                                        class="circle" alt="" id="img_editar_perfil">
+                                                    <a class="btn-floating btn-large waves-effect waves-light grey darken-3"
+                                                        id="btn_editar_foto"><i class="material-icons modal-trigger"
+                                                            href="#mdl_editar_foto">photo_camera</i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 				<div class="row">
 					<div class="col s12 m12">
 						<div class="card">
@@ -57,26 +82,17 @@
                             <div class="row">
                                 <form class="col s12">
                                     <div class="row">
-                                        <div class="col s12 m4">
-											<div class="sidebar-profile">
-			                       				<div class="profile-photo">
-			                            			<img src="assets/images/profile-image.png" class="circle responsive-img" alt="" id="img_editar_perfil">
-			                            			<a class="btn-floating btn-large waves-effect waves-light grey darken-3" id="btn_editar_foto"><i class="material-icons modal-trigger"
-			                                    href="#mdl_editar_foto">photo_camera</i></a>
-			                         			</div>
-		                   		 			</div>
-										</div>
-										 <div class="input-field col s12 m4">
+										 <div class="input-field col s12 m6">
                                             <input id="txt_nombres" type="text" class="masked"
 data-inputmask="'mask': 'a{+}'">
                                             <label for="txt_nombres">Nombres</label>
                                         </div>
-                                        <div class="input-field col s12 m4">
+                                        <div class="input-field col s12 m6">
                                             <input id="txt_apellidos" type="text" class="masked"
 data-inputmask="'mask': 'a{+}' ">
                                             <label for="txt_apellidos">Apellidos</label>
                                         </div>
-                                        <div class="input-field col s12 m4">
+                                        <div class="input-field col s12 m6">
                                             <input id="txt_identidad" type="text" class="masked"  data-inputmask="'mask': '9999-9999-99999'">
                                             <label for="txt_identidad">No. Identidad</label>
                                         </div>

@@ -178,6 +178,7 @@ function cargarDatos(){
                 $("#slc-carrera").material_select();
             $("#txt_contrasena").val(respuesta[0].contrasena);
             $("#txt_correo").val(respuesta[0].correo);
+            $("#img_editar_perfil").attr("src",respuesta[0].fotoPerfil);
             }
         });
 
