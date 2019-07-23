@@ -2,7 +2,7 @@
 function verificarUsuario($conexion, $correo,$contrasena){
 				$sql = sprintf(
 						"SELECT * FROM tbl_personas
-						WHERE  correo = '%s' AND contrasena = sha1('%s')",
+						WHERE  correo = '%s' AND contrasena = MD5('%s')",
 						$correo,
 						$contrasena
 					);

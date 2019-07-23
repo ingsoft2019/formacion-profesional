@@ -39,7 +39,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
 							"nombres = '%s', ".
 					        "apellidos = '%s', ".
 					        "correo = '%s', ".
-					        "contrasena= sha1('%s'), ".
+					        "contrasena= MD5('%s'), ".
 					        "celular = %s, ".
 					        "no_identidad = '%s' ".
 					        "WHERE idPersona = %s ",
