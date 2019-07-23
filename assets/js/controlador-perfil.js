@@ -157,9 +157,11 @@ function guardar_cambios() {
         success: function (respuesta) {
             if (respuesta.codigo_resultado==1){
                 swal("Completo", respuesta.mensaje, "success");
+                cargarDatos();
             }
             else if (respuesta.codigo_resultado==0){
                 swal("Error", respuesta.mensaje, "error");
+                cargarDatos();
             }
         }
     });
@@ -193,6 +195,9 @@ function cargarDatos() {
             //$("#txt_contrasena").val(respuesta[0].contrasena);
             $("#txt_correo").val(respuesta[0].correo);
             $("#img_editar_perfil").attr("src", respuesta[0].fotoPerfil);
+            $("#txt_contrasena_actual").val("");
+            $("#txt_contrasena_nueva").val("");
+            $("#txt_confirmar_nueva").val("");
             nombres = respuesta[0].nombres;
             apellidos = respuesta[0].apellidos;
             identidad = respuesta[0].no_identidad;
@@ -202,6 +207,7 @@ function cargarDatos() {
             carrera = respuesta[0].idCarrera;
             foto = respuesta[0].fotoPerfil;
             habilitar_deshabilitar_guardar_cancelar();
+            $('#div-cambiar-contrasena').hide(1000);
         }
     });
 
@@ -345,7 +351,6 @@ function comprobar_antes_de_guardar() {
             if (isConfirm) {
                 //swal("Completo", "Su información ha sido actualizada", "success");
                 guardar_cambios();
-                cargarDatos();
             } else {
                 swal("Cancelado", "Su información no fue actualizada", "error");
                 cargarDatos();

@@ -61,9 +61,9 @@
                                                 <div class="profile-photo">
                                                     <img src="assets/images/profile-image.png"
                                                         class="circle" alt="" id="img_editar_perfil">
-                                                    <a class="btn-floating btn-large waves-effect waves-light grey darken-3"
+                                                    <!--<a class="btn-floating btn-large waves-effect waves-light grey darken-3"
                                                         id="btn_editar_foto"><i class="material-icons modal-trigger"
-                                                            href="#mdl_editar_foto">photo_camera</i></a>
+                                                            href="#mdl_editar_foto">photo_camera</i></a>-->
                                                 </div>
                                             </div>
                                         </div>
