@@ -1,6 +1,8 @@
 $(document).ready(function(){
+
+});
+
 	$("#btn-login").click(function(){
-		console.log("entra aqui");
 			var parametros = "inputEmail=" +$("#inputEmail").val() + 
 						"&inputPassword="+$("#inputPassword").val();
 			console.log(parametros);
@@ -11,13 +13,16 @@ $(document).ready(function(){
 				dataType: 'json	',
 				success:function(respuesta){
 					if (respuesta.status==0){
-						$("#resultado").html(respuesta.mensaje);
-						alert(respuesta.mensaje);
+						//$("#resultado").html(respuesta.mensaje);
+						 swal(respuesta.mensaje, {
+   							   className: "swal-modal",
+  							   });
 					}
 					else{
 						console.log("Si tiene acceso, sera redireccionado");
 							window.location = "perfil.php";
 							console.log(respuesta.mensaje);
+
 						/*if(respuesta.codigo_tipo_usuario==1)
 							window.location = "pagina_cajero.php"; //Redireccionar a la pagina de cajero
 						else if(respuesta.codigo_tipo_usuario==2)
@@ -30,5 +35,3 @@ $(document).ready(function(){
 				}
 		});
 	});	
-});
-

@@ -1,4 +1,4 @@
-	<?php
+<?php
 	session_start();//crear una sesion
 	switch ($_GET["accion"]) {
 		case 'login': 

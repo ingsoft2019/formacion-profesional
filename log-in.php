@@ -16,7 +16,7 @@
         <!-- Theme Styles -->
         <!--link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
         <link href="assets/css/registro.css" rel="stylesheet">
-        
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
 
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,7 +39,7 @@
                                   <div class="card-content ">
                                       <span class="card-title">Iniciar sesión</span>
                                        <div class="row">
-                                           <form class="col s12">
+                                           <div class="col s12">
                                                <div class="input-field col s12">
                                                    <input id="inputEmail" type="email" class="validate">
                                                    <label for="email">Correo Institucional</label>
@@ -52,7 +52,7 @@
                                                    <button id="btn-login" class="waves-effect waves-light btn teal" role=button>Entrar</button>
                                                </div>
                                                <div class=" col s12" id="resultado"></div>
-                                           </form>
+                                           </div>
                                       </div>
                                   </div>
                               </div>
@@ -63,6 +63,8 @@
         </div>
         
         <!-- Javascripts -->
+        <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="assets\plugins\prettify\prettify.js"></script>
         <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
         <script src="assets/plugins/materialize/js/materialize.min.js"></script>
         <script src="assets/js/controlador-login.js"></script>

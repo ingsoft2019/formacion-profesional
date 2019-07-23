@@ -19,10 +19,10 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["contrasena"] = $fila["contrasena"];
 					$_SESSION["fotoPerfil"] = $fila["fotoPerfil"];
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
-					$respuesta["mensaje"]="Si tiene acceso" ;
+					$respuesta["mensaje"]="Si tiene acceso, sera redireccionado" ;
 				}else{
 					$respuesta["status"]=0;
-					$respuesta["mensaje"]="No tiene acceso, su correo y contrasena no estan registrados" ;
+					$respuesta["mensaje"]="No tiene acceso; por favor verifique que su correo y contraseña sean correctos" ;
 				}
 
 				echo json_encode($respuesta);

@@ -152,7 +152,7 @@ function guardar_cambios(){
 }
 
 
-//peticion ajax para cargar datos en el perfil
+//------------------peticion ajax para cargar datos en el perfil-----------------------------
 function cargarDatos(){
     $.ajax({
         url:"assets/ajax/perfil-peticiones.php",
