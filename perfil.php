@@ -109,7 +109,7 @@ data-inputmask="'mask': '(504) 9{4}-9{4}'">
                                         	</div>
                                        	 <div class="input-field col s12 m6">
                                             <input id="txt_correo" type="text" class="masked"
-data-inputmask="'mask': '/{+}'">
+data-inputmask="'mask': '/{+}@a{+}.a{+}'">
                                             <label for="txt_correo">Correo</label>
                                         </div>
                                         <div class="input-field col s12 m6">
