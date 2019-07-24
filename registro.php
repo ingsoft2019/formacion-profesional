@@ -20,6 +20,7 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">        
         <link rel="stylesheet" href="assets/plugins/sweetalert/sweetalert.css">
+        <link rel="icon" type="image/png" href="assets\images\icon.png" />
 
         	
         <!-- Theme Styles -->

@@ -23,6 +23,7 @@
     <link href="assets\plugins\air_datepicker\css\datepicker.css" rel="stylesheet">
     <link href="assets\plugins\timepicker\css\timepicker.css" rel="stylesheet">
     <link href="assets\plugins\flatpickr\css\flatpickr.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets\images\icon.png" />
 
     <link href="assets/css/gestionar_horarios.css" rel="stylesheet" type="text/css">
 
