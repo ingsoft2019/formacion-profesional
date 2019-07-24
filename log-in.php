@@ -42,11 +42,11 @@
                                        <div class="row">
                                            <div class="col s12">
                                                <div class="input-field col s12">
-                                                   <input id="inputEmail" type="email" class="validate">
+                                                   <input id="inputEmail" type="email" class="validate" placeholder="">
                                                    <label for="email">Correo Institucional</label>
                                                </div>
                                                <div class="input-field col s12">
-                                                   <input id="inputPassword" type="password" class="validate">
+                                                   <input id="inputPassword" type="password" class="validate" placeholder="">
                                                    <label for="password">Contraseña</label>
                                                </div>
                                                <div class="col s12 right-align m-t-sm">

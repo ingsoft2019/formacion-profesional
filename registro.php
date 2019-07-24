@@ -100,7 +100,7 @@
                                                     </select>
                                                 </div>
                                                <div class="input-field col s12 m6 l6">
-                                                   <input id="password" name="password" type="password" class="">
+                                                   <input id="password" name="password" type="password" class="tooltipped" data-position="bottom" data-tooltip="Debe incluir al menos 8 caracteres mezclando mayúsculas, minúsculas, números y caracteres especiales como #?!@$%^&*-">
                                                    <label for="password">Contraseña</label>
                                                </div>
                                                <div class="input-field col s12 m6 l6">

@@ -145,7 +145,7 @@
                                                     </div>
                                                     <div class="input-field col s12">
                                                         <input id="txt_contrasena_nueva" name="txt_contrasena_nueva"
-                                                            type="password" class="validate">
+                                                            type="password" class="validate tooltipped" data-position="bottom" data-tooltip="Debe incluir al menos 8 caracteres mezclando mayúsculas, minúsculas, números y caracteres especiales como #?!@$%^&*-">
                                                         <label for="txt_contrasena_nueva">Nueva Contraseña</label>
                                                     </div>
                                                     <div class="input-field col s12">

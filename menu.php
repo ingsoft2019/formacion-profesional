@@ -14,14 +14,14 @@
                 <span class="">VOAE</span>
             </div>
 
-            <ul class="right col s9 m3 nav-right-menu">
+            <!--<ul class="right col s9 m3 nav-right-menu">
 
                 <li class="hide-on-small-and-down"><a href="javascript:void(0)" data-activates="dropdown1"
                         class="dropdown-button dropdown-right show-on-large"><i
                             class="material-icons">notifications_none</i><span
                             class="badge yellow darken-2">4</span></a></li>
 
-            </ul>
+            </ul>-->
 
             <ul id="dropdown1" class="dropdown-content notifications-dropdown">
                 <li class="notificatoins-dropdown-container">
@@ -141,7 +141,7 @@
                     Inicio
                 </a>
             </li>
-            <li class="no-padding">
+            <!--<li class="no-padding">
                 <a class="waves-effect waves-grey" href="gestionar_Usuarios.php" id="btn_gestionar_usuarios">
                     <i class="material-icons">people</i>
                     Gestionar usuarios
@@ -152,7 +152,7 @@
                     <i class="material-icons">access_time</i>
                     Gestionar Horarios
                 </a>
-            </li>
+            </li>-->
             <li class="no-padding">
                 <a class="waves-effect waves-grey" href="perfil.php" id="btn-perfil">
                     <i class="material-icons">account_circle</i>
