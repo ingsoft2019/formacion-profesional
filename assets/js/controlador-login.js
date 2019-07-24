@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$("#btn-login").click(function(){
 			var parametros = "inputEmail=" +$("#inputEmail").val() + 
 						"&inputPassword="+$("#inputPassword").val();
-			console.log(parametros);
+			//console.log(parametros);
 			$.ajax({
 				url:"assets/ajax/acciones_login.php?accion=login",//po quie
 				method: "GET",
