@@ -14,3 +14,15 @@ body{
   .InputAddOn-item {
     /* item styles */
   }
+  .sweet-alert  {
+  background-color: rgba(242, 6, 2, 0.58) !important;
+  border: 1px solid white!important;
+  
+}
+.sweet-alert h2 {
+    color:white !important;
+    font-size: 25px !important;
+    
+}
+.sweet-alert p {
+    color: #ececec00!important;}
