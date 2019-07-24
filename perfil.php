@@ -26,8 +26,8 @@
 
     <!-- Theme Styles -->
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/perfil.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/image-cropper/cropper.min.css" rel="stylesheet">
 
 
