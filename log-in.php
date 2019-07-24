@@ -16,6 +16,7 @@
         <!-- Theme Styles -->
         <!--link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/-->
         <link href="assets/css/registro.css" rel="stylesheet">
+        <link href="assets/css/login.css" rel="stylesheet">
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
 
         
