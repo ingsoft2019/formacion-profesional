@@ -11,12 +11,12 @@
                 </a>
             </section>
             <div class="header-title col s3">
-                <span class="">VOAE</span>
+                <span class=""onclick="location.href='index.php'" >VOAE</span>
             </div>
 
-            <!--<ul class="right col s9 m3 nav-right-menu">
+            <!--<ul class="right col s9 m3 nav-right-menu"-->
 
-                <li class="hide-on-small-and-down"><a href="javascript:void(0)" data-activates="dropdown1"
+                <!--li class="hide-on-small-and-down"><a href="javascript:void(0)" data-activates="dropdown1"
                         class="dropdown-button dropdown-right show-on-large"><i
                             class="material-icons">notifications_none</i><span
                             class="badge yellow darken-2">4</span></a></li>
@@ -136,7 +136,7 @@
         </div>
         <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
             <li class="no-padding">
-                <a class="waves-effect waves-grey active-page" href="" id="btn-inicio">
+                <a class="waves-effect waves-grey active-page" onclick="location.href='inicio.php'"  id="btn-inicio">
                     <i class="material-icons">home</i>
                     Inicio
                 </a>

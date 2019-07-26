@@ -6,6 +6,7 @@ $("#btn-login").click(function () {
 	var parametros = "inputEmail=" + $("#inputEmail").val() +
 		"&inputPassword=" + $("#inputPassword").val();
 	//console.log(parametros);
+	
 	$.ajax({
 		url: "assets/ajax/acciones_login.php?accion=login",//po quie
 		method: "GET",
@@ -17,7 +18,7 @@ $("#btn-login").click(function () {
 			}
 			else {
 				console.log("Si tiene acceso, sera redireccionado");
-				window.location = "perfil.php";
+				window.location = "inicio.php";
 				console.log(respuesta.mensaje);
 
 				/*if(respuesta.codigo_tipo_usuario==1)

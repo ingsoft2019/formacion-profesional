@@ -45,15 +45,25 @@
                                                    <input id="inputEmail" type="email" class="validate" placeholder="">
                                                    <label for="email">Correo Institucional</label>
                                                </div>
+
                                                <div class="input-field col s12">
                                                    <input id="inputPassword" type="password" class="validate" placeholder="">
                                                    <label for="password">Contraseña</label>
                                                </div>
-                                               <div class="col s12 right-align m-t-sm">
+                                                <div>
+                                                   <div class="col s12 left-align m-t-sm">
+                                                   <button id="btn-registrar" onclick="location.href='registro.php'" class="waves-effect waves-light btn teal" role=button>Ir Registro</button>                                            
                                                    <button id="btn-login" class="waves-effect waves-light btn teal" role=button>Entrar</button>
+                                               
+                                                  
                                                </div>
+                                             
+                                               
                                                <div class=" col s12" id="resultado"></div>
+
+                                              
                                            </div>
+
                                       </div>
                                   </div>
                               </div>
