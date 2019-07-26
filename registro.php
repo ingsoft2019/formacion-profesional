@@ -108,7 +108,10 @@
                                                    <input id="password2" name="password2" type="password" class="">
                                                    <label for="password2">Confirmar Contraseña</label>
                                                </div>
-                                               <div class="col s12 m12 l12 center-align m-t-sm">
+                                               <div class="col s6 m6 l6 center-align m-t-sm">
+                                                   <a href="./log-in.php" class="waves-effect waves-light btn yellow darken-2">Ir al login</a>
+                                               </div>
+                                               <div class="col s6 m6 l6 center-align m-t-sm">
                                                    <button  id="submit" class="waves-effect waves-light btn blue">Registrar</button>
                                                </div>
                                            </form>
