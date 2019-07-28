@@ -1,0 +1,50 @@
+input {
+    border-bottom: 1px solid !important;
+}
+
+.instuctions {
+    text-align: justify;
+    font-size: 1.1rem !important;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    .espacio_secciones {
+        border-left: 1.2px solid lightgray !important;
+    }
+    .ev_grupal_section>.row>.col {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mn-inner {
+        padding: 0px !important;
+    }
+}
+
+#tbody_sections_list .remove_button:hover {
+    color: #F44336;
+    cursor: pointer;
+}
+
+.section_row>td>input {
+    border: none !important;
+    text-align: center !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    margin: 0px !important;
+}
+
+.th_sections_table {
+    text-align: center !important;
+}
+
+.phase_icon {
+    height: 5rem;
+    width: 100%;
+}
+
+.phase_icon>i {
+    font-size: 3rem !important;
+}
