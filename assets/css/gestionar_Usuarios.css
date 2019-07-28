@@ -100,3 +100,13 @@
 table.highlight>tbody>tr:hover {
     cursor: pointer !important;
 }
+
+.slc_funcion_orientador {
+    font-size: inherit !important;
+    padding-left: 0px !important;
+    width: 50%;
+}
+
+.slc_funcion_orientador>input {
+    margin: 0px !important;
+}

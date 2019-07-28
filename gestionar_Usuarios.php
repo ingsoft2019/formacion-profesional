@@ -42,7 +42,7 @@
         <main class="mn-inner">
 
 
-            <form class="row">
+            <!--<form class="row">
                 <div class="col l6 m6 s12">
                     <div class="row valign-wrapper barra_buscar">
                         <div class="col l1">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form>-->
 
 
 
@@ -76,23 +76,21 @@
                                     <td>0801199788654</td>
                                     <td>Alvin Carlos Mendoza Pérez</td>
                                     <td class="hide-on-small-only">Orientador</td>
-                                    <td><i class="material-icons edit_button" id="123">mode_edit</i></td>
-                                    <td><i class="material-icons info_button" id="123">info</i></td>
-                                    <td><i class="material-icons remove_button" id="123">delete</i></td>
+                                    <td><i class="material-icons info_button" data-id="123">info</i></td>
+                                    <td><i class="material-icons remove_button" data-id="123">delete</i></td>
                                 </tr>
                                 <tr class="user_row" id="124">
                                     <td>0801199778964</td>
                                     <td>Carla Elizabeth López Carranza</td>
                                     <td class="hide-on-small-only">Estudiante</td>
-                                    <td></td>
-                                    <td><i class="material-icons info_button" id="124">info</i></td>
-                                    <td><i class="material-icons remove_button" id="124">delete</i></td>
+                                    <td><i class="material-icons info_button" data-id="124">info</i></td>
+                                    <td><i class="material-icons remove_button" data-id="124">delete</i></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-        
+
 
 
 
@@ -100,17 +98,19 @@
         <!--FIN APARTADO-->
 
         <!-- Modal Structure -->
-        <div id="user_modal_information" class="modal modal_user_information">           
+        <div id="user_modal_information" class="modal modal_user_information">
             <div class="modal-content">
-            <div class="profile_color_div"></div>
+                <div class="profile_color_div"></div>
                 <div class="row">
                     <div class="col s12">
                         <div class="">
                             <div class="card-image">
-                                <img src="assets/images/profile-image.png" class="responsive-img profile_foto_border" alt="">
+                                <img src="assets/images/profile-image.png" class="responsive-img profile_foto_border"
+                                    alt="">
                             </div>
                             <div class="card-title">
-                                <h5 class="black-text" style="font-weight:300;margin-bottom:30px;">Diego Juan <br> Perez Chanfaina</h5>
+                                <h5 class="black-text" style="font-weight:300;margin-bottom:30px;">Diego Juan <br> Perez
+                                    Chanfaina</h5>
                             </div>
                             <div class="card-content">
                                 <div class="row info_list valign-wrapper">
@@ -137,9 +137,30 @@
                                     <i class="material-icons col s2 m2 l2">lock</i>
                                     <span class="col s10 m10 l10">Estudiante</span>
                                 </div>
+                                <div class="row info_list valign-wrapper">
+                                    <i class="material-icons col s2 m2 l2">work</i>
+                                    <span class="col s10 m10 l10">
+                                        <select multiple class="col s12 m5 slc_funcion_orientador">
+                                            <option value="1" selected>Entrevistador</option>
+                                            <option value="2" selected>Psicólogo</option>
+                                        </select>
+                                    </span>
+
+                                </div>
                             </div>
+                            <br>
                             <div class="card-action right-align">
-                                <a class="btn-flat red-text" id="btn_eliminarUsuario" id="124">Eliminar</a>
+                                <div class="row">
+                                    <a class="btn-flat amber-text  darken-3 cancelar_cambios" id="btn_cancelar_cambios"
+                                        data-id="124">Cancelar</a>
+                                    <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios"
+                                        data-id="124">Guardar</a>
+                                </div>
+                                <div class="row">
+                                    <a class="btn-flat red-text eliminar_usuario" id="btn_eliminarUsuario"
+                                        data-id="124">Eliminar</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -154,76 +175,75 @@
             </a>
         </div>
 
-         <!-- Modal Structure -->
-         <div id="mdl_nuevoUsuario" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                    <h4>Crear nuevo Usuario</h4>
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6">
-                                <input id="txt_identidad" placeholder="0801-1990-89432" type="text"
-                                    class="validate masked" data-inputmask="'mask': '9999-9999-99999'">
-                                <label for="txt_identidad" class="active">No. Identidad</label>
-                            </div>
-
-                            <div class="input-field col s12 m6 l6">
-                                <input id="last_name" placeholder="3240-9878" type="text" class="validate masked"
-                                    data-inputmask="'mask': '(+504)9{4}-9{4}'">
-                                <label for="last_name">Celular</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6">
-                                <input id="last_name" placeholder="Pedro Jose" type="text" class="validate masked"
-                                    data-inputmask="'mask': 'a{+}'">
-                                <label for="last_name">Nombres</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6">
-                                <input id="last_name" placeholder="Castellanos Andino" type="text"
-                                    class="validate masked" data-inputmask="'mask': 'a{+}'">
-                                <label for="last_name">Apellidos</label>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="input-field col s7 m3 l6">
-                                <input id="email" type="text" placeholder="casteljose" class="validate masked"
-                                    data-inputmask="'mask': '/{+}'">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-field col s5 m3 l6">
-                                <label>@unah.edu.hn</label>
-                            </div>
+        <!-- Modal Structure -->
+        <div id="mdl_nuevoUsuario" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Crear nuevo Usuario</h4>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="txt_identidad" placeholder="0801-1990-89432" type="text" class="validate masked"
+                                data-inputmask="'mask': '9999-9999-99999'">
+                            <label for="txt_identidad" class="active">No. Identidad</label>
                         </div>
 
-                        <div class="row ">
-                            <div class="input-field col s12 m6 l6">
-                                <select multiple>
-                                    <option value="" disabled selected>Seleccionar cargo</option>
-                                    <option value="1">Entrevistador</option>
-                                    <option value="2">Psicólogo</option>
-                                </select>
-                                <label>Funciones</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6">
-                                <select>
-                                    <option value="" disabled selected>Seleccionar género</option>
-                                    <option value="1">Femenino</option>
-                                    <option value="2">Masculino</option>
-                                </select>
-                                <label>Género</label>
-                            </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="last_name" placeholder="3240-9878" type="text" class="validate masked"
+                                data-inputmask="'mask': '(+504)9{4}-9{4}'">
+                            <label for="last_name">Celular</label>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="last_name" placeholder="Pedro Jose" type="text" class="validate masked"
+                                data-inputmask="'mask': 'a{+}'">
+                            <label for="last_name">Nombres</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="last_name" placeholder="Castellanos Andino" type="text" class="validate masked"
+                                data-inputmask="'mask': 'a{+}'">
+                            <label for="last_name">Apellidos</label>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="input-field col s7 m3 l6">
+                            <input id="email" type="text" placeholder="casteljose" class="validate masked"
+                                data-inputmask="'mask': '/{+}'">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s5 m3 l6">
+                            <label>@unah.edu.hn</label>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="input-field col s12 m6 l6">
+                            <select multiple>
+                                <option value="" disabled selected>Seleccionar cargo</option>
+                                <option value="1">Entrevistador</option>
+                                <option value="2">Psicólogo</option>
+                            </select>
+                            <label>Funciones</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select>
+                                <option value="" disabled selected>Seleccionar género</option>
+                                <option value="1">Femenino</option>
+                                <option value="2">Masculino</option>
+                            </select>
+                            <label>Género</label>
+                        </div>
+                    </div>
 
 
-                    </form>
+                </form>
 
-                </div>
-                <div class="modal-footer">
-                    <a class="modal-action modal-close waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
-                    <a class="modal-action modal-close waves-effect waves-red btn-flat"
-                        id="btn_cancelarNuevo">Cancelar</a>
-                </div>
             </div>
+            <div class="modal-footer">
+                <a class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
+                <a class="modal-action waves-effect waves-red btn-flat" id="btn_cancelarNuevo">Cancelar</a>
+            </div>
+        </div>
 
 
         <div id="div-piePagina"></div>

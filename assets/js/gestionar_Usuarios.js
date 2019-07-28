@@ -1,13 +1,25 @@
 $(document).ready(function() {
     $("tbody").click(function(event) {
         if (event.target.className == "material-icons remove_button") {
-            removeUser(event.target.id);
+            removeUser(event.target.attributes[1].nodeValue);
         }
         if (event.target.className == "material-icons info_button") {
             //console.log(event.target.id);
-            show_modal_info(event.target.id);
+            show_modal_info(event.target.attributes[1].nodeValue);
         }
-        console.log(event.target);
+        //console.log(event);
+    });
+
+    $("#btn_eliminarUsuario").click(function(event) {
+        removeUser(event.target.getAttribute('data-id'));
+    });
+
+    $("#btn_cancelar_cambios").click(function(event) {
+        cancelar_actualizar_funcion(event.target.getAttribute('data-id'));
+    });
+
+    $("#btn_guardar_cambios").click(function(event) {
+        actualizar_funcion_orientador(event.target.getAttribute('data-id'));
     });
 
 });
@@ -34,6 +46,7 @@ const removeUser = (id) => {
             const user = $(`.user_row[id=${id}]`);
             user.hide("slow", function() { $(this).remove(); })
             swal("Completo", "Usuario eliminado.", "success");
+            $("#user_modal_information").closeModal();
         } else {
             swal("Cancelado", "Acción cancelada.", "error");
         }
@@ -42,4 +55,12 @@ const removeUser = (id) => {
 
 function show_modal_info(id) {
     $('#user_modal_information').openModal();
+}
+
+function cancelar_actualizar_funcion(id) {
+    swal("Cancelado", "Modificaciones descartadas.", "error");
+}
+
+function actualizar_funcion_orientador(id) {
+    swal("Completo", "Datos actualizados", "success");
 }

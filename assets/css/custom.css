@@ -1,27 +1,28 @@
 /* Write your custom CSS here */
 
-.page-footer{
+.page-footer {
     height: min-content;
     margin-top: 0px;
 }
 
-#div-piePagina{
-    
-    bottom: 0px;    
-    font-size: 0.9em;   
+#div-piePagina {
+    bottom: 0px;
+    font-size: 0.9em;
     width: 100%;
-    padding: 10px; 
-    background-color:#F4F4F4;
+    padding: 10px;
+    background-color: #F4F4F4;
 }
-.profile-photo img{
+
+.profile-photo img {
     max-width: 50%;
 }
 
-.profile-photo , .sidebar-profile-image{
+.profile-photo,
+.sidebar-profile-image {
     text-align: center;
 }
 
-.footer{
+.footer {
     height: max-content;
     padding: 15px;
 }
@@ -31,24 +32,40 @@
     height: 40%;
 }
 
-.sidebar-profile-info{
+.sidebar-profile-info {
     padding: 10px;
     background: url('../images/profile_bg_2.png');
     background-size: cover;
 }
 
-.sidebar-profile{
+.sidebar-profile {
     background: url('../images/profile_background.svg');
     background-size: cover;
     padding-top: 20px;
     padding-bottom: 15px;
 }
 
-.mn-inner{
+.mn-inner {
     min-height: 84vh;
 }
 
-.icon-button:hover{
+.icon-button:hover {
     cursor: pointer;
     user-select: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
 }
