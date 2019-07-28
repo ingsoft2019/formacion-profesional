@@ -11,7 +11,7 @@
                 </a>
             </section>
             <div class="header-title col s3">
-                <span class="">VOAE</span>
+                <span class=""><a href="index.php">VOAE</a></span>
             </div>
 
             <!--<ul class="right col s9 m3 nav-right-menu">
@@ -131,23 +131,29 @@
         </div>
         <div class="sidebar-profile-info">
           
-                <h6 align="center"><?php echo $_SESSION["nombre"]; ?></h6>
+                <h6 align="center" id="lbl_menu_nombres"><?php echo $_SESSION["nombre"]; ?></h6>
            
         </div>
         <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
             <li class="no-padding">
-                <a class="waves-effect waves-grey active-page" href="" id="btn-inicio">
+                <a class="waves-effect waves-grey active-page" href="home.php" id="btn-inicio">
                     <i class="material-icons">home</i>
                     Inicio
                 </a>
             </li>
-            <!--<li class="no-padding">
+           <li class="no-padding">
                 <a class="waves-effect waves-grey" href="gestionar_Usuarios.php" id="btn_gestionar_usuarios">
                     <i class="material-icons">people</i>
                     Gestionar usuarios
                 </a>
             </li>
             <li class="no-padding">
+                <a class="waves-effect waves-grey" href="procesos.php" id="btn_procesos">
+                    <i class="material-icons">autorenew</i>
+                    Procesos
+                </a>
+            </li>
+             <!--<li class="no-padding">
                 <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
                     <i class="material-icons">access_time</i>
                     Gestionar Horarios

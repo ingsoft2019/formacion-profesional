@@ -1,29 +1,27 @@
-
-.card-image{
+.card-image {
     padding: 2em 0em 1em 0em;
     width: 10em;
     margin-left: auto;
     margin-right: auto;
 }
 
-.card-title{
+.card-title {
     color: grey;
     text-align: center;
     width: 100%;
 }
 
-.info_list{
+.info_list {
     margin-bottom: 10px;
 }
 
-#mdl_nuevoUsuario{
+#mdl_nuevoUsuario {
     max-height: 90%;
     height: 80%;
 }
 
-
-
-#txt_buscar, #txt_buscar:hover{
+#txt_buscar,
+#txt_buscar:hover {
     border: none;
     box-shadow: none;
     margin: 0px;
@@ -31,19 +29,74 @@
     font-weight: lighter;
 }
 
-.barra_buscar{
+.barra_buscar {
     background-color: white;
     border: 1px solid rgb(228, 226, 226);
     border-radius: 4px;
     padding: 8px;
-    
 }
 
-.barra_buscar:hover{
+.barra_buscar:hover {
     border: 1px solid #BCBCBC;
 }
 
-.modal .modal-content p{
+.modal .modal-content p {
     margin: 0px;
 }
 
+.modal_user_information {
+    max-height: 85% !important;
+}
+
+.modal_user_information span {
+    color: black !important;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.modal_user_information i {
+    text-align: right;
+}
+
+.profile_color_div {
+    width: 100%;
+    height: 25%;
+    background-color: darkcyan;
+    top: 0px;
+    position: absolute;
+    z-index: -10;
+    box-sizing: border-box;
+    background-image: url(../images/profile_background.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.modal_user_information .modal-content {
+    padding: 0px;
+    margin: 0px;
+}
+
+.profile_foto_border {
+    border: 6px solid white;
+    border-radius: 100px;
+}
+
+.users_table_list .remove_button:hover {
+    color: #F44336;
+    cursor: pointer;
+}
+
+.users_table_list .info_button:hover {
+    color: #1565C0;
+    cursor: pointer;
+}
+
+.users_table_list .edit_button:hover {
+    color: #FFC000;
+    cursor: pointer;
+}
+
+table.highlight>tbody>tr:hover {
+    cursor: pointer !important;
+}

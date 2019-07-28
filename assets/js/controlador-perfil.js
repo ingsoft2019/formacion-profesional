@@ -7,7 +7,7 @@ var cuenta = "";
 var carrera = "";
 var foto = "";
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     //funcionalidad guardar cambios
     //OJO VERIFICACION DE IGUALDAD DE CONTRASEÑAS PENDIENTE
@@ -20,8 +20,8 @@ $(document).ready(function () {
         url: "assets/ajax/perfil-peticiones.php",
         method: 'GET',
         data: "CODIGO_FUNCION=2",
-        dataType: 'json',//data para saber que funcion en php usara.
-        success: function (respuesta) {
+        dataType: 'json', //data para saber que funcion en php usara.
+        success: function(respuesta) {
 
             for (var i = 0; i < respuesta.length; i++) {
                 $selectDropdown.append($("<option></option>").attr("value", respuesta[i].idCarrera).text(respuesta[i].nombreCarrera));
@@ -31,49 +31,43 @@ $(document).ready(function () {
     });
 
     //------------------------------------validaciones------------------------------------------
-    $('#txt_identidad').on('input', function () {
+    $('#txt_identidad').on('input', function() {
         var input = $(this);
         var val = input.val();
         var valid = val.match(/\d{4}-\d{4}-\d{5}/g)
-        if (valid) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (valid) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
-    $('#txt_nombres').on('input', function () {
+    $('#txt_nombres').on('input', function() {
         var input = $(this);
         var is_name = input.val();
-        if (is_name) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (is_name) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
-    $('#txt_apellidos').on('input', function () {
+    $('#txt_apellidos').on('input', function() {
         var input = $(this);
         var is_name = input.val();
-        if (is_name) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (is_name) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
-    $('#txt_cuenta').on('input', function () {
+    $('#txt_cuenta').on('input', function() {
         var input = $(this);
         var val = input.val();
         var valid = val.match(/\d{11}/g)
-        if (valid) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (valid) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
-    $('#txt_celular').on('input', function () {
+    $('#txt_celular').on('input', function() {
         var input = $(this);
         var val = input.val();
         var valid = val.match(/\(504\)\ \d{4}-\d{4}/g)
-        if (valid) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (valid) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
-    $('#txt_correo').on('input', function () {
+    $('#txt_correo').on('input', function() {
         var input = $(this);
         var is_name = input.val();
-        if (is_name) { input.removeClass("invalid").addClass("valid"); }
-        else { input.removeClass("valid").addClass("invalid"); }
+        if (is_name) { input.removeClass("invalid").addClass("valid"); } else { input.removeClass("valid").addClass("invalid"); }
     });
 
     /*
@@ -92,26 +86,26 @@ $(document).ready(function () {
         });
     */
     //actualizacion de slc carreras dinamico
-    $('select').on('contentChanged', function () {
+    $('select').on('contentChanged', function() {
         // re-initialize (update)
         $(this).material_select();
 
     });
     //-------------------------------------------------------------------------------------------
 
-    $('#btn_cambiar_contrasena').click(function () {
+    $('#btn_cambiar_contrasena').click(function() {
         $('#div-cambiar-contrasena').toggle(1000);
     });
 
     crearCropper();
-    $('#fl_foto_perfil').on('change', function (evt) {
+    $('#fl_foto_perfil').on('change', function(evt) {
         var tgt = evt.target || window.event.srcElement,
             files = tgt.files;
 
         // FileReader support
         if (FileReader && files && files.length) {
             var fr = new FileReader();
-            fr.onload = function () {
+            fr.onload = function() {
                 destroyCropper();
                 $('#img_cropper_foto').attr('src', fr.result);
                 crearCropper();
@@ -129,9 +123,9 @@ $(document).ready(function () {
     cargarDatos();
 
 
-});//AQUI TERMINA EN DOCUMENT READY
+}); //AQUI TERMINA EN DOCUMENT READY
 var idNuevacarrera = 0;
-$("#slc-carrera").change(function () {
+$("#slc-carrera").change(function() {
     console.log($("#slc-carrera").val() + "este el valor");
     idNuevacarrera = $("#slc-carrera").val();
 });
@@ -153,13 +147,13 @@ function guardar_cambios() {
         url: "assets/ajax/perfil-peticiones.php",
         method: 'GET',
         data: parametros,
-        dataType: 'json',//data para saber que funcion en php usara.
-        success: function (respuesta) {
-            if (respuesta.codigo_resultado==1){
+        dataType: 'json', //data para saber que funcion en php usara.
+        success: function(respuesta) {
+            if (respuesta.codigo_resultado == 1) {
                 swal("Completo", respuesta.mensaje, "success");
+                $("#lbl_menu_nombres").html(respuesta.nombreActualizado);
                 cargarDatos();
-            }
-            else if (respuesta.codigo_resultado==0){
+            } else if (respuesta.codigo_resultado == 0) {
                 swal("Error", respuesta.mensaje, "error");
                 cargarDatos();
             }
@@ -174,8 +168,8 @@ function cargarDatos() {
         url: "assets/ajax/perfil-peticiones.php",
         method: 'GET',
         data: "CODIGO_FUNCION=1",
-        dataType: 'json',//data para saber que funcion en php usara.
-        success: function (respuesta) {
+        dataType: 'json', //data para saber que funcion en php usara.
+        success: function(respuesta) {
             console.log(respuesta);
             /* for (var i=0; i<respuesta.length ; i++){
            $("#slc-carrera").append(
@@ -333,8 +327,7 @@ function comprobar_antes_de_guardar() {
             confirmButtonText: "Modificar datos",
             closeOnConfirm: false
         });
-    }
-    else {
+    } else {
         event.preventDefault();
 
         swal({
@@ -347,7 +340,7 @@ function comprobar_antes_de_guardar() {
             cancelButtonText: "Cancelar",
             closeOnConfirm: false,
             closeOnCancel: false
-        }, function (isConfirm) {
+        }, function(isConfirm) {
             if (isConfirm) {
                 //swal("Completo", "Su información ha sido actualizada", "success");
                 guardar_cambios();
@@ -360,6 +353,7 @@ function comprobar_antes_de_guardar() {
 }
 
 var image = $('#img_cropper_foto');
+
 function crearCropper() {
     image.cropper({
         aspectRatio: 1 / 1,
@@ -387,21 +381,19 @@ function habilitar_deshabilitar_guardar_cancelar() {
     }
 }
 
-$('#btn_cancelar').click(function () {
+$('#btn_cancelar').click(function() {
     cargarDatos();
 });
 
-$('#btn_guardar_cambios').click(function () {
-    comprobar_antes_de_guardar();    
+$('#btn_guardar_cambios').click(function() {
+    comprobar_antes_de_guardar();
 });
 
-$('input').keyup(function () {
+$('input').keyup(function() {
     habilitar_deshabilitar_guardar_cancelar();
 });
 
 
-$('select').change(function () {
+$('select').change(function() {
     habilitar_deshabilitar_guardar_cancelar();
 });
-
-
