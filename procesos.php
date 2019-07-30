@@ -95,6 +95,7 @@
                                                     <th class="th_sections_table" data-field="h_inicial">Hora Inicial
                                                     </th>
                                                     <th class="th_sections_table" data-field="h_final">Hora Final</th>
+                                                    <th class="th_sections_table" data-field="lugar">Lugar</th>
                                                     <th class="th_sections_table" data-field="cupos">Cupos</th>
                                                     </th>
                                                 </tr>
@@ -113,6 +114,10 @@
                                                     <td>
                                                         <input data-id="123" type="text" class="section_timepicker"
                                                             placeholder="Hora final">
+                                                    </td>
+                                                    <td>
+                                                        <input data-id="123" type="text" class="section_place"
+                                                            placeholder="Lugar">
                                                     </td>
                                                     <td>
                                                         <input data-id="123" type="number" class="section_quota"
@@ -150,57 +155,180 @@
                                 </div>
                                 <div class="row">
                                     <!--CONTENIDO DE LA TARJETA-->
+                                    <div class="row">
+                                        <div class="col s12 m4">
+                                            <h5>Disponibilidad</h5>
+                                            <p class="instuctions">
+                                                Defina el período inicial y final en que el estudiante tendrá acceso
+                                                para visualizar los enlaces que redirigen a los test en línea.
+                                            </p>
+                                            <br>
+                                            <form class="">
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">date_range</i>
+                                                        <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                            placeholder="Seleccione el día">
+                                                        <label for="txt_fecha" class="active">Fecha inicial</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">date_range</i>
+                                                        <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                            placeholder="Seleccione el día">
+                                                        <label for="txt_fecha" class="active">Fecha final</label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col s12 m8 espacio_secciones">
+                                            <h5>Enlaces y clave</h5>
+                                            <p class="instuctions">
+                                                Ingrese las direcciones que serán mostradas a los estudiantes para
+                                                ingresar a los test en línea.
+                                            </p><br>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <div class="input-field col s12">
+                                                        <input id="txt_url_thorpe" type="text" class="validate"
+                                                            placeholder="">
+                                                        <label for="txt_url_thorpe">URL Test de intereses
+                                                            vocacionales</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="txt_url_holland" type="text" class="validate"
+                                                            placeholder="">
+                                                        <label for="txt_url_holland">URL Test de personalidad</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="txt_clave_acceso" type="text" class="validate"
+                                                            placeholder="">
+                                                        <label for="txt_clave_acceso">Clave de acceso.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <div class="card">
-                        <div class="card-content ev_linea_section">
-                            <div class="row ev_grupal_section">
-                                <div class="row">
-                                    <div class="col s3 m1 teal accent-4 phase_icon valign-wrapper">
-                                        <i class="material-icons white-text center" style="width: 100%;">forum</i>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card">
+                                <div class="card-content ev_linea_section">
+                                    <div class="row ev_grupal_section">
+                                        <div class="row">
+                                            <div class="col s3 m1 teal accent-4 phase_icon valign-wrapper">
+                                                <i class="material-icons white-text center"
+                                                    style="width: 100%;">forum</i>
+                                            </div>
+                                            <div class="col s9 m11">
+                                                <h4>Entrevista Pedagógica</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--CONTENIDO DE LA TARJETA-->
+                                            <div class="row">
+                                                <h5>Disponibilidad</h5>
+                                                <p class="instuctions">
+                                                    Defina el período inicial y final en el que se llevarán a cabo las
+                                                    entrevistas del proceso.
+                                                </p>
+                                                <div class="col s12 m4">
+                                                    <br>
+                                                    <form class="">
+                                                        <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="txt_fecha" type="text"
+                                                                    class="div_date_time_picker"
+                                                                    placeholder="Seleccione el día">
+                                                                <label for="txt_fecha" class="active">Fecha
+                                                                    inicial</label>
+                                                            </div>
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="txt_fecha" type="text"
+                                                                    class="div_date_time_picker"
+                                                                    placeholder="Seleccione el día">
+                                                                <label for="txt_fecha" class="active">Fecha
+                                                                    final</label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="col s9 m11">
-                                        <h4>Entrevista Pedagógica</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!--CONTENIDO DE LA TARJETA-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <div class="card">
-                        <div class="card-content ev_linea_section">
-                            <div class="row ev_grupal_section">
-                                <div class="row">
-                                    <div class="col s3 m1 red darken-1 phase_icon valign-wrapper">
-                                        <i class="material-icons white-text center" style="width: 100%;">event</i>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card">
+                                <div class="card-content ev_linea_section">
+                                    <div class="row ev_grupal_section">
+                                        <div class="row">
+                                            <div class="col s3 m1 red darken-1 phase_icon valign-wrapper">
+                                                <i class="material-icons white-text center"
+                                                    style="width: 100%;">event</i>
+                                            </div>
+                                            <div class="col s9 m11">
+                                                <h4>Devolución de Resultados</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--CONTENIDO DE LA TARJETA-->
+                                            <div class="row">
+                                                <h5>Disponibilidad</h5>
+                                                <p class="instuctions">
+                                                    Defina el período inicial y final en el que se llevará a cabo la
+                                                    devolución de resultados a cada estudiante.
+                                                </p>
+                                                <div class="col s12 m4">
+                                                    <br>
+                                                    <form class="">
+                                                        <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="txt_fecha" type="text"
+                                                                    class="div_date_time_picker"
+                                                                    placeholder="Seleccione el día">
+                                                                <label for="txt_fecha" class="active">Fecha
+                                                                    inicial</label>
+                                                            </div>
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="txt_fecha" type="text"
+                                                                    class="div_date_time_picker"
+                                                                    placeholder="Seleccione el día">
+                                                                <label for="txt_fecha" class="active">Fecha
+                                                                    final</label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
-                                    <div class="col s9 m11">
-                                        <h4>Devolución de Resultados</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!--CONTENIDO DE LA TARJETA-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                    <div class="row">
+                        <div class="col s12 m12 right-align" id="div_btn_guardar_cancelar">
+                            <!--hidden="true"-->
+                            <a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>
+                                &nbsp;&nbsp;&nbsp;
+                            <a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
+                        </div>
+                    </div>
 
 
         </main>

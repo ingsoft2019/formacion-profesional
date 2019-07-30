@@ -67,6 +67,9 @@ function render_section(id) {
                 <input data-id="${id}" type="text" class="section_timepicker" placeholder="Hora final">
             </td>
             <td>
+                <input data-id="123" type="text" class="section_place" placeholder="Lugar">
+            </td>
+            <td>
                 <input data-id="${id}" type="number" class="section_quota" placeholder="Cupos">
             </td>
             <td><i class="material-icons remove_button" data-id="${id}">remove_circle_outline</i>

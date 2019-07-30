@@ -12,9 +12,7 @@
             </section>
             <div class="header-title col s3">
 
-                <span class=""onclick="location.href='index.php'" >VOAE</span>
-
-                <span class=""><a href="index.php">VOAE</a></span>
+                <span class="" onclick="location.href='index.php'" >VOAE</span>
 
             </div>
 
