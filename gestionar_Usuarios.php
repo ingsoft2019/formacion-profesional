@@ -1,3 +1,21 @@
+<?php
+
+    require('./assets/clases/class_conexion.php');
+    $mysql = new Conexion();
+    $query=$mysql->ejecutarInstruccion("
+    SELECT a.idPersona as UserId, a.no_identidad as Identidad, concat(a.nombres,' ',a.apellidos) as Nombre, d.descripcion as TipoUsuario
+    FROM tbl_personas a 
+    left join tbl_estudiantes b
+    on a.idPersona=b.idEstudiante 
+    left join tbl_personas_has_tbl_tipousuario c 
+    on a.idPersona = c.tbl_personas_idPersona 
+    left join tbl_tipousuario d
+    on c.tbl_tipousuario_idtipousuario=d.idtipousuario order by Nombre
+        ");
+    $TiposUsuarios=$mysql->ejecutarInstruccion(" SELECT * FROM tbl_tipousuario");
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -72,20 +90,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="user_row" id="123">
-                                    <td>0801199788654</td>
-                                    <td>Alvin Carlos Mendoza Pérez</td>
-                                    <td class="hide-on-small-only">Orientador</td>
-                                    <td><i class="material-icons info_button" data-id="123">info</i></td>
-                                    <td><i class="material-icons remove_button" data-id="123">delete</i></td>
+                                <?php 
+                                    while($datos = mysqli_fetch_array($query))
+                                    {
+                                 ?>
+                                <tr class="user_row" id="<?php echo $datos['UserId']?>">
+                                    <td><?php echo $datos['Identidad']?></td>
+                                    <td><?php echo $datos['Nombre']?></td>
+                                    <td class="hide-on-small-only"><?php echo $datos['TipoUsuario']?></td>
+                                    <td><i class="material-icons info_button" data-id="<?php echo $datos['UserId']?>">info</i></td>
+                                    <td><i class="material-icons remove_button" data-id="<?php echo $datos['UserId']?>">delete</i></td>
                                 </tr>
-                                <tr class="user_row" id="124">
-                                    <td>0801199778964</td>
-                                    <td>Carla Elizabeth López Carranza</td>
-                                    <td class="hide-on-small-only">Estudiante</td>
-                                    <td><i class="material-icons info_button" data-id="124">info</i></td>
-                                    <td><i class="material-icons remove_button" data-id="124">delete</i></td>
-                                </tr>
+                               <?php
+                                }
+                               ?>
                             </tbody>
                         </table>
                     </div>
@@ -141,8 +159,14 @@
                                     <i class="material-icons col s2 m2 l2">work</i>
                                     <span class="col s10 m10 l10">
                                         <select multiple class="col s12 m5 slc_funcion_orientador">
-                                            <option value="1" selected>Entrevistador</option>
-                                            <option value="2" selected>Psicólogo</option>
+                                            <?php 
+                                                while($datos = mysqli_fetch_array($TiposUsuarios))
+                                                {
+                                            ?>
+                                           <option value="<?php echo $datos['idtipousuario']?>"><?php echo $datos['descripcion']?></option>
+                                            <?php
+                                                }
+                                            ?>
                                         </select>
                                     </span>
 

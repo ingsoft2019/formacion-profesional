@@ -1,0 +1,14 @@
+SELECT a.no_identidad,concat(a.nombres," ",a.apellidos) as nombre, d.descripcion 
+FROM tbl_personas a 
+left join tbl_estudiantes b
+on a.idPersona=b.idEstudiante 
+left join tbl_personas_has_tbl_tipousuario c 
+on a.idPersona = c.tbl_personas_idPersona 
+left join tbl_tipousuario d
+on c.tbl_tipousuario_idtipousuario=d.idtipousuario
+
+
+
+consulta  modal
+
+SELECT a.idPersona as ID , a.no_identidad as Identidad,a.nombres as Nombre,' ',a.apellidos as Apellidos,x.nombreCarrera as Carrera,a.correo as Correo,a.celular as Celular, d.descripcion as TipoUsuario,b.no_cuenta as Cuenta FROM tbl_personas a left join tbl_estudiantes b on a.idPersona=b.idEstudiante left join tbl_carreras x on b.idEstudiante=x.idCarrera left join tbl_personas_has_tbl_tipousuario c on a.idPersona = c.tbl_personas_idPersona left join tbl_tipousuario d on c.tbl_tipousuario_idtipousuario=d.idtipousuario ORDER BY `ID` ASC

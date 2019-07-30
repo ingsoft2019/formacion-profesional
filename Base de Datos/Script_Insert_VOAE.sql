@@ -143,13 +143,29 @@ INSERT INTO `tbl_estudiantes` ( `idEstudiante`,`no_cuenta`,`idCarrera`)VALUES
 INSERT INTO `tbl_tipousuario` (`idtipousuario`,`descripcion`)VALUES
 (1,'Administrador'),
 (2,'Entrevistador'),
-(3,'Psicologo');
+(3,'Psicologo'),
+(4,'Estudiante');
 
 -- -----------------------------------------------------
 -- Insertando transaccional tbl_personas_has_tbl_tipousuario`
 -- -----------------------------------------------------
 
 INSERT INTO `tbl_personas_has_tbl_tipousuario` (`tbl_personas_idPersona`,`tbl_tipousuario_idtipousuario`)VALUES
+(1,4),
+(2,4),
+(3,4),
+(4,4),
+(5,4),
+(6,4),
+(7,4),
+(8,4),
+(9,4),
+(10,4),
+(11,4),
+(12,4),
+(13,4),
+(14,4),
+(15,4),
 (16,1),
 (17,2),
 (18,2),
