@@ -1,13 +1,10 @@
+jQuery(document).ready(function($) {
 
-jQuery(document).ready(function ($) {
-
-
-
-    $("#btn_nueva_tarjeta").click(function () {
+    $("#btn_nueva_tarjeta").click(function() {
         renderTarjeta(crear_id());
     });
 
-    $(".mn-content").click(function (event) {
+    $(".mn-content").click(function(event) {
         if (event.target.className == "material-icons icon-button") {
             //console.log(event.target.id);
             removeTarjeta(event.target.id);
@@ -58,52 +55,47 @@ const renderTarjeta = (id) => {
     `;
     $("#contenedor_tarjetas").append(html);
 
-    
+
     const tarjeta = $(`.tarjeta_horario[id=${id}]`);
     tarjeta.hide();
     const date_pickers = tarjeta.find(".div_datepicker");
     const time_pickers = tarjeta.find(".div_timepicker");
 
-    date_pickers.flatpickr(
-        {
-            altFormat: "F j, Y",
-            dateFormat: "Y-m-d",
-            //inline: true,
-            mode: "multiple",
-            conjunction: ";",
-            "disable": [
-                function (date) {
-                    // return true to disable
-                    return (date.getDay() === 0 || date.getDay() === 6);
+    date_pickers.flatpickr({
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        //inline: true,
+        mode: "multiple",
+        conjunction: ";",
+        "disable": [
+            function(date) {
+                // return true to disable
+                return (date.getDay() === 0 || date.getDay() === 6);
 
-                }
-            ],
-            "locale": {
-                "firstDayOfWeek": 1 // start week on Monday
+            }
+        ],
+        "locale": {
+            "firstDayOfWeek": 1 // start week on Monday
+        },
+
+        enable: [{
+                from: "2019-07-01",
+                to: "2019-08-01"
             },
+            {
+                from: "2025-09-01",
+                to: "2025-12-01"
+            }
+        ]
+    });
 
-            enable: [
-                {
-                    from: "2019-07-01",
-                    to: "2019-08-01"
-                },
-                {
-                    from: "2025-09-01",
-                    to: "2025-12-01"
-                }
-            ]
-        }
-    );
-
-    time_pickers.flatpickr(
-        {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "G:i K",
-            minDate: "8:00",
-            maxDate: "16:00",
-        }
-    );
+    time_pickers.flatpickr({
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "G:i K",
+        minDate: "8:00",
+        maxDate: "16:00",
+    });
 
     tarjeta.show(500);
 };
@@ -112,7 +104,7 @@ const renderTarjeta = (id) => {
 //eliminar tarjeta
 const removeTarjeta = (id) => {
     const tarjeta = $(`.tarjeta_horario[id=${id}]`);
-    tarjeta.hide("slow", function(){ $(this).remove(); })
+    tarjeta.hide("slow", function() { $(this).remove(); })
 };
 
 function crear_id() {

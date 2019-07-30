@@ -179,15 +179,25 @@ $(document).ready(function() {
                     data: form_data,
                     success: function(data){
                         console.log(data)
-                        swal({   
-                            title: "¡Bien hecho!",   
-                            text: data,   
-                            type: "success",      
-                            confirmButtonText: "Ir al login", 
-                            closeOnConfirm: false 
-                        }, function(){  
-                            window.open("./log-in.php","_self")
-                        });   
+                        if(data.match(/Alguien/g)){
+                            swal({   
+                                title: "Datos incorrectos",   
+                                text: data,   
+                                type: "error",      
+                                confirmButtonText: "Modificar datos", 
+                                closeOnConfirm: false 
+                            })
+                        } else{
+                            swal({   
+                                title: "¡Bien hecho!",   
+                                text: data,   
+                                type: "success",      
+                                confirmButtonText: "Ir al login", 
+                                closeOnConfirm: false 
+                            }, function(){  
+                                window.open("./log-in.php","_self")
+                            });
+                        }   
                     }     
                 });	
             // });

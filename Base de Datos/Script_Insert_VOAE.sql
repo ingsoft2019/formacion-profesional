@@ -9,37 +9,37 @@ INSERT INTO `tbl_generos` (`idgenero`, `genero`) VALUES
 -- Insertando datos en la tabla Persona del registro 1 hasta el 15 son estudiante del 16 al 30 son Empleados
 -- -----------------------------------------------------------------------------------------------------------
 
-INSERT INTO `tbl_personas`  (`idPersona`,`idGenero`,`nombres`,`apellidos`,`correo`,`contrasena`,`celular`,`no_identidad`,`fotoPerfil`) VALUES
-(1,1,'Joseth Noemy','Perez Urbina','joset54@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','89909798','0801199208722','assets/images/profile-image-1.png'),
-(2,1,'Mayra Francisca','Ortega Antunez','mayra01@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95808982','0801199389851','assets/images/profile-image-1.png'),
-(3,1,'Ivis Marissela','Flores Lopez','ivisl@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95552797','0801199045987','assets/images/profile-image-1.png'),
-(4,1,'Joselin Paola','Corrales Rodriguez','joselintompson@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95521476','0801199209785','assets/images/profile-image-1.png'),
-(5,1,'Brenda Jasmin','Pacheco Sanchez','fresa12@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95522789','0801199357894','assets/images/profile-image-1.png'),
-(6,1,'Ana Olga','Lopez Orellana','ana108@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98987562','0801199408654','assets/images/profile-image-1.png'),
-(7,1,'Amparo Samantha','Padilla Sanchez','casa100@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','84752354','0801198956478','assets/images/profile-image-1.png'),
-(8,1,'Nadia Lisbeth','Rodriguez Alvarez','Nad89@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98997877','0801199108974','assets/images/profile-image-1.png'),
-(9,1,'Juana Pamela','Reyes Portillo','jayjay98@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95606162','0801199208922','assets/images/profile-image-1.png'),
-(10,2,'Oscar Andryu','Canales Canales','andy120@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98999899','0801199013533','assets/images/profile-image-2.png'),
-(11,2,'Juan Jose','Ortega Calderon','joh125@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','36358987','0801199589713','assets/images/profile-image-2.png'),
-(12,1,'Kelly Noemhy','Banegas Torrrez','jmarga78@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','33453389','0801188975862','assets/images/profile-image-1.png'),
-(13,1,'Andrea Nicol','Cairo Ponce','andrea198@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95785122','1519199223487','assets/images/profile-image-1.png'),
-(14,2,'Gelberth Elisandro','Banegas Mejia','gelberth1000@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95804898','0801199019877','assets/images/profile-image-2.png'),
-(15,2,'Bayron Astul','Torres Mejia','dolor1000@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95804971','0801199209721','assets/images/profile-image-2.png'),
-(16,1,'Hector Arnoldo','Perez Urbina','hectorArnol@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','89909774','0801188508722','assets/images/profile-image-1.png'),
-(17,1,'Everth Francisca','Ortega Antunez','FrancisHec@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95808971','0801188789851','assets/images/profile-image-1.png'),
-(18,1,'Maria Marissela','Flores Lopez','MariaFL@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95552790','0801188845987','assets/images/profile-image-1.png'),
-(19,1,'Lysi Paola','Corrales Rodriguez','Lysipa12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95521475','0801188509785','assets/images/profile-image-1.png'),
-(20,1,'Kevin David','Pacheco Sanchez','KevinDav@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95522780','0801188057894','assets/images/profile-image-1.png'),
-(21,1,'Carlos Joel','Lopez Orellana','CarlosOrellana@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98987559','080118828654','assets/images/profile-image-1.png'),
-(22,1,'Danelia Mariam','Padilla Sanchez','Daneliapadi@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','84752254','0801188756478','assets/images/profile-image-1.png'),
-(23,1,'Pamela Adrian','Rodriguez Alvarez','Pame12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98997866','0801188308974','assets/images/profile-image-1.png'),
-(24,1,'Juana Mellisa','Reyes Portillo','juana897@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95606100','0801187908922','assets/images/profile-image-1.png'),
-(25,2,'Oscar Andres','Canales Canales','Oscar58@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98009899','0801188013533','assets/images/profile-image-2.png'),
-(26,2,'Emilson Samuel','Ortega Calderon','Emilso12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','33358987','080188189713','assets/images/profile-image-2.png'),
-(27,1,'Kevin Amador','Banegas Torrrez','KevinBane@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','88453389','080188875862','assets/images/profile-image-1.png'),
-(28,1,'Jose Luis','Cairo Ponce','Jose_Luis@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95785112','1519199023487','assets/images/profile-image-1.png'),
-(29,2,'Mariano Joel','Banegas Mejia','JoeMariano@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95664898','0801187819877','assets/images/profile-image-2.png'),
-(30,2,'Jose Teruel','Torres Mejia','JoseTer@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95504971','0801187909721','assets/images/profile-image-2.png');
+INSERT INTO `tbl_personas`  (`idPersona`,`idGenero`,`nombres`,`apellidos`,`correo`,`contrasena`,`celular`,`no_identidad`,`fotoPerfil`,`estadocuenta`) VALUES
+(1,1,'Joseth Noemy','Perez Urbina','joset54@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','89909798','0801199208722','assets/images/profile-image-1.png',1),
+(2,1,'Mayra Francisca','Ortega Antunez','mayra01@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95808982','0801199389851','assets/images/profile-image-1.png',1),
+(3,1,'Ivis Marissela','Flores Lopez','ivisl@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95552797','0801199045987','assets/images/profile-image-1.png',1),
+(4,1,'Joselin Paola','Corrales Rodriguez','joselintompson@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95521476','0801199209785','assets/images/profile-image-1.png',1),
+(5,1,'Brenda Jasmin','Pacheco Sanchez','fresa12@yahoo.com','24596ace11e9e2e3d4bfebd74d24cac2','95522789','0801199357894','assets/images/profile-image-1.png',1),
+(6,1,'Ana Olga','Lopez Orellana','ana108@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98987562','0801199408654','assets/images/profile-image-1.png',1),
+(7,1,'Amparo Samantha','Padilla Sanchez','casa100@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','84752354','0801198956478','assets/images/profile-image-1.png',0),
+(8,1,'Nadia Lisbeth','Rodriguez Alvarez','Nad89@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98997877','0801199108974','assets/images/profile-image-1.png',0),
+(9,1,'Juana Pamela','Reyes Portillo','jayjay98@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95606162','0801199208922','assets/images/profile-image-1.png',0),
+(10,2,'Oscar Andryu','Canales Canales','andy120@hotmail.com','24596ace11e9e2e3d4bfebd74d24cac2','98999899','0801199013533','assets/images/profile-image-2.png',1),
+(11,2,'Juan Jose','Ortega Calderon','joh125@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','36358987','0801199589713','assets/images/profile-image-2.png',0),
+(12,1,'Kelly Noemhy','Banegas Torrrez','jmarga78@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','33453389','0801188975862','assets/images/profile-image-1.png',1),
+(13,1,'Andrea Nicol','Cairo Ponce','andrea198@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95785122','1519199223487','assets/images/profile-image-1.png',0),
+(14,2,'Gelberth Elisandro','Banegas Mejia','gelberth1000@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95804898','0801199019877','assets/images/profile-image-2.png',1),
+(15,2,'Bayron Astul','Torres Mejia','dolor1000@gmail.com','24596ace11e9e2e3d4bfebd74d24cac2','95804971','0801199209721','assets/images/profile-image-2.png',1),
+(16,1,'Hector Arnoldo','Perez Urbina','hectorArnol@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','89909774','0801188508722','assets/images/profile-image-1.png',1),
+(17,1,'Everth Francisca','Ortega Antunez','FrancisHec@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95808971','0801188789851','assets/images/profile-image-1.png',1),
+(18,1,'Maria Marissela','Flores Lopez','MariaFL@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95552790','0801188845987','assets/images/profile-image-1.png',1),
+(19,1,'Lysi Paola','Corrales Rodriguez','Lysipa12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95521475','0801188509785','assets/images/profile-image-1.png',1),
+(20,1,'Kevin David','Pacheco Sanchez','KevinDav@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95522780','0801188057894','assets/images/profile-image-1.png',1),
+(21,1,'Carlos Joel','Lopez Orellana','CarlosOrellana@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98987559','080118828654','assets/images/profile-image-1.png',1),
+(22,1,'Danelia Mariam','Padilla Sanchez','Daneliapadi@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','84752254','0801188756478','assets/images/profile-image-1.png',1),
+(23,1,'Pamela Adrian','Rodriguez Alvarez','Pame12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98997866','0801188308974','assets/images/profile-image-1.png',1),
+(24,1,'Juana Mellisa','Reyes Portillo','juana897@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95606100','0801187908922','assets/images/profile-image-1.png',1),
+(25,2,'Oscar Andres','Canales Canales','Oscar58@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','98009899','0801188013533','assets/images/profile-image-2.png',1),
+(26,2,'Emilson Samuel','Ortega Calderon','Emilso12@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','33358987','080188189713','assets/images/profile-image-2.png',1),
+(27,1,'Kevin Amador','Banegas Torrrez','KevinBane@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','88453389','080188875862','assets/images/profile-image-1.png',1),
+(28,1,'Jose Luis','Cairo Ponce','Jose_Luis@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95785112','1519199023487','assets/images/profile-image-1.png',1),
+(29,2,'Mariano Joel','Banegas Mejia','JoeMariano@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95664898','0801187819877','assets/images/profile-image-2.png',0),
+(30,2,'Jose Teruel','Torres Mejia','JoseTer@unah.hn','24596ace11e9e2e3d4bfebd74d24cac2','95504971','0801187909721','assets/images/profile-image-2.png',0);
 
 
 -- -----------------------------------------------------
@@ -137,19 +137,19 @@ INSERT INTO `tbl_estudiantes` ( `idEstudiante`,`no_cuenta`,`idCarrera`)VALUES
 
 
 -- -----------------------------------------------------
--- Insertando datos en la tabla Cargos
+-- Insertando la tabla tipo_usuarios
 -- -----------------------------------------------------
 
-INSERT INTO `tbl_cargos` (`idCargo`,`nombreCargo`)VALUES
+INSERT INTO `tbl_tipousuario` (`idtipousuario`,`descripcion`)VALUES
 (1,'Administrador'),
 (2,'Entrevistador'),
 (3,'Psicologo');
 
 -- -----------------------------------------------------
--- Insertando datos en tabla de empleados
+-- Insertando transaccional tbl_personas_has_tbl_tipousuario`
 -- -----------------------------------------------------
 
-INSERT INTO `tbl_empleados` (`idEmpleado`,`tbl_cargos_idCargo`)VALUES
+INSERT INTO `tbl_personas_has_tbl_tipousuario` (`tbl_personas_idPersona`,`tbl_tipousuario_idtipousuario`)VALUES
 (16,1),
 (17,2),
 (18,2),
@@ -167,199 +167,28 @@ INSERT INTO `tbl_empleados` (`idEmpleado`,`tbl_cargos_idCargo`)VALUES
 (30,3);
 
 -- -----------------------------------------------------
--- Insertando Datos en la tabla  estado de las etapas
+-- Insertando en la tabla de tbl_procesos
 -- -----------------------------------------------------
 
-INSERT INTO `tbl_estado_etapas` (`idEstado`,`estado`)VALUES
-(1,'Habilitado'),
-(2,'No Habilitado');
+INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainiciotestlinea`,`fechafinaltestlinea`,`urltestlinea1`,`urltestline2`,
+	`clavetest`,`fechainicioentrevista`,`fechafinentrevista`,`fechainiciodevuelveresultado` , `fechafindevuelveresultado`)VALUES
+(1,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
+(2,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
+(3,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
+(4,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
+(5,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29');
 
-
-
--- -----------------------------------------------------
--- Insertando Datos en  la tabla etapas
--- -----------------------------------------------------
-INSERT INTO `tbl_etapas` (`idEtapa`,`NombreEtapa`,`Descripción`)VALUES
-(1,'Evaluacion Grupal','Aplicacion de Examen en Fisico'),
-(2,'Test en Linea','Evaluacion de la personalidad e interes vocacional'),
-(3,'Entrevista Pedagogica','Entrevista especializada en trayectoria academica'),
-(4,'Devolucion Individual de Resultados','Conclucion y recomendacion de la parte psicologica');
-
--- -----------------------------------------------------
--- Insertando Datos en la  tabla etapas_programadas
--- -----------------------------------------------------
-
-INSERT INTO `tbl_etapas_programadas`(`idEtapaProgramada`,`idEtapa`,`periodo`,`idEstado` ,`habilitacionAutomatica`,`fechaInicio`, `fechaFin`)VALUES
-(1,1,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(2,1,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(3,1,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(4,1,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(5,1,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(6,2,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(7,2,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(8,2,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(9,2,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(10,3,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(11,3,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(12,3,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(13,4,'2019-02',1,'0','2019-06-21','2019-06-29'),
-(14,4,'2019-02',1,'1','2019-06-21','2019-06-29'),
-(15,4,'2019-02',1,'1','2019-06-21','2019-06-29');
-
--- -----------------------------------------------------
--- Insertando datos en  la tabla  jornadas grupal
--- -----------------------------------------------------
-
-INSERT INTO `tbl_jornadas_ev_grupal`(`idJornada`,`idEtapaProgramada`,`cantidadCupos`,`horaInicial`,`horaFinal`,`lugarAplicacion`,`fechaAplicacion`)VALUES
-(1,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(2,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(3,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(4,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(5,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(6,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(7,1,'25','09:00','13:00','Aula 1 Voae','2019-06-23'),
-(8,2,'25','10:00','12:00','En Linea','2019-06-23'),
-(9,2,'25','10:00','12:00','En Linea','2019-06-23'),
-(10,3,'25','09:00','10:00','Oficina Principal del Voae','2019-06-23'),
-(11,3,'25','09:00','10:00','Oficina Principal del Voae','2019-06-23'),
-(12,3,'25','09:00','10:00','Oficina Principal del Voae','2019-06-23'),
-(13,4,'25','09:00','09:30','Oficina #2 Voae','2019-06-23'),
-(14,4,'25','09:00','09:30','Oficina #3 Voae','2019-06-23'),
-(15,4,'25','09:00','09:30','Oficina #4 Voae','2019-06-23');
-
-
--- -----------------------------------------------------
--- Insertando datos en la tabla Progresos
--- -----------------------------------------------------
-
-INSERT INTO `tbl_Progresos` (`idEstudiante`,`idEtapaProgramada`,`estadoCompletacion`,`notas`)VALUES
-(1,1,'1','90% Aprueba '),
-(2,1,'1','80% Aprueba '),
-(3,1,'1','95% Aprueba '),
-(4,1,'1','89% Aprueba '),
-(5,1,'1','88% Aprueba '),
-(6,1,'1','77% Aprueba '),
-(7,1,'1','88% Aprueba '),
-(8,1,'0','No Realizado'),
-(9,1,'0','No Realizado'),
-(10,2,'1','90% Aprueba '),
-(11,2,'1','95% Aprueba '),
-(12,2,'1','80% Aprueba '),
-(13,3,'0','No se Presento '),
-(14,3,'0','No se Presento '),
-(15,1,'4','90% Total de la Nota ');
 
 
 
 -- -----------------------------------------------------
--- Insertando datos en la tabla resultados
+-- Insertando en la  tabla `tbl_secciones`
 -- -----------------------------------------------------
-INSERT INTO `tbl_resultados` (`idResultado`,`idEstudiante`,`idEmpleado`,`idEtapaProgramada`,`archivoResultados`)VALUES
-(1,1,17,1,'Procesando'),
-(2,2,17,1,'Procesando'),
-(3,3,17,1,'Procesando'),
-(4,4,18,1,'Procesando'),
-(5,5,18,1,'Procesando'),
-(6,6,18,2,'Procesando'),
-(7,7,18,2,'Procesando'),
-(8,8,18,2,'Procesando'),
-(9,9,19,2,'Procesando'),
-(10,10,19,3,'Procesando'),
-(11,11,19,3,'Procesando'),
-(12,12,20,1,'Procesando'),
-(13,13,20,1,'Procesando'),
-(14,14,21,1,'Procesando'),
-(15,15,22,1,'Procesando');
-
--- -----------------------------------------------------
--- Insertando datos en la tabla JornadaxEstudiante
--- -----------------------------------------------------
-
-INSERT INTO `tbl_jornadasl_x_estudiantes` (`idJornada`,`idEstudiante`)VALUES
-(1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5),
-(6,6),
-(7,7),
-(8,8),
-(9,9),
-(10,10),
-(11,11),
-(12,12),
-(13,13),
-(14,14),
-(15,15);
-
--- -----------------------------------------------------
--- Insertando datos en la tabla HorariosxEmpleado
--- -----------------------------------------------------
-INSERT INTO`tbl_horarios_x_empleado` (`idHorarioEmpleado`,`idEmpleado`,`idEtapaProgramada`,`Fecha`,`horaInicial`,`horaFinal`)VALUES
-(1,17,1,'2019-06-23','08:00','16:00'),
-(2,17,2,'2019-06-23','08:00','16:00'),
-(3,18,3,'2019-06-23','08:00','16:00'),
-(4,18,4,'2019-06-23','08:00','16:00'),
-(5,19,5,'2019-06-23','08:00','16:00'),
-(6,20,6,'2019-06-23','08:00','16:00'),
-(7,20,7,'2019-06-23','08:00','16:00'),
-(8,20,8,'2019-06-25','08:00','16:00'),
-(9,20,9,'2019-06-25','08:00','16:00'),
-(10,21,10,'2019-06-24','08:00','16:00'),
-(11,22,11,'2019-06-24','08:00','16:00'),
-(12,23,12,'2019-06-24','08:00','16:00'),
-(13,25,13,'2019-06-27','08:00','16:00'),
-(14,26,14,'2019-06-27','08:00','16:00'),
-(15,27,15,'2019-06-27','08:00','16:00');
+INSERT INTO `tbl_secciones` (`idsecciones`,`fechahorainicial`,`fechahorafinal`,`cupos`,`lugar`,`idprocesos`)VALUES
+(1,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 209',1),
+(2,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 208',2),
+(3,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 210',3),
+(4,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 207',4),
+(5,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 205',5);
 
 
-
--- -----------------------------------------------------
--- Insertando datos en la  tabla Estado de citas
--- -----------------------------------------------------
-INSERT INTO`tbl_estado_citas` (`idEstado`,`Descripcion`)VALUES
-(1,'Pendiente'),
-(2,'Cumplida'),
-(3,'Suspendida'),
-(4,'Cancelada');
-
-
--- -----------------------------------------------------
--- Insertando datos en la  tabla de citas
--- -----------------------------------------------------
-INSERT INTO `tbl_citas` (`idCita`,`idEmpleado`,`idEstudiante`,`idEtapaProgramada`,`idEstado`)VALUES
-(1,17,1,1,2),
-(2,18,2,1,2),
-(3,19,3,1,2),
-(4,20,4,1,2),
-(5,21,5,6,2),
-(6,22,6,6,2),
-(7,23,7,7,2),
-(8,24,8,8,2),
-(9,25,9,8,2),
-(10,26,10,9,4),
-(11,26,11,12,4),
-(12,27,12,10,3),
-(13,28,13,10,2),
-(14,29,14,11,1),
-(15,30,15,13,2);
-
--- -----------------------------------------------------
--- Insertando datos en la  Tabla de Bloqueos en estado de Bloqueo 0 es Bloqueado y 1 es Habilitado
--- -----------------------------------------------------
-INSERT INTO`tbl_bloqueos` (`idPersona`,`estadoBloqueo`,`descripcion`)VALUES
-(1,'0','Usuario Bloqueado Asistir a Oficina del Voae'),
-(2,'1','Se le enviara un Correo'),
-(3,'1','Se le enviara un Correo'),
-(4,'1','Se le enviara un Correo'),
-(5,'1','Se le enviara un Correo'),
-(6,'1','Se le enviara un Correo'),
-(7,'1','Se le enviara un Correo'),
-(8,'1','Se le enviara un Correo'),
-(9,'1','Se le enviara un Correo'),
-(10,'1','Se le enviara un Correo'),
-(11,'1','Se le enviara un Correo'),
-(12,'1','Se le enviara un Correo'),
-(13,'1','Se le enviara un Correo'),
-(14,'1','Se le enviara un Correo'),
-(15,'1','Se le enviara un Correo');

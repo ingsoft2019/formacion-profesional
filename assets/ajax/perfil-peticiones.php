@@ -119,6 +119,8 @@ switch ($_GET["CODIGO_FUNCION"]) {
 						);
 						
 			$_SESSION["contrasena"] = $nueva_contrasena;
+			$_SESSION["nombre"] = $_GET["nombres"];
+			$resultado["nombreActualizado"]=$_GET["nombres"];
 
 			$pruebaIdCarrera = $_GET["idcarrera"];
 			$sql2="";
