@@ -68,13 +68,13 @@
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <i class="material-icons prefix">date_range</i>
-                                                    <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                    <input name="txt_inicio_eval" id="txt_inicio_eval" type="text" class="div_date_time_picker"
                                                         placeholder="Seleccione el día">
                                                     <label for="txt_fecha" class="active">Fecha inicial</label>
                                                 </div>
                                                 <div class="input-field col s12">
                                                     <i class="material-icons prefix">date_range</i>
-                                                    <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                    <input name="txt_fin_eval" type="text" class="div_date_time_picker"
                                                         placeholder="Seleccione el día">
                                                     <label for="txt_fecha" class="active">Fecha final</label>
                                                 </div>
@@ -167,13 +167,13 @@
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix">date_range</i>
-                                                        <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                        <input name="txt_inicio_online" type="text" class="div_date_time_picker"
                                                             placeholder="Seleccione el día">
                                                         <label for="txt_fecha" class="active">Fecha inicial</label>
                                                     </div>
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix">date_range</i>
-                                                        <input id="txt_fecha" type="text" class="div_date_time_picker"
+                                                        <input name="txt_fin_online" type="text" class="div_date_time_picker"
                                                             placeholder="Seleccione el día">
                                                         <label for="txt_fecha" class="active">Fecha final</label>
                                                     </div>
@@ -241,7 +241,7 @@
                                                         <div class="row">
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">date_range</i>
-                                                                <input id="txt_fecha" type="text"
+                                                                <input name="txt_inicio_ped" type="text"
                                                                     class="div_date_time_picker"
                                                                     placeholder="Seleccione el día">
                                                                 <label for="txt_fecha" class="active">Fecha
@@ -249,7 +249,7 @@
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">date_range</i>
-                                                                <input id="txt_fecha" type="text"
+                                                                <input name="txt_fin_ped" type="text"
                                                                     class="div_date_time_picker"
                                                                     placeholder="Seleccione el día">
                                                                 <label for="txt_fecha" class="active">Fecha
@@ -295,7 +295,7 @@
                                                         <div class="row">
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">date_range</i>
-                                                                <input id="txt_fecha" type="text"
+                                                                <input name="txt_inicio_dev" type="text"
                                                                     class="div_date_time_picker"
                                                                     placeholder="Seleccione el día">
                                                                 <label for="txt_fecha" class="active">Fecha
@@ -303,7 +303,7 @@
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">date_range</i>
-                                                                <input id="txt_fecha" type="text"
+                                                                <input name="txt_fin_dev" type="text"
                                                                     class="div_date_time_picker"
                                                                     placeholder="Seleccione el día">
                                                                 <label for="txt_fecha" class="active">Fecha

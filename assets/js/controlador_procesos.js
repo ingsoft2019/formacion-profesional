@@ -3,7 +3,7 @@ $(document).ready(function() {
     const date_pickers = $(".div_date_time_picker");
     // const time_pickers = $(".div_timepicker");
 
-    date_pickers.flatpickr({
+    dates = date_pickers.flatpickr({
         altFormat: "F j, Y",
         dateFormat: "D j, M Y h:i K",
         conjunction: ";",
@@ -50,7 +50,40 @@ $(document).ready(function() {
         }
     });
 
+    $('#btn_guardar_cambios').click(function() {
+        let camposVacios = false;
 
+        // for (let d of dates){
+        //     if(d.selectedDates.length === 0){
+        //         camposVacios = true;
+        //         swal({   
+        //             title: 'Campos vacíos',   
+        //             text: 'Llene todos los campos obligatorios.',
+        //             type: 'error',      
+        //             confirmButtonText: "Modificar datos",
+        //             closeOnConfirm: false 
+        //         })
+        //     }
+        // }
+        if(camposVacios) return;
+        
+        if(dates[0].selectedDates[0].getTime() >= dates[1].selectedDates[0].getTime()){
+            mostrarError('Fechas incorrectas','Introduzca un rango de fechas válido para la etapa de Evaluación Grupal.')
+            return;
+        }
+
+        if(dates[2].selectedDates[0].getTime() > dates[1].selectedDates[0].getTime()){
+            if(dates[2].selectedDates[0].getTime() >= dates[3].selectedDates[0].getTime()){
+                mostrarError('Fechas incorrectas','Introduzca un rango de fechas válido para la etapa de Test en Línea.')
+                return;
+            }
+        } else{
+            mostrarError('Fechas incorrectas', 'La etapa de Test en Línea debe comenzar después de la etapa de Evaluación Grupal.')
+        }
+        console.log('pasa');
+        
+    })
+    
 });
 
 function render_section(id) {
@@ -113,4 +146,14 @@ function crear_id() {
 function remove_section(id) {
     const section = $(`.section_row[id=${id}]`);
     section.hide("slow", function() { $(this).remove(); })
+}
+
+function mostrarError(titulo, mensaje){
+    swal({
+        title: titulo,
+        text: mensaje,
+        type: 'error',
+        confirmButtonText: "Modificar datos",
+        closeOnConfirm: false
+    })
 }
