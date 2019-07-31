@@ -177,10 +177,10 @@
                                 <div class="row">
                                     <a class="btn-flat amber-text  darken-3 cancelar_cambios" id="btn_cancelar_cambios"
                                         data-id="124">Cancelar</a>
-                                    <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios"
+                                    <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick="" 
                                         data-id="124">Guardar</a>
                                 </div>
-                                <div class="row">
+                                <div class="row"> 
                                     <a class="btn-flat red-text eliminar_usuario" id="btn_eliminarUsuario"
                                         data-id="124">Eliminar</a>
                                 </div>

@@ -4,8 +4,9 @@ $(document).ready(function() {
             removeUser(event.target.attributes[1].nodeValue);
         }
         if (event.target.className == "material-icons info_button") {
-            //console.log(event.target.id);
-            show_modal_info(event.target.attributes[1].nodeValue);
+
+            console.log(event.target.id);
+           // show_modal_info(event.target.attributes[1].nodeValue);
         }
         //console.log(event);
     });
@@ -63,4 +64,16 @@ function cancelar_actualizar_funcion(id) {
 
 function actualizar_funcion_orientador(id) {
     swal("Completo", "Datos actualizados", "success");
+}
+
+function get_perfil(id){
+$.ajax({
+        url:'./assets/ajax/gestion_perfiles.php',
+        method:'POST',
+        data: "id="+id,
+        success: function(data){
+            console.log(data)
+
+        }     
+    });
 }
