@@ -5,13 +5,13 @@ $(document).ready(function() {
 
     dates = date_pickers.flatpickr({
         altFormat: "F j, Y",
-        dateFormat: "D j, M Y h:i K",
+        dateFormat: "D j, M Y",
         conjunction: ";",
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
         },
         minDate: "today",
-        enableTime: true
+        // enableTime: true
     });
 
     $(".section_date_picker").flatpickr({
@@ -50,21 +50,32 @@ $(document).ready(function() {
         }
     });
 
+    $('#txt_url_thorpe').on('input', function() {
+        //TODO
+        var input=$(this);
+        console.log('on');
+        
+        var val = input.val();
+        var valid = val.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g)
+        if(valid){input.removeClass("invalid").addClass("valid");}
+        else{input.removeClass("valid").addClass("invalid");}
+    });
+
     $('#btn_guardar_cambios').click(function() {
         let camposVacios = false;
 
-        // for (let d of dates){
-        //     if(d.selectedDates.length === 0){
-        //         camposVacios = true;
-        //         swal({   
-        //             title: 'Campos vacíos',   
-        //             text: 'Llene todos los campos obligatorios.',
-        //             type: 'error',      
-        //             confirmButtonText: "Modificar datos",
-        //             closeOnConfirm: false 
-        //         })
-        //     }
-        // }
+        for (let d of dates){
+            if(d.selectedDates.length === 0){
+                camposVacios = true;
+                swal({   
+                    title: 'Campos vacíos',   
+                    text: 'Llene todos los campos obligatorios.',
+                    type: 'error',      
+                    confirmButtonText: "Modificar datos",
+                    closeOnConfirm: false 
+                })
+            }
+        }
         if(camposVacios) return;
         
         if(dates[0].selectedDates[0].getTime() >= dates[1].selectedDates[0].getTime()){
@@ -79,7 +90,32 @@ $(document).ready(function() {
             }
         } else{
             mostrarError('Fechas incorrectas', 'La etapa de Test en Línea debe comenzar después de la etapa de Evaluación Grupal.')
+            return;
         }
+
+        if(dates[4].selectedDates[0].getTime() > dates[3].selectedDates[0].getTime()){
+            if(dates[4].selectedDates[0].getTime() >= dates[5].selectedDates[0].getTime()){
+                mostrarError('Fechas incorrectas','Introduzca un rango de fechas válido para la etapa de Entrevista Pedagógica.')
+                return;
+            }
+        } else{
+            mostrarError('Fechas incorrectas', 'La etapa de Entrevista Pedagógica debe comenzar después de la etapa de Test en Línea.')
+            return;
+        }
+
+        if(dates[6].selectedDates[0].getTime() > dates[5].selectedDates[0].getTime()){
+            if(dates[6].selectedDates[0].getTime() >= dates[7].selectedDates[0].getTime()){
+                mostrarError('Fechas incorrectas','Introduzca un rango de fechas válido para la etapa de Devolución de Resultados.')
+                return;
+            }
+        } else{
+            mostrarError('Fechas incorrectas', 'La etapa de Devolución de Resultados debe comenzar después de la etapa de Evalución Pedagógica.')
+            return;
+        }
+        
+
+
+        //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
         console.log('pasa');
         
     })

@@ -1,4 +1,9 @@
-
+<?php 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: log-in.php?redirigido=1");
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="es">
