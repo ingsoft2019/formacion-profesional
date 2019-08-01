@@ -1,9 +1,9 @@
 <?php 
-    session_start();
+  /*  session_start();
     if (isset($_SESSION["idPersona"])){
         header("Location: home.php");
-    }
-?>
+    }*/
+?> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -45,9 +45,9 @@
                               <div class="card white darken-1">
                                   <div class="card-content ">
                                   <?php 
-                                        if (isset($_GET["redirigido"])){
+                                        /*if (isset($_GET["redirigido"])){
                                             echo '<span class="red-text text-darken-2">Debe acceder primero al sistema.</span><br>';
-                                        }
+                                        }*/
                                     ?>
                                       <span class="card-title">Iniciar sesión</span>
                                        <div class="row">
