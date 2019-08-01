@@ -5,7 +5,7 @@ var celular = "";
 var correo = "";
 var cuenta = "";
 var carrera = "";
-var foto = "";
+var foto = ""; ///????????????????????????
 
 $(document).ready(function() {
 
@@ -200,7 +200,7 @@ function cargarDatos() {
             cuenta = respuesta[0].no_cuenta;
             carrera = respuesta[0].idCarrera;
             foto = respuesta[0].fotoPerfil;
-            habilitar_deshabilitar_guardar_cancelar();
+            habilitar_deshabilitar_guardar_cancelar();///?????????????????
             $('#div-cambiar-contrasena').hide(1000);
         }
     });
@@ -233,7 +233,7 @@ function existenCambios() {
     }
 }
 
-function comprobar_antes_de_guardar() {
+function comprobar_antes_de_guardar() {///??????????????????????
     var form_data = $("#frm_perfil").serializeArray();
     var error_free = true;
     var mensaje = '';
@@ -344,6 +344,7 @@ function comprobar_antes_de_guardar() {
             if (isConfirm) {
                 //swal("Completo", "Su información ha sido actualizada", "success");
                 guardar_cambios();
+                cargarDatos();
             } else {
                 swal("Cancelado", "Su información no fue actualizada", "error");
                 cargarDatos();
