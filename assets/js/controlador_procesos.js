@@ -266,3 +266,39 @@ var horasMapeadas = {
     3: 15,
     4: 16
 }
+
+function get_datos_procesos(){
+    /*___________datos de evaluacion grupal______________________*/
+    var ev_grupal = "id_ev_grup=" + $("#id_ev_grup").val()+ "&" +
+                    "fecha_ev_grup=" + $("#fecha_ev_grup").val()+ "&" +
+                    "hora_inicial_ev_grup=" + $("#hora_inicial_ev_grup").val()+ "&" +
+                    "hora_final_ev_grup=" + $("#hora_final_ev_grup").val()+ "&" +
+                    "lugar_ev_grup=" + $("#lugar_ev_grup").val()+ "&" +
+                    "cupos_ev_grup=" + $("#cupos_ev_grup").val();
+    /*___________datos de test en linea______________________*/
+    var test = "fecha_inicio_test=" + $("#fecha_inicio_test").val()+ "&" +
+               "fecha_fin_test=" + $("#fecha_fin_test").val()+ "&" +
+               "url_test_vocacional=" + $("#txt_url_thorpe").val()+ "&" +
+               "url_test_personalidad=" + $("#txt_url_holland").val()+ "&" +
+               "clave_acceso=" + $("#txt_clave_acceso").val();
+    /*___________datos de test en linea______________________*/
+    var entrev = "fecha_inicio_entrev=" + $("#fecha_inicio_entrev").val()+ "&" +
+                 "fecha_fin_entrev=" + $("#fecha_fin_entrev").val();
+    /*___________datos de test en linea______________________*/
+    var devoluc = "fecha_inicio_devoluc=" + $("#fecha_inicio_devoluc").val()+ "&" +
+                 "fecha_fin_devoluc=" + $("#fecha_fin_devoluc").val();
+
+    return ev_grupal+test+entrev+devoluc;
+}
+
+$("btn_guardar_cambios").click(function(){
+        var parametros = get_datos_procesos();
+        $.ajax({
+        url: "assets/ajax/transacciones_procesos.php",
+        method: 'GET',
+        data: parametros,
+        dataType: 'json', //data para saber que funcion en php usara.
+        success: function(respuesta) {
+        }
+    });
+});
