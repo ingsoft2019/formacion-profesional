@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    render_section(crear_id());
+
     const date_pickers = $(".div_date_time_picker");
     // const time_pickers = $(".div_timepicker");
 
@@ -51,17 +53,61 @@ $(document).ready(function() {
     });
 
     $('#txt_url_thorpe').on('input', function() {
-        //TODO
         var input=$(this);
-        console.log('on');
+        console.log(input.val());
         
         var val = input.val();
-        var valid = val.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g)
-        if(valid){input.removeClass("invalid").addClass("valid");}
-        else{input.removeClass("valid").addClass("invalid");}
+        var valid = val.match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
+        if(valid){input.removeClass("invalid").addClass("valid"); console.log('valid')}
+        else{input.removeClass("valid").addClass("invalid"); console.log('invalid')}
+    });
+
+    $('#txt_url_holland').on('input', function() {
+        var input=$(this);
+        console.log(input.val());
+        
+        var val = input.val();
+        var valid = val.match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
+        if(valid){input.removeClass("invalid").addClass("valid"); console.log('valid')}
+        else{input.removeClass("valid").addClass("invalid"); console.log('invalid')}
     });
 
     $('#btn_guardar_cambios').click(function() {
+
+        $('.section_row').each(function(i) {
+            let inicio;
+            let final;
+            let id;
+            $(this).children().each(function(j) {
+                // console.log(j)
+                if (j === 1) return true;
+                if (j === 0) {
+                    id = this.innerHTML;
+                    return true;
+                }
+                //TODO validar horas vacías
+                if (j === 2){
+                    $(this).children().each(function(k) {
+                        inicio = parseInt($(this).val().split(':')[0]);
+                        inicio = parseInt(horasMapeadas[inicio] + $(this).val().split(':')[1].split(' ')[0])
+                    })
+                    return true;
+                }
+                if (j === 3){
+                    $(this).children().each(function(k) {
+                        final = parseInt($(this).val().split(':')[0]);
+                        final = parseInt(horasMapeadas[final] + $(this).val().split(':')[1].split(' ')[0])
+                    })
+                    return true;
+                }
+                // console.log(final, inicio)
+                if((final - inicio) !== 100){
+                    mostrarError('Horas de secciones erróneas', 'Corregir sección: ' + id);
+                    return false;
+                }
+            })
+        })
+
         let camposVacios = false;
 
         for (let d of dates){
@@ -112,7 +158,19 @@ $(document).ready(function() {
             mostrarError('Fechas incorrectas', 'La etapa de Devolución de Resultados debe comenzar después de la etapa de Evalución Pedagógica.')
             return;
         }
+
+        var valid_thorpe = $('#txt_url_thorpe').val().match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
+        if (!valid_thorpe) {
+            mostrarError('URL incorrecta', 'Introduzca una URL válida para el primer test.');
+            return;
+        }
         
+        var valid_holland = $('#txt_url_holland').val().match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
+        if (!valid_holland) {
+            mostrarError('URL incorrecta', 'Introduzca una URL válida para el segundo test.');
+            return;
+        }
+
 
 
         //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
@@ -121,6 +179,8 @@ $(document).ready(function() {
     })
     
 });
+
+var horasSecciones = [];
 
 function render_section(id) {
     const html = `
@@ -160,15 +220,16 @@ function render_section(id) {
         },
         minDate: "today"
     });
-
-    time_pickers.flatpickr({
+    
+    let a = time_pickers.flatpickr({
         enableTime: true,
         noCalendar: true,
         dateFormat: "G:i K",
         minDate: "8:00",
         maxDate: "16:00",
     });
-
+    horasSecciones.push(a);
+    
     section.show(500);
 }
 
@@ -192,4 +253,16 @@ function mostrarError(titulo, mensaje){
         confirmButtonText: "Modificar datos",
         closeOnConfirm: false
     })
+}
+
+var horasMapeadas = {
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
+    12: 12,
+    1: 13,
+    2: 14,
+    3: 15,
+    4: 16
 }

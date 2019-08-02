@@ -108,7 +108,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody_sections_list">
-                                                <tr class="section_row" id="123">
+                                                <!-- <tr class="section_row" id="123">
                                                     <td>1234</td>
                                                     <td>
                                                         <input data-id="123" type="text" class="section_date_picker"
@@ -133,7 +133,7 @@
                                                     <td><i class="material-icons remove_button"
                                                             data-id="123">remove_circle_outline</i>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                         <br>
@@ -196,18 +196,18 @@
                                             <div class="row">
                                                 <div class="col s12">
                                                     <div class="input-field col s12">
-                                                        <input id="txt_url_thorpe" type="text" class="validate"
+                                                        <input id="txt_url_thorpe" type="text" class=""
                                                             placeholder="">
                                                         <label for="txt_url_thorpe">URL Test de intereses
                                                             vocacionales</label>
                                                     </div>
                                                     <div class="input-field col s12">
-                                                        <input id="txt_url_holland" type="text" class="validate"
+                                                        <input id="txt_url_holland" type="text" class=""
                                                             placeholder="">
                                                         <label for="txt_url_holland">URL Test de personalidad</label>
                                                     </div>
                                                     <div class="input-field col s12">
-                                                        <input id="txt_clave_acceso" type="text" class="validate"
+                                                        <input id="txt_clave_acceso" type="text" class=""
                                                             placeholder="">
                                                         <label for="txt_clave_acceso">Clave de acceso.</label>
                                                     </div>
