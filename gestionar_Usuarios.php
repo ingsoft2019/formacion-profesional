@@ -3,16 +3,19 @@
     require('./assets/clases/class_conexion.php');
     $mysql = new Conexion();
     $query=$mysql->ejecutarInstruccion("
-    SELECT a.idPersona as UserId, a.no_identidad as Identidad, concat(a.nombres,' ',a.apellidos) as Nombre, d.descripcion as TipoUsuario
+    SELECT a.idPersona as UserId, a.no_identidad as Identidad, concat(a.nombres,' ',a.apellidos) as Nombre, GROUP_CONCAT(d.descripcion) AS TiposUsuario
     FROM tbl_personas a 
     left join tbl_estudiantes b
     on a.idPersona=b.idEstudiante 
     left join tbl_personas_has_tbl_tipousuario c 
     on a.idPersona = c.tbl_personas_idPersona 
     left join tbl_tipousuario d
-    on c.tbl_tipousuario_idtipousuario=d.idtipousuario order by Nombre
+    on c.tbl_tipousuario_idtipousuario=d.idtipousuario
+    WHERE d.idtipousuario <> 1
+    GROUP BY a.idPersona
+    ORDER BY a.nombres
         ");
-    $TiposUsuarios=$mysql->ejecutarInstruccion(" SELECT * FROM tbl_tipousuario");
+    $TiposUsuarios=$mysql->ejecutarInstruccion(" SELECT * FROM tbl_tipousuario  WHERE idtipousuario NOT IN (1,4)");
 
 
 ?>
@@ -97,7 +100,7 @@
                                 <tr class="user_row" id="<?php echo $datos['UserId']?>">
                                     <td><?php echo $datos['Identidad']?></td>
                                     <td><?php echo $datos['Nombre']?></td>
-                                    <td class="hide-on-small-only"><?php echo $datos['TipoUsuario']?></td>
+                                    <td class="hide-on-small-only"><?php echo $datos['TiposUsuario']?></td>
                                     <td><i class="material-icons info_button" data-id="<?php echo $datos['UserId']?>">info</i></td>
                                     <td><i class="material-icons remove_button" data-id="<?php echo $datos['UserId']?>">delete</i></td>
                                 </tr>
@@ -127,43 +130,42 @@
                                     alt="">
                             </div>
                             <div class="card-title">
-                                <h5 class="black-text" style="font-weight:300;margin-bottom:30px;">Diego Juan <br> Perez
-                                    Chanfaina</h5>
+                                <h5 class="black-text NombreC" style="font-weight:300;margin-bottom:30px;"></h5>
                             </div>
                             <div class="card-content">
-                                <div class="row info_list valign-wrapper">
+                            <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">format_list_numbered</i>
-                                    <span class="col s10 m10 l10">20151034449</span>
+                                    <span class="col s10 m10 l10 Cuenta"></span>
                                 </div>
                                 <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">fingerprint</i>
-                                    <span class="col s10 m10 l10">0801199804666</span>
+                                    <span class="col s10 m10 l10 Identidad"></span>
                                 </div>
                                 <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">import_contacts</i>
-                                    <span class="col s10 m10 l10">Ingeniería en Sistemas</span>
+                                    <span class="col s10 m10 l10 Carrera"></span>
                                 </div>
                                 <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">email</i>
-                                    <span class="col s10 m10 l10">juanito@unah.hn</span>
+                                    <span class="col s10 m10 l10 Correo"></span>
                                 </div>
                                 <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">local_phone</i>
-                                    <span class="col s10 m10 l10">32549875</span>
+                                    <span class="col s10 m10 l10 Celular"></span>
                                 </div>
-                                <div class="row info_list valign-wrapper">
+                                <!-- <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">lock</i>
-                                    <span class="col s10 m10 l10">Estudiante</span>
-                                </div>
-                                <div class="row info_list valign-wrapper">
+                                    <span class="col s10 m10 l10 TipoUsuario"></span>
+                                </div> -->
+                                <div class="row info_list valign-wrapper tipo">
                                     <i class="material-icons col s2 m2 l2">work</i>
                                     <span class="col s10 m10 l10">
-                                        <select multiple class="col s12 m5 slc_funcion_orientador">
+                                        <select multiple class="col s12 m5" id="slc_funcion_orientador">
                                             <?php 
                                                 while($datos = mysqli_fetch_array($TiposUsuarios))
                                                 {
                                             ?>
-                                           <option value="<?php echo $datos['idtipousuario']?>"><?php echo $datos['descripcion']?></option>
+                                           <option name="tipo" value="<?php echo $datos['idtipousuario']?>"><?php echo $datos['descripcion']?></option>
                                             <?php
                                                 }
                                             ?>
@@ -176,14 +178,14 @@
                             <div class="card-action right-align">
                                 <div class="row">
                                     <a class="btn-flat amber-text  darken-3 cancelar_cambios" id="btn_cancelar_cambios"
-                                        data-id="124">Cancelar</a>
+                                        data-id="124">Cerrar</a>
                                     <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick="" 
                                         data-id="124">Guardar</a>
                                 </div>
-                                <div class="row"> 
+                                <!-- <div class="row"> 
                                     <a class="btn-flat red-text eliminar_usuario" id="btn_eliminarUsuario"
                                         data-id="124">Eliminar</a>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>

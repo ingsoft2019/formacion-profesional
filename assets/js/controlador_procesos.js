@@ -74,41 +74,6 @@ $(document).ready(function() {
     });
 
     $('#btn_guardar_cambios').click(function() {
-
-        $('.section_row').each(function(i) {
-            let inicio;
-            let final;
-            let id;
-            $(this).children().each(function(j) {
-                // console.log(j)
-                if (j === 1) return true;
-                if (j === 0) {
-                    id = this.innerHTML;
-                    return true;
-                }
-                //TODO validar horas vacías
-                if (j === 2){
-                    $(this).children().each(function(k) {
-                        inicio = parseInt($(this).val().split(':')[0]);
-                        inicio = parseInt(horasMapeadas[inicio] + $(this).val().split(':')[1].split(' ')[0])
-                    })
-                    return true;
-                }
-                if (j === 3){
-                    $(this).children().each(function(k) {
-                        final = parseInt($(this).val().split(':')[0]);
-                        final = parseInt(horasMapeadas[final] + $(this).val().split(':')[1].split(' ')[0])
-                    })
-                    return true;
-                }
-                // console.log(final, inicio)
-                if((final - inicio) !== 100){
-                    mostrarError('Horas de secciones erróneas', 'Corregir sección: ' + id);
-                    return false;
-                }
-            })
-        })
-
         let camposVacios = false;
 
         for (let d of dates){
@@ -172,6 +137,82 @@ $(document).ready(function() {
             return;
         }
 
+        let secciones_correctas = true;
+        $('.section_row').each(function(i) {
+            let inicio;
+            let final;
+            let id;
+            $(this).children().each(function(j) {
+                // console.log(j)
+                if (j === 0) {
+                    id = this.innerHTML;
+                    return true;
+                }
+                if (j === 1){
+                    secciones_correctas = true;
+                    $(this).children().each(function(i) {
+                        if ($(this).val() === ''){
+                            mostrarError('Fecha de sección incorrecta', 'Ingrese una fecha para la sección: ' + id)
+                            secciones_correctas = false
+                        }
+                    })
+                    return secciones_correctas;
+                }
+                if (j === 2){
+                    secciones_correctas = true;
+                    $(this).children().each(function(k) {
+                        try {
+                            inicio = parseInt($(this).val().split(':')[0]);
+                            inicio = parseInt(horasMapeadas[inicio] + $(this).val().split(':')[1].split(' ')[0])
+                        } catch (error) {
+                            mostrarError('Horas de secciones vacías', 'Ingrese una hora en los campos de hora de la sección: ' + id);
+                            secciones_correctas = false;
+                        }
+                    })
+                    return secciones_correctas;
+                }
+                if (j === 3){
+                    secciones_correctas = true;
+                    $(this).children().each(function(k) {
+                        try {
+                            final = parseInt($(this).val().split(':')[0]);
+                            final = parseInt(horasMapeadas[final] + $(this).val().split(':')[1].split(' ')[0])    
+                        } catch (error) {
+                            mostrarError('Horas de secciones vacías', 'Ingrese una hora en los campos de hora de la sección: ' + id);
+                            secciones_correctas = false;
+                        }
+                    })
+                    return secciones_correctas;
+                }
+                if (j === 4){
+                    secciones_correctas = true;
+                    $(this).children().each(function(i) {
+                        if ($(this).val() === ''){
+                            mostrarError('Lugar de sección incorrecto', 'Ingrese un lugar para la sección: ' + id)
+                            secciones_correctas = false
+                        }
+                    })
+                    return secciones_correctas;
+                }
+                if (j === 5){
+                    secciones_correctas = true;
+                    $(this).children().each(function(i) {
+                        if ($(this).val() === ''){
+                            mostrarError('Cupos de sección incorrectos', 'Ingrese una cantidad de cupos para la sección: ' + id)
+                            secciones_correctas = false
+                        }
+                    })
+                    return secciones_correctas;
+                }
+                // console.log(final, inicio)
+                if((final - inicio) !== 100){
+                    mostrarError('Horas de secciones erróneas', 'Corregir sección: ' + id);
+                    secciones_correctas = false;
+                }
+            })
+        })
+
+        if(!secciones_correctas) return;
 
 
         //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
