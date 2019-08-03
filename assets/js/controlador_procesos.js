@@ -1,13 +1,13 @@
+var contador=0;
 $(document).ready(function() {
-
-    render_section(crear_id());
+    render_section(crear_id(), "unique"+contador.toString());
 
     const date_pickers = $(".div_date_time_picker");
     // const time_pickers = $(".div_timepicker");
 
     dates = date_pickers.flatpickr({
         altFormat: "F j, Y",
-        dateFormat: "D j, M Y",
+        dateFormat: "Y,m,d",
         conjunction: ";",
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $(".section_date_picker").flatpickr({
         altFormat: "F j, Y",
-        dateFormat: "D j, M Y",
+        dateFormat: "Y,m,d",
         conjunction: ";",
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
@@ -43,12 +43,13 @@ $(document).ready(function() {
     });*/
 
     $("#btn_agregar_seccion").click(function() {
-        render_section(crear_id());
+        render_section(crear_id(), "unique"+contador.toString());
     });
 
     $(".sections_table_list").click(function(event) {
         if (event.target.className == "material-icons remove_button") {
             remove_section(event.target.getAttribute('data-id'));
+            contador--;
         }
     });
 
@@ -175,37 +176,40 @@ $(document).ready(function() {
 
         //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
         console.log('pasa');
-        
+        //__________________________________________guardar datos de nuevo proceso_______________________________
+       // guardar_nuevo_proceso();
     })
     
 });
 
 var horasSecciones = [];
 
-function render_section(id) {
+function render_section(id, conta) {
+
     const html = `
         <tr class="section_row" id="${id}">
-            <td>${id}</td>
-            <td>
-                <input data-id="${id}" type="text" class="section_date_picker" placeholder="Seleccione el día">
+            <td  class="getDatos" id="${conta}">${id}</td>
+            <td class="getDatos">
+                <input data-id="${id}" type="text" class="section_date_picker" placeholder="dia">
             </td>
-            <td>
-                <input data-id="${id}" type="text" class="section_timepicker" placeholder="Hora Inicial">
+            <td class="getDatos">
+                <input data-id="${id}" type="text" class="section_timepicker horaInicio" placeholder="Hora Inicial">
             </td>
-            <td>
-                <input data-id="${id}" type="text" class="section_timepicker" placeholder="Hora final">
+            <td class="getDatos">
+                <input data-id="${id}" type="text" class="section_timepicker horaFin" placeholder="Hora final">
             </td>
-            <td>
-                <input data-id="123" type="text" class="section_place" placeholder="Lugar">
+            <td class="getDatos">
+                <input data-id="${id}" type="text" class="section_place" placeholder="Lugar">
             </td>
-            <td>
-                <input data-id="${id}" type="number" class="section_quota" placeholder="Cupos">
+            <td class="getDatos">
+                <input data-id="${id}" type="number"  min="5" max="20" class="section_quota" placeholder="Cupos">
             </td>
             <td><i class="material-icons remove_button" data-id="${id}">remove_circle_outline</i>
             </td>
         </tr>
             `;
     $("#tbody_sections_list").append(html);
+    contador++;
 
     const section = $(`.section_row[id=${id}]`);
     section.hide();
@@ -266,39 +270,178 @@ var horasMapeadas = {
     3: 15,
     4: 16
 }
+function guardar_nuevo_proceso(){
+        var parametros = get_datos_procesos();
+        console.log(parametros);
+        $.ajax({
+        url: "assets/ajax/transacciones_procesos.php",
+        method: 'GET',
+        data: parametros,
+        dataType: 'json', 
+        success: function(respuesta) {
+
+        }
+    });
+}
 
 function get_datos_procesos(){
     /*___________datos de evaluacion grupal______________________*/
+     var secciones = get_secciones();
+    /* 
     var ev_grupal = "id_ev_grup=" + $("#id_ev_grup").val()+ "&" +
                     "fecha_ev_grup=" + $("#fecha_ev_grup").val()+ "&" +
                     "hora_inicial_ev_grup=" + $("#hora_inicial_ev_grup").val()+ "&" +
                     "hora_final_ev_grup=" + $("#hora_final_ev_grup").val()+ "&" +
                     "lugar_ev_grup=" + $("#lugar_ev_grup").val()+ "&" +
-                    "cupos_ev_grup=" + $("#cupos_ev_grup").val();
+                    "cupos_ev_grup=" + $("#cupos_ev_grup").val();*/
     /*___________datos de test en linea______________________*/
+   
     var test = "fecha_inicio_test=" + $("#fecha_inicio_test").val()+ "&" +
                "fecha_fin_test=" + $("#fecha_fin_test").val()+ "&" +
                "url_test_vocacional=" + $("#txt_url_thorpe").val()+ "&" +
                "url_test_personalidad=" + $("#txt_url_holland").val()+ "&" +
-               "clave_acceso=" + $("#txt_clave_acceso").val();
+               "clave_acceso=" + $("#txt_clave_acceso").val()+ "&";
     /*___________datos de test en linea______________________*/
     var entrev = "fecha_inicio_entrev=" + $("#fecha_inicio_entrev").val()+ "&" +
-                 "fecha_fin_entrev=" + $("#fecha_fin_entrev").val();
+                 "fecha_fin_entrev=" + $("#fecha_fin_entrev").val()+ "&";
     /*___________datos de test en linea______________________*/
     var devoluc = "fecha_inicio_devoluc=" + $("#fecha_inicio_devoluc").val()+ "&" +
                  "fecha_fin_devoluc=" + $("#fecha_fin_devoluc").val();
 
-    return ev_grupal+test+entrev+devoluc;
+    return secciones+test+entrev+devoluc;
 }
 
-$("btn_guardar_cambios").click(function(){
-        var parametros = get_datos_procesos();
-        $.ajax({
-        url: "assets/ajax/transacciones_procesos.php",
-        method: 'GET',
-        data: parametros,
-        dataType: 'json', //data para saber que funcion en php usara.
-        success: function(respuesta) {
-        }
-    });
+function get_secciones(){   
+    var valores = "";
+    var cantidad;
+    $('#tbody_sections_list tr').each(function(i){
+        var x=0;
+        var celdas = $(this).find('input');
+        
+        celdas.each(function(j){ 
+            if (x==0) {
+                idSeccionActual=$(this).attr("data-id");
+            }
+            var a =$(this).attr("placeholder");
+            var b =a.replace(/ /g, "_");
+            valores+=b+i+"="+$(this).val()+"&";
+            x++;
+         });
+        cantidad=i;
+        valores+="idSeccion"+i+"="+idSeccionActual+"&";//salta a la otra fila
+        x=0;
+ })
+    //console.log(valores)
+    valores+="cantidadProcesosGuardar="+cantidad+"&"
+    //var respuesta = valores.replace(/ /g, "_");
+    console.log(valores)
+    return valores;     
+}
+
+/*############################################SECCION DE PRUEBAS#################################*/
+$("#prueba").click(function(){
+    guardar_nuevo_proceso();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//inntancia 
+
+  /*$("#prueba").click(function(){
+    $('#tbody_sections_list').each(function(i) {//secciones generales
+            $(this).find("tr").each(function(i) {//los hijos son cada section_row
+                valores +="idSeccion"+contador.toString()+"="+$(".tr").attr("id")+"&"+
+                          "dia"+contador.toString()+"="+$(".section_date_picker").val()+"&"+
+                          "horainicial"+contador.toString()+"="+$(".horaInicio").val()+"&"+
+                          "horafinal"+contador.toString()+"="+$(".horaFin").val()+"&"+
+                          "lugar"+contador.toString()+"="+$(".section_place").val()+"&"+
+                          "cupos"+contador.toString()+"="+$(".section_quota").val() +"\n";
+              contador++;
+             })
+            contador=0;
+        })*/
+   /* $('#tbody_sections_list .section_row').each(function(i) {
+        
+        var idSeccionActual = $("td.obtenerIdSeccion#unique"+contador)[i].text();
+        console.log(i+" ID de actual indice"+idSeccionActual);
+        valores +="idSeccion"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'] tr.section_row").attr("id")+"&"+
+                          "dia"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'].section_date_picker").val()+"&"+
+                          "horainicial"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'].horaInicio").val()+"&"+
+                          "horafinal"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'].horaFin").val()+"&"+
+                          "lugar"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'].section_place").val()+"&"+
+                          "cupos"+numeroProceso.toString()+"="+$("input[data-id='"+idSeccionActual+"'].section_quota").val() +"\n";
+        numeroProceso++; 
+     })
+        console.log(valores);
+    var valores = "";
+    var cantidad;
+    $('#tbody_sections_list tr').each(function(i){
+        var x=0;
+        var celdas = $(this).find('input');
+        
+        celdas.each(function(j){ 
+            if (x==0) {
+                idSeccionActual=$(this).attr("data-id");
+            }
+            var a =$(this).attr("placeholder");
+            var b =a.replace(/ /g, "_");
+            valores+=b+i+"="+$(this).val()+"&";
+            x++;
+         });
+        cantidad=i;
+        valores+="idSeccion"+i+"="+idSeccionActual+"&";//salta a la otra fila
+        x=0;
+ })
+    //console.log(valores)
+    valores+="cantidadProcesosGuardar="+cantidad+"&"
+    //var respuesta = valores.replace(/ /g, "_");
+    console.log(valores)
+    return valores;           
+
+});
+
+*/
+
+
+/*
+
+dia0=Mie_14,_Ago_2019&Hora_Inicial0=03:00_PM&Hora_final0=10:00_AM&Lugar0=B1&Cupos0=11&idSeccion0=201972235615862
+&dia1=Mie_14,_Ago_2019&Hora_Inicial1=03:00_PM&Hora_final1=08:00_AM&Lugar1=C2&Cupos1=10&idSeccion1=201972235628779
+&dia2=Mie_28,_Ago_2019&Hora_Inicial2=10:00_AM&Hora_final2=04:00_PM&Lugar2=B2&Cupos2=8&idSeccion2=201972235639280&cantidadProcesosGuardar=2&*/
+
+
+
+
+
+
+dia0=2019,08,07&Hora_Inicial0=12:00 PM&Hora_final0=12:00 PM&Lugar0=ikn&Cupos0=12&idSeccion0=20197322441272
+&dia1=Mie 14, Ago 2019&Hora_Inicial1=&Hora_final1=&Lugar1=bion&Cupos1=16&idSeccion1=20197322445705
+&cantidadProcesosGuardar=1&
+dia0=2019,08,07&Hora_Inicial0=12:00 PM&Hora_final0=12:00 PM&Lugar0=ikn&Cupos0=12&idSeccion0=20197322441272&
+dia1=Mie 14, Ago 2019&Hora_Inicial1=&Hora_final1=&Lugar1=bion&Cupos1=16&idSeccion1=20197322445705
+&cantidadProcesosGuardar=1
+&fecha_inicio_test=2019,08,06&fecha_fin_test=2019,08,08
+&url_test_vocacional=http://www.mysqltutorial.org/mysql-str_to_date/
+&url_test_personalidad=http://www.mysqltutorial.org/mysql-str_to_date/
+&clave_acceso=sdvs&fecha_inicio_entrev=2019,08,06&
+fecha_fin_entrev=2019,08,14
+&fecha_inicio_devoluc=2019,08,07&fecha_fin_devoluc=2019,08,14

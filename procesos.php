@@ -108,7 +108,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody_sections_list">
-                                                <!-- <tr class="section_row" id="123">
+                                            <!-- <tr class="section_row" id="123">
                                                     <td>1234</td>
                                                     <td>
                                                         <input data-id="123" type="text" class="section_date_picker"
@@ -139,6 +139,7 @@
                                         <br>
                                         <a class="waves-effect waves-light btn yellow darken-2"
                                             id="btn_agregar_seccion"><i class="material-icons left">add</i>Agregar</a>
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -334,6 +335,7 @@
                             <a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>
                                 &nbsp;&nbsp;&nbsp;
                             <a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
+                            <button id="prueba" class="waves-effect waves-light btn red m-b-xs">prueba</button>
                         </div>
                     </div>
 
