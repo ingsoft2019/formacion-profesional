@@ -474,15 +474,3 @@ dia0=Mie_14,_Ago_2019&Hora_Inicial0=03:00_PM&Hora_final0=10:00_AM&Lugar0=B1&Cupo
 
 
 
-dia0=2019,08,07&Hora_Inicial0=12:00 PM&Hora_final0=12:00 PM&Lugar0=ikn&Cupos0=12&idSeccion0=20197322441272
-&dia1=Mie 14, Ago 2019&Hora_Inicial1=&Hora_final1=&Lugar1=bion&Cupos1=16&idSeccion1=20197322445705
-&cantidadProcesosGuardar=1&
-dia0=2019,08,07&Hora_Inicial0=12:00 PM&Hora_final0=12:00 PM&Lugar0=ikn&Cupos0=12&idSeccion0=20197322441272&
-dia1=Mie 14, Ago 2019&Hora_Inicial1=&Hora_final1=&Lugar1=bion&Cupos1=16&idSeccion1=20197322445705
-&cantidadProcesosGuardar=1
-&fecha_inicio_test=2019,08,06&fecha_fin_test=2019,08,08
-&url_test_vocacional=http://www.mysqltutorial.org/mysql-str_to_date/
-&url_test_personalidad=http://www.mysqltutorial.org/mysql-str_to_date/
-&clave_acceso=sdvs&fecha_inicio_entrev=2019,08,06&
-fecha_fin_entrev=2019,08,14
-&fecha_inicio_devoluc=2019,08,07&fecha_fin_devoluc=2019,08,14
