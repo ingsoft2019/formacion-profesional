@@ -5,7 +5,27 @@ $respuesta = array();
 
 if (isset($_POST["id"])) {
 	if (isset($_GET["accion"])) {
-		$resultadoUsuarios=$query=$conexion->ejecutarInstruccion("DELETE FROM tbl_personas where idPersona=".$_POST["id"]);
+		switch ($_GET["accion"]){
+			case "update":
+				$id = $_POST["id"];
+				$string_Funciones = $_POST["funcion"]; 
+				$array_Funciones = explode (",", $string_Funciones); 
+				$resultadEliminar=$query=$conexion->ejecutarInstruccion("DELETE FROM tbl_personas_has_tbl_tipousuario where tbl_personas_idPersona = ".$_POST["id"]);
+				//sleep(300);
+				for ($i = 0; $i < count($array_Funciones); $i++) {
+					$conexion->ejecutarInstruccion("INSERT INTO tbl_personas_has_tbl_tipousuario(tbl_personas_idPersona, tbl_tipousuario_idtipousuario) VALUES ('$id','$array_Funciones[$i]')");
+				}
+
+				$respuesta["funcion"] = $array_Funciones;
+				$respuesta["id"] = $_POST["id"];
+				echo json_encode($respuesta);
+				break;
+			case "delete":
+				$resultadoUsuarios=$query=$conexion->ejecutarInstruccion("DELETE FROM tbl_personas where idPersona=".$_POST["id"]);
+				break;
+			default:
+				break;
+		}		
     } else if (isset($_GET["tipos"])) {
         $query = $conexion->ejecutarInstruccion("SELECT tbl_tipousuario_idtipousuario as tipos FROM tbl_personas_has_tbl_tipousuario where tbl_personas_idPersona=".$_POST["id"]);
         

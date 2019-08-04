@@ -100,7 +100,7 @@
                                 <tr class="user_row" id="<?php echo $datos['UserId']?>">
                                     <td><?php echo $datos['Identidad']?></td>
                                     <td><?php echo $datos['Nombre']?></td>
-                                    <td class="hide-on-small-only"><?php echo $datos['TiposUsuario']?></td>
+                                    <td class="hide-on-small-only lbl_tipo_usuario"><?php echo $datos['TiposUsuario']?></td>
                                     <td><i class="material-icons info_button" data-id="<?php echo $datos['UserId']?>">info</i></td>
                                     <td><i class="material-icons remove_button" data-id="<?php echo $datos['UserId']?>">delete</i></td>
                                 </tr>
