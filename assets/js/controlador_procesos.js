@@ -6,8 +6,9 @@ $(document).ready(function() {
     // const time_pickers = $(".div_timepicker");
 
     dates = date_pickers.flatpickr({
+        altInput: true,
         altFormat: "F j, Y",
-        dateFormat: "Y,m,d",
+        dateFormat: "Y-m-d",//mismo formato en funcion mySql
         conjunction: ";",
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
@@ -16,9 +17,10 @@ $(document).ready(function() {
         // enableTime: true
     });
 
+
     $(".section_date_picker").flatpickr({
         altFormat: "F j, Y",
-        dateFormat: "Y,m,d",
+        dateFormat: "F j, Y",
         conjunction: ";",
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
@@ -218,7 +220,7 @@ $(document).ready(function() {
         //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
         console.log('pasa');
         //__________________________________________guardar datos de nuevo proceso_______________________________
-       // guardar_nuevo_proceso();
+        guardar_nuevo_proceso();
     })
     
 });
@@ -318,9 +320,9 @@ function guardar_nuevo_proceso(){
         url: "assets/ajax/transacciones_procesos.php",
         method: 'GET',
         data: parametros,
-        dataType: 'json', 
+        dataType: 'html', 
         success: function(respuesta) {
-
+                console.log(respuesta);
         }
     });
 }
@@ -348,8 +350,10 @@ function get_datos_procesos(){
     /*___________datos de test en linea______________________*/
     var devoluc = "fecha_inicio_devoluc=" + $("#fecha_inicio_devoluc").val()+ "&" +
                  "fecha_fin_devoluc=" + $("#fecha_fin_devoluc").val();
+    var inscripciones= "fecha_inicio_incripcion="+$("#txt_inicio_inscrip").val()+"&"+
+                        "fecha_fin_incripcion="+$("#txt_fin_inscrip").val()+"&"
 
-    return secciones+test+entrev+devoluc;
+    return secciones+inscripciones+test+entrev+devoluc;
 }
 
 function get_secciones(){   
@@ -375,14 +379,14 @@ function get_secciones(){
     //console.log(valores)
     valores+="cantidadProcesosGuardar="+cantidad+"&"
     //var respuesta = valores.replace(/ /g, "_");
-    console.log(valores)
+    //console.log(valores)
     return valores;     
 }
 
 /*############################################SECCION DE PRUEBAS#################################*/
-$("#prueba").click(function(){
+/*$("#prueba").click(function(){
     guardar_nuevo_proceso();
-});
+});*/
 
 
 
@@ -468,9 +472,4 @@ $("#prueba").click(function(){
 dia0=Mie_14,_Ago_2019&Hora_Inicial0=03:00_PM&Hora_final0=10:00_AM&Lugar0=B1&Cupos0=11&idSeccion0=201972235615862
 &dia1=Mie_14,_Ago_2019&Hora_Inicial1=03:00_PM&Hora_final1=08:00_AM&Lugar1=C2&Cupos1=10&idSeccion1=201972235628779
 &dia2=Mie_28,_Ago_2019&Hora_Inicial2=10:00_AM&Hora_final2=04:00_PM&Lugar2=B2&Cupos2=8&idSeccion2=201972235639280&cantidadProcesosGuardar=2&*/
-
-
-
-
-
 

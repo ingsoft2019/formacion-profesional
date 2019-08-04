@@ -335,7 +335,7 @@
                             <a class="waves-effect waves-light btn yellow darken-2 m-b-xs" id="btn_cancelar">Cancelar</a>
                                 &nbsp;&nbsp;&nbsp;
                             <a class="waves-effect waves-light btn blue m-b-xs" id="btn_guardar_cambios">Guardar</a>
-                            <button id="prueba" class="waves-effect waves-light btn red m-b-xs">prueba</button>
+                           <!-- <button id="prueba" class="waves-effect waves-light btn red m-b-xs">prueba</button>-->
                         </div>
                     </div>
 

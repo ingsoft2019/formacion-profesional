@@ -108,12 +108,14 @@ CREATE TABLE IF NOT EXISTS `tbl_procesos` (
 -- Creando tabla `tbl_secciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_secciones` (
-  `idsecciones` INT NOT NULL,
-  `fechahorainicial` DATETIME NULL,
-  `fechahorafinal` DATETIME NULL,
+  `idsecciones` varchar(150) NOT NULL,
+  `horainicial` TIME NULL,
+  `horafinal` TIME NULL,
   `cupos` INT NULL,
   `lugar` VARCHAR(100) NULL,
+  `dia` VARCHAR(100) NULL,
   `idprocesos` INT NOT NULL,
+  `dia` varchar(100) NULL,
   PRIMARY KEY (`idsecciones`, `idprocesos`),
   CONSTRAINT `fk_tbl_secciones_tbl_procesos1`
     FOREIGN KEY (`idprocesos`)
