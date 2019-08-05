@@ -205,74 +205,79 @@
         <div id="mdl_nuevoUsuario" class="modal modal-fixed-footer">
             <div class="modal-content">
                 <h4>Crear nuevo Usuario</h4>
-                <form class="col s12">
+                <form class="col s12" method="POST" id="form_g">
                     <div class="row">
                         <div class="input-field col s12 m6 l6">
-                            <input id="txt_identidad" placeholder="0801-1990-89432" type="text" class="validate masked"
+                            <input id="identidad" name="identidad" placeholder="0801-1990-89432" type="text" class="validate masked"
                                 data-inputmask="'mask': '9999-9999-99999'">
-                            <label for="txt_identidad" class="active">No. Identidad</label>
+                            <label for="identidad" class="active">No. Identidad</label>
                         </div>
 
                         <div class="input-field col s12 m6 l6">
-                            <input id="last_name" placeholder="3240-9878" type="text" class="validate masked"
-                                data-inputmask="'mask': '(+504)9{4}-9{4}'">
-                            <label for="last_name">Celular</label>
+                            <input id="telefono" name="telefono" placeholder="3240-9878" type="text" class="validate masked"
+                                data-inputmask="'mask': '(504) 9{4}-9{4}'">
+                            <label for="telefono">Celular</label>
                         </div>
-                    </div>
-                    <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="nombres" name="nombres" placeholder="Pedro Jose" type="text" class="validate masked"
+                                    data-inputmask="'mask': 'a{+}'">
+                                <label for="nombres">Nombres</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <input id="apellidos" name="apellidos" placeholder="Castellanos Andino" type="text" class="validate masked"
+                                    data-inputmask="'mask': 'a{+}'">
+                                <label for="apellidos">Apellidos</label>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="input-field col s7 m3 l6">
+                                <input id="email" name="email" type="text" placeholder="casteljose" class="validate masked"
+                                    data-inputmask="'mask': '/{+}'">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s5 m3 l6">
+                                <label>@unah.edu.hn</label>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="input-field col s5 m3 l6">
+                                <input id="password" name="password" type="text" placeholder="********" readonly="readonly">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="modal_user_information">
+                                <button  class="modal-action waves-effect waves-blue btn-flat" id="btn_generarPass">Generar</button>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="input-field col s12 m6 l6">
+                                <select id="cargo" name="cargo">
+                                    <option value="" disabled selected>Seleccionar cargo</option>
+                                    <option value="2">Entrevistador</option>
+                                    <option value="3">Psicólogo</option>
+                                    <option value="4">Entrevistador y Psicólogo</option>
+                                </select>
+                                <label>Funciones</label>
+                            </div>
                         <div class="input-field col s12 m6 l6">
-                            <input id="last_name" placeholder="Pedro Jose" type="text" class="validate masked"
-                                data-inputmask="'mask': 'a{+}'">
-                            <label for="last_name">Nombres</label>
-                        </div>
-                        <div class="input-field col s12 m6 l6">
-                            <input id="last_name" placeholder="Castellanos Andino" type="text" class="validate masked"
-                                data-inputmask="'mask': 'a{+}'">
-                            <label for="last_name">Apellidos</label>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="input-field col s7 m3 l6">
-                            <input id="email" type="text" placeholder="casteljose" class="validate masked"
-                                data-inputmask="'mask': '/{+}'">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field col s5 m3 l6">
-                            <label>@unah.edu.hn</label>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="input-field col s12 m6 l6">
-                            <select multiple>
-                                <option value="" disabled selected>Seleccionar cargo</option>
-                                <option value="1">Entrevistador</option>
-                                <option value="2">Psicólogo</option>
-                            </select>
-                            <label>Funciones</label>
-                        </div>
-                        <div class="input-field col s12 m6 l6">
-                            <select>
+                            <select id="genero" name="genero">
                                 <option value="" disabled selected>Seleccionar género</option>
                                 <option value="1">Femenino</option>
                                 <option value="2">Masculino</option>
                             </select>
                             <label>Género</label>
+                            </div>
                         </div>
-                    </div>
-
-
+                    
+                        <div class="modal_user_information">
+                            <button  class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</button>
+                            <button  class="modal-action waves-effect waves-red btn-flat" id="btn_cancelarNuevo">Cancelar</button>
+                        </div>
                 </form>
 
-            </div>
-            <div class="modal-footer">
-                <a class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
-                <a class="modal-action waves-effect waves-red btn-flat" id="btn_cancelarNuevo">Cancelar</a>
-            </div>
-        </div>
 
-
-        <div id="div-piePagina"></div>
+        
 
 
     </div>
