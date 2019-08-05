@@ -62,7 +62,6 @@
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/plugins/image-cropper/cropper.min.js"></script>
-    <script src="assets/js/controlador-perfil.js"></script>
     <script src="assets\plugins\prettify\prettify.js"></script>
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>

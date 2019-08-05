@@ -5,12 +5,9 @@ var celular = "";
 var correo = "";
 var cuenta = "";
 var carrera = "";
-var foto = ""; ///????????????????????????
+var foto = "";
 
 $(document).ready(function() {
-
-    //funcionalidad guardar cambios
-    //OJO VERIFICACION DE IGUALDAD DE CONTRASEÑAS PENDIENTE
 
 
     //---------------------agregar carreras a slc-----------------------
@@ -126,12 +123,12 @@ $(document).ready(function() {
 }); //AQUI TERMINA EN DOCUMENT READY
 var idNuevacarrera = 0;
 $("#slc-carrera").change(function() {
-    console.log($("#slc-carrera").val() + "este el valor");
+    //console.log($("#slc-carrera").val() + "este el valor");
     idNuevacarrera = $("#slc-carrera").val();
 });
 
 function guardar_cambios() {
-    console.log("entro a la function cambios");
+    //console.log("entro a la function cambios");
     var parametros = "nombres=" + $('#txt_nombres').val() + "&" +
         "apellidos=" + $('#txt_apellidos').val() + "&" +
         "contrasena_actual=" + $('#txt_contrasena_actual').val() + "&" +
@@ -142,7 +139,7 @@ function guardar_cambios() {
         "no_identidad=" + $("#txt_identidad").val() + "&" +
         "idcarrera=" + idNuevacarrera + "&" +
         "CODIGO_FUNCION=3";
-    console.log(parametros);
+    //console.log(parametros);
     $.ajax({
         url: "assets/ajax/perfil-peticiones.php",
         method: 'GET',
@@ -170,7 +167,7 @@ function cargarDatos() {
         data: "CODIGO_FUNCION=1",
         dataType: 'json', //data para saber que funcion en php usara.
         success: function(respuesta) {
-            console.log(respuesta);
+            //console.log(respuesta);
             /* for (var i=0; i<respuesta.length ; i++){
            $("#slc-carrera").append(
                  '<option value="'+respuesta[i].idCarrera+'">'+respuesta[i].nombreCarrera+'</option>'
@@ -200,7 +197,7 @@ function cargarDatos() {
             cuenta = respuesta[0].no_cuenta;
             carrera = respuesta[0].idCarrera;
             foto = respuesta[0].fotoPerfil;
-            habilitar_deshabilitar_guardar_cancelar();///?????????????????
+            habilitar_deshabilitar_guardar_cancelar();
             $('#div-cambiar-contrasena').hide(1000);
         }
     });
@@ -233,11 +230,11 @@ function existenCambios() {
     }
 }
 
-function comprobar_antes_de_guardar() {///??????????????????????
+function comprobar_antes_de_guardar() {
     var form_data = $("#frm_perfil").serializeArray();
     var error_free = true;
     var mensaje = '';
-    console.log(form_data)
+    //console.log(form_data)
     for (var input in form_data) {
         var element = $("#" + form_data[input]['name']);
 
