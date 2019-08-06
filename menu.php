@@ -12,13 +12,13 @@
             </section>
             <div class="header-title col s3">
 
-                <span class="" onclick="location.href='index.php'" >VOAE</span>
+                <span class="" onclick="location.href='index.php'">VOAE</span>
 
             </div>
 
             <!--<ul class="right col s9 m3 nav-right-menu"-->
 
-                <!--li class="hide-on-small-and-down"><a href="javascript:void(0)" data-activates="dropdown1"
+            <!--li class="hide-on-small-and-down"><a href="javascript:void(0)" data-activates="dropdown1"
                         class="dropdown-button dropdown-right show-on-large"><i
                             class="material-icons">notifications_none</i><span
                             class="badge yellow darken-2">4</span></a></li>
@@ -132,22 +132,22 @@
 
         </div>
         <div class="sidebar-profile-info">
-          
-                <h6 align="center" id="lbl_menu_nombres"><?php echo $_SESSION["nombre"]; ?></h6>
-           
+
+            <h6 align="center" id="lbl_menu_nombres"><?php echo $_SESSION["nombre"]; ?></h6>
+
         </div>
         <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
             <li class="no-padding">
 
-                <a class="waves-effect waves-grey active-page" onclick="location.href='inicio.php'"  id="btn-inicio">
-
-                <a class="waves-effect waves-grey active-page" href="home.php" id="btn-inicio">
-
+                <a class="waves-effect waves-grey active-page" onclick="location.href='inicio.php'" id="btn-inicio">
                     <i class="material-icons">home</i>
                     Inicio
                 </a>
             </li>
-           <li class="no-padding">
+            <?php 
+                if($_SESSION["idTipoUsuario"]==1){
+            ?>
+            <li class="no-padding">
                 <a class="waves-effect waves-grey" href="gestionar_Usuarios.php" id="btn_gestionar_usuarios">
                     <i class="material-icons">people</i>
                     Gestionar usuarios
@@ -159,12 +159,16 @@
                     Procesos
                 </a>
             </li>
-             <!--<li class="no-padding">
-                <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
-                    <i class="material-icons">access_time</i>
-                    Gestionar Horarios
-                </a>
-            </li>-->
+            <!--<li class="no-padding">
+                    <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
+                        <i class="material-icons">access_time</i>
+                        Gestionar Horarios
+                    </a>
+                </li>-->
+            <?php
+                }
+            ?>
+
             <li class="no-padding">
                 <a class="waves-effect waves-grey" href="perfil.php" id="btn-perfil">
                     <i class="material-icons">account_circle</i>

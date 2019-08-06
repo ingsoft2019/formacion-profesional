@@ -126,7 +126,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
 			$sql2="";
 			if ( ! empty($pruebaIdCarrera)) {
                 $sql2 = sprintf("UPDATE tbl_estudiantes SET no_cuenta = %s, idCarrera = %s  WHERE idEstudiante = %s",
-							$_GET["cuenta"],$_GET["idCarrera"],$_SESSION["idPersona"]);            }
+							$_GET["cuenta"],$_GET["idcarrera"],$_SESSION["idPersona"]);            }
             else{
                 $sql2 = sprintf("UPDATE tbl_estudiantes SET no_cuenta = %s WHERE idEstudiante = %s",
 							$_GET["cuenta"],$_SESSION["idPersona"]);
