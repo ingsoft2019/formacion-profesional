@@ -200,11 +200,11 @@ INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainicio
 -- -----------------------------------------------------
 -- Insertando en la  tabla `tbl_secciones`
 -- -----------------------------------------------------
-INSERT INTO `tbl_secciones` (`idsecciones`,`fechahorainicial`,`fechahorafinal`,`cupos`,`lugar`,`idprocesos`)VALUES
-(1,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 209',1),
-(2,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 208',2),
-(3,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 210',3),
-(4,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 207',4),
-(5,'2019-07-29 09:30:00','2019-07-29 12:30:00',25,'Aula Voae 205',5);
+INSERT INTO `tbl_secciones` (`idsecciones`,`horainicial`,`horafinal`,`cupos`,`lugar`,`idprocesos`,`dia`)VALUES
+(1,'09:30:00','12:30:00',25,'Aula Voae 209',1,'Agosto 7, 2019'),
+(2,'09:30:00','12:30:00',25,'Aula Voae 208',2,'Agosto 7, 2019'),
+(3,'09:30:00','12:30:00',25,'Aula Voae 210',3,'Agosto 7, 2019'),
+(4,'09:30:00','12:30:00',25,'Aula Voae 207',4,'Agosto 7, 2019'),
+(5,'09:30:00','12:30:00',25,'Aula Voae 205',5,'Agosto 7, 2019');
 
 
