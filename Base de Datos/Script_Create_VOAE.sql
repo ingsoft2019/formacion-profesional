@@ -113,7 +113,6 @@ CREATE TABLE IF NOT EXISTS `tbl_secciones` (
   `horafinal` TIME NULL,
   `cupos` INT NULL,
   `lugar` VARCHAR(100) NULL,
-  `dia` VARCHAR(100) NULL,
   `idprocesos` INT NOT NULL,
   `dia` varchar(100) NULL,
   PRIMARY KEY (`idsecciones`, `idprocesos`),
