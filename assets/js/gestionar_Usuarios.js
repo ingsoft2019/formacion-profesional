@@ -85,112 +85,124 @@ $(document).ready(function() {
         var error_free=true;
         var mensaje = '';
         console.log(form_data_g)
-        for (var input in form_data_g){
-            var element=$("#"+form_data_g[input]['name']);
-                switch (Number(input)) {
-                    case 0:
-                        if (!element.val().match(/\d{4}-\d{4}-\d{5}/g)){
-                            mensaje = 'Número de identidad incompleto.';
-                            error_free = false;
-                        }
-                        break;
-                    case 1:
-                        if (!element.val().match(/\(504\)\ \d{4}-\d{4}/g)){
-                            mensaje = 'Número de teléfono incompleto.';
-                            error_free = false;
-                        }
-                        break;
-                    case 2:
-                        if (element.val() == ''){
-                            mensaje = 'Introduzca el nombre.';
-                            error_free = false;
-                        }
-                        break;
-                    case 3:
-                        if (element.val() == ''){
-                            mensaje = 'Introduzca su apellido.';
-                            error_free = false;
-                        }
-                        break;
-                    
-                    case 4:
-                        if (!element.val().match(/[a-z]+/g)){
-                            mensaje = 'Correo institucional no válido.';
-                            error_free = false;
-                        }
-                        if (element.val() == ''){
-                            mensaje = 'Introduzca su correo institucional.';
-                            error_free = false;
-                        }
-                        break;
-                    case 5:
+        //if(form_data_g.length<8){
+            for (var input in form_data_g){
+                var element=$("#"+form_data_g[input]['name']);
+                    switch (Number(input)) {
+                        case 0:
+                            if (!element.val().match(/\d{4}-\d{4}-\d{5}/g)){
+                                mensaje = 'Número de identidad incompleto.';
+                                error_free = false;
+                            }
+                            break;
+                        case 1:
+                            if (!element.val().match(/\(504\)\ \d{4}-\d{4}/g)){
+                                mensaje = 'Número de teléfono incompleto.';
+                                error_free = false;
+                            }
+                            break;
+                        case 2:
                             if (element.val() == ''){
-                                mensaje = 'Genere la contraseña por defecto.';
+                                mensaje = 'Introduzca el nombre.';
                                 error_free = false;
                             }
                             break;
-                    case 6:
+                        case 3:
+                            if (element.val() == ''){
+                                mensaje = 'Introduzca su apellido.';
+                                error_free = false;
+                            }
+                            break;
+                        
+                        case 4:
+                            if (!element.val().match(/[a-z]+/g)){
+                                mensaje = 'Correo institucional no válido.';
+                                error_free = false;
+                            }
+                            if (element.val() == ''){
+                                mensaje = 'Introduzca su correo institucional.';
+                                error_free = false;
+                            }
+                            break;
+                        case 5:
+                                if (element.val() == ''){
+                                    mensaje = 'Genere la contraseña por defecto.';
+                                    error_free = false;
+                                }
+                                break;
+                        case 6:
+                                if (element.val() == 0){
+                                    mensaje = 'Seleccione un Cargo.';
+                                    error_free = false;
+                                }
+                                break;
+                        case 7:
                             if (element.val() == 0){
-                                mensaje = 'Seleccione un Cargo.';
+                                mensaje = 'Seleccione un género.';
                                 error_free = false;
                             }
                             break;
-                    case 7:
-                        if (element.val() == 0){
-                            mensaje = 'Seleccione un género.';
-                            error_free = false;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            if (!error_free) break;
+                        default:
+                            break;
+                    }
+                if (!error_free) break;
 
-        }
-        if (!error_free){
-            event.preventDefault(); 
-            swal({   
-                title: "Datos incorrectos",   
-                text: mensaje,   
-                type: "warning",   
-                // showCancelButton: true,   
-                confirmButtonColor: "#DD6B55",   
-                confirmButtonText: "Modificar datos", 
-                closeOnConfirm: true 
-            });
-        }
-        else{
-            event.preventDefault();
-                
-                $.ajax({
-                    url:'./assets/ajax/envio_registro_G.php',
-                    method:'POST',
-                    data: form_data_g,
-                    success: function(data){
-                        console.log(data)
-                        if(data.match(/Alguien/g)){
-                            swal({   
-                                title: "Datos incorrectos",   
-                                text: data,   
-                                type: "error",      
-                                confirmButtonText: "Modificar datos", 
-                                closeOnConfirm: true 
-                            })
-                        } else{
-                            swal({   
-                                title: "¡Bien hecho!",   
-                                text: data,   
-                                type: "success",      
-                                confirmButtonText: "Ok", 
-                                closeOnConfirm: true
-                            }, function(){  
-                                window.open("./gestionar_Usuarios.php","_self")
-                            });
-                        }   
-                    }     
-                });	
-        }
+            }
+            if (!error_free){
+                event.preventDefault(); 
+                swal({   
+                    title: "Datos incompletos",   
+                    text: mensaje,   
+                    type: "warning",   
+                    // showCancelButton: true,   
+                    confirmButtonColor: "#DD6B55",   
+                    confirmButtonText: "Modificar datos", 
+                    closeOnConfirm: true 
+                });
+            }
+            else{
+                event.preventDefault();
+                    
+                    $.ajax({
+                        url:'./assets/ajax/envio_registro_G.php',
+                        method:'POST',
+                        data: form_data_g,
+                        success: function(data){
+                            console.log(data)
+                            if(data.match(/Alguien/g)){
+                                swal({   
+                                    title: "Datos incorrectos",   
+                                    text: data,   
+                                    type: "error",      
+                                    confirmButtonText: "Modificar datos", 
+                                    closeOnConfirm: true 
+                                })
+                            }
+                            if(data.match(/Datos/g)){
+                                swal({   
+                                    title: "Atencion",   
+                                    text: data,   
+                                    type: "warning",   
+                                    confirmButtonColor: "#DD6B55",   
+                                    confirmButtonText: "Completar datos", 
+                                    closeOnConfirm: true 
+                                })
+                            }else{
+                                swal({   
+                                    title: "¡Bien hecho!",   
+                                    text: data,   
+                                    type: "success",      
+                                    confirmButtonText: "Ok", 
+                                    closeOnConfirm: true
+                                }, function(){  
+                                    window.open("./gestionar_Usuarios.php","_self")
+                                });
+                            }   
+                        }     
+                    });	
+            }
     });
+    
 
 });
 

@@ -17,7 +17,9 @@ require('../clases/class_conexion.php');
 
     if($result0['cantidad'] > 0){
         echo "Alguien ya esta registrado con ese correo.";
-    } else{
+    } elseif(!isset($_POST['genero']) || !isset($_POST['cargo'])){
+        echo "Datos incompletos.";
+    }else{
         
         $genero=$_POST['genero'];
         $nombre=$_POST['nombres'];
