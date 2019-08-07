@@ -3,18 +3,13 @@
     require('./assets/clases/class_conexion.php');
     $mysql = new Conexion();
     $query=$mysql->ejecutarInstruccion("
-    SELECT a.idPersona as UserId, a.no_identidad as Identidad, concat(a.nombres,' ',a.apellidos) as Nombre, GROUP_CONCAT(d.descripcion) AS TiposUsuario
-    FROM tbl_personas a 
-    left join tbl_estudiantes b
-    on a.idPersona=b.idEstudiante 
-    left join tbl_personas_has_tbl_tipousuario c 
-    on a.idPersona = c.tbl_personas_idPersona 
-    left join tbl_tipousuario d
-    on c.tbl_tipousuario_idtipousuario=d.idtipousuario
-    WHERE d.idtipousuario <> 1
-    GROUP BY a.idPersona
-    ORDER BY a.nombres
-        ");
+    select p.idpersona as UserId,no_identidad as Identidad , CONCAT(nombres, ' ', apellidos) as Nombre , GROUP_CONCAT(t.descripcion) as TiposUsuario from tbl_personas as p
+    inner join tbl_personas_has_tbl_tipousuario as tp on tp.tbl_personas_idpersona=p.idpersona
+    inner join tbl_tipousuario as t on t.idtipousuario=tp.tbl_tipousuario_idtipousuario
+    where p.estadocuenta = 1 and t.idtipousuario != 1
+    GROUP BY p.idPersona
+    order by p.nombres
+    ");
     $TiposUsuarios=$mysql->ejecutarInstruccion(" SELECT * FROM tbl_tipousuario  WHERE idtipousuario NOT IN (1,4)");
 
 
