@@ -1,0 +1,7 @@
+.modal.bottom-sheet {
+    max-height: 90vh !important;
+}
+
+.modal.modal-fixed-footer {
+    height: 90% !important;
+}

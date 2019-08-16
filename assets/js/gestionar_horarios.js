@@ -4,6 +4,10 @@ jQuery(document).ready(function($) {
         renderTarjeta(crear_id());
     });
 
+    $("#btn_guardar_cambios").click(function() {
+        obtenerHorarios();
+    });
+
     $(".mn-content").click(function(event) {
         if (event.target.className == "material-icons icon-button") {
             //console.log(event.target.id);
@@ -11,15 +15,22 @@ jQuery(document).ready(function($) {
         }
     });
 
-    //console.log(crear_id());
 
+    $(".btn_entrevista").click(function(event) {
+        //console.log(event.target.getAttribute('data-id'));
+        setModalData(event.target.getAttribute('data-id'), 2);
+    });
+    $(".btn_resultados").click(function(event) {
+        //console.log(event.target.getAttribute('data-id'));
+        setModalData(event.target.getAttribute('data-id'), 3);
+    });
 
 });
 
 // render tarjetas horarios
 const renderTarjeta = (id) => {
     const html = `
-        <div class="col s12 m6 l4 tarjeta_horario" id="${id}">
+        <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
             <div class="card">
                 <div class="card-content">
                     <div class="row">
@@ -34,13 +45,13 @@ const renderTarjeta = (id) => {
                                         placeholder="Seleccione el día(s)">
                                     <label for="txt_fecha" class="active">Fecha(s)</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s12">
                                     <i class="material-icons prefix">access_time</i>
                                     <input id="txt_hinicial" type="text" class="div_timepicker"
                                         placeholder="Hora inicial">
                                     <label for="txt_hinicial" class="active">Desde</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s12">
                                     <i class="material-icons prefix">access_time</i>
                                     <input id="txt_hfinal" type="text" class="div_timepicker"
                                         placeholder="Hora final">
@@ -114,9 +125,28 @@ function crear_id() {
     return id;
 }
 
+function setModalData(idProceso, idTipoEvento) { // 2>Entrevista   3>Dev. Resultados
+    switch (idTipoEvento) {
+        case 2:
+            $("#mdl_title").html("Gestionar horarios para Entrevistas");
+            break;
+        case 3:
+            $("#mdl_title").html("Gestionar horarios para Devolución de Resultados");
+            break;
+        default:
+            break;
+    }
+    $("#mdl_subtitle").html("Proceso " + idProceso);
+    // ESCRIBIR CODIGO PARA RENDERIZAR TARJETAS DE HORARIOS EXISTENTES EN LA BASE DE DATOS
+}
 
+function obtenerHorarios() {
+    var tarjetaHorario = $('#contenedor_tarjetas').children();
+    for (var i = 0; i < tarjetaHorario.length; i++) {
+        console.log($(tarjetaHorario[i]).find("#txt_fecha").val());
+        //console.log(flatpickr.parseDate(, "d/m/Y"));
+        console.log($(tarjetaHorario[i]).attr("id"));
 
-function myFunction(y) {
-    x = y * y;
-    return x;
+    }
+
 }

@@ -144,6 +144,7 @@
                     Inicio
                 </a>
             </li>
+            <!--VISIBLE PARA ADMIN-->
             <?php 
                 if($_SESSION["idTipoUsuario"]==1){
             ?>
@@ -159,12 +160,19 @@
                     Procesos
                 </a>
             </li>
-            <!--<li class="no-padding">
-                    <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
-                        <i class="material-icons">access_time</i>
-                        Gestionar Horarios
-                    </a>
-                </li>-->
+            <?php
+                }
+            ?>
+            <!--VISIBLE PARA ORIENTADORES-->
+            <?php 
+                if($_SESSION["idTipoUsuario"]==2 || $_SESSION["idTipoUsuario"]==3){
+            ?>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">access_time</i>
+                    Gestionar Horarios
+                </a>
+            </li>
             <?php
                 }
             ?>

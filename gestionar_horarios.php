@@ -1,3 +1,12 @@
+<?php
+
+    require('./assets/clases/class_conexion.php');
+    $conexion = new Conexion();
+    $procesos = $conexion->ejecutarInstruccion("
+        SELECT * FROM tbl_procesos WHERE 1 ORDER BY fechainicio DESC
+    ");
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +20,7 @@
 
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css" />
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="assets/css/materialize_Icons.css" rel="stylesheet">
 
 
 
@@ -44,22 +53,80 @@
         <div id="div-menu"></div>
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
-
-            <div class="row" id="contenedor_tarjetas">
-                
-            </div>
-
-
-
-
+            <div class="col s12 m12 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <table class="bordered highlight users_table_list">
+                            <thead>
+                                <tr>
+                                    <th class="center" data-field="id_proceso">Id. Proceso</th>
+                                    <th class="center" data-field="f_inicio">Fecha Inicial</th>
+                                    <th class="center" data-field="f_final">Fecha Final</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                        while($datos = mysqli_fetch_array($procesos)){
+                            $f_inicial = $datos['fechainicio'];                              
+                            $f_final = $datos['fechafindevuelveresultado'];
+                            setlocale(LC_TIME, 'es_CO.UTF-8');
+                            $f_inicial = strftime("%a %e %b %Y" , strtotime($f_inicial));    
+                            $f_final = strftime("%a %e %b %Y", strtotime($f_final));                  
+                    ?>
+                                <tr class="user_row" id="<?php echo $datos['idprocesos']?>">
+                                    <td  class="center"><?php echo $datos['idprocesos']?></td>
+                                    <td  class="center"><?php echo $f_inicial?></td>
+                                    <td  class="center"><?php echo $f_final?></td>
+                                    <td class="right">
+                                        <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs closeOnEsc modal-trigger"
+                                            data-id="<?php echo $datos['idprocesos']?>"
+                                            href="#mdl_horarios">Entrevista</a>
+                                    
+                                        <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal-trigger closeOnEsc"
+                                            data-id="<?php echo $datos['idprocesos']?>" href="#mdl_horarios">Dev.
+                                            Resul.</a>
+                                    </td>
+                                </tr>
+                                <?php
+                        }
+                    ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
         </main>
         <!--FIN APARTADO-->
 
-        <div class="fixed-action-btn" id="btn_nueva_tarjeta">
-            <a class="btn-floating btn-large red pulse" id="btn_nuevoFecha">
-                <i class="large material-icons">add_to_photos</i>
-            </a>
+
+        <div id="mdl_horarios" class="modal modal-fixed-footer bottom-sheet">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col s3 m2 amber darken-1 center">
+                        <i class="material-icons white-text medium">access_time</i>
+                    </div>
+                    <div class="col s9 m10">
+                        <h5 id="mdl_title"></h5>
+                        <h6 id="mdl_subtitle"></h6>
+                    </div>
+                </div>
+                <div class="row" id="contenedor_tarjetas">
+
+                </div>
+                <div class="row">
+                    <a id="btn_nueva_tarjeta" class="waves-effect waves-light orange btn"><i
+                            class="material-icons left">add</i>Agregar</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick="">Guardar</a>
+                <a class="btn-flat amber-text modal-action modal-close darken-3 cancelar_cambios"
+                    id="btn_cancelar_cambios">Cerrar</a>
+
+            </div>
         </div>
+
+
+
 
 
         <div id="div-piePagina"></div>
