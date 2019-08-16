@@ -5,7 +5,44 @@ jQuery(document).ready(function($) {
     });
 
     $("#btn_guardar_cambios").click(function() {
-        obtenerHorarios();
+        console.log(obtenerHorarios());
+
+        swal({
+            title: "¿Seguro que desea guardar los cambios realizados?",
+            text: "Los horarios para este proceso serán actualizados.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#2196F3",
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function(isConfirm) {
+            if (isConfirm) {
+                swal("Completo", "Horarios Actualizados.", "success");
+            } else {}
+        });
+
+    });
+
+    $("#btn_cancelar_cambios").click(function() {
+        swal({
+            title: "¿Seguro que desea cerrar el editor de horarios?",
+            text: "Perderá la información que no ha guardado.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#2196F3",
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function(isConfirm) {
+            if (isConfirm) {
+                $('#mdl_horarios').closeModal();
+                $('body').attr('style', 'overflow-y: auto !important');
+                $("#contenedor_tarjetas").html("");
+            }
+        });
     });
 
     $(".mn-content").click(function(event) {
@@ -25,7 +62,16 @@ jQuery(document).ready(function($) {
         setModalData(event.target.getAttribute('data-id'), 3);
     });
 
+    $('.modal_Trigger').click(function(event) {
+        setTimeout(function() { $('body').attr('style', 'overflow-y: hidden !important'); }, 10);
+        $('#mdl_horarios').openModal({ dismissible: false });
+    });
+
+
 });
+
+
+
 
 // render tarjetas horarios
 const renderTarjeta = (id) => {
@@ -74,22 +120,22 @@ const renderTarjeta = (id) => {
 
     date_pickers.flatpickr({
         altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
+        dateFormat: "F j, Y",
         //inline: true,
         mode: "multiple",
         conjunction: ";",
-        "disable": [
-            function(date) {
-                // return true to disable
-                return (date.getDay() === 0 || date.getDay() === 6);
+        /* "disable": [
+             function(date) {
+                 // return true to disable
+                 return (date.getDay() === 0 || date.getDay() === 6);
 
-            }
-        ],
+             }
+         ],*/
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
         },
 
-        enable: [{
+        /*enable: [{
                 from: "2019-07-01",
                 to: "2019-08-01"
             },
@@ -97,7 +143,7 @@ const renderTarjeta = (id) => {
                 from: "2025-09-01",
                 to: "2025-12-01"
             }
-        ]
+        ]*/
     });
 
     time_pickers.flatpickr({
@@ -125,28 +171,82 @@ function crear_id() {
     return id;
 }
 
-function setModalData(idProceso, idTipoEvento) { // 2>Entrevista   3>Dev. Resultados
-    switch (idTipoEvento) {
+var idProceso = 0;
+var idTipoEvento = 0;
+
+function setModalData(IDProceso, IDTipoEvento) { // 2>Entrevista   3>Dev. Resultados
+    switch (IDTipoEvento) {
         case 2:
             $("#mdl_title").html("Gestionar horarios para Entrevistas");
+            idTipoEvento = 2;
             break;
         case 3:
             $("#mdl_title").html("Gestionar horarios para Devolución de Resultados");
+            idTipoEvento = 3;
             break;
         default:
             break;
     }
-    $("#mdl_subtitle").html("Proceso " + idProceso);
+    $("#mdl_subtitle").html("Proceso " + IDProceso);
+    idProceso = IDProceso;
     // ESCRIBIR CODIGO PARA RENDERIZAR TARJETAS DE HORARIOS EXISTENTES EN LA BASE DE DATOS
 }
 
 function obtenerHorarios() {
+    var array_Horarios = [];
     var tarjetaHorario = $('#contenedor_tarjetas').children();
     for (var i = 0; i < tarjetaHorario.length; i++) {
-        console.log($(tarjetaHorario[i]).find("#txt_fecha").val());
-        //console.log(flatpickr.parseDate(, "d/m/Y"));
-        console.log($(tarjetaHorario[i]).attr("id"));
+        var fecha = $(tarjetaHorario[i]).find("#txt_fecha").val();
+        var array_fechas = fecha.split(";");
+        var h_inicial = $(tarjetaHorario[i]).find("#txt_hinicial").val();
+        var h_final = $(tarjetaHorario[i]).find("#txt_hfinal").val();
 
+        if (!fecha || !h_inicial || !h_final) {
+            continue;
+        }
+
+        id_horario = $(tarjetaHorario[i]).attr("id");
+        h_inicial = formatear_hora(h_inicial);
+        h_final = formatear_hora(h_final);
+
+        for (var m = 0; m < array_fechas.length; m++) {
+            fecha = formatear_Fecha(array_fechas[m]);
+            array_Horarios.push({
+                "id_horario": id_horario,
+                "idProceso": idProceso,
+                "idTipoEvento": idTipoEvento,
+                "fecha": fecha,
+                "h_inicial": h_inicial,
+                "h_final": h_final
+            });
+        }
+        /*console.log(id_horario);
+        console.log(idProceso);
+        console.log(idTipoEvento);
+        console.log(fecha);
+        console.log(h_inicial);
+        console.log(h_final);*/
     }
+    return array_Horarios;
 
+}
+
+function formatear_hora(hora) {
+    var time = hora;
+    var hours = Number(time.match(/^(\d+)/)[1]);
+    var minutes = Number(time.match(/:(\d+)/)[1]);
+    var AMPM = time.match(/\s(.*)$/)[1];
+    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+    var sHours = hours.toString();
+    var sMinutes = minutes.toString();
+    if (hours < 10) sHours = "0" + sHours;
+    if (minutes < 10) sMinutes = "0" + sMinutes;
+    return (sHours + ":" + sMinutes);
+}
+
+function formatear_Fecha(fecha) {
+    Objeto_fecha = flatpickr.parseDate(fecha, "F j, Y");
+    let fecha_con_formato = Objeto_fecha.getFullYear() + "-" + (Objeto_fecha.getMonth() + 1) + "-" + Objeto_fecha.getDate();
+    return fecha_con_formato;
 }

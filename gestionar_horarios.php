@@ -62,6 +62,8 @@
                                     <th class="center" data-field="id_proceso">Id. Proceso</th>
                                     <th class="center" data-field="f_inicio">Fecha Inicial</th>
                                     <th class="center" data-field="f_final">Fecha Final</th>
+                                    <th class="center" data-field="">Horarios <br> Entrevista</th>
+                                    <th class="center" data-field="">Horarios <br> Dev. Result.</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,17 +76,20 @@
                             $f_final = strftime("%a %e %b %Y", strtotime($f_final));                  
                     ?>
                                 <tr class="user_row" id="<?php echo $datos['idprocesos']?>">
-                                    <td  class="center"><?php echo $datos['idprocesos']?></td>
-                                    <td  class="center"><?php echo $f_inicial?></td>
-                                    <td  class="center"><?php echo $f_final?></td>
-                                    <td class="right">
-                                        <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs closeOnEsc modal-trigger"
-                                            data-id="<?php echo $datos['idprocesos']?>"
-                                            href="#mdl_horarios">Entrevista</a>
-                                    
-                                        <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal-trigger closeOnEsc"
-                                            data-id="<?php echo $datos['idprocesos']?>" href="#mdl_horarios">Dev.
-                                            Resul.</a>
+                                    <td class="center"><?php echo $datos['idprocesos']?></td>
+                                    <td class="center"><?php echo $f_inicial?></td>
+                                    <td class="center"><?php echo $f_final?></td>
+                                    <td class="center">
+                                        <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
+                                            data-id="<?php echo $datos['idprocesos']?>">
+                                            <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                        </a>
+                                    </td>
+                                    <td class="center">
+                                        <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
+                                            data-id="<?php echo $datos['idprocesos']?>">
+                                            <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php
@@ -101,10 +106,10 @@
         <div id="mdl_horarios" class="modal modal-fixed-footer bottom-sheet">
             <div class="modal-content">
                 <div class="row">
-                    <div class="col s3 m2 amber darken-1 center">
+                    <div class="col s3 m2 l1 amber darken-1 center">
                         <i class="material-icons white-text medium">access_time</i>
                     </div>
-                    <div class="col s9 m10">
+                    <div class="col s9 m10 l11">
                         <h5 id="mdl_title"></h5>
                         <h6 id="mdl_subtitle"></h6>
                     </div>
@@ -118,9 +123,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick="">Guardar</a>
-                <a class="btn-flat amber-text modal-action modal-close darken-3 cancelar_cambios"
-                    id="btn_cancelar_cambios">Cerrar</a>
+                <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios">Guardar</a>
+                <a class="btn-flat red-text cancelar_cambios" id="btn_cancelar_cambios">Cerrar</a>
 
             </div>
         </div>
