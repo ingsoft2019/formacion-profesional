@@ -1,0 +1,33 @@
+.collection-item,
+.collection {
+    border: none !important;
+}
+
+form>p {
+    margin: 0px;
+}
+
+.user_image {
+    max-width: 40%;
+}
+
+[type="checkbox"].filled-in:checked+label:after {
+    border: 2px solid #689f38;
+    background-color: #689f38;
+}
+
+.progress {
+    background-color: #b3e5fc;
+}
+
+.progress .determinate {
+    background-color: #01579b;
+}
+
+form {
+    font-weight: 350;
+}
+
+label {
+    color: black !important;
+}
