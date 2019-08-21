@@ -164,10 +164,10 @@ CREATE TABLE IF NOT EXISTS `tbl_Horarios_Orientador` (
   `tipoevento` VARCHAR(45) NULL,
   `codigohorario` VARCHAR(2000) NULL,
   `idorientador` VARCHAR(45) NULL,
-  `tbl_procesos_idprocesos` INT NOT NULL,
+  `idprocesos` INT NOT NULL,
   PRIMARY KEY (`idhorariosorientador`),
   CONSTRAINT `fk_tbl_Horarios_Orientador_tbl_procesos1`
-    FOREIGN KEY (`tbl_procesos_idprocesos`)
+    FOREIGN KEY (`idprocesos`)
     REFERENCES `tbl_procesos` (`idprocesos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

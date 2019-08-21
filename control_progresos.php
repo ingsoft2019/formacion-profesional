@@ -3,6 +3,18 @@
     if (!isset($_SESSION["idPersona"])){
         header("Location: log-in.php?redirigido=1");
     }
+    require('./assets/clases/class_conexion.php');
+    $mysql = new Conexion();
+    $query=$mysql->ejecutarInstruccion("
+        SELECT a.*,c.nombres as nombres,c.apellidos as apellidos,b.no_cuenta,d.nombreCarrera as carrera FROM 
+        tbl_control_de_procesos a 
+        left join tbl_estudiantes b 
+        on a.idEstudiante=b.idEstudiante
+        left join tbl_personas c 
+        on b.idEstudiante=c.idPersona
+        left join tbl_carreras d 
+        on b.idCarrera=d.idCarrera
+    ");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,25 +61,27 @@
         <main class="mn-inner">
 
             <div class="row">
-
+                <?php                 
+                while($datos = mysqli_fetch_array($query)){
+                ?>
                 <div class="col s12 m6 l4">
                     <div class="card">
                         <div class="card-content">
                             <div class="row center-align">
-                                <h5>Juana Maria <br>
-                                    Amador Pérez</h5>
-                                <h6>20151023698</h6>
-                                <h6>Ingeniería en Sistemas</h6>
+                                <h5><?php echo $datos['nombres']?><br>
+                                    <?php echo $datos['apellidos']?></h5>
+                                <h6><?php echo $datos['no_cuenta']?></h6>
+                                <h6><?php echo $datos['carrera']?></h6>
                             </div>
                             <div class="row" style="margin-bottom:5px;">
                                 <div class="col s12">
                                     <div class="row valign-wrapper" style="margin-bottom:5px;">
                                         <h6 class="col s10">
                                             Porcentaje Completado <br>
-                                            <strong>Proceso No. 7</strong>
+                                            <strong>Proceso No. <?php echo $datos['idprocesos']?></strong>
                                         </h6>
                                         <h6 class="col s2 right-align">
-                                            <span id="porcentaje_user12">50</span>%
+                                            <span id="porcentaje_user12"><?php echo $datos['porcentaje']?></span>%
                                         </h6>
                                     </div>
                                     <div class="progress ">
@@ -88,29 +102,29 @@
                                 <br>
                                     <form class="frm_etapas" action="#">
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e1_12" checked="checked"
-                                                data-process="7" data-user="12" />
+                                            <input type="checkbox" class="filled-in" id="e1_12" <?php if ($datos['etapa1']==true) echo 'checked="checked"';?>
+                                                data-process="<?php echo $datos['idprocesos']?>" data-user="<?php echo $datos['idEstudiante']; ?>" />
                                             <label for="e1_12">
                                                 Evaluación Grupal
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e2_12" checked="checked"
-                                                data-process="7" data-user="12" />
+                                            <input type="checkbox" class="filled-in" id="e2_12" <?php if ($datos['etapa2']==true) echo 'checked="checked"';?>
+                                                data-process="<?php echo $datos['idprocesos']?>"  data-user="<?php echo $datos['idEstudiante']; ?>" />
                                             <label for="e2_12">
                                                 Evaluación en Línea
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e3_12" data-process="7"
-                                                data-user="12" />
+                                            <input type="checkbox" class="filled-in" id="e3_12" <?php if ($datos['etapa3']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
+                                                data-user="<?php echo $datos['idEstudiante']; ?>" />
                                             <label for="e3_12">
                                                 Entrevista Pedagógica
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e4_12" data-process="7"
-                                                data-user="12" />
+                                            <input type="checkbox" class="filled-in" id="e4_12" <?php if ($datos['etapa4']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
+                                                data-user="<?php echo $datos['idEstudiante']; ?>" />
                                             <label for="e4_12">
                                                 Devolución de Resultados
                                             </label>
@@ -122,6 +136,10 @@
 
                     </div>
                 </div>
+                <?php    
+                }
+                ?>
+
             </div>
 
 
