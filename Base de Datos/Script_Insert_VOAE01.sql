@@ -187,12 +187,12 @@ INSERT INTO `tbl_personas_has_tbl_tipousuario` (`tbl_personas_idPersona`,`tbl_ti
 -- -----------------------------------------------------
 
 INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainiciotestlinea`,`fechafinaltestlinea`,`urltestlinea1`,`urltestline2`,
-	`clavetest`,`fechainicioentrevista`,`fechafinentrevista`,`fechainiciodevuelveresultado` , `fechafindevuelveresultado`)VALUES
-(1,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
-(2,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
-(3,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
-(4,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29'),
-(5,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29');
+	`clavetest`,`fechainicioentrevista`,`fechafinentrevista`,`fechainiciodevuelveresultado` , `fechafindevuelveresultado`,`estado`)VALUES
+(1,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
+(2,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
+(3,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
+(4,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
+(5,'2019-07-29','2019-07-30','2019-07-29','2019-08-01','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Inactivo');
 
 
 
@@ -206,5 +206,28 @@ INSERT INTO `tbl_secciones` (`idsecciones`,`horainicial`,`horafinal`,`cupos`,`lu
 (3,'09:30:00','12:30:00',25,'Aula Voae 210',3,'Agosto 7, 2019'),
 (4,'09:30:00','12:30:00',25,'Aula Voae 207',4,'Agosto 7, 2019'),
 (5,'09:30:00','12:30:00',25,'Aula Voae 205',5,'Agosto 7, 2019');
+
+
+-- -----------------------------------------------------
+-- Insertando en la  tabla `tbl_`control_de_procesos
+-- -----------------------------------------------------
+
+INSERT INTO `tbl_control_de_procesos` (`idcontrolprocesos`,`porcentaje`,`etapa1`,`etapa2`,`etapa3`,`etapa4`,`idEstudiante`,`idprocesos`)VALUES
+(1,50,1,1,1,1,1,1),
+(2,90,0,0,0,0,2,2),
+(3,80,1,1,1,1,7,3),
+(4,70,1,1,1,1,4,4),
+(5,20,1,1,1,1,6,5);
+
+-- -----------------------------------------------------
+-- Insertando en la  tabla `tbl_Horarios_Orientador
+-- -----------------------------------------------------
+
+INSERT INTO`tbl_Horarios_Orientador` (`idhorariosorientador`,`fecha`,`h_inicial`,`h_final`,`tipoevento`,`codigohorario`,`idorientador`,`idprocesos`)VALUES
+(1,'12 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-17','1',1),
+(2,'14 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-18','2',2),
+(3,'16 Agosto 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-19','3',3),
+(4,'17 Agosto 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-20','4',4),
+(5,'18 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-21','5',5);
 
 
