@@ -144,6 +144,19 @@
                     Inicio
                 </a>
             </li>
+            <!--VISIBLE PARA ESTUDIANTES-->
+            <?php 
+                if($_SESSION["idTipoUsuario"]==4){
+            ?>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="inscripciones.php" id="btn_inscripciones">
+                    <i class="material-icons">border_color</i>
+                    Inscripciones
+                </a>
+            </li>
+            <?php
+                }
+            ?>
             <!--VISIBLE PARA ADMIN-->
             <?php 
                 if($_SESSION["idTipoUsuario"]==1){
@@ -158,6 +171,12 @@
                 <a class="waves-effect waves-grey" href="procesos.php" id="btn_procesos">
                     <i class="material-icons">autorenew</i>
                     Procesos
+                </a>
+            </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="control_progresos.php" id="btn_procesos">
+                    <i class="material-icons">done_all</i>
+                    Control de Progreso
                 </a>
             </li>
             <?php

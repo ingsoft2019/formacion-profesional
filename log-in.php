@@ -16,7 +16,7 @@
         
         <!-- Styles -->
         <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css"/>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="assets/css/materialize_Icons.css" rel="stylesheet">
 
         	
         <!-- Theme Styles -->
