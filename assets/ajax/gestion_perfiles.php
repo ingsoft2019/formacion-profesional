@@ -1,5 +1,5 @@
 <?php
-include ('../clases/class_conexion.php');
+require('../clases/class_conexion.php');
 $conexion = new Conexion();
 $respuesta = array();
 
@@ -21,7 +21,7 @@ if (isset($_POST["id"])) {
 				echo json_encode($respuesta);
 				break;
 			case "delete":
-				$resultadoUsuarios=$query=$conexion->ejecutarInstruccion("DELETE FROM tbl_personas where idPersona=".$_POST["id"]);
+				$resultadoUsuarios=$query=$conexion->ejecutarInstruccion("UPDATE tbl_personas SET estadocuenta = 0 WHERE idpersona = ".$_POST["id"]);
 				break;
 			default:
 				break;

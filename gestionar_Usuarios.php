@@ -114,9 +114,8 @@
         <!--FIN APARTADO-->
 
         <!-- Modal Structure -->
-        <div id="user_modal_information" class="modal modal_user_information">
+        <div id="user_modal_information" class="modal modal-fixed-footer bottom-sheet">
             <div class="modal-content">
-                <div class="profile_color_div"></div>
                 <div class="row">
                     <div class="col s12">
                         <div class="">
@@ -264,10 +263,9 @@
                             <label>Género</label>
                             </div>
                         </div>
-                    
                         <div class="modal_user_information">
-                            <button  class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</button>
-                            <button  class="modal-action waves-effect waves-red btn-flat" id="btn_cancelarNuevo">Cancelar</button>
+                            <a  class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
+                            <a  class="btn-flat red-text cancelar_cambios" id="btn_cancelarNuevo">Cancelar</a>
                         </div>
                 </form>
 

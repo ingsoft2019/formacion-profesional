@@ -218,7 +218,7 @@ $("#btn_generarPass").click(function(e) {
 });
 
 $("#btn_cancelarNuevo").click(function() {
-    $("#mdl_nuevoUsuario").hide();
+            $('#mdl_nuevoUsuario').closeModal();
 });
 function render_lista_usuarios() {
     //FUNCION AJAX PARA CARGAR TODOS LOS USUARIOS
