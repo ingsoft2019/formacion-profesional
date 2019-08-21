@@ -1,7 +1,17 @@
 jQuery(document).ready(function($) {
 
     $("#btn_nueva_tarjeta").click(function() {
-        renderTarjeta(crear_id());
+        
+        $.ajax({
+            url: 'assets/ajax/obtener_procesos.php',
+            method: 'GET',
+            data: 'idProceso=' + $('#id-proceso').val(),
+            success: function(data){
+                console.log(JSON.parse(data))
+                renderTarjeta(crear_id(), JSON.parse(data));
+            }
+        })
+        
     });
 
     $("#btn_guardar_cambios").click(function() {
@@ -55,6 +65,7 @@ jQuery(document).ready(function($) {
 
     $(".btn_entrevista").click(function(event) {
         //console.log(event.target.getAttribute('data-id'));
+        $('#id-proceso').val(event.target.getAttribute('data-id'))
         setModalData(event.target.getAttribute('data-id'), 2);
     });
     $(".btn_resultados").click(function(event) {
@@ -74,7 +85,7 @@ jQuery(document).ready(function($) {
 
 
 // render tarjetas horarios
-const renderTarjeta = (id) => {
+const renderTarjeta = (id, proceso) => {
     const html = `
         <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
             <div class="card">
@@ -134,16 +145,14 @@ const renderTarjeta = (id) => {
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
         },
+        minDate: proceso.fechainicioentrevista.charAt(0).toUpperCase() + proceso.fechainicioentrevista.slice(1),
+        maxDate: proceso.fechafinentrevista.charAt(0).toUpperCase() + proceso.fechafinentrevista.slice(1)
 
-        /*enable: [{
-                from: "2019-07-01",
-                to: "2019-08-01"
-            },
-            {
-                from: "2025-09-01",
-                to: "2025-12-01"
-            }
-        ]*/
+        // enable: [{
+        //         from: "2019-01-01",
+        //         to: "2019-02-01"
+        //     }
+        // ]
     });
 
     time_pickers.flatpickr({

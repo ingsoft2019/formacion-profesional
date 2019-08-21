@@ -105,6 +105,7 @@
 
         <div id="mdl_horarios" class="modal modal-fixed-footer bottom-sheet">
             <div class="modal-content">
+            <input type="hidden" id="id-proceso">
                 <div class="row">
                     <div class="col s3 m2 l1 amber darken-1 center">
                         <i class="material-icons white-text medium">access_time</i>
