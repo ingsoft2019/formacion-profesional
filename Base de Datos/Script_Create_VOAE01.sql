@@ -1,13 +1,16 @@
+
+
 -- -----------------------------------------------------
--- Creando la tabla generos
+-- Table `OrientacionProfesional`.`tbl_generos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_generos` (
   `idGenero` INT NOT NULL,
   `genero` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idGenero`));
 
+
 -- -----------------------------------------------------
--- Creando la tabla personas
+-- Table `OrientacionProfesional`.`tbl_personas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_personas` (
   `idPersona` INT NOT NULL,
@@ -23,13 +26,13 @@ CREATE TABLE IF NOT EXISTS `tbl_personas` (
   PRIMARY KEY (`idPersona`),
   CONSTRAINT `fk_tbl_personas_tbl_generos1`
     FOREIGN KEY (`idGenero`)
-    REFERENCES .`tbl_generos` (`idGenero`)
+    REFERENCES `tbl_generos` (`idGenero`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Creando la tabla Carreras
+-- Table `OrientacionProfesional`.`tbl_carreras`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_carreras` (
   `idCarrera` VARCHAR(10) NOT NULL,
@@ -38,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tbl_carreras` (
 
 
 -- -----------------------------------------------------
--- Creando la tabla estudiantes
+-- Table `OrientacionProfesional`.`tbl_estudiantes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_estudiantes` (
   `idEstudiante` INT NOT NULL,
@@ -58,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tbl_estudiantes` (
 
 
 -- -----------------------------------------------------
--- Creando la tabla tipo_usuarios
+-- Table `OrientacionProfesional`.`tbl_tipousuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_tipousuario` (
   `idtipousuario` INT NOT NULL,
@@ -67,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tipousuario` (
 
 
 -- -----------------------------------------------------
--- Creando la tabla transaccional tbl_personas_has_tbl_tipousuario`
+-- Table `OrientacionProfesional`.`tbl_personas_has_tbl_tipousuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_personas_has_tbl_tipousuario` (
   `tbl_personas_idPersona` INT NOT NULL,
@@ -86,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `tbl_personas_has_tbl_tipousuario` (
 
 
 -- -----------------------------------------------------
--- Creando tabla de tbl_procesos
+-- Table `OrientacionProfesional`.`tbl_procesos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_procesos` (
   `idprocesos` INT NOT NULL,
@@ -101,24 +104,72 @@ CREATE TABLE IF NOT EXISTS `tbl_procesos` (
   `fechafinentrevista` DATETIME NULL,
   `fechainiciodevuelveresultado` DATETIME NULL,
   `fechafindevuelveresultado` DATETIME NULL,
+  `estado` VARCHAR(45) NULL,
   PRIMARY KEY (`idprocesos`));
 
 
 -- -----------------------------------------------------
--- Creando tabla `tbl_secciones`
+-- Table `OrientacionProfesional`.`tbl_secciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_secciones` (
-  `idsecciones` varchar(150) NOT NULL,
+  `idsecciones` INT NOT NULL,
   `horainicial` TIME NULL,
   `horafinal` TIME NULL,
   `cupos` INT NULL,
   `lugar` VARCHAR(100) NULL,
   `idprocesos` INT NOT NULL,
-  `dia` varchar(100) NULL,
-  PRIMARY KEY (`idsecciones`, `idprocesos`),
+  `dia` VARCHAR(100) NULL,
+  PRIMARY KEY (`idsecciones`),
   CONSTRAINT `fk_tbl_secciones_tbl_procesos1`
     FOREIGN KEY (`idprocesos`)
     REFERENCES `tbl_procesos` (`idprocesos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `OrientacionProfesional`.`tbl_control_de_procesos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tbl_control_de_procesos` (
+  `idcontrolprocesos` INT NOT NULL,
+  `porcentaje` INT NULL,
+  `etapa1` BOOLEAN NULL,
+  `etapa2` BOOLEAN NULL,
+  `etapa3` BOOLEAN NULL,
+  `etapa4` BOOLEAN NULL,
+  `idEstudiante` INT NOT NULL,
+  `idprocesos` INT NOT NULL,
+  PRIMARY KEY (`idcontrolprocesos`),
+  CONSTRAINT `fk_tbl_control_de_procesos_tbl_estudiantes1`
+    FOREIGN KEY (`idEstudiante`)
+    REFERENCES .`tbl_estudiantes` (`idEstudiante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_control_de_procesos_tbl_procesos1`
+    FOREIGN KEY (`idprocesos`)
+    REFERENCES `tbl_procesos` (`idprocesos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+-- -----------------------------------------------------
+-- Table `OrientacionProfesional`.`tbl_Horarios_Orientador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tbl_Horarios_Orientador` (
+  `idhorariosorientador` INT NOT NULL,
+  `fecha` VARCHAR(1000) NULL,
+  `h_inicial` TIME NULL,
+  `h_final` TIME NULL,
+  `tipoevento` VARCHAR(45) NULL,
+  `codigohorario` VARCHAR(2000) NULL,
+  `idorientador` VARCHAR(45) NULL,
+  `tbl_procesos_idprocesos` INT NOT NULL,
+  PRIMARY KEY (`idhorariosorientador`),
+  CONSTRAINT `fk_tbl_Horarios_Orientador_tbl_procesos1`
+    FOREIGN KEY (`tbl_procesos_idprocesos`)
+    REFERENCES `tbl_procesos` (`idprocesos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
 
