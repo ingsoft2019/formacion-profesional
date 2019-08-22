@@ -231,3 +231,12 @@ INSERT INTO`tbl_Horarios_Orientador` (`idhorariosorientador`,`fecha`,`h_inicial`
 (5,'18 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-21','5',5);
 
 
+-- -----------------------------------------------------
+--  Insetando en la `tbl_secciones_has_tbl_estudiantes`
+-- -----------------------------------------------------
+INSERT INTO`tbl_secciones_has_tbl_estudiantes` (`tbl_secciones_idsecciones`,`tbl_estudiantes_idEstudiante`)VALUES
+(1,1),
+(1,2),
+(2,3),
+(3,4),
+(4,5);

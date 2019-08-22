@@ -172,4 +172,20 @@ CREATE TABLE IF NOT EXISTS `tbl_Horarios_Orientador` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
+-- -----------------------------------------------------
+-- Table `OrientacionProfesional`.`tbl_secciones_has_tbl_estudiantes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tbl_secciones_has_tbl_estudiantes` (
+  `tbl_secciones_idsecciones` INT NOT NULL,
+  `tbl_estudiantes_idEstudiante` INT NOT NULL,
+  PRIMARY KEY (`tbl_secciones_idsecciones`, `tbl_estudiantes_idEstudiante`),
+  CONSTRAINT `fk_tbl_secciones_has_tbl_estudiantes_tbl_secciones1`
+    FOREIGN KEY (`tbl_secciones_idsecciones`)
+    REFERENCES `tbl_secciones` (`idsecciones`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_secciones_has_tbl_estudiantes_tbl_estudiantes1`
+    FOREIGN KEY (`tbl_estudiantes_idEstudiante`)
+    REFERENCES `tbl_estudiantes` (`idEstudiante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
