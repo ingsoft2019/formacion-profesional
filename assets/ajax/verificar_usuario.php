@@ -15,6 +15,20 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["idTipoUsuario"] = $fila["tbl_tipousuario_idtipousuario"];
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
 					$respuesta["mensaje"]="Si tiene acceso, sera redireccionado" ;
+				}else if($cantidadRegistros==2) {
+					$resultado = $conexion->ejecutarInstruccion("SELECT * FROM tbl_personas 
+					LEFT JOIN tbl_personas_has_tbl_tipousuario on idPersona = tbl_personas_idPersona 
+					WHERE  correo = '$correo' AND contrasena = MD5('$contrasena')
+					group by idpersona");
+					$fila = $conexion->obtenerFila($resultado);
+					$_SESSION["idPersona"] = $fila["idPersona"];
+					$_SESSION["correo"] = $fila["correo"];
+					$_SESSION["nombre"] = $fila["nombres"];
+					$_SESSION["contrasena"] = $fila["contrasena"];
+					$_SESSION["fotoPerfil"] = $fila["fotoPerfil"];
+					$_SESSION["idTipoUsuario"] = $fila["tbl_tipousuario_idtipousuario"];
+					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
+					$respuesta["mensaje"]="Si tiene acceso, sera redireccionado" ;
 				}else{
 					$respuesta["status"]=0;
 					$respuesta["mensaje"]="No tiene acceso; por favor verifique que su correo y contraseña sean correctos" ;
