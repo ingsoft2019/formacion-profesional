@@ -83,6 +83,9 @@
                                 <div class="row">
                                     <form class="col s12" id="frm_perfil">
                                         <div class="row">
+                                            <div>
+                                                <input id="idTipoUsuario" name="idTipoUsuario" value="<?php echo $_SESSION["idTipoUsuario"] ?>">
+                                            </div>
                                             <div class="input-field col s12 m6">
                                                 <input id="txt_nombres" name="txt_nombres" type="text" class="masked"
                                                     data-inputmask="'mask': 'a{+}'">
@@ -110,23 +113,43 @@
                                                 <label for="txt_celular">Celular</label>
                                             </div>
                                             <div class="input-field col s12 m6">
-                                                <input id="txt_correo" name="txt_correo" type="text" class="masked"
-                                                    data-inputmask="'mask': '/{+}@a{+}.a{+}'">
+                                                <input id="txt_correo" name="txt_correo" type="text" class="masked">
                                                 <label for="txt_correo">Correo</label>
                                             </div>
-                                            <div class="input-field col s12 m6">
-                                                <input id="txt_cuenta" name="txt_cuenta" type="text" class="masked"
-                                                    data-inputmask="'mask': '99999999999'">
-                                                <label for="txt_cuenta">No. Cuenta</label>
-                                            </div>
-                                            <div class="input-field col s12 m6">
-                                                <label for="slc-carrera">Carrera Universitaria</label>
-                                                <select id="slc-carrera" name="slc-carrera">
-                                                    <option value="0">Seleccione una opción</option>
+                                            <?php
+                                            if($_SESSION["idTipoUsuario"]==4){
+                                            ?>
+                                                <div class="input-field col s12 m6">
+                                                    <input id="txt_cuenta" name="txt_cuenta" type="text" class="masked"
+                                                        data-inputmask="'mask': '99999999999'">
+                                                    <label for="txt_cuenta">No. Cuenta</label>
+                                                </div>
+                                                <div class="input-field col s12 m6">
+                                                    <label for="slc-carrera">Carrera Universitaria</label>
+                                                    <select id="slc-carrera" name="slc-carrera">
+                                                        <option value="0">Seleccione una opción</option>
 
-                                                </select>
+                                                    </select>
 
-                                            </div>
+                                                </div>
+                                            <?php
+                                                }
+                                            ?>
+                                            <?php
+                                            if($_SESSION["idTipoUsuario"]==2 || $_SESSION["idTipoUsuario"]==3 ){
+                                            ?>
+                                                <div class="input-field col s12 m6 l6">
+                                                    <select id="cargo" name="cargo">
+                                                        <option value="" disabled selected>Seleccionar cargo</option>
+                                                        <option value="2">Entrevistador</option>
+                                                        <option value="3">Psicólogo</option>
+                                                        <option value="4">Entrevistador y Psicólogo</option>
+                                                    </select>
+                                                    <label>Funciones</label>
+                                                </div>
+                                            <?php
+                                                }
+                                            ?>
                                             <div class="col s12 m6">
                                                 <div class="input-field col s12 m9">
                                                     <input id="txt_contrasena" type="password" class="validate"
@@ -159,19 +182,15 @@
                                             </div>
 
                                             <div class="col s12 m12">
-
                                                 <div class="col m4 s12" hidden="true" id="div_btn_guardar_cancelar">
                                                     <a class="waves-effect waves-light btn yellow darken-2 m-b-xs"
                                                         id="btn_cancelar">Cancelar</a>
                                                     <a class="waves-effect waves-light btn blue m-b-xs"
                                                         id="btn_guardar_cambios">Guardar</a>
                                                 </div>
-                                                <div id="pruebas">
-
-                                                </div>
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

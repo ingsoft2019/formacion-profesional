@@ -68,6 +68,7 @@
             $numero = str_replace(" ", "", $numero);
             $numero = substr($numero, 5);
             $estado_cuenta = 1;
+            $mysql->ejecutarInstruccion("SET FOREIGN_KEY_CHECKS=0;");
             $mysql->ejecutarInstruccion("INSERT INTO tbl_personas(idPersona,idGenero,nombres,apellidos,correo,contrasena,celular,no_identidad,fotoPerfil,estadocuenta ) VALUES ('$id','$genero','$nombre','$apellidos','$email',MD5('$pass'),'$numero','$idp','$foto','$estado_cuenta')");
             $mysql->ejecutarInstruccion("INSERT INTO tbl_estudiantes(idEstudiante,no_cuenta,idCarrera)VALUES('$id','$cuenta','$carr')");
             $mysql->ejecutarInstruccion("INSERT INTO tbl_personas_has_tbl_tipousuario(tbl_personas_idPersona, tbl_tipousuario_idtipousuario) VALUES ('$id','4')");
