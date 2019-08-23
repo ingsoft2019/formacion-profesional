@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $("#div_secciones_matriculadas").click(function(event) {
         if (event.target.className == "waves-effect waves-light red btn btn_eliminar_inscripcion") {
             ID_Proceso = event.target.getAttribute('data-process');
@@ -29,4 +28,7 @@ $(document).ready(function() {
     $(".btn_inscribirse").click(function(event) {
         swal("Completo", "Tu inscripción ha sido completada.", "success");
     });
+
+    
 });
+

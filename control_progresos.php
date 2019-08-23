@@ -85,7 +85,7 @@
                                         </h6>
                                     </div>
                                     <div class="progress ">
-                                        <div class="determinate" style="width: 50%" id="bar_user12"></div>
+                                        <div class="determinate" style="width: <?php echo $datos['porcentaje']?>%" id="bar_user12"></div>
                                     </div>
                                 </div>
                             </div>

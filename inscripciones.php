@@ -1,3 +1,14 @@
+<?php
+
+    require('./assets/clases/class_conexion.php');
+    $mysql = new Conexion();
+    $query = $mysql->ejecutarInstruccion("SET lc_time_names = 'es_MX'");
+    $query=$mysql->ejecutarInstruccion("
+    select *, DATE_FORMAT(fechainicio, '%d de %M de %Y') as FI, DATE_FORMAT(fechafinal, '%d de %M de %Y') as FF from tbl_procesos
+    ");
+
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,79 +54,33 @@
         <main class="mn-inner">
 
             <div class="row">
-                <ul class="collapsible popout" data-collapsible="accordion">
-                    <li id="20197612544789"> <!--ID PROCESO-->
-                        <div class="collapsible-header active">
-                            <i class="material-icons">event_note</i>
-                            Proceso de orientación Profesional No. 20197612544789<br>
-                            <div class="chip">Comienza 25 Jun, 2019</div>
-                            <div class="chip">Finaliza 30 Jun, 2019</div>
+
+                <ul class="collapsible popout procesos" data-collapsible="accordion">
+                    <?php 
+                        while($datos = mysqli_fetch_array($query))
+                        {
+                    ?>
+                    <li <?php echo 'onclick="getSecciones('.$datos["idprocesos"].',this)"' ?> > <!--ID PROCESO-->
+                        <div class="collapsible-header">
+                        <i class="material-icons">event_note</i>
+                            Proceso de orientación Profesional No. <?php echo $datos["idprocesos"]; ?><br>
+                            <div class="chip">Comienza <?php echo $datos["FI"]; ?></div>
+                            <div class="chip">Finaliza <?php echo $datos["FF"]; ?></div>
                         </div>
                         <div class="collapsible-body">
-
-                            <div class="row">
-                                <div class="col s12 m4 l3">
-                                    <div class="card">
-                                        <div class="card-content">
-                                            <ul class="collection">
-                                                <li class="collection-item valign-wrapper">
-                                                    <i class="material-icons">fingerprint</i>&emsp;
-                                                    20197612544739
-                                                </li>
-                                                <li class="collection-item valign-wrapper">
-                                                    <i class="material-icons">today</i>&emsp;
-                                                    Agosto 7, 2019
-                                                </li>
-                                                <li class="collection-item valign-wrapper">
-                                                    <i class="material-icons">schedule</i>&emsp;
-                                                    9:30 AM - 1:00 PM
-                                                </li>
-                                                <li class="collection-item valign-wrapper">
-                                                    <i class="material-icons">room</i>&emsp;
-                                                    Aula Voae 209
-                                                </li>
-                                                <li class="collection-item valign-wrapper">
-                                                    <i class="material-icons">accessibility</i>&emsp;
-                                                    10 cupos
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-action right-align">
-                                            <a class="waves-effect waves-light blue btn btn_inscribirse">Inscribirse</a>
-                                        </div>
-                                    </div>
-                                </div>
+                           <div class="row ">
+                            <!--  secciones -->
                             </div>
-
-
                         </div>
                     </li>
-                    <li>
-                        <div class="collapsible-header">
-                        <i class="material-icons">event_note</i>
-                            Proceso de orientación Profesional No. 20197612543258<br>
-                            <div class="chip">Comienza 30 Jun, 2019</div>
-                            <div class="chip">Finaliza 15 Jul, 2019</div>
-                        </div>
-                        <div class="collapsible-body">
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">
-                        <i class="material-icons">event_note</i>
-                            Proceso de orientación Profesional No. 20197612598756<br>
-                            <div class="chip">Comienza 20 Ago, 2019</div>
-                            <div class="chip">Finaliza 30 Ago, 2019</div>
-                        </div>
-                        <div class="collapsible-body">
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
 
 
+            <input type="hidden" id="idPersona" value="<?php echo $_SESSION["idPersona"] ?>">
 
 
             <div class="row">
@@ -193,7 +158,83 @@
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>
     <script src="assets/js/controlador_inscripciones.js"></script>
-    
+    <script type="text/javascript">
+     function inscribirse(idSeccion, idPersona) {
+        console.log(idSeccion, idPersona)
+
+        $.ajax({
+            url: 'assets/ajax/inscribirEstudiante.php',
+            method: 'POST',
+            data: `idPersona=${idPersona}&idSeccion=${idSeccion}`,
+            success: function(data) {
+                console.log(data);
+                swal({
+                    title: "Completo",
+                    text: "Sección matriculada",
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2196F3",
+                    confirmButtonText: "Aceptar",
+                    // cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    // closeOnCancel: true
+                // }, function(isConfirm) {
+                //     // const section = $('#' + ID_Seccion);
+                //     section.hide("slow", function() { $(this).remove(); })
+                //     if (isConfirm) {
+                //         swal("Completo", "Inscripción eliminada.", "success");
+                //     }
+                });
+            }
+        })
+
+
+    }  
+    function getSecciones(id,e){
+
+        var element=$(e)[0].childNodes[5].childNodes[1];
+        $.ajax({
+            url: 'assets/ajax/inscripciones.php',
+            method: 'post',
+            dataType:'json',
+            data: 'id='+id,
+            success: function(data){
+                var text="";
+                for (var i = 0; i<data.length; i++) {
+                    text+= '<div class="col s12 m4 l3">'+
+                                   '<div class="card">'+
+                                        '<div class="card-content">'+
+                                        '<ul class="collection">'+
+                                        '<li class="collection-item valign-wrapper">'+
+                                        '<i class="material-icons">fingerprint</i>&emsp;'+data[i]["idsecciones"]+
+                                        '        </li>'+
+                                        '        <li class="collection-item valign-wrapper">'+
+                                        '            <i class="material-icons">today</i>&emsp;'+data[i]["dia"]+
+                                        '        </li>'+
+                                        '        <li class="collection-item valign-wrapper">'+
+                                        '            <i class="material-icons">schedule</i>&emsp;'+data[i]["horainicial"]+ "-" + data[i]["horafinal"]+
+                                        '        </li>'+
+                                        '        <li class="collection-item valign-wrapper">'+
+                                        '            <i class="material-icons">room</i>&emsp;'+data[i]["lugar"]+
+                                        '        </li>'+
+                                        '        <li class="collection-item valign-wrapper">'+
+                                        '            <i class="material-icons">accessibility</i>&emsp;'+data[i]["cupos"]+ " cupos"+
+                                        '        </li>'+
+                                        '    </ul>'+
+                                        '</div>'+
+                                        '<div class="card-action right-align">'+
+                                        '<a class="waves-effect waves-light blue btn btn_inscribirse" onclick="inscribirse(' + data[i]["idsecciones"]+','+ $('#idPersona').val() + ')">Inscribirse</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                               '</div>';
+                }
+                element.innerHTML=text;
+            }
+        });
+
+
+    }
+    </script>
 </body>
 
 </html>
