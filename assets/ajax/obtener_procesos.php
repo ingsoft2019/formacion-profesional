@@ -6,9 +6,17 @@ $respuesta = array();
 
 $id = $_GET["idProceso"];
 
-$sql = 'SELECT idprocesos, DATE_FORMAT(fechainicioentrevista, "%M %d, %Y") as fechainicioentrevista,
- DATE_FORMAT(fechafinentrevista, "%M %d, %Y") as fechafinentrevista
- FROM tbl_procesos WHERE idprocesos=' . $id;
+$sql = '';
+if($_GET["tipoEvento"] == 2){
+    $sql = 'SELECT idprocesos, DATE_FORMAT(fechainicioentrevista, "%M %d, %Y") as inicio,
+    DATE_FORMAT(fechafinentrevista, "%M %d, %Y") as fin
+    FROM tbl_procesos WHERE idprocesos=' . $id;
+} else {
+    $sql = 'SELECT idprocesos, DATE_FORMAT(fechainiciodevuelveresultado, "%M %d, %Y") as inicio,
+    DATE_FORMAT(fechafindevuelveresultado, "%M %d, %Y") as fin
+    FROM tbl_procesos WHERE idprocesos=' . $id;
+}
+
 
 
 $conexion->ejecutarInstruccion('SET lc_time_names = "es_MX"');

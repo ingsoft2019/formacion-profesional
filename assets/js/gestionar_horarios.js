@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
         $.ajax({
             url: 'assets/ajax/obtener_procesos.php',
             method: 'GET',
-            data: 'idProceso=' + $('#id-proceso').val(),
+            data: 'idProceso=' + $('#id-proceso').val() + '&tipoEvento=' + idTipoEvento,
             success: function(data){
                 console.log(JSON.parse(data))
                 renderTarjeta(crear_id(), JSON.parse(data));
@@ -123,6 +123,7 @@ const renderTarjeta = (id, proceso) => {
     `;
     $("#contenedor_tarjetas").append(html);
 
+    console.log(idTipoEvento);
 
     const tarjeta = $(`.tarjeta_horario[id=${id}]`);
     tarjeta.hide();
@@ -145,8 +146,8 @@ const renderTarjeta = (id, proceso) => {
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
         },
-        minDate: proceso.fechainicioentrevista.charAt(0).toUpperCase() + proceso.fechainicioentrevista.slice(1),
-        maxDate: proceso.fechafinentrevista.charAt(0).toUpperCase() + proceso.fechafinentrevista.slice(1)
+        minDate: proceso.inicio.charAt(0).toUpperCase() + proceso.inicio.slice(1),
+        maxDate: proceso.fin.charAt(0).toUpperCase() + proceso.fin.slice(1)
 
         // enable: [{
         //         from: "2019-01-01",
