@@ -60,8 +60,8 @@
                         while($datos = mysqli_fetch_array($query))
                         {
                     ?>
-                    <li <?php echo 'onclick="getSecciones('.$datos["idprocesos"].',this)"' ?> > <!--ID PROCESO-->
-                        <div class="collapsible-header">
+                    <li  > <!--ID PROCESO-->
+                        <div class="collapsible-header" <?php echo 'onclick="getSecciones('.$datos["idprocesos"].',this)"' ?>>
                         <i class="material-icons">event_note</i>
                             Proceso de orientación Profesional No. <?php echo $datos["idprocesos"]; ?><br>
                             <div class="chip">Comienza <?php echo $datos["FI"]; ?></div>
@@ -159,8 +159,8 @@
     <script src="assets/js/pages/form-input-mask.js"></script>
     <script src="assets/js/controlador_inscripciones.js"></script>
     <script type="text/javascript">
-     function inscribirse(idSeccion, idPersona) {
-        console.log(idSeccion, idPersona)
+     function inscribirse(idSeccion, idPersona, idProceso) {
+        console.log(idProceso)
 
         $.ajax({
             url: 'assets/ajax/inscribirEstudiante.php',
@@ -168,23 +168,39 @@
             data: `idPersona=${idPersona}&idSeccion=${idSeccion}`,
             success: function(data) {
                 console.log(data);
-                swal({
-                    title: "Completo",
-                    text: "Sección matriculada",
-                    type: "success",
-                    showCancelButton: true,
-                    confirmButtonColor: "#2196F3",
-                    confirmButtonText: "Aceptar",
-                    // cancelButtonText: "Cancelar",
-                    closeOnConfirm: false,
-                    // closeOnCancel: true
-                // }, function(isConfirm) {
-                //     // const section = $('#' + ID_Seccion);
-                //     section.hide("slow", function() { $(this).remove(); })
-                //     if (isConfirm) {
-                //         swal("Completo", "Inscripción eliminada.", "success");
-                //     }
-                });
+                if (data == 'correcto'){
+                    $('.btn-proceso-' + idProceso).hide();
+                    $('.btn-proceso-' + idProceso).addClass('disabled');
+                    swal({
+                        title: "Completo",
+                        text: "Sección matriculada",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: "#2196F3",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                    });
+                } else if (data == 'existe') {
+                    swal({
+                        title: "Error",
+                        text: "La sección ya está matriculada",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#2196F3",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                    });
+                } else if (data == 'lleno') {
+                    swal({
+                        title: "Error",
+                        text: "La sección ya está llena",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#2196F3",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                    });
+                }
             }
         })
 
@@ -192,7 +208,9 @@
     }  
     function getSecciones(id,e){
 
-        var element=$(e)[0].childNodes[5].childNodes[1];
+        // var element=$(e)[0].childNodes[5].childNodes[1];
+        var element=$(e).next().find('.row');
+        
         $.ajax({
             url: 'assets/ajax/inscripciones.php',
             method: 'post',
@@ -223,12 +241,12 @@
                                         '    </ul>'+
                                         '</div>'+
                                         '<div class="card-action right-align">'+
-                                        '<a class="waves-effect waves-light blue btn btn_inscribirse" onclick="inscribirse(' + data[i]["idsecciones"]+','+ $('#idPersona').val() + ')">Inscribirse</a>'+
+                                        '<a class="waves-effect waves-light blue btn btn_inscribirse btn-proceso-' + data[i]['idprocesos'] +'" onclick="inscribirse(' + data[i]["idsecciones"]+','+ $('#idPersona').val() + ',' + data[i]['idprocesos'] + ')">Inscribirse</a>'+
                                         '</div>'+
                                     '</div>'+
                                '</div>';
                 }
-                element.innerHTML=text;
+                element.html(text);
             }
         });
 
