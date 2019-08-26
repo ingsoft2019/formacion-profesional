@@ -15,8 +15,8 @@ jQuery(document).ready(function($) {
     });
 
     $("#btn_guardar_cambios").click(function() {
-        console.log(obtenerHorarios());
-
+        //console.log(obtenerHorarios());
+        guardarCambios(obtenerHorarios());
         swal({
             title: "¿Seguro que desea guardar los cambios realizados?",
             text: "Los horarios para este proceso serán actualizados.",
@@ -237,7 +237,9 @@ function obtenerHorarios() {
         console.log(h_inicial);
         console.log(h_final);*/
     }
-    return array_Horarios;
+    var resultado = JSON.stringify(array_Horarios);
+
+    return resultado;
 
 }
 
@@ -259,4 +261,17 @@ function formatear_Fecha(fecha) {
     Objeto_fecha = flatpickr.parseDate(fecha, "F j, Y");
     let fecha_con_formato = Objeto_fecha.getFullYear() + "-" + (Objeto_fecha.getMonth() + 1) + "-" + Objeto_fecha.getDate();
     return fecha_con_formato;
+}
+
+function guardarCambios(JsonHorarios){
+    console.log(JsonHorarios);
+    $.ajax({
+            url: "assets/ajax/guardar_horarios.php",
+            method: "POST",
+            data: "JsonHorarios="+JsonHorarios,
+            dataType: 'html', 
+            success: function(respuesta) {
+            }
+        }
+        );
 }
