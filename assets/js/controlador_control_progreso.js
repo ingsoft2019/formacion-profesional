@@ -27,7 +27,7 @@ $(document).ready(function() {
             console.log("en cada click");
             var etapaCambios = JSON.stringify(datosEtapa);
             var etapa = id_etapa.substr(1, 1);
-            actualizarProgreso(etapaCambios, etapa);
+            //actualizarProgreso(etapaCambios, etapa);
             /*console.log(id_proceso);
             console.log(id_user);
             console.log(id_etapa);
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $.ajax({
             url: "assets/ajax/actualizar_progresos.php",
             method: "POST",
-            data: "JsonCambios="+etapaCambios+&+"etapa="+etapa,
+            data: "JsonCambios="+etapaCambios+"&"+"etapa="+etapa,
             dataType: 'html', 
             success: function(respuesta) {
 
