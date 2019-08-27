@@ -214,10 +214,10 @@ INSERT INTO `tbl_secciones` (`idsecciones`,`horainicial`,`horafinal`,`cupos`,`lu
 
 INSERT INTO `tbl_control_de_procesos` (`idcontrolprocesos`,`porcentaje`,`etapa1`,`etapa2`,`etapa3`,`etapa4`,`idEstudiante`,`idprocesos`)VALUES
 (1,50,1,1,1,1,1,1),
-(2,90,0,0,0,0,2,2),
-(3,80,1,1,1,1,7,3),
-(4,70,1,1,1,1,4,4),
-(5,20,1,1,1,1,6,5);
+(2,0,0,0,0,0,2,2),
+(3,100,1,1,1,1,7,3),
+(4,100,1,1,1,1,4,4),
+(5,25,1,0,0,0,6,5);
 
 -- -----------------------------------------------------
 -- Insertando en la  tabla `tbl_Horarios_Orientador

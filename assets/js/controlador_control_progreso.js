@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    $(".frm_etapas").click(function(event) {
+    $("form").click(function(event) {
+        // console.log(this)
         var datosEtapa = [];
         if (event.target.type == "checkbox") {
             var id_proceso = event.target.getAttribute('data-process');
