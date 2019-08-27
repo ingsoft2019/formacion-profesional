@@ -91,8 +91,8 @@
                             Resúmen de Inscripciones Realizadas
                         </div>
                         <div class="collapsible-body">
-                            <div class="row">
-                                <div class="col s12 m4 l3" id="20197612544739"><!--ID SECCION-->
+                            <div class="row" id="Secciones_matriculadas">
+                                <!--div class="col s12 m4 l3" id="20197612544739">
                                     <div class="card">
                                         <div class="card-content">
                                             <ul class="collection">
@@ -121,11 +121,11 @@
                                             </ul>
                                         </div>
                                         <div class="card-action right-align">
-                                            <a class="waves-effect waves-light red btn btn_eliminar_inscripcion" data-section="20197612544739" data-process="20197612544789">Eliminar</a><!--ID SECCION-->
+                                            <a class="waves-effect waves-light red btn btn_eliminar_inscripcion" data-section="20197612544739" data-process="20197612544789">Eliminar</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div-->
 
 
                         </div>
