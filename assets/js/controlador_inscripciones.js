@@ -36,6 +36,7 @@ $(document).ready(function() {
     });
     $(".btn_inscribirse").click(function(event) {
         swal("Completo", "Tu inscripción ha sido completada.", "success");
+        cargarSecciones();
     });
 
     
