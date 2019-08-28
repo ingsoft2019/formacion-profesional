@@ -383,7 +383,7 @@ function guardar_cambios() {
         "correo=" + $('#txt_correo').val() + "&" +
         "contrasena=" + $('#txt_confirmar_nueva').val() + "&" +
         "no_identidad=" + $("#txt_identidad").val() + "&" +
-        "idcarrera=" + idNuevacarrera + "&" +
+        "idcarrera=" + $("#slc-carrera").val() + "&" +
         "CODIGO_FUNCION=3";
     //console.log(parametros);
     $.ajax({
@@ -812,25 +812,25 @@ function comprobar_antes_de_guardar() {
         var element = $("#" + form_data[input]['name']);
 
         switch (Number(input)) {
-            case 0:
+            case 1:
                 if (element.val() == '') {
                     mensaje = 'Introduzca su nombre.';
                     error_free = false;
                 }
                 break;
-            case 1:
+            case 2:
                 if (element.val() == '') {
                     mensaje = 'Introduzca su apellido.';
                     error_free = false;
                 }
                 break;
-            case 2:
+            case 3:
                 if (!element.val().match(/\d{4}-\d{4}-\d{5}/g)) {
                     mensaje = 'Número de identidad incompleto.';
                     error_free = false;
                 }
                 break;
-            case 3:
+            case 4:
                 if (!element.val().match(/\(504\)\ \d{4}-\d{4}/g)) {
                     mensaje = 'Número de teléfono incompleto.';
                     error_free = false;
@@ -838,7 +838,7 @@ function comprobar_antes_de_guardar() {
                 break;
 
 
-            case 4:
+            case 5:
                 if (!element.val().match(/[a-z]+/g)) {
                     mensaje = 'Correo institucional no válido.';
                     error_free = false;
@@ -848,22 +848,22 @@ function comprobar_antes_de_guardar() {
                     error_free = false;
                 }
                 break;
-            case 5:
+            case 6:
                 if (!element.val().match(/\d{11}/g)) {
                     mensaje = 'Número de cuenta incompleto.';
                     error_free = false;
                 }
                 break;
-            case 6:
+            case 7:
                 if (element.val() == 0) {
                     mensaje = 'Seleccione una carrera.';
                     error_free = false;
                 }
                 break;
-            case 7:
+            case 8:
 
                 break;
-            case 8:
+            case 9:
                 if (element.val() == '' && $('#txt_contrasena_actual').val() != "") {
                     mensaje = 'Introduzca su nueva contraseña.';
                     error_free = false;
@@ -874,7 +874,7 @@ function comprobar_antes_de_guardar() {
                     error_free = false;
                 }
                 break;
-            case 9:
+            case 10:
                 if (element.val() !== $('#txt_contrasena_nueva').val()) {
                     mensaje = 'Las contraseñas deben ser iguales.';
                     error_free = false;

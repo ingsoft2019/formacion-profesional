@@ -311,9 +311,14 @@ switch ($_GET["CODIGO_FUNCION"]) {
 		$resultado["nombreActualizado"]=$_GET["nombres"];
 		$id=$_SESSION["idPersona"];
 		$cargo = $_GET["cargo"];
-		if($cargo < 4){
-            $conexion->ejecutarInstruccion("SET FOREIGN_KEY_CHECKS=0;");
-            $conexion->ejecutarInstruccion("UPDATE tbl_personas_has_tbl_tipousuario SET tbl_tipousuario_idtipousuario = '$cargo' WHERE tbl_personas_idpersona = '$id';");
+		if($cargo < 4 && $cargo > 1){
+			$conexion->ejecutarInstruccion("SET FOREIGN_KEY_CHECKS=0;");
+			$conexion->ejecutarInstruccion("DELETE FROM tbl_personas_has_tbl_tipousuario WHERE tbl_personas_idpersona = '$id';");
+			$conexion->ejecutarInstruccion("INSERT INTO tbl_personas_has_tbl_tipousuario(tbl_personas_idPersona, tbl_tipousuario_idtipousuario) VALUES ('$id','$cargo');");
+			/*if(isset($_SESSION["idTipoUsuario2"]){
+				unset($_SESSION["idTipoUsuario2"]);
+			}
+			$_SESSION["idTipoUsuario"]=$cargo;*/
         }else{
 			$conexion->ejecutarInstruccion("SET FOREIGN_KEY_CHECKS=0;");
 			$conexion->ejecutarInstruccion("DELETE FROM tbl_personas_has_tbl_tipousuario WHERE tbl_personas_idpersona = '$id';");

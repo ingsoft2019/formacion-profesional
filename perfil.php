@@ -138,8 +138,8 @@
                                             <?php
                                             if($_SESSION["idTipoUsuario"]==2 || $_SESSION["idTipoUsuario"]==3 ){
                                             ?>
-                                                <div class="input-field col s12 m6 l6">
-                                                    <select id="cargo" name="cargo">
+                                                <div class="input-field col s12 m6 l6" >
+                                                    <select id="cargo" name="cargo" disabled>
                                                         <option value="" disabled selected>Seleccionar cargo</option>
                                                         <option value="2">Entrevistador</option>
                                                         <option value="3">Psicólogo</option>
