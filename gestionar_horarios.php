@@ -6,6 +6,10 @@
         SELECT * FROM tbl_procesos WHERE 1 ORDER BY fechainicio DESC
     ");
 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,35 +66,62 @@
                                     <th class="center" data-field="id_proceso">Id. Proceso</th>
                                     <th class="center" data-field="f_inicio">Fecha Inicial</th>
                                     <th class="center" data-field="f_final">Fecha Final</th>
-                                    <th class="center" data-field="">Horarios <br> Entrevista</th>
-                                    <th class="center" data-field="">Horarios <br> Dev. Result.</th>
+                                    <?php if($_SESSION["idTipoUsuario"]==2 && !isset($_SESSION["idTipoUsuario2"])){ ?>
+                                        <th class="center" data-field="">Horarios <br> Entrevista</th>
+                                    <?php } 
+                                    if($_SESSION["idTipoUsuario"]==3 && !isset($_SESSION["idTipoUsuario2"])){ ?>
+                                        <th class="center" data-field="">Horarios <br> Dev. Result.</th>
+                                    <?php } 
+                                    if(isset($_SESSION["idTipoUsuario2"])){ ?>
+                                     <th class="center" data-field="">Horarios <br> Entrevista</th>
+                                     <th class="center" data-field="">Horarios <br> Dev. Result.</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
                         while($datos = mysqli_fetch_array($procesos)){
                             $f_inicial = $datos['fechainicio'];                              
-                            $f_final = $datos['fechafindevuelveresultado'];
+                            $f_final = $datos['fechafinal'];
                             setlocale(LC_TIME, 'es_CO.UTF-8');
-                            $f_inicial = strftime("%a %e %b %Y" , strtotime($f_inicial));    
-                            $f_final = strftime("%a %e %b %Y", strtotime($f_final));                  
+                            $f_inicial = date("d-m-Y",strtotime($f_inicial));//strftime("%a %e %b %Y" , strtotime($f_inicial));    
+                            $f_final = date("d-m-Y",strtotime($f_final));//strftime("%a %e %b %Y", strtotime($f_final));            
                     ?>
                                 <tr class="user_row" id="<?php echo $datos['idprocesos']?>">
                                     <td class="center"><?php echo $datos['idprocesos']?></td>
                                     <td class="center"><?php echo $f_inicial?></td>
                                     <td class="center"><?php echo $f_final?></td>
-                                    <td class="center">
-                                        <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
-                                            data-id="<?php echo $datos['idprocesos']?>">
-                                            <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
-                                        </a>
-                                    </td>
-                                    <td class="center">
-                                        <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
-                                            data-id="<?php echo $datos['idprocesos']?>">
-                                            <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
-                                        </a>
-                                    </td>
+                                    <?php if($_SESSION["idTipoUsuario"]==2 && !isset($_SESSION["idTipoUsuario2"])){ ?>
+                                        <td class="center">
+                                            <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
+                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                            </a>
+                                        </td>
+                                    <?php } ?>
+                                    
+                                    <?php if($_SESSION["idTipoUsuario"]==3 && !isset($_SESSION["idTipoUsuario2"])){ ?>
+                                        <td class="center">
+                                            <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
+                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                            </a>
+                                        </td>
+                                    <?php } ?>
+                                    <?php if(isset($_SESSION["idTipoUsuario2"])){ ?>
+                                        <td class="center">
+                                            <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
+                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                            </a>
+                                        </td>
+                                        <td class="center">
+                                            <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
+                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                            </a>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                                 <?php
                         }

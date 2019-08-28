@@ -2,7 +2,6 @@
 session_start();
 include ('../clases/class_conexion.php');
 $conexion = new Conexion();
-$respuesta = array();
 
 $id = $_GET["idProceso"];
 

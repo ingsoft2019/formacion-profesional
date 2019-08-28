@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
 
+
+
     $("#btn_nueva_tarjeta").click(function() {
         
         $.ajax({
@@ -30,6 +32,7 @@ jQuery(document).ready(function($) {
         }, function(isConfirm) {
             if (isConfirm) {
                 swal("Completo", "Horarios Actualizados.", "success");
+                $('#mdl_horarios').closeModal();
             } else {}
         });
 
@@ -67,10 +70,13 @@ jQuery(document).ready(function($) {
         //console.log(event.target.getAttribute('data-id'));
         $('#id-proceso').val(event.target.getAttribute('data-id'))
         setModalData(event.target.getAttribute('data-id'), 2);
+        cargarDatos()
     });
     $(".btn_resultados").click(function(event) {
         //console.log(event.target.getAttribute('data-id'));
+        $('#id-proceso').val(event.target.getAttribute('data-id'))
         setModalData(event.target.getAttribute('data-id'), 3);
+        cargarDatos()
     });
 
     $('.modal_Trigger').click(function(event) {
@@ -85,7 +91,90 @@ jQuery(document).ready(function($) {
 
 
 // render tarjetas horarios
+
+const renderTarjeta2 = (id,data) => {
+    
+    const html = `
+        <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12 right-align">
+                                    <i class="material-icons icon-button" id="${id}">clear</i>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input id="txt_fecha" type="text" class="div_datepicker"
+                                        placeholder="Seleccione el día(s)">
+                                    <label for="txt_fecha" class="active">Fecha(s)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="txt_hinicial" type="text" class="div_timepicker"
+                                        placeholder="Hora inicial">
+                                    <label for="txt_hinicial" class="active">Desde</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="txt_hfinal" type="text" class="div_timepicker"
+                                        placeholder="Hora final">
+                                    <label for="txt_hfinal" class="active">Hasta</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    $("#contenedor_tarjetas").append(html);
+    console.log(data.fecha);
+
+    const tarjeta = $(`.tarjeta_horario[id=${id}]`);
+    tarjeta.hide();
+    const date_pickers = tarjeta.find(".div_datepicker");
+    const time_pickers = tarjeta.find(".div_timepicker");
+
+    date_pickers.flatpickr({
+        dateFormat: "Y-M-j",
+        //inline: true,
+        mode: "single",
+        //conjunction: ";",
+        /* "disable": [
+             function(date) {
+                 // return true to disable
+                 return (date.getDay() === 0 || date.getDay() === 6);
+
+             }
+         ],*/
+        "locale": {
+            "firstDayOfWeek": 1 // start week on Monday
+        },
+        defaultDate: JSON.stringify(data.fecha)
+       /* enable: [{
+                 from: "2019-01-01",
+                 to: "2019-02-01"
+             }]*/
+    });
+
+    time_pickers.flatpickr({
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "G:i K",
+        minDate: "8:00",
+        maxDate: "16:00",
+    });
+
+    tarjeta.show(500);
+    $("#txt_fecha").val(data.fecha);
+    $("#txt_hinicial").val(data.h_inicial);
+    $("#txt_hfinal").val(data.h_final);
+}
+
 const renderTarjeta = (id, proceso) => {
+    
     const html = `
         <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
             <div class="card">
@@ -123,8 +212,6 @@ const renderTarjeta = (id, proceso) => {
     `;
     $("#contenedor_tarjetas").append(html);
 
-    console.log(idTipoEvento);
-
     const tarjeta = $(`.tarjeta_horario[id=${id}]`);
     tarjeta.hide();
     const date_pickers = tarjeta.find(".div_datepicker");
@@ -147,13 +234,12 @@ const renderTarjeta = (id, proceso) => {
             "firstDayOfWeek": 1 // start week on Monday
         },
         minDate: proceso.inicio.charAt(0).toUpperCase() + proceso.inicio.slice(1),
-        maxDate: proceso.fin.charAt(0).toUpperCase() + proceso.fin.slice(1)
+        maxDate: proceso.fin.charAt(0).toUpperCase() + proceso.fin.slice(1),
 
-        // enable: [{
-        //         from: "2019-01-01",
-        //         to: "2019-02-01"
-        //     }
-        // ]
+       /* enable: [{
+                 from: "2019-01-01",
+                 to: "2019-02-01"
+             }]*/
     });
 
     time_pickers.flatpickr({
@@ -200,6 +286,23 @@ function setModalData(IDProceso, IDTipoEvento) { // 2>Entrevista   3>Dev. Result
     $("#mdl_subtitle").html("Proceso " + IDProceso);
     idProceso = IDProceso;
     // ESCRIBIR CODIGO PARA RENDERIZAR TARJETAS DE HORARIOS EXISTENTES EN LA BASE DE DATOS
+}
+
+function cargarDatos() {
+    $.ajax({
+        url: 'assets/ajax/obtener_horarios_orientador.php',
+        method: 'GET',
+        data: 'idProceso=' + $('#id-proceso').val() + '&tipoEvento=' + idTipoEvento,
+        success: function(data){
+            console.log(JSON.parse(data))
+            if(!data.match(/Sin/g)){
+                renderTarjeta2(crear_id(),JSON.parse(data));
+                
+            }
+        }
+    })
+    
+    
 }
 
 function obtenerHorarios() {
