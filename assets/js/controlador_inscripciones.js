@@ -47,40 +47,42 @@ function cargarSecciones(){
             method: 'POST',
             dataType: 'json ',
             success: function(respuesta){
+                console.log(respuesta);
                 //console.log(respuesta);
                 //console.log(respuesta.length);
                 for (var i = 0; i < respuesta.length; i++) {
+
                     $("#Secciones_matriculadas").append(
-                        '<div class="col s12 m4 l3" id="'+respuesta[0].idsecciones+'">'+
+                        '<div class="col s12 m4 l3" id="'+respuesta[i].idsecciones+'">'+
                                     '<div class="card">'+
                                         '<div class="card-content">'+
                                             '<ul class="collection">'+
                                                 '<li class="collection-item valign-wrapper">'+
                                                     '<i class="material-icons">event_note</i>&emsp;'+
                                                     'Proceso <br>&emsp;'+
-                                                    respuesta[0].idprocesos+
+                                                    respuesta[i].idprocesos+
                                                 '</li>'+
                                                 '<li class="collection-item valign-wrapper">'+
                                                     '<i class="material-icons">fingerprint</i>&emsp;'+
                                                     'Sección  <br>&emsp;'+
-                                                   respuesta[0].idsecciones+
+                                                   respuesta[i].idsecciones+
                                                 '</li>'+
                                                 '<li class="collection-item valign-wrapper">'+
                                                     '<i class="material-icons">today</i>&emsp;'+
-                                                    respuesta[0].dia+
+                                                    respuesta[i].dia+
                                                 '</li>'+
                                                 '<li class="collection-item valign-wrapper">'+
                                                     '<i class="material-icons">schedule</i>&emsp;'+
-                                                    respuesta[0].horainicial+' - '+respuesta[0].horafinal +
+                                                    respuesta[i].horainicial+' - '+respuesta[i].horafinal +
                                                 '</li>'+
                                                 '<li class="collection-item valign-wrapper">'+
                                                     '<i class="material-icons">room</i>&emsp;'+
-                                                    respuesta[0].lugar+
+                                                    respuesta[i].lugar+
                                                ' </li>'+
                                             '</ul>'+
                                         '</div>'+
                                         '<div class="card-action right-align">'+
-                                            '<a class="waves-effect waves-light red btn btn_eliminar_inscripcion" data-section="'+respuesta[i].idsecciones+'" data-process="'+respuesta[0].idprocesos+'">Eliminar</a>'+
+                                            '<a class="waves-effect waves-light red btn btn_eliminar_inscripcion" data-section="'+respuesta[i].idsecciones+'" data-process="'+respuesta[i].idprocesos+'">Eliminar</a>'+
                                         '</div>'+
                                    ' </div>'+
                                 '</div>'
