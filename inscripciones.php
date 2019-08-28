@@ -179,6 +179,8 @@
                         confirmButtonColor: "#2196F3",
                         confirmButtonText: "Aceptar",
                         closeOnConfirm: false,
+                    }, function(){
+                        location.reload();
                     });
                 } else if (data == 'existe') {
                     swal({
@@ -215,8 +217,11 @@
             url: 'assets/ajax/inscripciones.php',
             method: 'post',
             dataType:'json',
-            data: 'id='+id,
+            data: 'id='+id+'&idEstudiante='+$('#idPersona').val(),
             success: function(data){
+                console.log(data);
+                
+                
                 var text="";
                 for (var i = 0; i<data.length; i++) {
                     text+= '<div class="col s12 m4 l3">'+
@@ -239,11 +244,13 @@
                                         '            <i class="material-icons">accessibility</i>&emsp;'+data[i]["cupos"]+ " cupos"+
                                         '        </li>'+
                                         '    </ul>'+
-                                        '</div>'+
-                                        '<div class="card-action right-align">'+
-                                        '<a class="waves-effect waves-light blue btn btn_inscribirse btn-proceso-' + data[i]['idprocesos'] +'" onclick="inscribirse(' + data[i]["idsecciones"]+','+ $('#idPersona').val() + ',' + data[i]['idprocesos'] + ')">Inscribirse</a>'+
-                                        '</div>'+
-                                    '</div>'+
+                                        '</div>'
+                                        if (data[i]['matriculado'] == 0){
+                    text +=             '<div class="card-action right-align">'+
+                                            '<a class="waves-effect waves-light blue btn btn_inscribirse btn-proceso-' + data[i]['idprocesos'] +'" onclick="inscribirse(' + data[i]["idsecciones"]+','+ $('#idPersona').val() + ',' + data[i]['idprocesos'] + ')">Inscribirse</a>'+
+                                        '</div>'
+                                        }
+                    text +=         '</div>'+
                                '</div>';
                 }
                 element.html(text);
