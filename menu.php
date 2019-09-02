@@ -154,6 +154,12 @@
                     Inscripciones
                 </a>
             </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="agenda.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">event_available</i>
+                    Agendar
+                </a>
+            </li>
             <?php
                 }
             ?>
@@ -190,6 +196,12 @@
                 <a class="waves-effect waves-grey" href="gestionar_horarios.php" id="btn_gestionar_horarios">
                     <i class="material-icons">access_time</i>
                     Gestionar Horarios
+                </a>
+            </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="calendario.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">event</i>
+                    Calendario
                 </a>
             </li>
             <?php

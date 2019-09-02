@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: log-in.php?redirigido=1");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +24,6 @@
     <!-- Theme Styles -->
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/gestionar_Usuarios.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets\images\icon.png" />
@@ -41,7 +46,7 @@
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
 
-
+            
 
 
         </main>
