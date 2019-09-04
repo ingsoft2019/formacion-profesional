@@ -1,0 +1,75 @@
+.flatpickr-calendar {
+    margin: auto!important;
+}
+
+[type="radio"]:not(:checked)+label:before,
+[type="radio"]:not(:checked)+label:after {
+    display: none !important;
+}
+
+[type="radio"]:checked+label:after {
+    display: none !important;
+}
+
+[type="radio"]:checked+label {
+    background-color: #ff9800 !important;
+    color: white;
+}
+
+[type="radio"]:not(:checked)+label:hover {
+    background-color: gainsboro;
+}
+
+[type="radio"]:not(:checked)+label,
+[type="radio"]:checked+label {
+    padding: 5px 20px 5px 20px !important;
+    width: 100%;
+    height: auto !important;
+    border: 1px solid gainsboro;
+    text-align: center;
+    margin: 4px;
+}
+
+.phase_icon {
+    height: 5rem;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.phase_icon>i {
+    font-size: 3rem !important;
+}
+
+.vertical_align {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+@media (max-width: 600px) {
+    .vertical_align {
+        justify-content: left !important;
+    }
+}
+
+.vertical_align>i {
+    padding-right: 10px;
+}
+
+.btn_eliminar {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.btn_eliminar:hover {
+    cursor: pointer;
+    color: grey;
+}
+
+.card-content.col {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}

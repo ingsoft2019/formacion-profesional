@@ -15,6 +15,10 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["idTipoUsuario"] = $fila["tbl_tipousuario_idtipousuario"];
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
 					$respuesta["mensaje"]="Si tiene acceso, sera redireccionado" ;
+					if($fila["estadocuenta"]==0){
+						$respuesta["status"]=0;//si tiene acceso o no a la plataforma, si existe o no su registro.
+						$respuesta["mensaje"]="Su usuario ha sido eliminado, presentarse a las oficinas de VOAE" ;
+					}
 				}else if($cantidadRegistros==2) {
 					$resultado = $conexion->ejecutarInstruccion("SELECT * FROM tbl_personas 
 					LEFT JOIN tbl_personas_has_tbl_tipousuario on idPersona = tbl_personas_idPersona 
@@ -30,10 +34,16 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["idTipoUsuario2"] = 3;
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
 					$respuesta["mensaje"]="Si tiene acceso, sera redireccionado" ;
+					if($fila["estadocuenta"]==0){
+						$respuesta["status"]=0;//si tiene acceso o no a la plataforma, si existe o no su registro.
+						$respuesta["mensaje"]="Su usuario ha sido eliminado, presentarse a las oficinas de VOAE para rectificar su estado." ;
+					}
 				}else{
 					$respuesta["status"]=0;
 					$respuesta["mensaje"]="No tiene acceso; por favor verifique que su correo y contraseña sean correctos" ;
 				}
+
+				
 
 				echo json_encode($respuesta);
 		}

@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if (!isset($_SESSION["idPersona"])){
+        header("Location: log-in.php?redirigido=1");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,10 +24,31 @@
     <!-- Theme Styles -->
     <link href="assets/css/alpha.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/gestionar_Usuarios.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets\images\icon.png" />
+
+
+
+
+    <link href='assets/plugins/fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='assets/plugins/fullcalendar/daygrid/main.css' rel='stylesheet' />
+    <link href='assets/plugins/fullcalendar/timegrid/main.css' rel='stylesheet' />
+    <link href='assets/plugins/fullcalendar/list/main.css' rel='stylesheet' />
+
+    <script src='assets/plugins/fullcalendar/core/main.js'></script>
+    <script src='assets/plugins/fullcalendar/core/locales-all.js'></script>
+    <script src='assets/plugins/fullcalendar/daygrid/main.js'></script>
+    <script src='assets/plugins/fullcalendar/timegrid/main.js'></script>
+    <script src='assets/plugins/fullcalendar/list/main.js'></script>
+
+
+    
+
+
+
+    <link href="assets/css/calendar.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/images/icon.png" />
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,6 +67,11 @@
         <div id="div-menu"></div>
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
+
+
+            <div id="calendar"></div>
+
+
 
 
 
@@ -61,12 +93,20 @@
     <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="assets/js/pages/form_elements.js"></script>
-    <script src="assets\plugins\prettify\prettify.js"></script>
+    <script src="assets/plugins/prettify/prettify.js"></script>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>
-    <script src="assets/js/gestionar_Usuarios.js"></script>
+
+
+    <script src="assets/plugins/tooltip/popper.min.js"></script>
+    <script src="assets/plugins/tooltip/tooltip.min.js"></script>
+    
+    
+
+
+    <script src="assets/js/controlador_calendario.js"></script>
 
 </body>
 
