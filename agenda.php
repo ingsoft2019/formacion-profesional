@@ -54,14 +54,13 @@
                     <i class="material-icons white-text center" style="width: 100%;">collections_bookmark</i>
                 </div>
                 <div class="col s9 m11">
-                    <h5>Entrevista Pedagógica</h5>
-                    <h6>Agenda</h6>
+                    <h4>Agenda</h4>
                 </div>
             </div>
             <div class="card">
                 <div class="card-content">
                     <div class="row" style="margin:0px;">
-                        <div class="input-field col s12 m6">
+                        <div class="input-field col s12 m4">
                             <i class="material-icons prefix">loop</i>
                             <select id="slc_proceso">
                                 <option value="" disabled selected>Seleccione un Proceso</option>
@@ -71,7 +70,16 @@
                             </select>
                             <label>Proceso</label>
                         </div>
-                        <div class="input-field col s12 m6">
+                        <div class="input-field col s12 m4">
+                            <i class="material-icons prefix">collections_bookmark</i>
+                            <select id="slc_evento">
+                                <option value="" disabled selected>Seleccione el tipo de evento</option>
+                                <option value="1">Entrevista</option>
+                                <option value="2">Dev. Resultados</option>
+                            </select>
+                            <label>Evento</label>
+                        </div>
+                        <div class="input-field col s12 m4">
                             <i class="material-icons prefix">face</i>
                             <select id="slc_orientador">
                                 <option value="" disabled selected>Seleccione un orientador</option>
@@ -140,40 +148,44 @@
 
             <div class="card">
                 <div class="card-content  row">
-                    <div class="col s12 l2">
+                        <i class="material-icons btn_eliminar">clear</i>
+                    <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">loop</i>
-                            <span id="spn_proceso">Sin datos</span>
+                            <span data-id="spn_proceso">Sin datos</span>
                         </h6>
                     </div>
-                    <div class="col s12 l2">
+                    <div class="col s12 m6 l2">
+                        <h6 class="vertical_align">
+                            <i class="material-icons">collections_bookmark</i>
+                            <span data-id="spn_evento">Sin datos</span>
+                        </h6>
+                    </div>
+                    <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">face</i>
-                            <span id="spn_orientador">Sin datos</span>
+                            <span data-id="spn_orientador">Sin datos</span>
                         </h6>
                     </div>
-                    <div class="col s12 l2">
+                    <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">event</i>
-                            <span id="spn_date">Sin datos</span>
+                            <span data-id="spn_date">Sin datos</span>
                         </h6>
                     </div>
-                    <div class="col s12 l2">
+                    <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">schedule</i>
-                            <span id="spn_time">Sin datos</span>
+                            <span data-id="spn_time">Sin datos</span>
                         </h6>
                     </div>
-                    <div class="col s12 l4">
+                    <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">location_on</i>
-                            <span id="spn_time">Área de Orientación y Asesoría Académica<br>Edificio de Registro, Segundo Nivel.</span>
+                            <span data-id="spn_time">Edificio de Registro</span>
                         </h6>
                     </div>
                 </div>
-            </div>
-            <div class="input-field" align="right">
-                <a id="btn_eliminar" class="waves-effect waves-light btn red">Eliminar</a>
             </div>
         </main>
         <!--FIN APARTADO-->

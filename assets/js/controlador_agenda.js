@@ -12,17 +12,17 @@ $(document).ready(function() {
         minDate: "today",
         inline: true,
         // enableTime: true,
-        onChange: function(selectedDates, formatDate, instance) {
+        /*onChange: function(selectedDates, formatDate, instance) {
             selectedDates.forEach(function(date) {
                 fecha = flatpickr.formatDate(new Date(date), "F j, Y");
                 //console.log(fecha);
                 $("#spn_date").text(fecha);
             })
-        }
+        }*/
     });
 
 
-    $("[name='rb_hora']").click(function() {
+    /*$("[name='rb_hora']").click(function() {
         var label = $(this).prop("labels");
         text = $(label).text();
         //console.log(text)
@@ -41,11 +41,17 @@ $(document).ready(function() {
         $("#spn_orientador").text(optionsText);
     });
 
+    $('#slc_evento').on('change', function() {
+        var optionsText = this.options[this.selectedIndex].text;
+        //console.log(optionsText);
+        $("#spn_evento").text(optionsText);
+    });*/
+
     $("#btn_agendar").click(function() {
         swal("Completo", "Citar reservada", "success");
     });
 
-    $("#btn_eliminar").click(function() {
+    $(".btn_eliminar").click(function() {
         swal({
             title: "¿Seguro que desea eliminar la cita?",
             text: "Es posible que no pueda volver a agendar la misma cita.",
