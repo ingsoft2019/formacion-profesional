@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
         }, function(isConfirm) {
             if (isConfirm) {
                 swal("Completo", "Horarios Actualizados.", "success");
-                $('#mdl_horarios').closeModal();
+                //$('#mdl_horarios').closeModal();
             } else {}
         });
 

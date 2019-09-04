@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `tbl_control_de_procesos` (
   PRIMARY KEY (`idcontrolprocesos`),
   CONSTRAINT `fk_tbl_control_de_procesos_tbl_estudiantes1`
     FOREIGN KEY (`idEstudiante`)
-    REFERENCES .`tbl_estudiantes` (`idEstudiante`)
+    REFERENCES `tbl_estudiantes` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_control_de_procesos_tbl_procesos1`
