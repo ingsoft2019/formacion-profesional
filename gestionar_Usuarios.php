@@ -95,11 +95,14 @@
                                 <tr class="user_row" id="<?php echo $datos['UserId']?>">
                                     <td><?php echo $datos['Identidad']?></td>
                                     <td><?php echo $datos['Nombre']?></td>
-                                    <td class="hide-on-small-only lbl_tipo_usuario"><?php echo $datos['TiposUsuario']?></td>
-                                    <td><i class="material-icons info_button" data-id="<?php echo $datos['UserId']?>">info</i></td>
-                                    <td><i class="material-icons remove_button" data-id="<?php echo $datos['UserId']?>">delete</i></td>
+                                    <td class="hide-on-small-only lbl_tipo_usuario"><?php echo $datos['TiposUsuario']?>
+                                    </td>
+                                    <td><i class="material-icons info_button"
+                                            data-id="<?php echo $datos['UserId']?>">info</i></td>
+                                    <td><i class="material-icons remove_button"
+                                            data-id="<?php echo $datos['UserId']?>">delete</i></td>
                                 </tr>
-                               <?php
+                                <?php
                                 }
                                ?>
                             </tbody>
@@ -114,77 +117,72 @@
         <!--FIN APARTADO-->
 
         <!-- Modal Structure -->
-        <div id="user_modal_information" class="modal modal-fixed-footer bottom-sheet">
+        <div id="user_modal_information" class="modal modal-fixed-footer">
+
             <div class="modal-content">
+
                 <div class="row">
                     <div class="col s12">
-                        <div class="">
-                            <div class="card-image">
-                                <img src="assets/images/profile-image.png" class="responsive-img profile_foto_border"
-                                    alt="">
-                            </div>
-                            <div class="card-title">
-                                <h5 class="black-text NombreC" style="font-weight:300;margin-bottom:30px;"></h5>
-                            </div>
-                            <div class="card-content">
+                        <div class="card-image">
+                            <img src="assets/images/profile-image.png" class="responsive-img profile_foto_border"
+                                alt="">
+                        </div>
+                        <div class="card-title">
+                            <h5 class="black-text NombreC" style="font-weight:300;margin-bottom:30px;"></h5>
+                        </div>
+                        <div>
                             <div class="row info_list valign-wrapper">
-                                    <i class="material-icons col s2 m2 l2">format_list_numbered</i>
-                                    <span class="col s10 m10 l10 Cuenta"></span>
-                                </div>
-                                <div class="row info_list valign-wrapper">
-                                    <i class="material-icons col s2 m2 l2">fingerprint</i>
-                                    <span class="col s10 m10 l10 Identidad"></span>
-                                </div>
-                                <div class="row info_list valign-wrapper">
-                                    <i class="material-icons col s2 m2 l2">import_contacts</i>
-                                    <span class="col s10 m10 l10 Carrera"></span>
-                                </div>
-                                <div class="row info_list valign-wrapper">
-                                    <i class="material-icons col s2 m2 l2">email</i>
-                                    <span class="col s10 m10 l10 Correo"></span>
-                                </div>
-                                <div class="row info_list valign-wrapper">
-                                    <i class="material-icons col s2 m2 l2">local_phone</i>
-                                    <span class="col s10 m10 l10 Celular"></span>
-                                </div>
-                                <!-- <div class="row info_list valign-wrapper">
+                                <i class="material-icons col s2 m2 l2">format_list_numbered</i>
+                                <span class="col s10 m10 l10 Cuenta"></span>
+                            </div>
+                            <div class="row info_list valign-wrapper">
+                                <i class="material-icons col s2 m2 l2">fingerprint</i>
+                                <span class="col s10 m10 l10 Identidad"></span>
+                            </div>
+                            <div class="row info_list valign-wrapper">
+                                <i class="material-icons col s2 m2 l2">import_contacts</i>
+                                <span class="col s10 m10 l10 Carrera"></span>
+                            </div>
+                            <div class="row info_list valign-wrapper">
+                                <i class="material-icons col s2 m2 l2">email</i>
+                                <span class="col s10 m10 l10 Correo"></span>
+                            </div>
+                            <div class="row info_list valign-wrapper">
+                                <i class="material-icons col s2 m2 l2">local_phone</i>
+                                <span class="col s10 m10 l10 Celular"></span>
+                            </div>
+                            <!-- <div class="row info_list valign-wrapper">
                                     <i class="material-icons col s2 m2 l2">lock</i>
                                     <span class="col s10 m10 l10 TipoUsuario"></span>
                                 </div> -->
-                                <div class="row info_list valign-wrapper tipo">
-                                    <i class="material-icons col s2 m2 l2">work</i>
-                                    <span class="col s10 m10 l10">
-                                        <select multiple class="col s12 m5" id="slc_funcion_orientador">
-                                            <?php 
+                            <div class="row valign-wrapper tipo">
+                                <i class="material-icons col s2 m2 l2">work</i>
+                                <span class="col s10 m10 l10">
+                                    <select multiple id="slc_funcion_orientador">
+                                        <?php 
                                                 while($datos = mysqli_fetch_array($TiposUsuarios))
                                                 {
                                             ?>
-                                           <option name="tipo" value="<?php echo $datos['idtipousuario']?>"><?php echo $datos['descripcion']?></option>
-                                            <?php
+                                        <option name="tipo" value="<?php echo $datos['idtipousuario']?>"><?php echo $datos['descripcion']?></option>
+                                        <?php
                                                 }
                                             ?>
-                                        </select>
-                                    </span>
-
-                                </div>
-                            </div>
-                            <br>
-                            <div class="card-action right-align">
-                                <div class="row">
-                                    <a class="btn-flat amber-text  darken-3 cancelar_cambios" id="btn_cancelar_cambios"
-                                        data-id="124">Cerrar</a>
-                                    <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick="" 
-                                        data-id="124">Guardar</a>
-                                </div>
-                                <!-- <div class="row"> 
-                                    <a class="btn-flat red-text eliminar_usuario" id="btn_eliminarUsuario"
-                                        data-id="124">Eliminar</a>
-                                </div> -->
+                                    </select>
+                                </span>
 
                             </div>
                         </div>
+                        <br>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <a class="btn-flat amber-text  darken-3 cancelar_cambios" id="btn_cancelar_cambios"
+                    data-id="124">Cerrar</a>
+                <a class="btn-flat blue-text guardar_cambios" id="btn_guardar_cambios" onclick=""
+                    data-id="124">Guardar</a>
             </div>
         </div>
 
@@ -202,58 +200,59 @@
                 <form class="col s12" method="POST" id="form_g">
                     <div class="row">
                         <div class="input-field col s12 m6 l6">
-                            <input id="identidad" name="identidad" placeholder="0801-1990-89432" type="text" class="validate masked"
-                                data-inputmask="'mask': '9999-9999-99999'">
+                            <input id="identidad" name="identidad" placeholder="0801-1990-89432" type="text"
+                                class="validate masked" data-inputmask="'mask': '9999-9999-99999'">
                             <label for="identidad" class="active">No. Identidad</label>
                         </div>
 
                         <div class="input-field col s12 m6 l6">
-                            <input id="telefono" name="telefono" placeholder="3240-9878" type="text" class="validate masked"
-                                data-inputmask="'mask': '(504) 9{4}-9{4}'">
+                            <input id="telefono" name="telefono" placeholder="3240-9878" type="text"
+                                class="validate masked" data-inputmask="'mask': '(504) 9{4}-9{4}'">
                             <label for="telefono">Celular</label>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="nombres" name="nombres" placeholder="Pedro Jose" type="text"
+                                class="validate masked" data-inputmask="'mask': 'a{+}'">
+                            <label for="nombres">Nombres</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6">
-                                <input id="nombres" name="nombres" placeholder="Pedro Jose" type="text" class="validate masked"
-                                    data-inputmask="'mask': 'a{+}'">
-                                <label for="nombres">Nombres</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6">
-                                <input id="apellidos" name="apellidos" placeholder="Castellanos Andino" type="text" class="validate masked"
-                                    data-inputmask="'mask': 'a{+}'">
-                                <label for="apellidos">Apellidos</label>
-                            </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="apellidos" name="apellidos" placeholder="Castellanos Andino" type="text"
+                                class="validate masked" data-inputmask="'mask': 'a{+}'">
+                            <label for="apellidos">Apellidos</label>
                         </div>
-                        <div class="row ">
-                            <div class="input-field col s7 m3 l6">
-                                <input id="email" name="email" type="text" placeholder="casteljose" class="validate masked"
-                                    data-inputmask="'mask': '/{+}'">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-field col s5 m3 l6">
-                                <label>@unah.edu.hn</label>
-                            </div>
+                    </div>
+                    <div class="row ">
+                        <div class="input-field col s7 m3 l6">
+                            <input id="email" name="email" type="text" placeholder="casteljose" class="validate masked"
+                                data-inputmask="'mask': '/{+}'">
+                            <label for="email">Email</label>
                         </div>
-                        <div class="row ">
-                            <div class="input-field col s5 m3 l6">
-                                <input id="password" name="password" type="text" placeholder="********" readonly="readonly">
-                                <label for="password">Password</label>
-                            </div>
-                            <div class="modal_user_information">
-                                <button  class="modal-action waves-effect waves-blue btn-flat" id="btn_generarPass">Generar</button>
-                            </div>
+                        <div class="input-field col s5 m3 l6">
+                            <label>@unah.edu.hn</label>
                         </div>
-                        <div class="row ">
-                            <div class="input-field col s12 m6 l6">
-                                <select id="cargo" name="cargo">
-                                    <option value="" disabled selected>Seleccionar cargo</option>
-                                    <option value="2">Entrevistador</option>
-                                    <option value="3">Psicólogo</option>
-                                    <option value="4">Entrevistador y Psicólogo</option>
-                                </select>
-                                <label>Funciones</label>
-                            </div>
+                    </div>
+                    <div class="row ">
+                        <div class="input-field col s5 m3 l6">
+                            <input id="password" name="password" type="text" placeholder="********" readonly="readonly">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="modal_user_information">
+                            <button class="modal-action waves-effect waves-blue btn-flat"
+                                id="btn_generarPass">Generar</button>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="input-field col s12 m6 l6">
+                            <select id="cargo" name="cargo">
+                                <option value="" disabled selected>Seleccionar cargo</option>
+                                <option value="2">Entrevistador</option>
+                                <option value="3">Psicólogo</option>
+                                <option value="4">Entrevistador y Psicólogo</option>
+                            </select>
+                            <label>Funciones</label>
+                        </div>
                         <div class="input-field col s12 m6 l6">
                             <select id="genero" name="genero">
                                 <option value="" disabled selected>Seleccionar género</option>
@@ -261,33 +260,33 @@
                                 <option value="2">Masculino</option>
                             </select>
                             <label>Género</label>
-                            </div>
                         </div>
-                        <div class="modal_user_information">
-                            <a  class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
-                            <a  class="btn-flat red-text cancelar_cambios" id="btn_cancelarNuevo">Cancelar</a>
-                        </div>
+                    </div>
+                    <div class="modal_user_information">
+                        <a class="modal-action waves-effect waves-blue btn-flat" id="btn_crearUsuario">Crear</a>
+                        <a class="btn-flat red-text cancelar_cambios" id="btn_cancelarNuevo">Cancelar</a>
+                    </div>
                 </form>
 
 
-        
 
 
-    </div>
-    <div class="left-sidebar-hover"></div>
 
-    <!-- Javascripts -->
-    <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
-    <script src="assets/plugins/materialize/js/materialize.min.js"></script>
-    <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
-    <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
-    <script src="assets/js/pages/form_elements.js"></script>
-    <script src="assets\plugins\prettify\prettify.js"></script>
-    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="assets/js/ContenidoFijo.js"></script>
-    <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-    <script src="assets/js/pages/form-input-mask.js"></script>
-    <script src="assets/js/gestionar_Usuarios.js"></script>
+            </div>
+            <div class="left-sidebar-hover"></div>
+
+            <!-- Javascripts -->
+            <script src="assets/plugins/jquery/jquery-2.2.0.min.js"></script>
+            <script src="assets/plugins/materialize/js/materialize.min.js"></script>
+            <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
+            <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+            <script src="assets/js/pages/form_elements.js"></script>
+            <script src="assets\plugins\prettify\prettify.js"></script>
+            <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+            <script src="assets/js/ContenidoFijo.js"></script>
+            <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+            <script src="assets/js/pages/form-input-mask.js"></script>
+            <script src="assets/js/gestionar_Usuarios.js"></script>
 
 </body>
 
