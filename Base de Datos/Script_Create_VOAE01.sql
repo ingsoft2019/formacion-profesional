@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `tbl_control_de_procesos` (
   PRIMARY KEY (`idcontrolprocesos`),
   CONSTRAINT `fk_tbl_control_de_procesos_tbl_estudiantes1`
     FOREIGN KEY (`idEstudiante`)
-    REFERENCES .`tbl_estudiantes` (`idEstudiante`)
+    REFERENCES `tbl_estudiantes` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_control_de_procesos_tbl_procesos1`
@@ -186,6 +186,25 @@ CREATE TABLE IF NOT EXISTS `tbl_secciones_has_tbl_estudiantes` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_secciones_has_tbl_estudiantes_tbl_estudiantes1`
     FOREIGN KEY (`tbl_estudiantes_idEstudiante`)
+    REFERENCES `tbl_estudiantes` (`idEstudiante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `OrientacionProfesional`.`tbl_Horarios_Orientador_X_tbl_estudiantes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tbl_Horarios_Orientador_X_tbl_estudiantes` (
+  `idhorariosorientador` INT NOT NULL,
+  `idEstudiante` INT NOT NULL,
+  PRIMARY KEY (`idhorariosorientador`, `idEstudiante`),
+  CONSTRAINT `fk_tbl_Horarios_Orientador_X_tbl_estudiantes_tbl_Horarios_O1`
+    FOREIGN KEY (`idhorariosorientador`)
+    REFERENCES `tbl_Horarios_Orientador` (`idhorariosorientador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_Horarios_Orientador_X_tbl_estudiantes_tbl_estudiantes1`
+    FOREIGN KEY (`idEstudiante`)
     REFERENCES `tbl_estudiantes` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

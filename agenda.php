@@ -63,19 +63,17 @@
                         <div class="input-field col s12 m4">
                             <i class="material-icons prefix">loop</i>
                             <select id="slc_proceso">
-                                <option value="" disabled selected>Seleccione un Proceso</option>
-                                <option value="1">Proceso No. 1</option>
-                                <option value="2">Proceso No. 2</option>
-                                <option value="3">Proceso No. 3</option>
+                                <option value="0" disabled selected>Seleccione un Proceso</option>
+                                
                             </select>
-                            <label>Proceso</label>
+                            <label for="slc_proceso">Proceso</label>
                         </div>
                         <div class="input-field col s12 m4">
                             <i class="material-icons prefix">collections_bookmark</i>
                             <select id="slc_evento">
-                                <option value="" disabled selected>Seleccione el tipo de evento</option>
-                                <option value="1">Entrevista</option>
-                                <option value="2">Dev. Resultados</option>
+                                <option value="0" disabled selected>Seleccione el tipo de evento</option>
+                                <option value="2">Entrevista</option>
+                                <option value="3">Dev. Resultados</option>
                             </select>
                             <label>Evento</label>
                         </div>
@@ -83,9 +81,6 @@
                             <i class="material-icons prefix">face</i>
                             <select id="slc_orientador">
                                 <option value="" disabled selected>Seleccione un orientador</option>
-                                <option value="1">María Pérez</option>
-                                <option value="2">Marco Núñez</option>
-                                <option value="3">Elena Cruz</option>
                             </select>
                             <label>Orientador</label>
                         </div>
@@ -97,7 +92,9 @@
                 <div class=" col s12 m5 l4" style="padding:0px;">
                     <div classs="row" style="padding:0px;">
                         <div class="col s12" style="padding:0px;">
-                            <div class="div_date_picker" id="calendario_orientador"></div>
+                            <div class="div_date_picker" id="calendario_orientador">
+                                
+                            </div>
                             <br>
                         </div>
 
@@ -109,32 +106,8 @@
                         <form id="frm_horas" class="col s12" style="padding:0px;">
                             <div class="row" id="horas_orientador">
                                 <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test11" />
-                                    <label for="test11">8:00 AM - 9:00 AM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test12" />
-                                    <label for="test12">9:00 AM - 10:00 AM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test13" />
-                                    <label for="test13">10:00 AM - 11:00 AM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test14" />
-                                    <label for="test14">12:00 PM - 1:00 PM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test15" />
-                                    <label for="test15">1:00 PM - 2:00 PM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test16" />
-                                    <label for="test16">2:00 PM - 3:00 PM</label>
-                                </div>
-                                <div class="col s12 m6 l4 radio_container">
-                                    <input name="rb_hora" type="radio" id="test17" />
-                                    <label for="test17">3:00 PM - 4:00 PM</label>
+                                    <input name="rb_hora" type="radio" id="test" />
+                                    <label for="test" id="Ltest"></label>
                                 </div>
                             </div>
                         </form>

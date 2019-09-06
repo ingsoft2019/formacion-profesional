@@ -240,3 +240,13 @@ INSERT INTO`tbl_secciones_has_tbl_estudiantes` (`tbl_secciones_idsecciones`,`tbl
 (2,3),
 (3,4),
 (4,5);
+
+-- -----------------------------------------------------
+--  Insetando en la `tbl_Horarios_Orientador_X_tbl_estudiantes`
+-- -----------------------------------------------------
+INSERT INTO`tbl_Horarios_Orientador_X_tbl_estudiantes` (`idhorariosorientador`,`idEstudiante`)VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
