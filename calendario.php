@@ -60,6 +60,7 @@
 </head>
 
 <body>
+
     <div id="div_loader"></div>
 
     <div class="mn-content">
@@ -68,6 +69,7 @@
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
         <main class="mn-inner">
 
+        <input type="hidden" name="idPersona" id="idPersona" value="<?php echo $_SESSION["idPersona"]?>">
 
             <div id="calendar"></div>
 
@@ -104,7 +106,7 @@
     <script src="assets/plugins/tooltip/tooltip.min.js"></script>
     
     
-
+    <script src="assets/plugins/moment.js"></script>
 
     <script src="assets/js/controlador_calendario.js"></script>
 
