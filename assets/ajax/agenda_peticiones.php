@@ -52,6 +52,16 @@ switch ($_GET["CODIGO_FUNCION"]) {
         }
         echo json_encode($resultadoProceso);
         break;
+    case 5:
+        $sql = "INSERT INTO `db_formacion`.`tbl_horarios_orientador_x_tbl_estudiantes` ".
+                "(`idhorariosorientador`, ".
+                "`idEstudiante`) ".
+                "VALUES ( ".
+                $_GET["idhorariosorientador"].", ".
+                $_SESSION["idPersona"].")";
+        
+        $conexion->ejecutarInstruccion($sql);
+        break;
     default:
 
         break;

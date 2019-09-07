@@ -1,4 +1,4 @@
-var idhorariosorientador='';
+var idhorariosorientador = '';
 $(document).ready(function() {
 
     $('select').material_select();
@@ -68,13 +68,13 @@ $(document).ready(function() {
     });*/
 
     $('#slc_evento').on('change', function() {
-        if($("#slc_proceso").val()!=0 && $("#slc_evento").val()!=0){
+        if ($("#slc_proceso").val() != 0 && $("#slc_evento").val() != 0) {
             llenarOrientadores();
         }
     });
 
     $('#slc_proceso').on('change', function() {
-        if($("#slc_proceso").val()!=0 && $("#slc_evento").val()!=0){
+        if ($("#slc_proceso").val() != 0 && $("#slc_evento").val() != 0) {
             llenarOrientadores();
         }
     });
@@ -83,23 +83,32 @@ $(document).ready(function() {
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
-            data: "CODIGO_FUNCION=4&idhorariosorientador="+idhorariosorientador,
+            data: "CODIGO_FUNCION=4&idhorariosorientador=" + idhorariosorientador,
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
-                document.getElementById('Ltest').innerHTML = respuesta[0].h_inicial+" - "+ respuesta[0].h_final;
+                document.getElementById('Ltest').innerHTML = respuesta[0].h_inicial + " - " + respuesta[0].h_final;
             }
         });
-       
+
     });
-    
+
     $('#slc_orientador').on('change', function() {
-        if($("#slc_orientador").val()!=0){
+        if ($("#slc_orientador").val() != 0) {
             llenarFechas();
         }
     });
 
     $("#btn_agendar").click(function() {
+        $.ajax({
+            url: "assets/ajax/agenda_peticiones.php",
+            method: 'GET',
+            data: "CODIGO_FUNCION=5&" + "idhorariosorientador=" + idhorariosorientador,
+            dataType: 'json',
+            success: function(respuesta) {
+                console.log(respuesta);
+            }
+        });
         swal("Completo", "Citar reservada", "success");
     });
 
@@ -121,20 +130,20 @@ $(document).ready(function() {
         });
     });
 
-    function llenarOrientadores(){
-        console.log($("#slc_proceso").val());
-        console.log($("#slc_evento").val());
-        var idproceso=$("#slc_proceso").val();
-        var tipoevento=$("#slc_evento").val();
+    function llenarOrientadores() {
+        // console.log("este es" + $("#slc_proceso").val());
+        //console.log("este es" + $("#slc_evento").val());
+        var idproceso = $("#slc_proceso").val();
+        var tipoevento = $("#slc_evento").val();
         //$('select').material_select();
         var $selectDropdown = $("#slc_orientador").empty().html(' ');
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
-            data: "CODIGO_FUNCION=2&idproceso="+idproceso+"&tipoevento="+tipoevento,
+            data: "CODIGO_FUNCION=2&idproceso=" + idproceso + "&tipoevento=" + tipoevento,
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
-                console.log(respuesta);
+                //console.log(respuesta);
                 $selectDropdown.append($("<option></option>").attr("value", 0).text("Seleccione un orientador"));
                 for (var i = 0; i < respuesta.length; i++) {
                     $selectDropdown.append($("<option></option>").attr("value", respuesta[i].idorientador).text(respuesta[i].orientador));
@@ -144,24 +153,24 @@ $(document).ready(function() {
         });
     }
 
-    function llenarFechas(){
+    function llenarFechas() {
         console.log($("#slc_proceso").val());
         console.log($("#slc_evento").val());
         console.log($("#slc_orientador").val());
-        var idproceso=$("#slc_proceso").val();
-        var tipoevento=$("#slc_evento").val();
-        var orientador=$("#slc_orientador").val();
+        var idproceso = $("#slc_proceso").val();
+        var tipoevento = $("#slc_evento").val();
+        var orientador = $("#slc_orientador").val();
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
-            data: "CODIGO_FUNCION=3&idproceso="+idproceso+"&tipoevento="+tipoevento+"&orientador="+orientador,
+            data: "CODIGO_FUNCION=3&idproceso=" + idproceso + "&tipoevento=" + tipoevento + "&orientador=" + orientador,
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
                 //var res=JSON.parse(respuesta);
-              
+
                 for (var i = 0; i < respuesta.length; i++) {
-                    idhorariosorientador=respuesta[i].idhorariosorientador;
+                    idhorariosorientador = respuesta[i].idhorariosorientador;
                     const date_pickers = $(".div_date_picker");
                     dates = date_pickers.flatpickr({
                         altInput: true,
