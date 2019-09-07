@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `tbl_secciones` (
 -- Table `OrientacionProfesional`.`tbl_control_de_procesos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tbl_control_de_procesos` (
-  `idcontrolprocesos` INT NOT NULL,
+  `idcontrolprocesos` INT NOT NULL AUTO_INCREMENT,
   `porcentaje` INT NULL,
   `etapa1` BOOLEAN NULL,
   `etapa2` BOOLEAN NULL,
