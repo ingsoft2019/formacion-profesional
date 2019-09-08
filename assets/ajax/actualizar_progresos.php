@@ -1,36 +1,43 @@
 <?php
 include ('../clases/class_conexion.php');
 $conexion = new Conexion();
-$cambios = json_decode($_POST["JsonCambios"]);
 $etapa = $_POST["etapa"];
 switch ($etapa) {
 	case 1:
-		$slq=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
+		$sql= "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
 		"SET ".
-		"`porcentaje` = ". $cambios["progreso"].",".
-		"`etapa1` = ".$cambios["estado_etapa"].",".
-		"WHERE `idEstudiante` = ". $cambios["id_user"];
+		"`porcentaje` = ". $_POST["progreso"].",".
+		"`etapa1` = ".$_POST["estado_etapa"].
+		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		$conexion->ejecutarInstruccion($sql);
+		echo $sql;
 		break;
 	case 2:
-		$slq=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
+		$sql=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
 		"SET ".
-		"`porcentaje` = ". $cambios["progreso"].",".
-		"`etapa2` = ".$cambios["estado_etapa"].",".
-		"WHERE `idEstudiante` = ". $cambios["id_user"];
+		"`porcentaje` = ". $_POST["progreso"].",".
+		"`etapa2` = ".$_POST["estado_etapa"].
+		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		$conexion->ejecutarInstruccion($sql);
+		echo $sql;
 		break;
 	case 3:
-		$slq=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
+		$sql=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
 		"SET ".
-		"`porcentaje` = ". $cambios["progreso"].",".
-		"`etapa3` = ".$cambios["estado_etapa"].",".
-		"WHERE `idEstudiante` = ". $cambios["id_user"];
+		"`porcentaje` = ". $_POST["progreso"].",".
+		"`etapa3` = ".$_POST["estado_etapa"].
+		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		$conexion->ejecutarInstruccion($sql);
+		echo $sql;
 		break;
 	case 4:
-		$slq=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
+		$sql=   "UPDATE `db_formacion`.`tbl_control_de_procesos` ".
 		"SET ".
-		"`porcentaje` = ". $cambios["progreso"].",".
-		"`etapa4` = ".$cambios["estado_etapa"].",".
-		"WHERE `idEstudiante` = ". $cambios["id_user"];
+		"`porcentaje` = ". $_POST["progreso"].",".
+		"`etapa4` = ".$_POST["estado_etapa"].
+		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		$conexion->ejecutarInstruccion($sql);
+		echo $sql;
 		break;
 	
 	default:

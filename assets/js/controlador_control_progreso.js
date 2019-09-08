@@ -28,7 +28,7 @@ $(document).ready(function() {
             console.log("en cada click");
             var etapaCambios = JSON.stringify(datosEtapa);
             var etapa = id_etapa.substr(1, 1);
-            //actualizarProgreso(etapaCambios, etapa);
+            actualizarProgreso(estado_etapa, etapa, progreso, id_user);
             /*console.log(id_proceso);
             console.log(id_user);
             console.log(id_etapa);
@@ -38,16 +38,15 @@ $(document).ready(function() {
 
 
 });
- function actualizarProgreso(etapaCambios, etapa){
+
+function actualizarProgreso(estado_etapa, etapa, progreso, id_user) {
     $.ajax({
-            url: "assets/ajax/actualizar_progresos.php",
-            method: "POST",
-            data: "JsonCambios="+etapaCambios+"&"+"etapa="+etapa,
-            dataType: 'html', 
-            success: function(respuesta) {
-
-            }
+        url: "assets/ajax/actualizar_progresos.php",
+        method: "POST",
+        data: "estado_etapa=" + estado_etapa + "&" + "etapa=" + etapa + "&" + "progreso=" + progreso + "&" + "id_user=" + id_user,
+        dataType: 'html',
+        success: function(respuesta) {
+            console.log(respuesta);
         }
-        );
- }
-
+    });
+}
