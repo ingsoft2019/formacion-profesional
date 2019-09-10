@@ -8,7 +8,7 @@ switch ($etapa) {
 		"SET ".
 		"`porcentaje` = ". $_POST["progreso"].",".
 		"`etapa1` = ".$_POST["estado_etapa"].
-		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		" WHERE `idEstudiante` = ". $_POST["id_user"] . " AND idprocesos = " . $_POST["id_proceso"];
 		$conexion->ejecutarInstruccion($sql);
 		echo $sql;
 		break;
@@ -17,7 +17,7 @@ switch ($etapa) {
 		"SET ".
 		"`porcentaje` = ". $_POST["progreso"].",".
 		"`etapa2` = ".$_POST["estado_etapa"].
-		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		" WHERE `idEstudiante` = ". $_POST["id_user"] . " AND idprocesos = " . $_POST["id_proceso"];
 		$conexion->ejecutarInstruccion($sql);
 		echo $sql;
 		break;
@@ -26,7 +26,7 @@ switch ($etapa) {
 		"SET ".
 		"`porcentaje` = ". $_POST["progreso"].",".
 		"`etapa3` = ".$_POST["estado_etapa"].
-		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		" WHERE `idEstudiante` = ". $_POST["id_user"] . " AND idprocesos = " . $_POST["id_proceso"];
 		$conexion->ejecutarInstruccion($sql);
 		echo $sql;
 		break;
@@ -35,7 +35,7 @@ switch ($etapa) {
 		"SET ".
 		"`porcentaje` = ". $_POST["progreso"].",".
 		"`etapa4` = ".$_POST["estado_etapa"].
-		" WHERE `idEstudiante` = ". $_POST["id_user"];
+		" WHERE `idEstudiante` = ". $_POST["id_user"] . " AND idprocesos = " . $_POST["id_proceso"];
 		$conexion->ejecutarInstruccion($sql);
 		echo $sql;
 		break;

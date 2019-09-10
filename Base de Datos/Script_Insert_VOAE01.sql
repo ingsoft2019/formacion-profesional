@@ -213,22 +213,22 @@ INSERT INTO `tbl_secciones` (`idsecciones`,`horainicial`,`horafinal`,`cupos`,`lu
 -- -----------------------------------------------------
 
 INSERT INTO `tbl_control_de_procesos` (`idcontrolprocesos`,`porcentaje`,`etapa1`,`etapa2`,`etapa3`,`etapa4`,`idEstudiante`,`idprocesos`)VALUES
-(1,50,1,1,1,1,1,1),
+(1,50,0,0,1,1,1,1),
 (2,0,0,0,0,0,2,2),
-(3,100,1,1,1,1,7,3),
+(3,100,1,1,1,1,3,3),
 (4,100,1,1,1,1,4,4),
-(5,25,1,0,0,0,6,5);
+(5,25,1,0,0,0,5,5);
 
 -- -----------------------------------------------------
 -- Insertando en la  tabla `tbl_Horarios_Orientador
 -- -----------------------------------------------------
 
 INSERT INTO`tbl_Horarios_Orientador` (`idhorariosorientador`,`fecha`,`h_inicial`,`h_final`,`tipoevento`,`codigohorario`,`idorientador`,`idprocesos`)VALUES
-(1,'12 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-17','1',1),
-(2,'14 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-18','2',2),
-(3,'16 Agosto 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-19','3',3),
-(4,'17 Agosto 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-20','4',4),
-(5,'18 Agosto 2019','09:30:00','12:30:00','Entrevista','2019-08-21','5',5);
+(1,'12 8 2019','09:30:00','12:30:00','Entrevista','2019-08-17','1',1),
+(2,'14 8 2019','09:30:00','12:30:00','Entrevista','2019-08-18','2',2),
+(3,'16 8 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-19','3',3),
+(4,'17 8 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-20','4',4),
+(5,'18 8 2019','09:30:00','12:30:00','Entrevista','2019-08-21','5',5);
 
 
 -- -----------------------------------------------------

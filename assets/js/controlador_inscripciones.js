@@ -2,8 +2,8 @@ $(document).ready(function() {
     cargarSecciones();
     $("#div_secciones_matriculadas").click(function(event) {
         if (event.target.className == "waves-effect waves-light red btn btn_eliminar_inscripcion") {
-            ID_Proceso = event.target.getAttribute('data-process');
-            ID_Seccion = event.target.getAttribute('data-section');
+            var ID_Proceso = event.target.getAttribute('data-process');
+            var ID_Seccion = event.target.getAttribute('data-section');
             console.log(ID_Proceso); //ID SECCION
             console.log(ID_Seccion); //ID PROCESO
 
@@ -22,10 +22,13 @@ $(document).ready(function() {
                 section.hide("slow", function() { $(this).remove(); })
                 $.ajax({
                     url: 'assets/ajax/eliminar_inscripcion.php',
-                    data : "idsecciones="+ID_Seccion,
+                    data : "idsecciones="+ID_Seccion+'&idproceso='+ID_Proceso,
                     method: 'POST',
                     dataType: 'json ',
-                    success: function(respuesta){}
+                    success: function(respuesta){
+                        console.log(respuesta);
+                        
+                    }
                 });
                 if (isConfirm) {
                     swal("Completo", "Inscripción eliminada.", "success");

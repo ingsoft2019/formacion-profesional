@@ -81,11 +81,11 @@
                                             <strong>Proceso No. <?php echo $datos['idprocesos']?></strong>
                                         </h6>
                                         <h6 class="col s2 right-align">
-                                            <span id="porcentaje_user<?php echo $datos['idEstudiante']?>"><?php echo $datos['porcentaje']?></span>%
+                                            <span id="porcentaje_user<?php echo $datos['idEstudiante'] . $datos['idprocesos']?>"><?php echo $datos['porcentaje']?></span>%
                                         </h6>
                                     </div>
                                     <div class="progress ">
-                                        <div class="determinate" style="width: <?php echo $datos['porcentaje']?>%" id="bar_user<?php echo $datos['idEstudiante']?>"></div>
+                                        <div class="determinate" style="width: <?php echo $datos['porcentaje']?>%" id="bar_user<?php echo $datos['idEstudiante'] . $datos['idprocesos']?>"></div>
                                     </div>
                                 </div>
                             </div>
@@ -102,30 +102,30 @@
                                 <br>
                                     <form class="frm_etapas_<?php echo $datos['idprocesos']?>" action="#">
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e1_<?php echo $datos['idprocesos']?>" <?php if ($datos['etapa1']==true) echo 'checked="checked"';?>
+                                            <input type="checkbox" class="filled-in" id="e1_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>" <?php if ($datos['etapa1']==true) echo 'checked="checked"';?>
                                                 data-process="<?php echo $datos['idprocesos']?>" data-user="<?php echo $datos['idEstudiante']; ?>" />
-                                            <label for="e1_<?php echo $datos['idprocesos']?>">
+                                            <label for="e1_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>">
                                                 Evaluación Grupal
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e2_<?php echo $datos['idprocesos']?>" <?php if ($datos['etapa2']==true) echo 'checked="checked"';?>
+                                            <input type="checkbox" class="filled-in" id="e2_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>" <?php if ($datos['etapa2']==true) echo 'checked="checked"';?>
                                                 data-process="<?php echo $datos['idprocesos']?>"  data-user="<?php echo $datos['idEstudiante']; ?>" />
-                                            <label for="e2_<?php echo $datos['idprocesos']?>">
+                                            <label for="e2_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>">
                                                 Evaluación en Línea
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e3_<?php echo $datos['idprocesos']?>" <?php if ($datos['etapa3']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
+                                            <input type="checkbox" class="filled-in" id="e3_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>" <?php if ($datos['etapa3']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
                                                 data-user="<?php echo $datos['idEstudiante']; ?>" />
-                                            <label for="e3_<?php echo $datos['idprocesos']?>">
+                                            <label for="e3_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>">
                                                 Entrevista Pedagógica
                                             </label>
                                         </p>
                                         <p class="p-v-xs">
-                                            <input type="checkbox" class="filled-in" id="e4_<?php echo $datos['idprocesos']?>" <?php if ($datos['etapa4']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
+                                            <input type="checkbox" class="filled-in" id="e4_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>" <?php if ($datos['etapa4']==true) echo 'checked="checked"';?> data-process="<?php echo $datos['idprocesos']?>"
                                                 data-user="<?php echo $datos['idEstudiante']; ?>" />
-                                            <label for="e4_<?php echo $datos['idprocesos']?>">
+                                            <label for="e4_<?php echo $datos['idprocesos'] . $datos['idEstudiante']?>">
                                                 Devolución de Resultados
                                             </label>
                                         </p>
