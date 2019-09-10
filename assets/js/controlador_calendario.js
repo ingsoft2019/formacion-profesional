@@ -24,8 +24,8 @@ $(document).ready(function () {
                     Nombre_Estudiante: horario.nombres + horario.apellidos,
                     celular: horario.celular
                 }
-                horario.start = moment(horario.fecha + ' ' + horario.h_inicial, 'DD MMMM YYYY HH:mm:ss').format().substr(0,19);
-                horario.end = moment(horario.fecha + ' ' + horario.h_final, 'DD MMMM YYYY HH:mm:ss').format().substr(0,19);
+                horario.start = moment(horario.fecha + ' ' + horario.h_inicial, 'YYYY-M-D HH:mm:ss').format().substr(0,19);
+                horario.end = moment(horario.fecha + ' ' + horario.h_final, 'YYYY-M-D HH:mm:ss').format().substr(0,19);
                 horario.classNames = ['cursorPointer'];
 
                 delete horario['nombres'];
