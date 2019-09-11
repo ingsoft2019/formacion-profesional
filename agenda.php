@@ -119,43 +119,43 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" id="Card-row">
                 <div class="card-content  row">
-                        <i class="material-icons btn_eliminar">clear</i>
+                    <i class="material-icons btn_eliminar">clear</i>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">loop</i>
-                            <span data-id="spn_proceso">Sin datos</span>
+                            <span id="spn_proceso">Sin datos</span>
                         </h6>
                     </div>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">collections_bookmark</i>
-                            <span data-id="spn_evento">Sin datos</span>
+                            <span id="spn_evento">Sin datos</span>
                         </h6>
                     </div>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">face</i>
-                            <span data-id="spn_orientador">Sin datos</span>
+                            <span id="spn_orientador">Sin datos</span>
                         </h6>
                     </div>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">event</i>
-                            <span data-id="spn_date">Sin datos</span>
+                            <span id="spn_date">Sin datos</span>
                         </h6>
                     </div>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">schedule</i>
-                            <span data-id="spn_time">Sin datos</span>
+                            <span id="spn_time">Sin datos</span>
                         </h6>
                     </div>
                     <div class="col s12 m6 l2">
                         <h6 class="vertical_align">
                             <i class="material-icons">location_on</i>
-                            <span data-id="spn_time">Edificio de Registro</span>
+                            <span id="spn_lugar">Edificio de Registro</span>
                         </h6>
                     </div>
                 </div>

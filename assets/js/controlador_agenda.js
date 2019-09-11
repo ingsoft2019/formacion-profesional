@@ -15,6 +15,7 @@ $(document).ready(function() {
                 $selectDropdown.append($("<option></option>").attr("value", respuesta[i].idprocesos).text(respuesta[i].proceso));
             }
             $selectDropdown.trigger('contentChanged');
+            cargarDatos();
         }
     });
     const date_pickers = $(".div_date_picker");
@@ -48,14 +49,14 @@ $(document).ready(function() {
 
     });
 
-    $("[name='rb_hora']").click(function() {
+   /* $("[name='rb_hora']").click(function() {
         var label = $(this).prop("labels");
         text = $(label).text();
         //console.log(text)
         $("#spn_time").text(text);
     })
 
-    /*$('#slc_proceso').on('change', function() {
+    $('#slc_proceso').on('change', function() {
         var optionsText = this.options[this.selectedIndex].text;
         //console.log(optionsText);
         $("#spn_proceso").text(optionsText);
@@ -65,8 +66,8 @@ $(document).ready(function() {
         var optionsText = this.options[this.selectedIndex].text;
         //console.log(optionsText);
         $("#spn_evento").text(optionsText);
-    });*/
-
+    });
+*/
     $('#slc_evento').on('change', function() {
         if ($("#slc_proceso").val() != 0 && $("#slc_evento").val() != 0) {
             llenarOrientadores();
@@ -129,6 +130,27 @@ $(document).ready(function() {
             }
         });
     });
+
+    function cargarDatos() {
+        console.log("si llega aqui");
+        $.ajax({
+            url: "assets/ajax/agenda_peticiones.php",
+            method: "GET",
+            data: "CODIGO_FUNCION=6",
+            dataType: "json", //data para saber que funcion en php usara.
+            success: function(respuesta) {
+                console.log(JSON.parse(respuesta));
+                if(!respuesta.match(/Sin/g)){
+                    $("#spn_proceso").text(respuesta.idprocesos);
+                    $("#spn_evento").text(respuesta.tipoevento);
+                    $("#spn_orientador").text(respuesta.nombres);
+                    $("#spn_date").text(respuesta.fecha);
+                    $("#spn_time").text(respuesta.h_inicial+"-"+respuesta.h_final);
+                }
+            }
+        });
+        console.log("y hasta aqui, q p2?");
+    }
 
     function llenarOrientadores() {
         // console.log("este es" + $("#slc_proceso").val());
