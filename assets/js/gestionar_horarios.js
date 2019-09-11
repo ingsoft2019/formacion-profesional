@@ -138,25 +138,16 @@ const renderTarjeta2 = (id,data) => {
     const time_pickers = tarjeta.find(".div_timepicker");
 
     date_pickers.flatpickr({
-        dateFormat: "Y-M-j",
+        altFormat: "F j, Y",
+        dateFormat: "F j, Y",
         //inline: true,
-        mode: "single",
-        //conjunction: ";",
-        /* "disable": [
-             function(date) {
-                 // return true to disable
-                 return (date.getDay() === 0 || date.getDay() === 6);
+        mode: "multiple",
+        minDate: data.fecha.charAt(0).toUpperCase() + data.fecha.slice(1),
+        maxDate: data.fecha.charAt(0).toUpperCase() + data.fecha.slice(1),
 
-             }
-         ],*/
         "locale": {
             "firstDayOfWeek": 1 // start week on Monday
-        },
-        defaultDate: JSON.stringify(data.fecha)
-       /* enable: [{
-                 from: "2019-01-01",
-                 to: "2019-02-01"
-             }]*/
+        }
     });
 
     time_pickers.flatpickr({
@@ -167,10 +158,11 @@ const renderTarjeta2 = (id,data) => {
         maxDate: "16:00",
     });
 
+    var tarjetaHorario = $(`.tarjeta_horario[id=${id}]`).children()
+    tarjetaHorario.find("#txt_fecha").val(data.fecha);
+    tarjetaHorario.find("#txt_hinicial").val(data.inicial);
+    tarjetaHorario.find("#txt_hfinal").val(data.final);
     tarjeta.show(500);
-    $("#txt_fecha").val(data.fecha);
-    $("#txt_hinicial").val(data.h_inicial);
-    $("#txt_hfinal").val(data.h_final);
 }
 
 const renderTarjeta = (id, proceso) => {
@@ -294,9 +286,13 @@ function cargarDatos() {
         method: 'GET',
         data: 'idProceso=' + $('#id-proceso').val() + '&tipoEvento=' + idTipoEvento,
         success: function(data){
-            console.log(JSON.parse(data))
+            var datos=JSON.parse(data);
+            console.log(datos)
+            console.log(datos.length)
             if(!data.match(/Sin/g)){
-                renderTarjeta2(crear_id(),JSON.parse(data));
+               for (var i = 0; i < datos.length; i++) {
+                    renderTarjeta2(crear_id(),datos[i]);
+               }
                 
             }
         }
