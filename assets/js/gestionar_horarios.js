@@ -3,17 +3,17 @@ jQuery(document).ready(function($) {
 
 
     $("#btn_nueva_tarjeta").click(function() {
-        
+
         $.ajax({
             url: 'assets/ajax/obtener_procesos.php',
             method: 'GET',
             data: 'idProceso=' + $('#id-proceso').val() + '&tipoEvento=' + idTipoEvento,
-            success: function(data){
+            success: function(data) {
                 console.log(JSON.parse(data))
                 renderTarjeta(crear_id(), JSON.parse(data));
             }
         })
-        
+
     });
 
     $("#btn_guardar_cambios").click(function() {
@@ -62,6 +62,7 @@ jQuery(document).ready(function($) {
         if (event.target.className == "material-icons icon-button") {
             //console.log(event.target.id);
             removeTarjeta(event.target.id);
+
         }
     });
 
@@ -92,8 +93,8 @@ jQuery(document).ready(function($) {
 
 // render tarjetas horarios
 
-const renderTarjeta2 = (id,data) => {
-    
+const renderTarjeta2 = (id, data) => {
+
     const html = `
         <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
             <div class="card">
@@ -102,7 +103,7 @@ const renderTarjeta2 = (id,data) => {
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12 right-align">
-                                    <i class="material-icons icon-button" id="${id}">clear</i>
+                                    <i class="material-icons icon-button" id="${id}" onclick="eliminarHorario(${id})">clear</i>
                                 </div>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">date_range</i>
@@ -166,7 +167,7 @@ const renderTarjeta2 = (id,data) => {
 }
 
 const renderTarjeta = (id, proceso) => {
-    
+
     const html = `
         <div class="col s12 m12 l4 tarjeta_horario" id="${id}">
             <div class="card">
@@ -175,7 +176,7 @@ const renderTarjeta = (id, proceso) => {
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12 right-align">
-                                    <i class="material-icons icon-button" id="${id}">clear</i>
+                                    <i class="material-icons icon-button" id="${id}" onclick="eliminarHorario(${id})">clear</i>
                                 </div>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">date_range</i>
@@ -228,10 +229,10 @@ const renderTarjeta = (id, proceso) => {
         minDate: proceso.inicio.charAt(0).toUpperCase() + proceso.inicio.slice(1),
         maxDate: proceso.fin.charAt(0).toUpperCase() + proceso.fin.slice(1),
 
-       /* enable: [{
-                 from: "2019-01-01",
-                 to: "2019-02-01"
-             }]*/
+        /* enable: [{
+                  from: "2019-01-01",
+                  to: "2019-02-01"
+              }]*/
     });
 
     time_pickers.flatpickr({
@@ -285,20 +286,20 @@ function cargarDatos() {
         url: 'assets/ajax/obtener_horarios_orientador.php',
         method: 'GET',
         data: 'idProceso=' + $('#id-proceso').val() + '&tipoEvento=' + idTipoEvento,
-        success: function(data){
-            var datos=JSON.parse(data);
+        success: function(data) {
+            var datos = JSON.parse(data);
             console.log(datos)
             console.log(datos.length)
-            if(!data.match(/Sin/g)){
-               for (var i = 0; i < datos.length; i++) {
-                    renderTarjeta2(crear_id(),datos[i]);
-               }
-                
+            if (!data.match(/Sin/g)) {
+                for (var i = 0; i < datos.length; i++) {
+                    renderTarjeta2(crear_id(), datos[i]);
+                }
+
             }
         }
     })
-    
-    
+
+
 }
 
 function obtenerHorarios() {
@@ -362,15 +363,27 @@ function formatear_Fecha(fecha) {
     return fecha_con_formato;
 }
 
-function guardarCambios(JsonHorarios){
+function guardarCambios(JsonHorarios) {
     console.log(JsonHorarios);
     $.ajax({
-            url: "assets/ajax/guardar_horarios.php",
-            method: "POST",
-            data: "JsonHorarios="+JsonHorarios,
-            dataType: 'html', 
-            success: function(respuesta) {
-            }
+        url: "assets/ajax/guardar_horarios.php",
+        method: "POST",
+        data: "JsonHorarios=" + JsonHorarios,
+        dataType: 'html',
+        success: function(respuesta) {
+            //$("#depuracion").html(respuesta);
+            console.log(respuesta);
         }
-        );
+    });
+}
+
+function eliminarHorario(id) {
+    $.ajax({
+        url: 'assets/ajax/eliminar_horario.php',
+        method: 'POST',
+        data: 'codigohorario=' + id,
+        success: function(data) {
+            console.log(data);
+        }
+    })
 }
