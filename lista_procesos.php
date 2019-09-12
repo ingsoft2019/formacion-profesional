@@ -1,8 +1,13 @@
-<?php 
-    session_start();
-    if (!isset($_SESSION["idPersona"])){
-        header("Location: log-in.php?redirigido=1");
-    }
+<?php
+
+    require('./assets/clases/class_conexion.php');
+    $mysql = new Conexion();
+    $query=$mysql->ejecutarInstruccion("
+    SELECT * FROM tbl_procesos WHERE 1
+    ");
+    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +32,7 @@
     <link href="assets/css/gestionar_Usuarios.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
-    <link href="assets/css/consultar_resultados.css" rel="stylesheet">
+    <link href="assets/css/subir_resultados.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets\images\icon.png" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -51,6 +56,7 @@
 
 
 
+
             <div class="col s12 m12 l6">
                 <div class="card">
                     <div class="card-content">
@@ -58,38 +64,62 @@
                             <thead>
                                 <tr>
                                     <th class="" data-field="id">Id. Proceso</th>
-                                    <th class="" data-field="name">Comenzó</th>
-                                    <th class="" data-field="name">Finalizó</th>
+                                    <th class="" data-field="name">Comienzo</th>
+                                    <th class="" data-field="name">Final</th>
+                                    <th class="" data-field="name">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
-                                   // while($datos = mysqli_fetch_array($query))
-                                  //  {
+                                    while($datos = mysqli_fetch_array($query))
+                                    {
                                  ?>
-                                <tr class="user_row" id="<?php //echo ?>">
+                                <tr class="user_row" id="<?php echo $datos['idprocesos']?>">
                                     <td>
-                                        <?php //echo ?> 1
+                                        <?php echo $datos['idprocesos']?>
                                     </td>
                                     <td>
-                                        <?php //AQUI DEBE IR LA FECHA DEL COMIENZO DE INSCRIPCIONES DEL PROCESO?>
+                                        <?php 
+                                        setlocale(LC_TIME, 'es_ES.UTF-8');
+                                        $string = $datos['fechainicio'];
+                                        $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                        echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                        ?>
                                     </td>
                                     <td>
-                                        <?php //AQUI DEBE IR LA FECHA EN QUE FINALIZA LA DEV. DE RESULTADOS DEL PROCESO ?>
+                                        <?php 
+                                        setlocale(LC_TIME, 'es_ES.UTF-8');
+                                        $string = $datos['fechafindevuelveresultado'];
+                                        $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                        echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                        ?>
                                     </td>
-                                    <td class="right-align">
+                                    <td class="<?php if($datos['estado']=='Activo'){ echo 'green-text';}else{echo 'red-text';} ?>">
+                                        <?php echo $datos['estado']?>
+                                    </td>
+                                    
+
+                                    <td class="center-align">
                                         <a class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
-                                            <i class="material-icons text-white">launch</i>
+                                            <i class="material-icons text-white">create</i>
+                                        </a>
+                                    
+                                        <a class="waves-effect waves-light btn red m-b-xs btn_custom_padding">
+                                            <i class="material-icons text-white">clear</i>
                                         </a>
                                     </td>
                                 </tr>
                                 <?php
-                               // }
+                                }
                                ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+
+
+
 
 
         </main>
@@ -114,7 +144,7 @@
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>
-    <script src="assets/js/controlador_consultar_resultados.js"></script>
+    <script src="assets/js/controlador_subir_resultados.js"></script>
 
 </body>
 
