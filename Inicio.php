@@ -187,12 +187,12 @@
                                     <div class="row flow-text">
                                         <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
                                         <p class="col s10 m11 l11 left-align">
-                                            Debes inscribirte en un proceso de orientación activo.
+                                            Contesta los exámenes en línea correspondientes al proceso en el cual te has inscrito.
                                         </p>
 
                                         <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
                                         <p class="col s10 m11 l11 left-align">
-                                            Asiste a la evaluación grupal presencial en el horario que seleccionaste.
+                                            El ingreso a los exámenes en línea tiene un límite de tiempo.
                                         </p>
                                     </div>
                                     <div class="row flow-text">
@@ -217,12 +217,7 @@
                                     <div class="row flow-text">
                                         <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
                                         <p class="col s10 m11 l11 left-align">
-                                            Debes inscribirte en un proceso de orientación activo.
-                                        </p>
-
-                                        <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
-                                        <p class="col s10 m11 l11 left-align">
-                                            Asiste a la evaluación grupal presencial en el horario que seleccionaste.
+                                            Agenda una cita con un orientador para la entrevista pedagógica correspondiente al proceso en el que estés inscrito.
                                         </p>
                                     </div>
                                     <div class="row flow-text">
@@ -247,12 +242,7 @@
                                     <div class="row flow-text">
                                         <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
                                         <p class="col s10 m11 l11 left-align">
-                                            Debes inscribirte en un proceso de orientación activo.
-                                        </p>
-
-                                        <i class="material-icons blue-text text-darken-3 col s2 m1 l1">check</i>
-                                        <p class="col s10 m11 l11 left-align">
-                                            Asiste a la evaluación grupal presencial en el horario que seleccionaste.
+                                        Agenda una cita con un orientador para la devolución y análisis de tus resultados en el proceso de orientación profesional.
                                         </p>
                                     </div>
                                     <div class="row flow-text">
