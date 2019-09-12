@@ -1,0 +1,10 @@
+.phase_icon {
+    height: 5rem;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.phase_icon>i {
+    font-size: 3rem !important;
+}

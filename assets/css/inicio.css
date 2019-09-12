@@ -1,0 +1,8 @@
+.mn-inner {
+    padding: 0px !important;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
+}
