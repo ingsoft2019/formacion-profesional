@@ -112,8 +112,20 @@ $(document).ready(function() {
                 console.log(respuesta);
             }
         });
-        swal("Completo", "Citar reservada", "success");
-        location.reload();
+        swal({
+            title: "Completo",
+            text: "Cita reservada.",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#2196F3",
+            confirmButtonText: "Ok"
+        }, function(isConfirm) {
+                if (isConfirm) {
+                    location.reload();
+                }
+            }
+        );
+        
     });
 
     function cargarDatos() {
@@ -277,10 +289,10 @@ function eliminarCita(id) {
                 data: 'CODIGO_FUNCION=7&idhorariosorientador=' + id,
                 success: function(data) {
                     console.log(data);
+                    location.reload();
                 }
             })
             swal("Completo", "Cita eliminada", "success");
         }
     });
-    location.reload();
 }

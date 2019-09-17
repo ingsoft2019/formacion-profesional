@@ -76,7 +76,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
             }
             echo json_encode($resultadoProceso);
         }else{
-            echo json_encode("Sin datos");
+            echo json_encode("");
         }
         break;
     case 7:
