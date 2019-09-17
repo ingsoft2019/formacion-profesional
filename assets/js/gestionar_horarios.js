@@ -33,6 +33,8 @@ jQuery(document).ready(function($) {
             if (isConfirm) {
                 swal("Completo", "Horarios Actualizados.", "success");
                 $('#mdl_horarios').closeModal();
+                $('body').attr('style', 'overflow-y: auto !important');
+                $("#contenedor_tarjetas").html("");
             } else {}
         });
 

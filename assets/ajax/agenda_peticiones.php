@@ -63,8 +63,8 @@ switch ($_GET["CODIGO_FUNCION"]) {
         $conexion->ejecutarInstruccion($sql);
         break;
     case 6:
-        $idestudiante=$_SESSION["idpersona"];
-        $sql="SELECT fecha, h_inicial,h_final,tipoevento,nombres,idprocesos FROM tbl_horarios_orientador_x_tbl_estudiantes AS he
+        $idestudiante=$_SESSION["idPersona"];
+        $sql="SELECT h.idhorariosorientador AS horariosorientador,fecha, h_inicial,h_final,IF(tipoevento=2,'Entrevista','Entreg de Resultados') as tipoevento,nombres,idprocesos FROM tbl_horarios_orientador_x_tbl_estudiantes AS he
         INNER JOIN tbl_horarios_orientador AS h ON he.idhorariosorientador = h.idhorariosorientador
         INNER JOIN tbl_personas AS p ON p.idpersona = h.idorientador
         WHERE idestudiante='$idestudiante';";
@@ -76,9 +76,14 @@ switch ($_GET["CODIGO_FUNCION"]) {
             }
             echo json_encode($resultadoProceso);
         }else{
-            echo json_encode("Sin datos.");
+            echo json_encode("Sin datos");
         }
         break;
+    case 7:
+        $idhorariosorientador=$_GET["idhorariosorientador"];
+        $sql="DELETE FROM tbl_horarios_orientador_x_tbl_estudiantes WHERE idhorariosorientador = '$idhorariosorientador'";
+        $resultado = $conexion->ejecutarInstruccion($sql);
+        echo json_encode($resultado);
     default:
 
         break;

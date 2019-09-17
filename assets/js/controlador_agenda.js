@@ -15,7 +15,6 @@ $(document).ready(function() {
                 $selectDropdown.append($("<option></option>").attr("value", respuesta[i].idprocesos).text(respuesta[i].proceso));
             }
             $selectDropdown.trigger('contentChanged');
-            cargarDatos();
         }
     });
     const date_pickers = $(".div_date_picker");
@@ -39,11 +38,14 @@ $(document).ready(function() {
         }*/
     });
 
+
     $('select').on('contentChanged', function() {
         // re-initialize (update)
         $(this).material_select();
 
     });
+
+    cargarDatos();
 
     $('label').on('contentChanged', function() {
 
@@ -111,45 +113,25 @@ $(document).ready(function() {
             }
         });
         swal("Completo", "Citar reservada", "success");
-    });
-
-    $(".btn_eliminar").click(function() {
-        swal({
-            title: "¿Seguro que desea eliminar la cita?",
-            text: "Es posible que no pueda volver a agendar la misma cita.",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#2196F3",
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
-            closeOnCancel: true
-        }, function(isConfirm) {
-            if (isConfirm) {
-                swal("Completo", "Cita eliminada", "success");
-            }
-        });
+        location.reload();
     });
 
     function cargarDatos() {
-        console.log("si llega aqui");
         $.ajax({
-            url: "assets/ajax/agenda_peticiones.php",
-            method: "GET",
+            url: "./assets/ajax/agenda_peticiones.php",
+            method: 'GET',
             data: "CODIGO_FUNCION=6",
-            dataType: "json", //data para saber que funcion en php usara.
+            dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
-                console.log(JSON.parse(respuesta));
-                if(!respuesta.match(/Sin/g)){
-                    $("#spn_proceso").text(respuesta.idprocesos);
-                    $("#spn_evento").text(respuesta.tipoevento);
-                    $("#spn_orientador").text(respuesta.nombres);
-                    $("#spn_date").text(respuesta.fecha);
-                    $("#spn_time").text(respuesta.h_inicial+"-"+respuesta.h_final);
+                console.log(respuesta);
+                if(respuesta.length!=0){
+                    console.log(respuesta.length)
+                    for (var i = 0; i < respuesta.length; i++) {
+                        renderTarjeta(respuesta[i].horariosorientador, respuesta[i]);   
+                    }
                 }
             }
         });
-        console.log("y hasta aqui, q p2?");
     }
 
     function llenarOrientadores() {
@@ -219,4 +201,86 @@ $(document).ready(function() {
         });
     }
 
+    const renderTarjeta = (id, data) => {
+
+        const html = `
+        <div class="col s12 m12 l4 tarjeta_cita" id="${id}">
+            <div class="card-content row">
+                <i class="material-icons icon-button" id="${id}" onclick="eliminarCita(${id})">clear</i>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">loop</i>
+                        <span id="spn_proceso">sin datos</span>
+                    </h6>
+                </div>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">collections_bookmark</i>
+                        <span id="spn_evento">Sin datos</span>
+                    </h6>
+                </div>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">face</i>
+                        <span id="spn_orientador">Sin datos</span>
+                    </h6>
+                </div>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">event</i>
+                        <span id="spn_date">Sin datos</span>
+                    </h6>
+                </div>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">schedule</i>
+                        <span id="spn_time">Sin datos</span>
+                    </h6>
+                </div>
+                <div class="col s12 m6 l2">
+                    <h6 class="vertical_align">
+                        <i class="material-icons">location_on</i>
+                        <span id="spn_lugar">Edificio de Registro</span>
+                    </h6>
+                </div>
+            </div>
+        </div>`;
+        $("#Card-row").append(html);
+        console.log(`${id}`);
+        var tarjeta = $(`.tarjeta_cita[id=${id}]`).children()
+        
+        tarjeta.find("#spn_proceso").text(data.idprocesos);
+        tarjeta.find("#spn_evento").text(data.tipoevento);
+        tarjeta.find("#spn_orientador").text(data.nombres);
+        tarjeta.find("#spn_date").text(data.fecha);
+        tarjeta.find("#spn_time").text(data.h_inicial+"-"+data.h_final);
+    }
+
 });
+
+function eliminarCita(id) {
+    swal({
+        title: "¿Seguro que desea eliminar la cita?",
+        text: "Es posible que no pueda volver a agendar la misma cita.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#2196F3",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function(isConfirm) {
+        if (isConfirm) {
+            $.ajax({
+                url: 'assets/ajax/agenda_peticiones.php',
+                method: 'GET',
+                data: 'CODIGO_FUNCION=7&idhorariosorientador=' + id,
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+            swal("Completo", "Cita eliminada", "success");
+        }
+    });
+    location.reload();
+}

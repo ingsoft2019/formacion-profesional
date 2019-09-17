@@ -31,6 +31,7 @@ function verificarUsuario($conexion, $correo,$contrasena){
 					$_SESSION["nombre"] = $fila["nombres"];
 					$_SESSION["contrasena"] = $fila["contrasena"];
 					$_SESSION["fotoPerfil"] = $fila["fotoPerfil"];
+					$_SESSION["genero"] = $fila["idGenero"];
 					$_SESSION["idTipoUsuario"] = 2;
 					$_SESSION["idTipoUsuario2"] = 3;
 					$respuesta["status"]=1;//si tiene acceso o no a la plataforma, si existe o no su registro.
