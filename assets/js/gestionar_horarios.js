@@ -294,9 +294,8 @@ function cargarDatos() {
             console.log(datos.length)
             if (!data.match(/Sin/g)) {
                 for (var i = 0; i < datos.length; i++) {
-                    renderTarjeta2(crear_id(), datos[i]);
+                    renderTarjeta2(datos[i].codigohorario, datos[i]);
                 }
-
             }
         }
     })
@@ -386,6 +385,34 @@ function eliminarHorario(id) {
         data: 'codigohorario=' + id,
         success: function(data) {
             console.log(data);
+            if (!data.match(/Error/g)) {
+                swal({
+                    title: "Bien hecho!",
+                    text: data,
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2196F3",
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: true,
+                });
+                
+            }else{
+                swal({
+                    title: "Alerta!",
+                    text: data,
+                    type: "warning",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2196F3",
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: true,
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        $('#mdl_horarios').closeModal();
+                        $('body').attr('style', 'overflow-y: auto !important');
+                        $("#contenedor_tarjetas").html("");
+                    }
+                });
+            }
         }
     })
 }
