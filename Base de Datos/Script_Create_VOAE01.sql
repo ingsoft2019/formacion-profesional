@@ -208,3 +208,27 @@ CREATE TABLE IF NOT EXISTS `tbl_Horarios_Orientador_X_tbl_estudiantes` (
     REFERENCES `tbl_estudiantes` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+
+-- -----------------------------------------------------
+-- Table `OrientacionProfesional`.`tbl_resultados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tbl_resultados` (
+  `idResultados` INT NOT NULL,
+  `urlPdf` VARCHAR(1000) NULL,
+  `FechaModificacion` DATETIME NULL,
+  `idprocesos` INT NOT NULL,
+  `idEstudiante` INT NOT NULL,
+  `idorientador` VARCHAR(45) NULL,
+  PRIMARY KEY (`idResultados`, `idprocesos`, `idEstudiante`),
+  CONSTRAINT `fk_Resultados_tbl_procesos1`
+    FOREIGN KEY (`idprocesos`)
+    REFERENCES `tbl_procesos` (`idprocesos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Resultados_tbl_estudiantes1`
+    FOREIGN KEY (`idEstudiante`)
+    REFERENCES `tbl_estudiantes` (`idEstudiante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

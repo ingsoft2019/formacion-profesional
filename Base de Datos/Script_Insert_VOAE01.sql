@@ -250,3 +250,14 @@ INSERT INTO`tbl_Horarios_Orientador_X_tbl_estudiantes` (`idhorariosorientador`,`
 (3,3),
 (4,4),
 (5,5);
+
+-- -----------------------------------------------------
+--  Insetando en la `tbl_resultados`
+-- -----------------------------------------------------
+INSERT INTO`tbl_resultados` (`idresultados`,`urlPdf`,`FechaModificacion`,`idprocesos`,`idEstudiante`,`idorientador`)VALUES
+(1,'formacion-profesional/resultados/prueba.pdf','2019-09-20',1,1,17),
+(2,'formacion-profesional/resultados/prueba.pdf','2019-09-21',2,2,18),
+(3,'formacion-profesional/resultados/prueba.pdf','2019-09-21',3,3,19),
+(4,'formacion-profesional/resultados/prueba.pdf','2019-09-20',4,4,20),
+(5,'formacion-profesional/resultados/prueba.pdf','2019-09-20',5,5,21);
+

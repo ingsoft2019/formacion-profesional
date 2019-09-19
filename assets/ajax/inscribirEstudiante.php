@@ -7,7 +7,7 @@ $respuesta=[];
 //$_POST["idPersona"]=29;
 $sql = "SELECT * FROM tbl_secciones_has_tbl_estudiantes WHERE tbl_secciones_idsecciones=" . $_POST["idSeccion"] . " AND tbl_estudiantes_idEstudiante = " . $_POST["idPersona"];
 $resultado = $conexion->ejecutarInstruccion($sql);
-if(mysqli_num_rows($resultado)==0){
+if(mysqli_num_rows($resultado)>=0){
     $sql = "SELECT cupos FROM tbl_secciones WHERE idsecciones=" . $_POST["idSeccion"];
         $resultado = $conexion->ejecutarInstruccion($sql);
         $row = mysqli_fetch_array($resultado);
