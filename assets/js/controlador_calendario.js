@@ -9,15 +9,31 @@ $(document).ready(function() {
         success: function(data) {
             //console.log(data);
             data = JSON.parse(data)
-
+            var urlResultados = 'calendario.php';
             for (let horario of data) {
+
                 if (horario.tipoevento == 2) {
                     horario.color = '#FCBE00'
                     horario.title = 'Entrevista: ' + (horario.nombres.split(" "))[0] + ' ' + (horario.apellidos.split(" "))[0]
                     horario.estado = horario.etapa3 == 1 ? true : false
+                    horario.resultados = false
                 } else {
                     horario.title = 'Dev. Resultados: ' + (horario.nombres.split(" "))[0] + ' ' + (horario.apellidos.split(" "))[0]
                     horario.estado = horario.etapa4 == 1 ? true : false
+                    horario.resultados = true
+                    $.ajax({
+                        url: 'assets/ajax/resultados_calendario.php',
+                        method: 'POST',
+                        data: "idProceso=" + horario.idprocesos + "&" + "idEstudiante=" + horario.idPersona,
+                        dataType: 'json',
+                        success: function(resultado) {
+                            //console.log(horario.PdfUrl);                            
+                            //console.log(resultado[0].urlPdf);
+                            //return resultado[0].urlPdf;
+                            urlResultados = resultado[0].urlPdf;
+                        },
+                        async: false
+                    });
                 }
                 horario.extendedProps = {
                     Id_check: 'e_' + horario.tipoevento + '_' + horario.idprocesos + '_' + horario.idPersona,
@@ -26,6 +42,8 @@ $(document).ready(function() {
                     ID_Estudiante: horario.idPersona,
                     Tipo_Evento: horario.tipoevento,
                     Estado_evento: horario.estado,
+                    Mostrar_resultados: horario.resultados,
+                    Pdf_Url: urlResultados,
                     Porcentaje: horario.porcentaje,
                     Nombre_Estudiante: horario.nombres + ' ' + horario.apellidos,
                     celular: horario.celular,
@@ -148,11 +166,17 @@ $(document).ready(function() {
                                                     Confirmar Asistencia
                                                 </label>
                                         </div>
-                                        <div class="valign-wrapper center-align">
+                                        <div class="valign-wrapper center-align"                                         
+                                        ${info.event.extendedProps.Mostrar_resultados ? '':'style="display: none;"'}
+                                        >
                                             <i class="material-icons col s2">done_all</i>
                                             <span class="col s6">Ver Resultados</span>
                                             <span class="col s4">
-                                                <a class="btn" style="padding: 0px 10px 0px 10px;"><i class="material-icons" href="">launch</i></a>
+                                                <a class="btn" style="padding: 0px 10px 0px 10px;" 
+                                                href="${info.event.extendedProps.Pdf_Url}"
+                                                target="_blank">
+                                                    <i class="material-icons">launch</i>
+                                                </a>
                                             </span>                                            
                                         </div>
                                     </div>
@@ -186,11 +210,11 @@ function actualizarProgreso() {
         progreso -= 25;
     }
     $("#" + id_etapa).attr("data-progress", progreso);
-    console.log(estado_etapa);
+    /* console.log(estado_etapa);
     console.log(etapa);
     console.log(progreso);
     console.log(id_user);
-    console.log(id_proceso);
+    console.log(id_proceso); */
 
     $.ajax({
         url: "assets/ajax/actualizar_progresos.php",
@@ -198,7 +222,7 @@ function actualizarProgreso() {
         data: "estado_etapa=" + estado_etapa + "&" + "etapa=" + etapa + "&" + "progreso=" + progreso + "&" + "id_user=" + id_user + "&id_proceso=" + id_proceso,
         dataType: 'html',
         success: function(respuesta) {
-            console.log(respuesta);
+            //console.log(respuesta);
         }
     });
 }
