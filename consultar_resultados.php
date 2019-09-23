@@ -1,9 +1,29 @@
+
 <?php 
     session_start();
     if (!isset($_SESSION["idPersona"])){
         header("Location: log-in.php?redirigido=1");
     }
+
 ?>
+
+
+<?php
+
+    require('./assets/clases/class_conexion.php');
+    $mysql = new Conexion();
+      $query = $mysql->ejecutarInstruccion("SET lc_time_names = 'es_MX'");
+    $query=$mysql->ejecutarInstruccion("
+    SELECT a.idEstudiante,a.idResultados,c.idprocesos,DATE_FORMAT(c.fechainicio, '%d de %M de %Y') as FI, DATE_FORMAT(c.fechafinal, '%d de %M de %Y') as FF,a.urlPdf FROM
+     tbl_resultados a  left join tbl_procesos c on a.idResultados=c.idprocesos WHERE urlPdf IS NOT null
+    ");
+    
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -64,27 +84,27 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                   // while($datos = mysqli_fetch_array($query))
-                                  //  {
+                                   while($datos = mysqli_fetch_array($query))
+                                   {
                                  ?>
                                 <tr class="user_row" id="<?php //echo ?>">
                                     <td>
-                                        <?php //echo ?> 1
+                                        <?php echo $datos["idprocesos"]; ?> 
                                     </td>
                                     <td>
-                                        <?php //AQUI DEBE IR LA FECHA DEL COMIENZO DE INSCRIPCIONES DEL PROCESO?>
+                                        <?php echo $datos["FI"]; ?> 
                                     </td>
                                     <td>
-                                        <?php //AQUI DEBE IR LA FECHA EN QUE FINALIZA LA DEV. DE RESULTADOS DEL PROCESO ?>
+                                        <?php echo $datos["FF"]; ?> 
                                     </td>
                                     <td class="right-align">
-                                        <a class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
+                                        <a href="<?php echo $datos['urlPdf']?>" class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
                                             <i class="material-icons text-white">launch</i>
                                         </a>
                                     </td>
                                 </tr>
                                 <?php
-                               // }
+                               }
                                ?>
                             </tbody>
                         </table>
