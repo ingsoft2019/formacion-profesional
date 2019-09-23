@@ -46,6 +46,7 @@
 
         <div id="div-menu"></div>
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
+        <!--
         <main class="mn-inner">
 
 
@@ -65,7 +66,7 @@
                                 <div class="row valign-wrapper">
                                     <div class="col s2 hide-on-small-only">
                                         <img src="assets/images/test_holland.png" alt="" class="circle responsive-img">
-                                        <!-- notice the "circle" class -->
+                                       
                                     </div>
                                     <div class="col s12 m10">
                                         <h5>Test de Holland</h5>
@@ -79,7 +80,7 @@
                                 <div class="row valign-wrapper">
                                     <div class="col s2 hide-on-small-only">
                                         <img src="assets/images/test_lee.png" alt="" class="circle responsive-img">
-                                        <!-- notice the "circle" class -->
+                                        
                                     </div>
                                     <div class="col s12 m10">
                                         <h5>Test Lee-Thorpe</h5>
@@ -100,8 +101,8 @@
 
 
         </main>
-        <!--FIN APARTADO-->
-
+        -->
+<div id="examenes_inscritos"> </div>
 
 
         <div id="div-piePagina"></div>
@@ -121,7 +122,7 @@
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>
-    <script src="assets/js/gestionar_Usuarios.js"></script>
+    <script src="assets/js/mostrar_examenes.js"></script>
 
 </body>
 
