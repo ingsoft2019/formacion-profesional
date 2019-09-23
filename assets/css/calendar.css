@@ -122,7 +122,7 @@
     font-weight: 300 !important;
 }
 
-.event_tooltip i {
+.event_tooltip>.info_list>.valign-wrapper>i {
     color: #6C6C6C;
 }
 

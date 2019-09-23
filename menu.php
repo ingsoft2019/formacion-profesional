@@ -155,9 +155,27 @@
                 </a>
             </li>
             <li class="no-padding">
+                <a class="waves-effect waves-grey" href="examenes_en_linea.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">event_available</i>
+                    Exámenes en Línea
+                </a>
+            </li>
+            <li class="no-padding">
                 <a class="waves-effect waves-grey" href="agenda.php" id="btn_gestionar_horarios">
                     <i class="material-icons">event_available</i>
                     Agendar
+                </a>
+            </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="consultar_progreso.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">donut_large</i>
+                    Progresos
+                </a>
+            </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="consultar_resultados.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">done_all</i>
+                    Resultados
                 </a>
             </li>
             <?php
@@ -202,6 +220,12 @@
                 <a class="waves-effect waves-grey" href="calendario.php" id="btn_gestionar_horarios">
                     <i class="material-icons">event</i>
                     Calendario
+                </a>
+            </li>
+            <li class="no-padding">
+                <a class="waves-effect waves-grey" href="subir_resultados.php" id="btn_gestionar_horarios">
+                    <i class="material-icons">file_upload</i>
+                    Cargar Resultados
                 </a>
             </li>
             <?php
