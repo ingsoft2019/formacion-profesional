@@ -14,6 +14,10 @@
         on b.idEstudiante=c.idPersona
         left join tbl_carreras d 
         on b.idCarrera=d.idCarrera
+        left join tbl_procesos e
+        on a.idprocesos = e.idprocesos
+        where '".date("Y-m-d")."' BETWEEN e.fechainicio and e.fechafindevuelveresultado
+        and e.estado ='Activo'
     ");
 ?>
 <!DOCTYPE html>

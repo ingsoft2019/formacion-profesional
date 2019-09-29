@@ -69,7 +69,7 @@
                             <?php 
                                 if($_SESSION["idTipoUsuario"]==1){
                             ?>
-                            <a class="waves-effect waves-light btn-large amber accent-3 black-text" href="procesos.php">
+                            <a class="waves-effect waves-light btn-large amber accent-3 black-text" href="lista_procesos.php">
                                 Procesos
                             </a>
                             <?php
