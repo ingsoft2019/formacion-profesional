@@ -10,6 +10,8 @@ $(document).ready(function() {
             //console.log(data);
             data = JSON.parse(data)
             var urlResultados = 'calendario.php';
+            var fechaActual = moment();
+            var Check_enable = false;
             for (let horario of data) {
 
                 if (horario.tipoevento == 2) {
@@ -17,10 +19,12 @@ $(document).ready(function() {
                     horario.title = 'Entrevista: ' + (horario.nombres.split(" "))[0] + ' ' + (horario.apellidos.split(" "))[0]
                     horario.estado = horario.etapa3 == 1 ? true : false
                     horario.resultados = false
+                    Check_enable = moment(fechaActual).isBetween(horario.fechainicioentrevista, horario.fechafinentrevista, 'day', '[]');
                 } else {
                     horario.title = 'Dev. Resultados: ' + (horario.nombres.split(" "))[0] + ' ' + (horario.apellidos.split(" "))[0]
                     horario.estado = horario.etapa4 == 1 ? true : false
                     horario.resultados = true
+                    Check_enable = moment(fechaActual).isBetween(horario.fechainiciodevuelveresultado, horario.fechafindevuelveresultado, 'day', '[]');
                     $.ajax({
                         url: 'assets/ajax/resultados_calendario.php',
                         method: 'POST',
@@ -35,6 +39,9 @@ $(document).ready(function() {
                         async: false
                     });
                 }
+                horario.start = moment(horario.fecha + ' ' + horario.h_inicial, 'YYYY-M-D HH:mm:ss').format().substr(0, 19);
+                horario.end = moment(horario.fecha + ' ' + horario.h_final, 'YYYY-M-D HH:mm:ss').format().substr(0, 19);
+                horario.classNames = ['cursorPointer'];
                 horario.extendedProps = {
                     Id_check: 'e_' + horario.tipoevento + '_' + horario.idprocesos + '_' + horario.idPersona,
                     ID_Proceso: horario.idprocesos,
@@ -48,11 +55,10 @@ $(document).ready(function() {
                     Nombre_Estudiante: horario.nombres + ' ' + horario.apellidos,
                     celular: horario.celular,
                     Proceso_inicio: moment(horario.fechainicio, 'YYYY-M-D', 'es').format('ddd, D MMM YYYY'),
-                    Proceso_fin: moment(horario.fechafindevuelveresultado, 'YYYY-M-D', 'es').format('ddd, D MMM YYYY')
+                    Proceso_fin: moment(horario.fechafindevuelveresultado, 'YYYY-M-D', 'es').format('ddd, D MMM YYYY'),
+                    Check_enable: Check_enable
                 }
-                horario.start = moment(horario.fecha + ' ' + horario.h_inicial, 'YYYY-M-D HH:mm:ss').format().substr(0, 19);
-                horario.end = moment(horario.fecha + ' ' + horario.h_final, 'YYYY-M-D HH:mm:ss').format().substr(0, 19);
-                horario.classNames = ['cursorPointer'];
+
 
                 delete horario['nombres'];
                 delete horario['apellidos'];
@@ -61,7 +67,13 @@ $(document).ready(function() {
                 delete horario['h_final'];
                 delete horario['idPersona'];
                 delete horario['idprocesos'];
-                //console.log(horario);
+                //console.log(horario);                
+                //console.log(fechaActual);
+                //console.log(horario.fechainicioentrevista);
+                //console.log(horario.fechafinentrevista);
+                //console.log(horario.fechainiciodevuelveresultado);
+                //console.log(horario.fechafindevuelveresultado);
+                //console.log(horario.extendedProps.Check_enable);
 
             }
             //console.log(data[0]);
@@ -153,6 +165,16 @@ $(document).ready(function() {
                                             <i class="material-icons col s2 m2 l2">local_phone</i>
                                             <span class="col s10 m10 l10 Celular">${info.event.extendedProps.celular}</span>
                                         </div>
+                                        <div class="valign-wrapper"                                         
+                                        ${info.event.extendedProps.Mostrar_resultados ? '':'style="display: none;"'}
+                                        >
+                                            <i class="material-icons col s2">done_all</i>
+                                            <span class="col s10">                                                
+                                                <a href="${info.event.extendedProps.Pdf_Url}" target="_blank">
+                                                    Ver Resultados
+                                                </a>
+                                            </span>                                       
+                                        </div>
                                         <div class="left-align chk_option" style="padding-left:10.5px">
                                                 <input type="checkbox" class="filled-in" 
                                                     id="${info.event.extendedProps.Id_check}"
@@ -161,24 +183,13 @@ $(document).ready(function() {
                                                     data-event="${parseInt(info.event.extendedProps.Tipo_Evento) + 1}" 
                                                     data-progress="${info.event.extendedProps.Porcentaje}"
                                                     ${info.event.extendedProps.Estado_evento ?'checked="checked"':''}
-                                                    onclick="actualizarProgreso()"/>
+                                                    onclick="actualizarProgreso()"
+                                                    ${info.event.extendedProps.Check_enable? '':'disabled'}/>
                                                 <label for="${info.event.extendedProps.Id_check}" class="black-text">
                                                     Confirmar Asistencia
                                                 </label>
                                         </div>
-                                        <div class="valign-wrapper center-align"                                         
-                                        ${info.event.extendedProps.Mostrar_resultados ? '':'style="display: none;"'}
-                                        >
-                                            <i class="material-icons col s2">done_all</i>
-                                            <span class="col s6">Ver Resultados</span>
-                                            <span class="col s4">
-                                                <a class="btn" style="padding: 0px 10px 0px 10px;" 
-                                                href="${info.event.extendedProps.Pdf_Url}"
-                                                target="_blank">
-                                                    <i class="material-icons">launch</i>
-                                                </a>
-                                            </span>                                            
-                                        </div>
+                                        
                                     </div>
                                     
                                 </div>

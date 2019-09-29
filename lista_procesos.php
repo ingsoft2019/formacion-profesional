@@ -54,7 +54,11 @@
         <main class="mn-inner">
 
 
-
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red pulse" id="btn_nuevoProceso" href="procesos.php">
+                <i class="large material-icons">add_box</i>
+            </a>
+        </div>
 
 
             <div class="col s12 m12 l6">
@@ -100,11 +104,13 @@
                                     
 
                                     <td class="center-align">
-                                        <a class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
+                                       <!--  <a class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
                                             <i class="material-icons text-white">create</i>
                                         </a>
-                                    
-                                        <a class="waves-effect waves-light btn red m-b-xs btn_custom_padding">
+                                     -->
+                                        <a class="waves-effect waves-light btn red m-b-xs btn_custom_padding btn_delete_process"
+                                        style="<?php if($datos['estado']=='Inactivo'){ echo 'display:none;';} ?>"
+                                        data-id=<?php echo $datos['idprocesos']?> >
                                             <i class="material-icons text-white">clear</i>
                                         </a>
                                     </td>
@@ -144,7 +150,7 @@
     <script src="assets/js/ContenidoFijo.js"></script>
     <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script src="assets/js/pages/form-input-mask.js"></script>
-    <script src="assets/js/controlador_subir_resultados.js"></script>
+    <script src="assets/js/controlador_listar_procesos.js"></script>
 
 </body>
 

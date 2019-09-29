@@ -57,24 +57,32 @@ $(document).ready(function() {
 
     $('#txt_url_thorpe').on('input', function() {
         var input = $(this);
-        console.log(input.val());
+        //console.log(input.val());
 
         var val = input.val();
         var valid = val.match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
-        if (valid) { input.removeClass("invalid").addClass("valid");
-            console.log('valid') } else { input.removeClass("valid").addClass("invalid");
-            console.log('invalid') }
+        if (valid) {
+            input.removeClass("invalid").addClass("valid");
+            //console.log('valid') 
+        } else {
+            input.removeClass("valid").addClass("invalid");
+            //console.log('invalid') 
+        }
     });
 
     $('#txt_url_holland').on('input', function() {
         var input = $(this);
-        console.log(input.val());
+        //console.log(input.val());
 
         var val = input.val();
         var valid = val.match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi)
-        if (valid) { input.removeClass("invalid").addClass("valid");
-            console.log('valid') } else { input.removeClass("valid").addClass("invalid");
-            console.log('invalid') }
+        if (valid) {
+            input.removeClass("invalid").addClass("valid");
+            //console.log('valid') 
+        } else {
+            input.removeClass("valid").addClass("invalid");
+            //console.log('invalid') 
+        }
     });
 
     $('#btn_guardar_cambios').click(function() {
@@ -220,7 +228,7 @@ $(document).ready(function() {
 
 
         //-------------- A partir de aquí se consideran válidas todas las fechas del proceso --------------------------
-        console.log('pasa');
+        //console.log('pasa');
         //__________________________________________guardar datos de nuevo proceso_______________________________
         guardar_nuevo_proceso();
     })
@@ -318,15 +326,24 @@ var horasMapeadas = {
 
 function guardar_nuevo_proceso() {
     var parametros = get_datos_procesos();
-    console.log(parametros);
+    //console.log(parametros);
     $.ajax({
         url: "assets/ajax/transacciones_procesos.php",
         method: 'GET',
         data: parametros,
         dataType: 'html',
         success: function(respuesta) {
-            console.log(respuesta);
-            swal("Completo", "Procesos guardado.", "success");
+            //console.log(respuesta);
+            respuesta = JSON.parse(respuesta);
+            if (respuesta.codigo == -1) {
+                swal({
+                    title: 'Error',
+                    text: respuesta.mensaje,
+                    type: 'error'
+                })
+            } else if (respuesta.codigo == 0) {
+                swal("Completo", respuesta.mensaje, "success");
+            }
         }
     });
 }
