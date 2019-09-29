@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ('../clases/class_conexion.php');
+include ('../clases/class_email.php');
 $conexion = new Conexion();
 
 switch ($_GET["CODIGO_FUNCION"]) {
@@ -59,8 +60,35 @@ switch ($_GET["CODIGO_FUNCION"]) {
                 "VALUES ( ".
                 $_GET["idhorariosorientador"].", ".
                 $_SESSION["idPersona"].")";
-        
-        $conexion->ejecutarInstruccion($sql);
+        // $conexion->ejecutarInstruccion($sql);
+
+        $sql = "SELECT concat(nombres,' ',apellidos) AS persona, correo
+        FROM tbl_personas
+        WHERE idPersona=" . $_SESSION["idPersona"];
+
+        $resultado = $conexion->ejecutarInstruccion($sql);
+        $persona = $conexion->obtenerFila($resultado);
+
+        $sql = "SELECT A.fecha, A.h_inicial, concat(B.nombres,' ',B.apellidos) AS orientador
+        FROM tbl_horarios_orientador AS A
+        INNER JOIN tbl_personas AS B
+        ON A.idorientador = B.idPersona
+        WHERE idhorariosorientador=" . $_GET["idhorariosorientador"];
+
+        $resultado = $conexion->ejecutarInstruccion($sql);
+        $cita = $conexion->obtenerFila($resultado);
+
+        $mensaje = "
+            <div style='border: 3px solid indigo; padding: 10px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;'>
+                <p style='font-size: 25px'>Usted ha agendado una cita para el día <strong> " . $cita["fecha"] . "</strong> a las <strong>" . $cita["h_inicial"] . "</strong> con el(la) orientador(a) <strong>" . $cita["orientador"] . "</strong>.</p>
+                <p>Para obtener más detalles ingrese a la plataforma de <a target='_blank' href='http://localhost/formacion-profesional'>Orientación Profesional</a></p>
+            </div>
+        ";
+
+        $correo = new Email($persona["correo"], $persona["persona"], "Notificación: Cita agendada", $mensaje);
+
+        echo $correo->enviarCorreo();
+
         break;
     case 6:
         $idestudiante=$_SESSION["idPersona"];
