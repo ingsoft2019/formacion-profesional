@@ -1,0 +1,22 @@
+.collection-item .title {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.collection-item p {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.collection-item {
+    border: none !important;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.info_cuadro>div {
+    border-left: 1px solid #DFDFDF;
+    height: 100% !important;
+}

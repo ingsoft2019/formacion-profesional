@@ -4,6 +4,7 @@
     $mysql = new Conexion();
     $query=$mysql->ejecutarInstruccion("
     SELECT * FROM tbl_procesos WHERE 1
+    ORDER BY fechainicio DESC
     ");
     
 
@@ -32,7 +33,7 @@
     <link href="assets/css/gestionar_Usuarios.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
-    <link href="assets/css/subir_resultados.css" rel="stylesheet">
+    <link href="assets/css/lista_procesos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets\images\icon.png" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -54,74 +55,204 @@
         <main class="mn-inner">
 
 
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red pulse" id="btn_nuevoProceso" href="procesos.php">
-                <i class="large material-icons">add_box</i>
-            </a>
-        </div>
+
+            <div class="row">
+                <?php                 
+                while($datos = mysqli_fetch_array($query)){
+                ?>
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row center-align">
+                                <h5>Proceso No.
+                                    <?php echo $datos['idprocesos']?></h5>
+                                <span
+                                    class="<?php if($datos['estado']=='Activo'){ echo 'green-text';}else{echo 'red-text';} ?>">
+                                    <?php echo $datos['estado']?>
+                                </span>
+                            </div>
+                            <div class="row info_cuadro">
+                                <div class="col s12 m6 l3">
+                                    <div class="row valign-wrapper">
+                                        <div class="col s3 amber darken-1  valign-wrapper" style="height:3rem;">
+                                            <i class="material-icons white-text center"
+                                                style="width: 100%;font-size:2rem;">people</i>
+                                        </div>
+                                        <div class="col s9 valign-wrapper">
+                                            <h5>Período Inscripciones</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle">event</i>
+                                                <span class="title">Inicio</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechainicio'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                                <span class="title">Finalización</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechafinal'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6 l3">
+                                    <div class="row valign-wrapper">
+                                        <div class="col s3 lime accent-4  valign-wrapper" style="height:3rem;">
+                                            <i class="material-icons white-text center"
+                                                style="width: 100%;font-size:2rem;">dvr</i>
+                                        </div>
+                                        <div class="col s9 valign-wrapper">
+                                            <h5>Evaluaciones en Línea</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle">event</i>
+                                                <span class="title">Inicio</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechainiciotestlinea'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                                <span class="title">Finalización</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechafinaltestlinea'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                            </li>
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle">insert_link</i>
+                                                <span class="title">Tests en Línea</span>
+                                                <p>
+                                                    <a href="<?php echo $datos['urltestlinea1']?>" target="blank">
+                                                        Test Intereses
+                                                    </a>
+                                                    <br>
+                                                    <a href="<?php echo $datos['urltestline2']?>" target="blank">
+                                                        Test Personalidad
+                                                    </a>
+                                                    <br>
+                                                    <?php echo $datos['clavetest']?>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6 l3">
+                                    <div class="row valign-wrapper">
+                                        <div class="col s3 teal accent-4  valign-wrapper" style="height:3rem;">
+                                            <i class="material-icons white-text center"
+                                                style="width: 100%;font-size:2rem;">forum</i>
+                                        </div>
+                                        <div class="col s9 valign-wrapper">
+                                            <h5>Período Entrevistas</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle">event</i>
+                                                <span class="title">Inicio</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechainicioentrevista'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                                <span class="title">Finalización</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechafinentrevista'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6 l3">
+                                    <div class="row valign-wrapper">
+                                        <div class="col s3 red darken-1  valign-wrapper" style="height:3rem;">
+                                            <i class="material-icons white-text center"
+                                                style="width: 100%;font-size:2rem;">event</i>
+                                        </div>
+                                        <div class="col s9 valign-wrapper">
+                                            <h5>Período Dev. de Resultados</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle">event</i>
+                                                <span class="title">Inicio</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechainiciodevuelveresultado'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                                <span class="title">Finalización</span>
+                                                <p>
+                                                    <?php 
+                                                setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                $string = $datos['fechafindevuelveresultado'];
+                                                $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
+                                                echo strftime("%A %d, %b %Y",$date->getTimestamp());
+                                            ?>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
 
-            <div class="col s12 m12 l6">
-                <div class="card">
-                    <div class="card-content">
-                        <table class="bordered highlight users_table_list responsive-table">
-                            <thead>
-                                <tr>
-                                    <th class="" data-field="id">Id. Proceso</th>
-                                    <th class="" data-field="name">Comienzo</th>
-                                    <th class="" data-field="name">Final</th>
-                                    <th class="" data-field="name">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                    while($datos = mysqli_fetch_array($query))
-                                    {
-                                 ?>
-                                <tr class="user_row" id="<?php echo $datos['idprocesos']?>">
-                                    <td>
-                                        <?php echo $datos['idprocesos']?>
-                                    </td>
-                                    <td>
-                                        <?php 
-                                        setlocale(LC_TIME, 'es_ES.UTF-8');
-                                        $string = $datos['fechainicio'];
-                                        $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
-                                        echo strftime("%A %d, %b %Y",$date->getTimestamp());
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <?php 
-                                        setlocale(LC_TIME, 'es_ES.UTF-8');
-                                        $string = $datos['fechafindevuelveresultado'];
-                                        $date = DateTime::createFromFormat("Y-m-d H:i:s", $string);
-                                        echo strftime("%A %d, %b %Y",$date->getTimestamp());
-                                        ?>
-                                    </td>
-                                    <td class="<?php if($datos['estado']=='Activo'){ echo 'green-text';}else{echo 'red-text';} ?>">
-                                        <?php echo $datos['estado']?>
-                                    </td>
-                                    
 
-                                    <td class="center-align">
-                                       <!--  <a class="waves-effect waves-light btn blue m-b-xs btn_custom_padding">
-                                            <i class="material-icons text-white">create</i>
-                                        </a>
-                                     -->
-                                        <a class="waves-effect waves-light btn red m-b-xs btn_custom_padding btn_delete_process"
-                                        style="<?php if($datos['estado']=='Inactivo'){ echo 'display:none;';} ?>"
-                                        data-id=<?php echo $datos['idprocesos']?> >
-                                            <i class="material-icons text-white">clear</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php
-                                }
-                               ?>
-                            </tbody>
-                        </table>
+
+                            <div class="row right-align ">
+                                <a class="waves-effect waves-light btn btn_delete_process red <?php if($datos['estado']=='Inactivo'){ echo 'disabled';} ?>"
+                                    data-id=<?php echo $datos['idprocesos']?>>
+                                    <i class="material-icons left">clear</i>
+                                    Eliminar
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+                <?php    
+                }
+                ?>
+
+            </div>
+
 
 
 
@@ -131,7 +262,11 @@
         </main>
         <!--FIN APARTADO-->
 
-
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red pulse" id="btn_nuevoProceso" href="procesos.php">
+                <i class="large material-icons">add_box</i>
+            </a>
+        </div>
 
         <div id="div-piePagina"></div>
 
