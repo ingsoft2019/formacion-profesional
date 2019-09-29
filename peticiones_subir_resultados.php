@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('assets/clases/class_conexion.php');
-include ('../clases/class_email.php');
+include ('assets/clases/class_email.php');
 
 
 $orientador=$_SESSION["idPersona"];
@@ -68,7 +68,7 @@ if(isset($_GET["CODIGO_FUNCION"])){
 
       $sql = "SELECT concat(nombres,' ',apellidos) AS persona, correo
       FROM tbl_personas
-      WHERE idPersona=" . $_SESSION["idPersona"];
+      WHERE idPersona=" . $estudiante;
 
       $resultado = $conexion->ejecutarInstruccion($sql);
       $persona = $conexion->obtenerFila($resultado);
