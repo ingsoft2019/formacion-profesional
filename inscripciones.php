@@ -2,9 +2,15 @@
 
     require('./assets/clases/class_conexion.php');
     $mysql = new Conexion();
+    
+    date_default_timezone_set( "America/Tegucigalpa" );
+    $fechaActual = date("Y-m-d H:m:s");
+
     $query = $mysql->ejecutarInstruccion("SET lc_time_names = 'es_MX'");
+    
     $query=$mysql->ejecutarInstruccion("
     select *, DATE_FORMAT(fechainicio, '%d de %M de %Y') as FI, DATE_FORMAT(fechafinal, '%d de %M de %Y') as FF from tbl_procesos
+    WHERE '". $fechaActual ."' BETWEEN fechainicio AND fechafinal
     ");
 
     session_start();

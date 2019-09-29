@@ -188,11 +188,11 @@ INSERT INTO `tbl_personas_has_tbl_tipousuario` (`tbl_personas_idPersona`,`tbl_ti
 
 INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainiciotestlinea`,`fechafinaltestlinea`,`urltestlinea1`,`urltestline2`,
 	`clavetest`,`fechainicioentrevista`,`fechafinentrevista`,`fechainiciodevuelveresultado` , `fechafindevuelveresultado`,`estado`)VALUES
-(1,'2019-09-22','2019-10-10','2019-09-25','2019-09-27','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
-(2,'2019-10-11','2019-10-20','2019-10-14','2019-10-16','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
-(3,'2019-10-21','2019-11-01','2019-10-23','2019-10-25','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
-(4,'2019-11-02','2019-11-17','2019-11-05','2019-11-08','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Activo'),
-(5,'2019-11-18','2019-12-03','2019-11-22','2019-11-25','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','clave:01','2019-07-29','2019-07-29','2019-07-29','2019-07-29','Inactivo');
+(1,'2019-09-22','2019-10-10','2019-09-25','2019-09-27','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','ASD.456','2019-09-28','2019-07-30','2019-10-02','2019-10-07','Activo'),
+(2,'2019-10-11','2019-10-20','2019-10-12','2019-10-13','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','ASD.456','2019-10-14','2019-10-15','2019-10-17','2019-10-19','Activo'),
+(3,'2019-10-21','2019-11-01','2019-10-23','2019-10-25','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','ASD.456','2019-10-26','2019-10-27','2019-10-28','2019-10-30','Activo'),
+(4,'2019-11-02','2019-11-17','2019-11-05','2019-11-08','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','ASD.456','2019-07-29','2019-11-09','2019-11-12','2019-11-16','Activo'),
+(5,'2019-11-18','2019-12-03','2019-11-19','2019-11-23','https://www.google.com/intl/es/forms/about/','https://www.google.com/intl/es/forms/about/','ASD.456','2019-11-25','2019-11-27','2019-11-29','2019-12-01','Inactivo');
 
 
 
@@ -201,11 +201,11 @@ INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainicio
 -- Insertando en la  tabla `tbl_secciones`
 -- -----------------------------------------------------
 INSERT INTO `tbl_secciones` (`idsecciones`,`horainicial`,`horafinal`,`cupos`,`lugar`,`idprocesos`,`dia`)VALUES
-(1,'09:30:00','12:30:00',25,'Aula Voae 209',1,'julio 30, 2019'),
-(2,'09:30:00','12:30:00',25,'Aula Voae 208',2,'Agosto 7, 2019'),
-(3,'09:30:00','12:30:00',25,'Aula Voae 210',3,'Septiembre 02, 2019'),
-(4,'09:30:00','12:30:00',25,'Aula Voae 207',4,'Septiembre 20, 2019'),
-(5,'09:30:00','12:30:00',25,'Aula Voae 205',5,'Octubre 01, 2019');
+(1,'09:30:00','12:30:00',25,'Aula Voae 209',1,'Septiembre 09, 2019'),
+(2,'09:30:00','12:30:00',25,'Aula Voae 208',2,'Octubre 11, 2019'),
+(3,'09:30:00','12:30:00',25,'Aula Voae 210',3,'Octubre 21, 2019'),
+(4,'09:30:00','12:30:00',25,'Aula Voae 207',4,'Septiembre 02, 2019'),
+(5,'09:30:00','12:30:00',25,'Aula Voae 205',5,'Septiembre 18, 2019');
 
 
 -- -----------------------------------------------------
@@ -224,11 +224,19 @@ INSERT INTO `tbl_control_de_procesos` (`idcontrolprocesos`,`porcentaje`,`etapa1`
 -- -----------------------------------------------------
 
 INSERT INTO`tbl_Horarios_Orientador` (`idhorariosorientador`,`fecha`,`h_inicial`,`h_final`,`tipoevento`,`codigohorario`,`idorientador`,`idprocesos`)VALUES
-(1,'12 8 2019','09:30:00','12:30:00','Entrevista','2019-08-17','1',1),
-(2,'14 8 2019','09:30:00','12:30:00','Entrevista','2019-08-18','2',2),
-(3,'16 8 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-19','3',3),
-(4,'17 8 2019','09:30:00','12:30:00','Entrega Resultado','2019-08-20','4',4),
-(5,'18 8 2019','09:30:00','12:30:00','Entrevista','2019-08-21','5',5);
+<<<<<<< HEAD
+(1,'22 9 2019','09:30:00','12:30:00','2','2019-09-22','1',1),
+(2,'11 10 2019','09:30:00','12:30:00','2','2019-10-11','2',2),
+(3,'21 10 2019','09:30:00','12:30:00','3','2019-10-21','3',3),
+(4,'02 11 2019','09:30:00','12:30:00','3','2019-11-02','4',4),
+(5,'18 11 2019','09:30:00','12:30:00','2','2019-11-18','5',5);
+=======
+(1,'12 8 2019','09:30:00','12:30:00',2,'2019-08-17','1',1),
+(2,'14 8 2019','09:30:00','12:30:00',2,'2019-08-18','2',2),
+(3,'16 8 2019','09:30:00','12:30:00',3,'2019-08-19','3',3),
+(4,'17 8 2019','09:30:00','12:30:00',3,'2019-08-20','4',4),
+(5,'18 8 2019','09:30:00','12:30:00',2,'2019-08-21','5',5);
+>>>>>>> 423da5571bdc04fd5694824e5d0d16f697080a4b
 
 
 -- -----------------------------------------------------
@@ -255,9 +263,9 @@ INSERT INTO`tbl_Horarios_Orientador_X_tbl_estudiantes` (`idhorariosorientador`,`
 --  Insetando en la `tbl_resultados`
 -- -----------------------------------------------------
 INSERT INTO`tbl_resultados` (`idresultados`,`urlPdf`,`FechaModificacion`,`idprocesos`,`idEstudiante`,`idorientador`)VALUES
-(1,'resultados/Formacion-Profesional-Voae.pdf','2019-09-20',1,1,17),
-(2,'resultados/Formacion-Profesional-Voae.pdf','2019-09-21',2,2,18),
-(3,'resultados/Formacion-Profesional-Voae.pdf','2019-09-21',3,3,19),
-(4,'resultados/Formacion-Profesional-Voae.pdf','2019-09-20',4,4,20),
-(5,'resultados/Formacion-Profesional-Voae.pdf','2019-09-20',5,5,21);
+(1,'resultados/Formacion-Profesional-Voae.pdf','2019-10-06',1,1,17),
+(2,'resultados/Formacion-Profesional-Voae.pdf','2019-10-18',2,2,18),
+(3,'resultados/Formacion-Profesional-Voae.pdf','2019-10-29',3,3,19),
+(4,'resultados/Formacion-Profesional-Voae.pdf','2019-11-15',4,4,20),
+(5,'resultados/Formacion-Profesional-Voae.pdf','2019-11-30',5,5,21);
 

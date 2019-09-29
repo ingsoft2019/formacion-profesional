@@ -192,7 +192,7 @@
                 </a>
             </li>
             <li class="no-padding">
-                <a class="waves-effect waves-grey" href="procesos.php" id="btn_procesos">
+                <a class="waves-effect waves-grey" href="lista_procesos.php" id="btn_procesos">
                     <i class="material-icons">autorenew</i>
                     Procesos
                 </a>

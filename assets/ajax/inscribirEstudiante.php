@@ -12,7 +12,7 @@ if(mysqli_num_rows($resultado)>=0){
         $resultado = $conexion->ejecutarInstruccion($sql);
         $row = mysqli_fetch_array($resultado);
         $cupos=(int)$row["cupos"]-1;
-        if ($cupos>0){
+        if ($cupos>=0){
             $sql = "INSERT INTO `tbl_secciones_has_tbl_estudiantes`(`tbl_secciones_idsecciones`, `tbl_estudiantes_idEstudiante`) VALUES(" . $_POST["idSeccion"] . ",". $_POST["idPersona"] .")";
             $resultado=$conexion->ejecutarInstruccion($sql);
             $seccion=$_POST["idSeccion"];

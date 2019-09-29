@@ -2,9 +2,8 @@
 
     require('./assets/clases/class_conexion.php');
     $conexion = new Conexion();
-    $procesos = $conexion->ejecutarInstruccion("
-        SELECT * FROM tbl_procesos WHERE 1 ORDER BY fechainicio DESC
-    ");
+    $procesos = $conexion->ejecutarInstruccion("SELECT * , now() as actual FROM tbl_procesos 
+    WHERE now() > fechainicio AND now() < fechainiciodevuelveresultado ORDER BY fechainicio");
 
     session_start();
     if (!isset($_SESSION["idPersona"])){
@@ -73,8 +72,9 @@
                                         <th class="center" data-field="">Horarios <br> Dev. Result.</th>
                                     <?php } 
                                     if(isset($_SESSION["idTipoUsuario2"])){ ?>
+                                    <th class="center" data-field="">Horarios <br> Dev. Result.</th>
                                      <th class="center" data-field="">Horarios <br> Entrevista</th>
-                                     <th class="center" data-field="">Horarios <br> Dev. Result.</th>
+                                     
                                     <?php } ?>
                                 </tr>
                             </thead>
@@ -91,14 +91,23 @@
                                     <td class="center"><?php echo $datos['idprocesos']?></td>
                                     <td class="center"><?php echo $f_inicial?></td>
                                     <td class="center"><?php echo $f_final?></td>
-                                    <?php if($_SESSION["idTipoUsuario"]==2 && !isset($_SESSION["idTipoUsuario2"])){ ?>
+                                    <?php if($_SESSION["idTipoUsuario"]==2 && !isset($_SESSION["idTipoUsuario2"])){ 
+                                        if ($datos['actual'] < $datos['fechainicioentrevista']) {?>
                                         <td class="center">
                                             <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
-                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                id ="btn_entrevista" data-id="<?php echo $datos['idprocesos']?>">
                                                 <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
                                             </a>
                                         </td>
-                                    <?php } ?>
+                                        <?php }else{ ?>
+                                            <td class="center">
+                                                <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
+                                                    id ="btn_entrevista" data-id="<?php echo $datos['idprocesos']?> " style="visibility:hidden" >
+                                                    <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                                </a>
+                                            </td>
+                                        <?php } 
+                                    } ?>
                                     
                                     <?php if($_SESSION["idTipoUsuario"]==3 && !isset($_SESSION["idTipoUsuario2"])){ ?>
                                         <td class="center">
@@ -108,7 +117,8 @@
                                             </a>
                                         </td>
                                     <?php } ?>
-                                    <?php if(isset($_SESSION["idTipoUsuario2"])){ ?>
+                                    <?php if(isset($_SESSION["idTipoUsuario2"])){ 
+                                            if ($datos['actual'] < $datos['fechainicioentrevista']) {?>
                                         <td class="center">
                                             <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
                                                 data-id="<?php echo $datos['idprocesos']?>">
@@ -117,11 +127,26 @@
                                         </td>
                                         <td class="center">
                                             <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
-                                                data-id="<?php echo $datos['idprocesos']?>">
+                                            id ="btn_entrevista" data-id="<?php echo $datos['idprocesos']?>">
                                                 <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
                                             </a>
                                         </td>
-                                    <?php } ?>
+                                        <?php }else{ ?>
+                                            <td class="center">
+                                            <a class="btn_resultados waves-effect waves-light btn blue m-b-xs modal_Trigger "
+                                                data-id="<?php echo $datos['idprocesos']?>">
+                                                <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                            </a>
+                                            </td>
+                                            <td class="center">
+                                                <a class="btn_entrevista waves-effect waves-light btn blue m-b-xs  modal_Trigger "
+                                                    id ="btn_entrevista" data-id="<?php echo $datos['idprocesos']?> " style="visibility:hidden" >
+                                                    <i class="material-icons text-white" data-id="<?php echo $datos['idprocesos']?>">today</i>
+                                                </a>
+                                            </td>
+                                    <?php 
+                                           } 
+                                    }?>
                                 </tr>
                                 <?php
                         }
