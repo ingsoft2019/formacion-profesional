@@ -188,11 +188,11 @@ INSERT INTO `tbl_personas_has_tbl_tipousuario` (`tbl_personas_idPersona`,`tbl_ti
 
 INSERT INTO `tbl_procesos` (`idprocesos`,`fechainicio`,`fechafinal`,`fechainiciotestlinea`,`fechafinaltestlinea`,`urltestlinea1`,`urltestline2`,
 	`clavetest`,`fechainicioentrevista`,`fechafinentrevista`,`fechainiciodevuelveresultado` , `fechafindevuelveresultado`,`estado`)VALUES
-(1,'2019-09-22','2019-10-10','2019-09-25','2019-09-27','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRAA','ASD.456','2019-09-28','2019-07-30','2019-10-02','2019-10-07','Activo'),
-(2,'2019-10-11','2019-10-20','2019-10-12','2019-10-13','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRAA','ASD.456','2019-10-14','2019-10-15','2019-10-17','2019-10-19','Activo'),
-(3,'2019-10-21','2019-11-01','2019-10-23','2019-10-25','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRAA','ASD.456','2019-10-26','2019-10-27','2019-10-28','2019-10-30','Activo'),
-(4,'2019-11-02','2019-11-17','2019-11-05','2019-11-08','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRAA','ASD.456','2019-07-29','2019-11-09','2019-11-12','2019-11-16','Activo'),
-(5,'2019-11-18','2019-12-03','2019-11-19','2019-11-23','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRAA','ASD.456','2019-11-25','2019-11-27','2019-11-29','2019-12-01','Inactivo');
+(1,'2019-09-22','2019-10-10','2019-09-25','2019-09-27','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRA','ASD.456','2019-09-28','2019-07-30','2019-10-02','2019-10-07','Activo'),
+(2,'2019-10-11','2019-10-20','2019-10-12','2019-10-13','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRA','ASD.456','2019-10-14','2019-10-15','2019-10-17','2019-10-19','Activo'),
+(3,'2019-10-21','2019-11-01','2019-10-23','2019-10-25','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRA','ASD.456','2019-10-26','2019-10-27','2019-10-28','2019-10-30','Activo'),
+(4,'2019-11-02','2019-11-17','2019-11-05','2019-11-08','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRA','ASD.456','2019-07-29','2019-11-09','2019-11-12','2019-11-16','Activo'),
+(5,'2019-11-18','2019-12-03','2019-11-19','2019-11-23','https://forms.gle/WxADGTiHVCQjXCK4A','https://forms.gle/HPfBMyuxwXeAuCqRA','ASD.456','2019-11-25','2019-11-27','2019-11-29','2019-12-01','Inactivo');
 
 
 
