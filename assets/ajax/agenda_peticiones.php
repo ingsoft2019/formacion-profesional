@@ -6,7 +6,9 @@ $conexion = new Conexion();
 
 switch ($_GET["CODIGO_FUNCION"]) {
     case 1:
-        $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso FROM tbl_procesos WHERE estado='activo';";
+        date_default_timezone_set( "America/Tegucigalpa" );
+        $fechaActual = date("Y-m-d H:m:s");
+        $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso FROM tbl_procesos WHERE estado='activo' AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
         $resultado = $conexion->ejecutarInstruccion($sql);
         $resultadoProceso = array();
         while($fila = $conexion->obtenerFila($resultado)){
@@ -51,6 +53,17 @@ switch ($_GET["CODIGO_FUNCION"]) {
         while($fila = $conexion->obtenerFila($resultado)){
             $resultadoProceso[] = $fila;
         }
+
+        $sql = "SELECT COUNT(*) AS cantidad 
+        FROM tbl_horarios_orientador_x_tbl_estudiantes AS a
+        INNER JOIN tbl_horarios_orientador AS b
+        ON a.idhorariosorientador = b.idhorariosorientador
+        WHERE idEstudiante = '". $_SESSION["idPersona"] ."' AND b.tipoevento = ". $_GET["evento"] ." AND b.idprocesos = ". $_GET["idprocesos"] ."
+        GROUP BY a.idhorariosorientador";
+        $resultado = $conexion->ejecutarInstruccion($sql);
+        while($fila = $conexion->obtenerFila($resultado)){
+            $resultadoProceso[] = $fila;
+        }        
         echo json_encode($resultadoProceso);
         break;
     case 5:
@@ -97,7 +110,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
         break;
     case 6:
         $idestudiante=$_SESSION["idPersona"];
-        $sql="SELECT h.idhorariosorientador AS horariosorientador,fecha, h_inicial,h_final,IF(tipoevento=2,'Entrevista','Entreg de Resultados') as tipoevento,nombres,idprocesos FROM tbl_horarios_orientador_x_tbl_estudiantes AS he
+        $sql="SELECT h.idhorariosorientador AS horariosorientador,fecha, h_inicial,h_final,IF(tipoevento=2,'Entrevista','Entrega de Resultados') as tipoevento,nombres,idprocesos FROM tbl_horarios_orientador_x_tbl_estudiantes AS he
         INNER JOIN tbl_horarios_orientador AS h ON he.idhorariosorientador = h.idhorariosorientador
         INNER JOIN tbl_personas AS p ON p.idpersona = h.idorientador
         WHERE idestudiante='$idestudiante';";
@@ -117,6 +130,36 @@ switch ($_GET["CODIGO_FUNCION"]) {
         $sql="DELETE FROM tbl_horarios_orientador_x_tbl_estudiantes WHERE idhorariosorientador = '$idhorariosorientador'";
         $resultado = $conexion->ejecutarInstruccion($sql);
         echo json_encode($resultado);
+
+    case 8:
+        date_default_timezone_set( "America/Tegucigalpa" );
+        $fechaActual = date("Y-m-d H:m:s");
+        $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso 
+                FROM tbl_procesos 
+                WHERE estado='activo' 
+                AND '". $fechaActual ."' BETWEEN fechainicioentrevista AND fechafinentrevista
+                AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
+        $resultado = $conexion->ejecutarInstruccion($sql);
+        $cantidadResultados = $conexion->cantidadRegistros($resultado);
+
+        if ($cantidadResultados == 0) {
+            $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso 
+                FROM tbl_procesos 
+                WHERE estado='activo' 
+                AND '". $fechaActual ."' BETWEEN fechainiciodevuelveresultado AND fechafindevuelveresultado
+                AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
+            $resultado = $conexion->ejecutarInstruccion($sql);
+            $cantidadResultados = $conexion->cantidadRegistros($resultado);
+
+            if ($cantidadResultados == 0) {
+                echo json_encode(-1);
+            } else {
+                echo json_encode(3);
+            }
+        } else {
+            echo json_encode(2);
+        }
+        break;
     default:
 
         break;

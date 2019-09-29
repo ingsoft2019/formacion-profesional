@@ -1,8 +1,8 @@
 var idhorariosorientador = '';
 $(document).ready(function() {
-
+    
     $('select').material_select();
-    var $selectDropdown = $("#slc_proceso").empty().html(' ');
+
     $.ajax({
         url: "assets/ajax/agenda_peticiones.php",
         method: 'GET',
@@ -10,13 +10,33 @@ $(document).ready(function() {
         dataType: 'json', //data para saber que funcion en php usara.
         success: function(respuesta) {
             console.log(respuesta);
-            $selectDropdown.append($("<option></option>").attr("value", 0).text("Seleccione un Proceso"));
-            for (var i = 0; i < respuesta.length; i++) {
-                $selectDropdown.append($("<option></option>").attr("value", respuesta[i].idprocesos).text(respuesta[i].proceso));
-            }
-            $selectDropdown.trigger('contentChanged');
+            $('#txt-proceso').val(respuesta[0].proceso);
+            $('#idprocesos').val(respuesta[0].idprocesos);
+            $.ajax({
+                url: "assets/ajax/agenda_peticiones.php",
+                method: 'GET',
+                data: "CODIGO_FUNCION=8",
+                dataType: 'json', //data para saber que funcion en php usara.
+                success: function(respuesta2) {
+                    console.log(respuesta2)
+                    $('#evento').val(respuesta2);
+                    if (respuesta2 == 2) {
+                        $('#txt-evento').val('Entrevista');
+                    } else if(respuesta2 == 3) {
+                        $('#txt-evento').val('Dev de resultados');
+                    } else {
+                        $('#txt-evento').val('No hay eventos disponibles');
+                    }
+                    if (respuesta2 != -1) {
+                        llenarOrientadores(respuesta[0].idprocesos, respuesta2);
+                    }
+                    Materialize.updateTextFields();
+                }
+            });
         }
     });
+
+
     const date_pickers = $(".div_date_picker");
     dates = date_pickers.flatpickr({
         altInput: true,
@@ -27,6 +47,7 @@ $(document).ready(function() {
             "firstDayOfWeek": 1 // start week on Monday
         },
         minDate: "today",
+        maxDate: "today",
         inline: true,
         // enableTime: true,
         /*onChange: function(selectedDates, formatDate, instance) {
@@ -47,49 +68,28 @@ $(document).ready(function() {
 
     cargarDatos();
 
-    $('label').on('contentChanged', function() {
 
-    });
-
-   /* $("[name='rb_hora']").click(function() {
-        var label = $(this).prop("labels");
-        text = $(label).text();
-        //console.log(text)
-        $("#spn_time").text(text);
-    })
-
-    $('#slc_proceso').on('change', function() {
-        var optionsText = this.options[this.selectedIndex].text;
-        //console.log(optionsText);
-        $("#spn_proceso").text(optionsText);
-    });
-
-    $('#slc_evento').on('change', function() {
-        var optionsText = this.options[this.selectedIndex].text;
-        //console.log(optionsText);
-        $("#spn_evento").text(optionsText);
-    });
-*/
-    $('#slc_evento').on('change', function() {
-        if ($("#slc_proceso").val() != 0 && $("#slc_evento").val() != 0) {
-            llenarOrientadores();
-        }
-    });
-
-    $('#slc_proceso').on('change', function() {
-        if ($("#slc_proceso").val() != 0 && $("#slc_evento").val() != 0) {
-            llenarOrientadores();
-        }
-    });
 
     $('#calendario_orientador').on('change', function() {
+        if (idhorariosorientador == '') {
+            return;
+        }
+        
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
-            data: "CODIGO_FUNCION=4&idhorariosorientador=" + idhorariosorientador,
+            data: "CODIGO_FUNCION=4&idhorariosorientador=" + idhorariosorientador + "&evento=" + $('#evento').val() + "&idprocesos=" + $('#idprocesos').val(),
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
+                
+                if(respuesta[1]) {
+                    $("#btn_agendar").addClass('disabled');
+                    $("#btn_agendar").attr('data-disabled', true);
+                } else {
+                    $("#btn_agendar").removeClass('disabled');
+                    $("#btn_agendar").attr('data-disabled', false);
+                }
                 document.getElementById('Ltest').innerHTML = respuesta[0].h_inicial + " - " + respuesta[0].h_final;
             }
         });
@@ -102,7 +102,11 @@ $(document).ready(function() {
         }
     });
 
-    $("#btn_agendar").click(function() {
+    $("#btn_agendar").click(function() {        
+        if ($(this).attr('data-disabled') == 'true') {
+            return;
+        }
+        
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
@@ -146,11 +150,9 @@ $(document).ready(function() {
         });
     }
 
-    function llenarOrientadores() {
-        // console.log("este es" + $("#slc_proceso").val());
-        //console.log("este es" + $("#slc_evento").val());
-        var idproceso = $("#slc_proceso").val();
-        var tipoevento = $("#slc_evento").val();
+    function llenarOrientadores(idProceso, tipoEvento) {
+        var idproceso = idProceso;
+        var tipoevento = tipoEvento;
         //$('select').material_select();
         var $selectDropdown = $("#slc_orientador").empty().html(' ');
         $.ajax({
@@ -170,11 +172,11 @@ $(document).ready(function() {
     }
 
     function llenarFechas() {
-        console.log($("#slc_proceso").val());
-        console.log($("#slc_evento").val());
+        console.log($("#idprocesos").val());
+        console.log($("#evento").val());
         console.log($("#slc_orientador").val());
-        var idproceso = $("#slc_proceso").val();
-        var tipoevento = $("#slc_evento").val();
+        var idproceso = $("#idprocesos").val();
+        var tipoevento = $("#evento").val();
         var orientador = $("#slc_orientador").val();
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
@@ -183,7 +185,6 @@ $(document).ready(function() {
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
-                //var res=JSON.parse(respuesta);
 
                 for (var i = 0; i < respuesta.length; i++) {
                     idhorariosorientador = respuesta[i].idhorariosorientador;
@@ -218,8 +219,7 @@ $(document).ready(function() {
         const html = `
         <div class="col s12 m12 l4 tarjeta_cita" id="${id}">
             <div class="card-content row">
-                <i class="material-icons icon-button" id="${id}" onclick="eliminarCita(${id})">clear</i>
-                <div class="col s12 m6 l2">
+                <div class="col s12 m6 l1">
                     <h6 class="vertical_align">
                         <i class="material-icons">loop</i>
                         <span id="spn_proceso">sin datos</span>
@@ -253,6 +253,11 @@ $(document).ready(function() {
                     <h6 class="vertical_align">
                         <i class="material-icons">location_on</i>
                         <span id="spn_lugar">Edificio de Registro</span>
+                    </h6>
+                </div>
+                <div class="col s12 m12 l1">
+                    <h6 class="vertical_align">
+                        <i class="material-icons icon-button red-text" id="${id}" onclick="eliminarCita(${id})">clear</i>
                     </h6>
                 </div>
             </div>
@@ -289,10 +294,15 @@ function eliminarCita(id) {
                 data: 'CODIGO_FUNCION=7&idhorariosorientador=' + id,
                 success: function(data) {
                     console.log(data);
-                    location.reload();
+                    swal({
+                        title: "Completo", 
+                        text: "Cita eliminada", 
+                        type: "success"},
+                        function() {
+                            location.reload()
+                        })
                 }
             })
-            swal("Completo", "Cita eliminada", "success");
         }
     });
 }

@@ -44,6 +44,8 @@
     <div id="div_loader"></div>
 
     <div class="mn-content">
+    <input type="hidden" id="idprocesos">
+    <input type="hidden" id="evento">
 
         <div id="div-menu"></div>
         <!--EN ESTE APARTADO VA TODO EL CONTENIDO QUE SE DESEA MOSTRAR EN LA SECCION PRINCIPAL-->
@@ -60,23 +62,21 @@
             <div class="card">
                 <div class="card-content">
                     <div class="row" style="margin:0px;">
+
                         <div class="input-field col s12 m4">
                             <i class="material-icons prefix">loop</i>
-                            <select id="slc_proceso">
-                                <option value="0" disabled selected>Seleccione un Proceso</option>
-                                
-                            </select>
-                            <label for="slc_proceso">Proceso</label>
+                            <input type="text" disabled id="txt-proceso">
+                            <label for="proceso">Proceso</label>
                         </div>
+
                         <div class="input-field col s12 m4">
                             <i class="material-icons prefix">collections_bookmark</i>
-                            <select id="slc_evento">
-                                <option value="0" disabled selected>Seleccione el tipo de evento</option>
-                                <option value="2">Entrevista</option>
-                                <option value="3">Dev. Resultados</option>
-                            </select>
-                            <label>Evento</label>
+                            <input type="text" disabled id="txt-evento">
+                            <label for="proceso">Evento</label>
                         </div>
+
+
+
                         <div class="input-field col s12 m4">
                             <i class="material-icons prefix">face</i>
                             <select id="slc_orientador">
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="input-field" align="right">
-                        <a id="btn_agendar" class="waves-effect waves-light btn blue darken-3">Agendar</a>
+                        <a id="btn_agendar" class="btn blue darken-3 disabled" data-disabled="true" >Agendar</a>
                     </div>
                 </div>
             </div>
