@@ -60,7 +60,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
                 "VALUES ( ".
                 $_GET["idhorariosorientador"].", ".
                 $_SESSION["idPersona"].")";
-        // $conexion->ejecutarInstruccion($sql);
+        $conexion->ejecutarInstruccion($sql);
 
         $sql = "SELECT concat(nombres,' ',apellidos) AS persona, correo
         FROM tbl_personas
@@ -80,7 +80,12 @@ switch ($_GET["CODIGO_FUNCION"]) {
 
         $mensaje = "
             <div style='border: 3px solid indigo; padding: 10px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;'>
-                <p style='font-size: 25px'>Usted ha agendado una cita para el día <strong> " . $cita["fecha"] . "</strong> a las <strong>" . $cita["h_inicial"] . "</strong> con el(la) orientador(a) <strong>" . $cita["orientador"] . "</strong>.</p>
+                <div>
+                    <img style='width: 34%;height: auto;' src='https://curc.unah.edu.hn/assets/CURC/paginas/voae/VOAE2.png'>
+                    <img style='float: right;width: 30%;height: auto;' src='https://www.unah.edu.hn/themes/portalunah/assets/images/logo-unah.png'>
+                </div>
+                <h4 style='text-align:center; font-size: 30px;color: #1565C0;'>Cita agendada</h4>
+                <p style='font-size: 25px;text-align:center;padding:0 10%;'>Usted ha agendado una cita para el día <strong> " . $cita["fecha"] . "</strong> a las <strong>" . $cita["h_inicial"] . "</strong> con el(la) orientador(a) <strong>" . $cita["orientador"] . "</strong>.</p>
                 <p>Para obtener más detalles ingrese a la plataforma de <a target='_blank' href='http://localhost/formacion-profesional'>Orientación Profesional</a></p>
             </div>
         ";

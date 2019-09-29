@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('assets/clases/class_conexion.php');
+include ('../clases/class_email.php');
+
 
 $orientador=$_SESSION["idPersona"];
 $conexion = new Conexion();
@@ -60,6 +62,32 @@ if(isset($_GET["CODIGO_FUNCION"])){
       
       $conexion->ejecutarInstruccion("INSERT INTO tbl_resultados (idResultados,urlPdf,FechaModificacion,idprocesos,idEstudiante,idorientador) 
       VALUES('$id','$destino',now(),'$proceso','$estudiante','$orientador');");
+
+      
+
+
+      $sql = "SELECT concat(nombres,' ',apellidos) AS persona, correo
+      FROM tbl_personas
+      WHERE idPersona=" . $_SESSION["idPersona"];
+
+      $resultado = $conexion->ejecutarInstruccion($sql);
+      $persona = $conexion->obtenerFila($resultado);
+
+      $mensaje = "
+          <div style='border: 3px solid indigo; padding: 10px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;'>
+              <div>
+                  <img style='width: 34%;height: auto;' src='https://curc.unah.edu.hn/assets/CURC/paginas/voae/VOAE2.png'>
+                  <img style='float: right;width: 30%;height: auto;' src='https://www.unah.edu.hn/themes/portalunah/assets/images/logo-unah.png'>
+              </div>
+              <h4 style='text-align:center; font-size: 30px;color: #1565C0;'>Publicación de resultados</h4>
+              <p style='font-size: 25px;text-align:center;padding:0 10%;'>Se han subido los resultados de su proceso de orientación profesional, ingrese a la plataforma de <a target='_blank' href='http://localhost/formacion-profesional'>Orientación Profesional</a> para descargarlos</p>
+          </div>
+      ";
+
+      $correo = new Email($persona["correo"], $persona["persona"], "Notificación: Publicación de resultados", $mensaje);
+
+      echo $correo->enviarCorreo();
+
       
     }
   }
