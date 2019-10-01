@@ -8,7 +8,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
     case 1:
         date_default_timezone_set( "America/Tegucigalpa" );
         $fechaActual = date("Y-m-d H:m:s");
-        $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso FROM tbl_procesos WHERE estado='activo' AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
+        $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso FROM tbl_procesos WHERE estado='Activo' AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
         $resultado = $conexion->ejecutarInstruccion($sql);
         $resultadoProceso = array();
         while($fila = $conexion->obtenerFila($resultado)){
@@ -136,7 +136,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
         $fechaActual = date("Y-m-d H:m:s");
         $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso 
                 FROM tbl_procesos 
-                WHERE estado='activo' 
+                WHERE estado='Activo' 
                 AND '". $fechaActual ."' BETWEEN fechainicioentrevista AND fechafinentrevista
                 AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
         $resultado = $conexion->ejecutarInstruccion($sql);
@@ -145,7 +145,7 @@ switch ($_GET["CODIGO_FUNCION"]) {
         if ($cantidadResultados == 0) {
             $sql = "SELECT idprocesos, CONCAT('Proceso No.', idprocesos) AS proceso 
                 FROM tbl_procesos 
-                WHERE estado='activo' 
+                WHERE estado='Activo' 
                 AND '". $fechaActual ."' BETWEEN fechainiciodevuelveresultado AND fechafindevuelveresultado
                 AND '". $fechaActual ."' BETWEEN fechainicio AND fechafindevuelveresultado;";
             $resultado = $conexion->ejecutarInstruccion($sql);
