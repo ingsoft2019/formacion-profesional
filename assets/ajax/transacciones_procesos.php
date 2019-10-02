@@ -140,6 +140,7 @@ fecha_inicio_devoluc=2019-08-14&fecha_fin_devoluc=2019-08-27*/
 
 			$respuesta["mensaje"]="Proceso creado exitosamente.";
 			$respuesta["codigo"]=0;
+			$respuesta["sql"]=$sql1;
 	}
 
 	function transformar_hora($hora){

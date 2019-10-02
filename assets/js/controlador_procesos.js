@@ -333,7 +333,7 @@ function guardar_nuevo_proceso() {
         data: parametros,
         dataType: 'html',
         success: function(respuesta) {
-            //console.log(respuesta);
+            //console.log(respuesta.slq);
             respuesta = JSON.parse(respuesta);
             if (respuesta.codigo == -1) {
                 swal({
