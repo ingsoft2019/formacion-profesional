@@ -13,9 +13,6 @@ function cargarProcesoExamen() {
             for (let i = 0; i < respuesta.length; i++) {
                 $("#examenes_inscritos").append(
                     '<main class="mn-inner">' +
-
-
-
                     '<div class="card" id="Card-row">' +
                     '<div class="card-content  row">' +
                     ' <div class="row">' +
