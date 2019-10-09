@@ -15,8 +15,8 @@
       $query = $mysql->ejecutarInstruccion("SET lc_time_names = 'es_MX'");
     $query=$mysql->ejecutarInstruccion("
     SELECT a.idEstudiante,a.idResultados,c.idprocesos,DATE_FORMAT(c.fechainicio, '%d de %M de %Y') as FI, DATE_FORMAT(c.fechafinal, '%d de %M de %Y') as FF,a.urlPdf FROM
-     tbl_resultados a  left join tbl_procesos c on a.idResultados=c.idprocesos WHERE urlPdf IS NOT null
-    ");
+     tbl_resultados a  left join tbl_procesos c on a.idprocesos=c.idprocesos WHERE urlPdf IS NOT null AND a.idEstudiante=".$_SESSION["idPersona"]
+    );
     
 
 

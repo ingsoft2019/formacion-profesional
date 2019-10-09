@@ -32,7 +32,7 @@ fecha_inicio_devoluc=2019-08-14&fecha_fin_devoluc=2019-08-27*/
 	$fecha_fin_test = $_GET['fecha_fin_test'];
 	$url_test_vocacional = $_GET['url_test_vocacional'];
 	$url_test_personalidad = $_GET['url_test_personalidad'];
-	$clave_acceso = $_GET['fecha_inicio_incripcion'];
+	$clave_acceso = $_GET['clave_acceso'];
 
 	$fecha_inicio_entrev = $_GET['fecha_inicio_entrev'];
 	$fecha_fin_entrev = $_GET['fecha_fin_entrev'];

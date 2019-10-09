@@ -1,6 +1,6 @@
 var idhorariosorientador = '';
 $(document).ready(function() {
-    
+
     $('select').material_select();
 
     $.ajax({
@@ -22,7 +22,7 @@ $(document).ready(function() {
                     $('#evento').val(respuesta2);
                     if (respuesta2 == 2) {
                         $('#txt-evento').val('Entrevista');
-                    } else if(respuesta2 == 3) {
+                    } else if (respuesta2 == 3) {
                         $('#txt-evento').val('Dev de resultados');
                     } else {
                         $('#txt-evento').val('No hay eventos disponibles');
@@ -74,7 +74,7 @@ $(document).ready(function() {
         if (idhorariosorientador == '') {
             return;
         }
-        
+
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
@@ -82,8 +82,8 @@ $(document).ready(function() {
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
-                
-                if(respuesta[1]) {
+
+                if (respuesta[1]) {
                     $("#btn_agendar").addClass('disabled');
                     $("#btn_agendar").attr('data-disabled', true);
                 } else {
@@ -102,11 +102,11 @@ $(document).ready(function() {
         }
     });
 
-    $("#btn_agendar").click(function() {        
+    $("#btn_agendar").click(function() {
         if ($(this).attr('data-disabled') == 'true') {
             return;
         }
-        
+
         $.ajax({
             url: "assets/ajax/agenda_peticiones.php",
             method: 'GET',
@@ -124,12 +124,11 @@ $(document).ready(function() {
             confirmButtonColor: "#2196F3",
             confirmButtonText: "Ok"
         }, function(isConfirm) {
-                if (isConfirm) {
-                    location.reload();
-                }
+            if (isConfirm) {
+                location.reload();
             }
-        );
-        
+        });
+
     });
 
     function cargarDatos() {
@@ -140,10 +139,10 @@ $(document).ready(function() {
             dataType: 'json', //data para saber que funcion en php usara.
             success: function(respuesta) {
                 console.log(respuesta);
-                if(respuesta.length!=0){
+                if (respuesta.length != 0) {
                     console.log(respuesta.length)
                     for (var i = 0; i < respuesta.length; i++) {
-                        renderTarjeta(respuesta[i].horariosorientador, respuesta[i]);   
+                        renderTarjeta(respuesta[i].horariosorientador, respuesta[i]);
                     }
                 }
             }
@@ -265,12 +264,12 @@ $(document).ready(function() {
         $("#Card-row").append(html);
         console.log(`${id}`);
         var tarjeta = $(`.tarjeta_cita[id=${id}]`).children()
-        
+
         tarjeta.find("#spn_proceso").text(data.idprocesos);
         tarjeta.find("#spn_evento").text(data.tipoevento);
         tarjeta.find("#spn_orientador").text(data.nombres);
         tarjeta.find("#spn_date").text(data.fecha);
-        tarjeta.find("#spn_time").text(data.h_inicial+"-"+data.h_final);
+        tarjeta.find("#spn_time").text(data.h_inicial + "-" + data.h_final);
     }
 
 });
@@ -295,9 +294,10 @@ function eliminarCita(id) {
                 success: function(data) {
                     console.log(data);
                     swal({
-                        title: "Completo", 
-                        text: "Cita eliminada", 
-                        type: "success"},
+                            title: "Completo",
+                            text: "Cita eliminada",
+                            type: "success"
+                        },
                         function() {
                             location.reload()
                         })
